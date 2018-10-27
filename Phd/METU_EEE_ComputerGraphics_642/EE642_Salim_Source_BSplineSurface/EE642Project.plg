@@ -1,0 +1,74 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: EE642Project - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\salim\LOCALS~1\Temp\RSP63.tmp" with contents
+[
+/nologo /MTd /w /W0 /Gm /GR /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /FR"Debug/" /Fp"Debug/EE642Project.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"E:\DERS\Phd\642_CG\EE642_Salim_Source_BSplineSurface\LineObject.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\salim\LOCALS~1\Temp\RSP63.tmp" 
+Creating temporary file "C:\DOCUME~1\salim\LOCALS~1\Temp\RSP64.tmp" with contents
+[
+/nologo /subsystem:windows /incremental:yes /pdb:"Debug/EE642Project.pdb" /debug /machine:I386 /out:"Debug/EE642Project.exe" /pdbtype:sept 
+.\Debug\3DTransformContext.obj
+.\Debug\642Manager.obj
+.\Debug\CompGraphObject.obj
+.\Debug\CubicSplineContext.obj
+.\Debug\DrawContext.obj
+.\Debug\EE642Project.obj
+.\Debug\EE642ProjectDlg.obj
+.\Debug\LineObject.obj
+.\Debug\LoadContext.obj
+.\Debug\LoftedSurfaceContext.obj
+.\Debug\MainContext2.obj
+.\Debug\MenuArea.obj
+.\Debug\PlaneCurvesContext.obj
+.\Debug\RenderingArea.obj
+.\Debug\SpaceCurvesContext.obj
+.\Debug\StdAfx.obj
+.\Debug\SurfaceContext.obj
+.\Debug\UserContext.obj
+.\Debug\EE642Project.res
+]
+Creating command line "link.exe @C:\DOCUME~1\salim\LOCALS~1\Temp\RSP64.tmp"
+<h3>Output Window</h3>
+Compiling...
+LineObject.cpp
+Linking...
+Creating temporary file "C:\DOCUME~1\salim\LOCALS~1\Temp\RSP65.tmp" with contents
+[
+/nologo /o"Debug/EE642Project.bsc" 
+.\Debug\StdAfx.sbr
+.\Debug\3DTransformContext.sbr
+.\Debug\642Manager.sbr
+.\Debug\CompGraphObject.sbr
+.\Debug\CubicSplineContext.sbr
+.\Debug\DrawContext.sbr
+.\Debug\EE642Project.sbr
+.\Debug\EE642ProjectDlg.sbr
+.\Debug\LineObject.sbr
+.\Debug\LoadContext.sbr
+.\Debug\LoftedSurfaceContext.sbr
+.\Debug\MainContext2.sbr
+.\Debug\MenuArea.sbr
+.\Debug\PlaneCurvesContext.sbr
+.\Debug\RenderingArea.sbr
+.\Debug\SpaceCurvesContext.sbr
+.\Debug\SurfaceContext.sbr
+.\Debug\UserContext.sbr]
+Creating command line "bscmake.exe @C:\DOCUME~1\salim\LOCALS~1\Temp\RSP65.tmp"
+Creating browse info file...
+<h3>Output Window</h3>
+
+
+
+<h3>Results</h3>
+EE642Project.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

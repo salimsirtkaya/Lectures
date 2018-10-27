@@ -1,0 +1,272 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0041)http://ouray.cudenver.edu/~rkyellur/5803/ -->
+<HTML><HEAD><TITLE>Implementation of Delaunay and Voronoi Algorithms</TITLE>
+<META http-equiv=content-type content="text/html; charset=ISO-8859-1">
+<META content="Ravi Yelluripati" name=author>
+<META content="Implementation of Delaunay and Voronoi Algorithms" 
+name=description>
+<META content="MSHTML 6.00.2900.2802" name=GENERATOR></HEAD>
+<BODY>
+<DIV align=center><BIG><BIG><BIG>Univ of Colorado at Denver <BR>CSC 5803 - 
+Computational 
+Geometry</BIG></BIG></BIG><BIG><BIG><BIG><BR></BIG></BIG></BIG><BIG><BIG><BIG>Project 
+Title</BIG></BIG></BIG><BIG><BIG><BIG><BR></BIG></BIG></BIG><BIG><BIG><BIG>Implementation 
+of Delaunay and Voronoi 
+Algorithms</BIG></BIG></BIG><BIG><BIG><BIG><BR>Prof.<BR></BIG></BIG></BIG><BIG><BIG><BIG>: 
+Vaagn 
+Zakarian</BIG></BIG></BIG><BIG><BIG><BIG><BR></BIG></BIG></BIG><BIG><BIG><BIG>Student 
+: Ravi Yelluripati<BR><SMALL>email: 
+yrk@computer.org</SMALL><BR></BIG></BIG></BIG><BR><BIG>07/26/2002</BIG><BIG><BIG><BIG><BIG><BR><BR></BIG></BIG></BIG></BIG>
+<HR width="100%" SIZE=2>
+<BIG><BIG><BIG><BIG><BR></BIG></BIG></BIG></BIG></DIV><BIG>Contents</BIG><BIG><BR></BIG><BIG><BR></BIG><A 
+href="http://ouray.cudenver.edu/~rkyellur/5803/#Introduction"><BIG>Introduction</BIG></A> 
+<BIG><BR></BIG><A 
+href="http://ouray.cudenver.edu/~rkyellur/5803/#Algorithm_Description"><BIG>Algorithm 
+Description</BIG><BIG><BR></BIG></A><A 
+href="http://ouray.cudenver.edu/~rkyellur/5803/#Implementation_Details"><BIG>Implementation 
+Details</BIG></A> <BIG><BR><A 
+href="http://ouray.cudenver.edu/~rkyellur/5803/#Features">Features</A> <BR><A 
+href="http://ouray.cudenver.edu/~rkyellur/5803/#Download_">Download</A> <BR><A 
+href="http://ouray.cudenver.edu/~rkyellur/5803/#About_Qt">About Qt</A> <BR><A 
+href="http://ouray.cudenver.edu/~rkyellur/5803/#Install_Procedure">Install 
+Procedure</A> <BR><A 
+href="http://ouray.cudenver.edu/~rkyellur/5803/#References">References</A> 
+</BIG><BR><A 
+href="http://ouray.cudenver.edu/~rkyellur/5803/#Screen_Shots"><B>Screen 
+shots</B></A> <BR>
+<HR width="100%" SIZE=2>
+<BR><BR><BIG><A 
+name=Introduction></A>Introduction</BIG><BIG><BR></BIG>&nbsp;<BR>In this project 
+I tried to implement three algorithms, two on Delaunay Triangulation and one on 
+Voronoi Diagram from Delaunay Triangulation. &nbsp; &nbsp;Both the triangulation 
+algorithms are based on the theorem 5.7.2 of the Computational Geometry Text 
+Book by Joseph O Rourke, which states that "The Delaunay Triangulation of a set 
+of points in two dimensions is precisely &nbsp;the projection to the x-y plane 
+of the lower convex hull of the transformed points in three dimensions, 
+transformed by mapping upwards to the parabloid z = x<SUP>2</SUP> + 
+y<SUP>2</SUP>." &nbsp; Once the Delaunay Triangulation is in hand it is easy to 
+compute the Voronoi diagram which is demonstrated in the code.<BR><BR>
+<HR width="100%" SIZE=2>
+<BR><BIG><A name=Algorithm_Description></A>Algorithm 
+Description</BIG><BIG><BR></BIG><BR><BIG>(a) Delaunay 
+O(N</BIG><BIG><SUP>4</SUP></BIG><BIG>)</BIG> : <BR><BR>
+<BLOCKQUOTE>Based on the Theorem "The Delaunay Triangulation of a set of 
+  points in two dimensions is precisely &nbsp;the projection to the x-y plane of 
+  the lower convex hull of the transformed points in three dimensions, 
+  transformed by mapping upwards to the parabloid z = x<SUP>2</SUP> + y<SUP> 
+  2</SUP> ", this algorithm has been implemented. &nbsp;The pseudo code for the 
+  algorithm is as below:<BR></BLOCKQUOTE><BR>
+<BLOCKQUOTE>
+  <BLOCKQUOTE><B>Pseudo code</B><I><B> :</B></I><BR></BLOCKQUOTE><BR></BLOCKQUOTE>
+<BLOCKQUOTE>
+  <BLOCKQUOTE>
+    <BLOCKQUOTE>
+      <BLOCKQUOTE><I><B>for each i &lt; n 
+  </B></I></BLOCKQUOTE></BLOCKQUOTE></BLOCKQUOTE>
+  <BLOCKQUOTE>
+    <BLOCKQUOTE><B>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; 
+      &nbsp;&nbsp;&nbsp; compute&nbsp;</B>z = x<SUP>2</SUP> + 
+    y<SUP>2</SUP></BLOCKQUOTE></BLOCKQUOTE></BLOCKQUOTE>
+<BLOCKQUOTE>
+  <BLOCKQUOTE>
+    <BLOCKQUOTE>
+      <BLOCKQUOTE>
+        <BLOCKQUOTE><I><B>for each i &lt; n -2</B></I><BR>&nbsp;&nbsp;&nbsp; 
+          for each j &lt; n<BR>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; for each k 
+          &lt; n<BR>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; 
+          Compute normal to the triangle<BR>&nbsp;&nbsp;&nbsp; 
+          &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; Only examine faces at the bottom 
+          of the triangle<BR>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; 
+          &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; if(j != k &amp;&amp; zn &lt; 0) 
+          {<BR>&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; 
+          &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; for each m &lt; n 
+          {<BR>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; 
+          &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;if point m is above the 
+          points given by&nbsp; (i,j,k)<BR>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; 
+          &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; 
+          &nbsp;&nbsp;&nbsp; &nbsp; then a Delaunay 
+          triangle<BR>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; 
+          &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; else discard the 
+          point<BR>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; 
+          &nbsp; 
+}<BR>}<BR></BLOCKQUOTE></BLOCKQUOTE></BLOCKQUOTE></BLOCKQUOTE></BLOCKQUOTE>
+<BLOCKQUOTE>
+  <BLOCKQUOTE>
+    <BLOCKQUOTE>
+      <BLOCKQUOTE><I><B></B></I></BLOCKQUOTE></BLOCKQUOTE>
+    <DIV align=left>
+    <BLOCKQUOTE>
+      <DIV align=left>
+      <DIV align=right><I><B><BR></B></I></DIV></DIV></BLOCKQUOTE>
+    <DIV align=left>
+    <DIV align=right>
+    <DIV align=left><B>Time Complexity</B><I><B> 
+    :</B></I><BR><BR></DIV></DIV></DIV>
+    <DIV align=left>
+    <DIV align=right><I><B>&nbsp;The O(N<SUP> 4</SUP>) &nbsp;time complexity is 
+    evident from the four &nbsp;nested for -loops. &nbsp;For each triple of 
+    points (i,j,k), the program checks to see if all other points m are on or 
+    above the plane containing i,j and k. &nbsp;If so, (i,j,k) are output as a 
+    Delaunay triangle. &nbsp;The plane test is performed by dotting the outward 
+    pointing normal to the triangle (xn, yn, zn), with a vector from point i to 
+    point m.</B></I></DIV></DIV>
+    <BLOCKQUOTE></BLOCKQUOTE></DIV></BLOCKQUOTE></BLOCKQUOTE>
+<DIV align=center><BR>
+<DIV align=left><BR>
+<BLOCKQUOTE><B>Drawbacks of&nbsp; Delaunay O(N4)</B>:<BR></BLOCKQUOTE><BR>
+<BLOCKQUOTE>-&nbsp; The code outputs all the triangles inside a Delaunay face 
+  whose boundary consists of four or more co-circular points. &nbsp;Thus a 
+  square face results in four four triangles output, representing the two 
+  triangulations of the square. &nbsp; Obtaining more useful output would 
+  &nbsp;require post processing<BR></BLOCKQUOTE>
+<BLOCKQUOTE>- The m - loop could &nbsp;break when one point is discovered 
+  below the i,j,k plane.<BR></BLOCKQUOTE>
+<BLOCKQUOTE>- The <B>O(N<SUP> 4</SUP>)</B>: time complexity is 
+  un-acceptable.<BR></BLOCKQUOTE></DIV></DIV><BIG>(b) Delaunay 
+O(N</BIG><BIG><SUP>2</SUP></BIG><BIG> )</BIG> : 
+<BLOCKQUOTE>The above algorithm is re-implemented to obtain a time complexity 
+  of O(N<BIG><SUP>2</SUP></BIG><BIG> )</BIG> . &nbsp;First ReadVeritces routine 
+  should read x, y and compute z = x<SUP>2</SUP> + y<SUP>2</SUP>. &nbsp;Second, 
+  after the entire hull is constructed, a procedure <I>LowerFaces </I>&nbsp;is 
+  called to loop over all faces and identify which are on the lower hull (see 
+  delaunayN2.cpp). &nbsp; &nbsp;This is accomplished by computing z-coordinate 
+  of a vector normal to each face <I>f</I>. This computation is shown in 
+  procedure <I>NormZ </I>. If <I>NormZ(f) &lt; 0, </I>&nbsp;then the face is on 
+  the lower hull, and its projection onto the xy-plane is a delaunay triangle. 
+  (see <A 
+  href="http://ouray.cudenver.edu/~rkyellur/5803/DelaunayN2.cpp">DelaunayN2.cpp</A> 
+  )<BR></BLOCKQUOTE><BIG>(c) Voronoi O(N</BIG><BIG> log(N))</BIG> : <BR><BR>
+<BLOCKQUOTE>
+  <BLOCKQUOTE><I><B>Pseudo code</B></I><I><B> :</B></I></BLOCKQUOTE></BLOCKQUOTE>
+<BLOCKQUOTE>
+  <BLOCKQUOTE>
+    <BLOCKQUOTE><I>while (delaunay triangles )<BR><BR>{<BR></I>
+      <BLOCKQUOTE><I>//compute center </I><I><B>px,py</B> and radius 
+        </I><I><B>rad</B> of incoming delaunay triangle<BR>A = bx - ax,<BR>B = 
+        by - ay,<BR>C = cx - ax,<BR>D = cy - ay,<BR>E = A(ax + bx) + B(ay + 
+        by)<BR>F = C(ax + cx) + D(ay + cy)<BR>G = 2(A(cy - by) - B(cx - 
+        bx)),<BR>px = (DE - BF)/G,<BR>py = (AF - CE)/G.<BR>rad = dist( (px,py) 
+        to A or B or C)<BR></I></BLOCKQUOTE><I>}<BR><BR><BR>&nbsp; check to see if 
+      &nbsp;each of the edges are already added to data structures;<BR>if( 
+      already added)<BR>&nbsp; &nbsp; add the voronoi center of this 
+      triangle<BR>else<BR>&nbsp; &nbsp;create a new voronoi Node and add the 
+      information<BR><BR>display the vornoi edges, vertices, and 
+    circles<BR></I></BLOCKQUOTE></BLOCKQUOTE></BLOCKQUOTE><BR><BR>
+<BLOCKQUOTE>Since the Delaunay Triangulation is in hand, it is easy to compute 
+  the Voronoi diagram, accomplished in O(N log( N) ). &nbsp;As each of the 
+  delaunay triangle s are found they are added to a voronoi data structure. 
+  &nbsp;After all the triangles have been added a display routine is called to 
+  display voronoi edges and vornoi vertices. &nbsp;Circles passing through the 
+  delaunay triangle vertices have also been drawn using gray color (see <A 
+  href="http://ouray.cudenver.edu/~rkyellur/5803/voronoi.cpp">voronoi.cpp</A> 
+  ).<BR></BLOCKQUOTE>
+<HR width="100%" SIZE=2>
+<BR><BIG><A name=Implementation_Details></A>Implementation 
+Details</BIG><BR><BR>&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;Implement in 
+C++/Microsoft Windows2000/. &nbsp;The GUI tool kit used is Qt, which is a cross 
+platform GUI tool kit, portable on variety of UNIX flavors and Microsoft 
+Operating Systems, including (Windows 98,NT,2000, XP)<BR><BR><BR>
+<BLOCKQUOTE><BIG><BIG><BIG>Files</BIG></BIG></BIG>:<BR><BR><A 
+  href="http://ouray.cudenver.edu/~rkyellur/5803/application.cpp">application.cpp</A> 
+  <BR><A 
+  href="http://ouray.cudenver.edu/~rkyellur/5803/application.h">application.h</A> 
+  <BR><A 
+  href="http://ouray.cudenver.edu/~rkyellur/5803/DrawWidget.cpp">DrawWidget.cpp</A> 
+  <BR><A 
+  href="http://ouray.cudenver.edu/~rkyellur/5803/DrawWidget.h">DrawWidget.h</A> 
+  <BR><A 
+  href="http://ouray.cudenver.edu/~rkyellur/5803/DelaunayN2.cpp">DelaunayN2.cpp</A> 
+  <BR><A 
+  href="http://ouray.cudenver.edu/~rkyellur/5803/DelaunayN2.h">DelaunayN2.h</A> 
+  <BR><A 
+  href="http://ouray.cudenver.edu/~rkyellur/5803/voronoi.cpp">voronoi.cpp</A> 
+  <BR><A href="http://ouray.cudenver.edu/~rkyellur/5803/voronoi.h">voronoi.h</A> 
+  <BR><A href="http://ouray.cudenver.edu/~rkyellur/5803/main.cpp">main.cpp</A> 
+  <BR><A href="http://ouray.cudenver.edu/~rkyellur/5803/main.h">main.h</A> 
+  <BR><A href="http://ouray.cudenver.edu/~rkyellur/5803/macros.h">macros.h</A> 
+  <BR><BR><BIG><BIG>Data Structures</BIG></BIG><BR><BR><B>For Delaunay 
+  Triangulation</B><BR>
+  <BLOCKQUOTE>typedef struct<BR>{<BR>&nbsp;&nbsp;&nbsp; double x,y,z; //double 
+    used to prevent buffer overflows<BR>}Node; //used to store input points, 
+    Delaunay triangle and Voronoi vertices.<BR><BR>QList &lt;Node&gt; data; 
+    //this is a list of input points in class <A 
+    href="http://ouray.cudenver.edu/~rkyellur/5803/DrawWidget.h">DrawWidget</A> 
+    <BR><BR></BLOCKQUOTE><B>For Voronoi :</B><BR>
+  <BLOCKQUOTE>struct tVertexStructure {<BR>&nbsp;&nbsp; 
+    double&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; v[3];<BR>&nbsp;&nbsp; 
+    double&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; vnum;<BR>&nbsp;&nbsp; 
+    tEdge&nbsp;&nbsp;&nbsp; duplicate;&nbsp;&nbsp;&nbsp; 
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /* pointer to incident cone edge 
+    (or NULL) */<BR>&nbsp;&nbsp; bool&nbsp;&nbsp;&nbsp;&nbsp; 
+    onhull;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; /* T iff point on hull. 
+    */<BR>&nbsp;&nbsp; bool&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; 
+    mark;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; /* T iff point already processed. 
+    */<BR>&nbsp;&nbsp; tVertex&nbsp; next, prev;<BR>};<BR><BR>struct 
+    tEdgeStructure {<BR>&nbsp;&nbsp; tFace&nbsp;&nbsp;&nbsp; 
+    adjface[2];<BR>&nbsp;&nbsp; tVertex&nbsp; endpts[2];<BR>&nbsp;&nbsp; 
+    tFace&nbsp;&nbsp;&nbsp; 
+    newface;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+    /* pointer to incident cone face. */<BR>&nbsp;&nbsp; 
+    bool&nbsp;&nbsp;&nbsp;&nbsp; del;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; /* T 
+    iff edge should be delete. */<BR>&nbsp;&nbsp; tEdge&nbsp;&nbsp;&nbsp; next, 
+    prev;<BR>};<BR><BR>struct tFaceStructure {<BR>&nbsp;&nbsp; 
+    tEdge&nbsp;&nbsp;&nbsp; edge[3];<BR>&nbsp;&nbsp; tVertex&nbsp; 
+    vertex[3];<BR>&nbsp;&nbsp; bool&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; 
+    visible;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /* T 
+    iff face visible from new point. */<BR>&nbsp;&nbsp; 
+    bool&nbsp;&nbsp;&nbsp;&nbsp; 
+    lower;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+    /* T iff on the lower hull */<BR>&nbsp;&nbsp; tFace&nbsp;&nbsp;&nbsp; next, 
+    prev;<BR>};<BR></BLOCKQUOTE></BLOCKQUOTE>
+<HR width="100%" SIZE=2>
+<BIG><BR><BR><A name=Features></A>Features</BIG><BIG><BR></BIG><BR><BIG>The 
+following features are available;</BIG><BR><BR>
+<BLOCKQUOTE><B>(Ctrl+P) Printing (Select File -&gt;print)<BR>(Ctrl+O) Toggle 
+  the display On/Off of Voronoi diagrams (Select View-&gt; (select any of the 
+  choices)<BR>(Ctrl+R) Random function : this function modifies the input points 
+  at regular intervals of time and re-displays the delaunay triangulationa and 
+  voronoi vertice. In order for the random function to work the user should 
+  input atleast 4 point. &nbsp;The user can input points even as the points are 
+  moving (Select View-&gt;Random)<BR>(Ctrl+S) &nbsp;Save the display as a bitmap 
+  Image to File<BR>(Ctrl+C) Copy to clipboard and paste in any other 
+  MS-application<BR>(CTRL+N) Open New Window - This is a Multiple Document 
+  Interface - MDI- Application. &nbsp;User can simultaneously open any number of 
+  windows<BR>All window can be cascaded or tiled to fit the display<BR>Displays 
+  are derived off of QScrollViews providing scroll bars as required )</B>. 
+  &nbsp;<BR><BR></BLOCKQUOTE>
+<HR width="100%" SIZE=2>
+<BR><BIG><A name=Download_></A>Download</BIG><BIG><BR></BIG><BR>&nbsp;Click <A 
+href="http://ouray.cudenver.edu/~rkyellur/5803/raviprj.zip">here</A> to download 
+the program along with this page. &nbsp;You require MS-Visual Studio 6.0 or 
+above and Qt<BR><BR>&nbsp;Please note that you require Qt - library to compile 
+this program, but is not required to run the program. &nbsp;Qt -Free Edition can 
+be downloaded from their web sites at <A 
+href="http://www.trolltech.com/developer/download/qt-win-noncomm.html">http://www.trolltech.com/developer/download/qt-win-noncomm.html</A> 
+Also please note that this distribution is given for academic and non-commercial 
+purposes and should not be used for commercial purposes.<BR><BR>
+<HR width="100%" SIZE=2>
+<BR><BIG><A name=About_Qt></A>About 
+&nbsp;</BIG><BIG><BIG><BIG>Qt</BIG></BIG></BIG><BR>I have been using Qt for the 
+past 3+ years. &nbsp;It is a easy to use cross platform GUI tool kit. &nbsp; 
+Trolltech's Qt products are renowned world wide for excellent quality and state 
+of the art functionality. In more than 45 countries, thousands of Trolltech's 
+customers are depending on Qt in their commercial software development. 
+&nbsp;Please visit their web site for more upto date information at &nbsp;<A 
+href="http://www.trolltech.com/">http://www.trolltech.com/</A> <BR><BR><BIG><A 
+name=Install_Procedure></A>Install Procedure</BIG><BIG><BR></BIG><BR>After 
+downloading the &nbsp;raviprj.zip file, unzip in any directory, go to bin sub 
+directory and double click the application raviprj.exe. &nbsp;If you have any 
+problems email <A href="mailto:yrk@computer.org">yrk@computer.org</A> 
+<BR><BR><BIG><A name=References></A>References</BIG><BR><BR>- [1] Joseph 
+O'Rourke &nbsp; Computational Geometry in C - 2nd Edition<BR>- [2] Notes - 
+Professor Vaagn Zakarian<BR>- [3] Theorem 5.7.2 from Ref [1]<BR>- [4] Franco 
+P.Preparata &amp; Michael Ian Shamos Computational Geometry - An 
+Introduction<BR><BR><BR><B><A name=Screen_Shots></A>Screen 
+Shots</B><BR><BR><BR><B>(A) Delaunay Triangulation</B><BR><BR><IMG height=592 
+alt="Delaunay Triangulation" 
+src="Implementation of Delaunay and Voronoi Algorithms_files/delaunay.jpg" 
+width=572> <BR><BR><B>(B) Delaunay Triangulation and Voronoi diagram on MDI 
+interface</B><BR><BR><IMG height=834 
+alt="Delaunay and Voronoi Diagram -MDI interface" 
+src="Implementation of Delaunay and Voronoi Algorithms_files/voronoimdi.jpg" 
+width=717> <BR></BODY></HTML>

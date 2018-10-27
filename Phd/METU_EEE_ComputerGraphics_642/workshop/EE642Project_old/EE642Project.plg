@@ -1,0 +1,44 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: EE642Project - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\salim\LOCALS~1\Temp\RSPBE.tmp" with contents
+[
+/nologo /MTd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /Fp"Debug/EE642Project.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"E:\DERS\Phd\642_CG\EE642Project\CompGraphObject.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\salim\LOCALS~1\Temp\RSPBE.tmp" 
+Creating temporary file "C:\DOCUME~1\salim\LOCALS~1\Temp\RSPBF.tmp" with contents
+[
+/nologo /subsystem:windows /incremental:yes /pdb:"Debug/EE642Project.pdb" /debug /machine:I386 /out:"Debug/EE642Project.exe" /pdbtype:sept 
+.\Debug\2DObjectContext.obj
+.\Debug\642Managed.obj
+.\Debug\642Manager.obj
+.\Debug\CompGraphObject.obj
+.\Debug\EE642Project.obj
+.\Debug\EE642ProjectDlg.obj
+.\Debug\LineObject.obj
+.\Debug\MainContext.obj
+.\Debug\MenuArea.obj
+.\Debug\RenderingArea.obj
+.\Debug\StdAfx.obj
+.\Debug\UserContext.obj
+.\Debug\EE642Project.res
+]
+Creating command line "link.exe @C:\DOCUME~1\salim\LOCALS~1\Temp\RSPBF.tmp"
+<h3>Output Window</h3>
+Compiling...
+CompGraphObject.cpp
+Linking...
+
+
+
+<h3>Results</h3>
+EE642Project.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

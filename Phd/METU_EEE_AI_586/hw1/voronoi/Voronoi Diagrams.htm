@@ -1,0 +1,413 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0066)http://www2.toki.or.id/book/AlgDesignManual/BOOK/BOOK4/NODE187.HTM -->
+<!--Converted with LaTeX2HTML 96.1 (Feb 5, 1996) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds --><HTML><HEAD><TITLE>Voronoi Diagrams</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=windows-1254">
+<META content="Voronoi Diagrams" name=description>
+<META content=book name=keywords>
+<META content=document name=resource-type>
+<META content=global name=distribution><LINK 
+href="Voronoi Diagrams_files/book.css" rel=STYLESHEET 
+tppabs="http://evo.apm.tuwien.ac.at/AlgDesignManual/BOOK/BOOK4/book.css">
+<META content="MSHTML 6.00.2900.2802" name=GENERATOR></HEAD>
+<BODY lang=EN><A 
+href="http://www2.toki.or.id/book/AlgDesignManual/BOOK/BOOK4/NODE188.HTM" 
+name=tex2html5754 
+tppabs="http://evo.apm.tuwien.ac.at/AlgDesignManual/BOOK/BOOK4/NODE188.HTM"><IMG 
+height=24 alt=next src="Voronoi Diagrams_files/NEXT_TIF.gif" width=37 
+align=bottom 
+tppabs="http://evo.apm.tuwien.ac.at/AlgDesignManual/ICONS/NEXT_TIF.GIF"></A> <A 
+href="http://www2.toki.or.id/book/AlgDesignManual/BOOK/BOOK4/NODE183.HTM" 
+name=tex2html5752 
+tppabs="http://evo.apm.tuwien.ac.at/AlgDesignManual/BOOK/BOOK4/NODE183.HTM"><IMG 
+height=24 alt=up src="Voronoi Diagrams_files/00000016.gif" width=26 align=bottom 
+tppabs="http://evo.apm.tuwien.ac.at/AlgDesignManual/ICONS/00000016.GIF"></A> <A 
+href="http://www2.toki.or.id/book/AlgDesignManual/BOOK/BOOK4/NODE186.HTM" 
+name=tex2html5746 
+tppabs="http://evo.apm.tuwien.ac.at/AlgDesignManual/BOOK/BOOK4/NODE186.HTM"><IMG 
+height=24 alt=previous src="Voronoi Diagrams_files/PS_MOTIF.gif" width=63 
+align=bottom 
+tppabs="http://evo.apm.tuwien.ac.at/AlgDesignManual/ICONS/PS_MOTIF.GIF"></A> <A 
+href="http://www2.toki.or.id/book/AlgDesignManual/BOOK/BOOK/NODE4.HTM" 
+name=tex2html5756 
+tppabs="http://evo.apm.tuwien.ac.at/AlgDesignManual/BOOK/BOOK/NODE4.HTM"><IMG 
+height=24 alt=contents src="Voronoi Diagrams_files/CONTOTIF.gif" width=65 
+align=bottom 
+tppabs="http://evo.apm.tuwien.ac.at/AlgDesignManual/ICONS/CONTOTIF.GIF"></A> <A 
+href="http://www2.toki.or.id/book/AlgDesignManual/BOOK/BOOK5/NODE233.HTM" 
+name=tex2html5757 
+tppabs="http://evo.apm.tuwien.ac.at/AlgDesignManual/BOOK/BOOK5/NODE233.HTM"><IMG 
+height=24 alt=index src="Voronoi Diagrams_files/INDEOTIF.gif" width=43 
+align=bottom 
+tppabs="http://evo.apm.tuwien.ac.at/AlgDesignManual/ICONS/INDEOTIF.GIF"></A> <A 
+href="http://www2.toki.or.id/book/AlgDesignManual/INDEX.HTM" 
+tppabs="http://evo.apm.tuwien.ac.at/AlgDesignManual/INDEX.HTM"><IMG alt=CD 
+src="Voronoi Diagrams_files/CDHOME08.gif" align=bottom 
+tppabs="http://evo.apm.tuwien.ac.at/AlgDesignManual/ICONS/CDHOME08.GIF"></A> <A 
+href="http://www2.toki.or.id/book/AlgDesignManual/LEC/LECTURES/ALL.HTM" 
+tppabs="http://evo.apm.tuwien.ac.at/AlgDesignManual/LEC/LECTURES/ALL.HTM"><IMG 
+alt=CD src="Voronoi Diagrams_files/LECHOME5.gif" align=bottom 
+tppabs="http://evo.apm.tuwien.ac.at/AlgDesignManual/ICONS/LECHOME5.GIF"></A> <A 
+href="http://www2.toki.or.id/book/AlgDesignManual/WEBSITE/INDEX.HTM" 
+tppabs="http://evo.apm.tuwien.ac.at/AlgDesignManual/WEBSITE/INDEX.HTM"><IMG 
+alt=Algorithms src="Voronoi Diagrams_files/ALGO0006.gif" align=bottom 
+tppabs="http://evo.apm.tuwien.ac.at/AlgDesignManual/ICONS/ALGO0006.GIF"></A> 
+<BR><B>Next:</B> <A 
+href="http://www2.toki.or.id/book/AlgDesignManual/BOOK/BOOK4/NODE188.HTM" 
+name=tex2html5755 
+tppabs="http://evo.apm.tuwien.ac.at/AlgDesignManual/BOOK/BOOK4/NODE188.HTM">Nearest 
+Neighbor Search</A> <B>Up:</B> <A 
+href="http://www2.toki.or.id/book/AlgDesignManual/BOOK/BOOK4/NODE183.HTM" 
+name=tex2html5753 
+tppabs="http://evo.apm.tuwien.ac.at/AlgDesignManual/BOOK/BOOK4/NODE183.HTM">Computational 
+Geometry</A> <B>Previous:</B> <A 
+href="http://www2.toki.or.id/book/AlgDesignManual/BOOK/BOOK4/NODE186.HTM" 
+name=tex2html5747 
+tppabs="http://evo.apm.tuwien.ac.at/AlgDesignManual/BOOK/BOOK4/NODE186.HTM">Triangulation</A> 
+<BR>
+<P>
+<H2><A name=SECTION03164000000000000000>Voronoi Diagrams</A></H2>
+<P><A name=voronoidiagrams>&nbsp;</A><A name=18942>&nbsp;</A> 
+<P><A name=voronoidiagramsfig>&nbsp;</A> <IMG height=201 alt=figure18943 
+src="Voronoi Diagrams_files/IMG1500.gif" width=487 align=bottom 
+tppabs="http://evo.apm.tuwien.ac.at/AlgDesignManual/BOOK/BOOK22/IMG1500.GIF"> 
+<P>
+<P><B>Input description</B>: A set <EM>S</EM> of points <IMG height=13 
+alt=tex2html_wrap_inline29976 src="Voronoi Diagrams_files/IMG1501.gif" width=50 
+align=middle 
+tppabs="http://evo.apm.tuwien.ac.at/AlgDesignManual/BOOK/BOOK6/IMG1501.GIF"> . 
+<P><B>Problem description</B>: Decompose space into regions around each point 
+such that all the points in the region around <IMG height=13 
+alt=tex2html_wrap_inline29978 src="Voronoi Diagrams_files/IMG1502.gif" width=9 
+align=middle 
+tppabs="http://evo.apm.tuwien.ac.at/AlgDesignManual/BOOK/BOOK6/IMG1502.GIF"> are 
+closer to <IMG height=13 alt=tex2html_wrap_inline29980 
+src="Voronoi Diagrams_files/IMG1502.gif" width=9 align=middle 
+tppabs="http://evo.apm.tuwien.ac.at/AlgDesignManual/BOOK/BOOK6/IMG1502.GIF"> 
+than they are to any other point in <EM>S</EM>. 
+<P><B>Discussion</B>: Voronoi diagrams represent the region of influence around 
+each of a given set of sites. If these sites represent the locations of 
+McDonald's restaurants, the Voronoi diagram partitions space into cells around 
+each restaurant. For each person living in a particular cell, the defining 
+McDonald's represents the closest place to get a Big Mac. <A 
+name=18965>&nbsp;</A><A name=18966>&nbsp;</A> 
+<P>Voronoi diagrams have a surprising variety of uses: 
+<UL>
+  <LI><EM>Nearest neighbor search</EM> - For a query point <EM>q</EM>, finding 
+  its nearest neighbor from a fixed set of points <EM>S</EM> is simply a matter 
+  of determining which cell in the Voronoi diagram of <EM>S</EM> contains 
+  <EM>q</EM>. See Section <A 
+  href="http://www2.toki.or.id/book/AlgDesignManual/BOOK/BOOK4/NODE188.HTM#nearestneighbor" 
+  tppabs="http://evo.apm.tuwien.ac.at/AlgDesignManual/BOOK/BOOK4/NODE188.HTM#nearestneighbor"><IMG 
+  alt=gif src="Voronoi Diagrams_files/CROSOTIF.gif" align=bottom 
+  tppabs="http://evo.apm.tuwien.ac.at/AlgDesignManual/ICONS/CROSOTIF.GIF"></A> 
+  for more details. <A name=18974>&nbsp;</A>
+  <LI><EM>Facility location</EM> - Suppose McDonald's wanted to open another 
+  restaurant. To minimize interference with existing McDonald's, it should be 
+  located as far away from the closest restaurant as possible. This location is 
+  always at a vertex of the Voronoi diagram, and it can be found in a 
+  linear-time search through all the Voronoi vertices. <A name=18976>&nbsp;</A>
+  <LI><EM>Largest empty circle</EM> - Suppose you needed to obtain a large, 
+  contiguous, undeveloped piece of land on which to build a factory. The same 
+  condition used for picking McDonald's locations is appropriate for other 
+  undesirable facilities, namely that it be as far as possible from any relevant 
+  sites of interest. A Voronoi vertex defines the center of the largest empty 
+  circle among the points. <A name=18978>&nbsp;</A><A name=18979>&nbsp;</A>
+  <LI><EM>Path planning</EM> - If the sites of <EM>S</EM> are the centers of 
+  obstacles we seek to avoid, the edges of the Voronoi diagram define the 
+  possible channels that maximize the distance to the obstacles. Thus in 
+  planning paths among the sites, it will be ``safest'' to stick to the edges of 
+  the Voronoi diagram. <A name=18982>&nbsp;</A><A name=18983>&nbsp;</A>
+  <LI><EM>Quality triangulations</EM> - In triangulating a set of points, we 
+  often desire nice, fat triangles, which avoid small angles and skinny 
+  triangles. The <EM>Delaunay triangulation</EM> maximizes the minimum angle 
+  over all triangulations and is exactly what we want. Further, it is easily 
+  constructed as the dual of the Voronoi diagram. See Section <A 
+  href="http://www2.toki.or.id/book/AlgDesignManual/BOOK/BOOK4/NODE186.HTM#triangulations" 
+  tppabs="http://evo.apm.tuwien.ac.at/AlgDesignManual/BOOK/BOOK4/NODE186.HTM#triangulations"><IMG 
+  alt=gif src="Voronoi Diagrams_files/CROSOTIF.gif" align=bottom 
+  tppabs="http://evo.apm.tuwien.ac.at/AlgDesignManual/ICONS/CROSOTIF.GIF"></A> 
+  for details. <A name=18987>&nbsp;</A><A name=18988>&nbsp;</A> <A 
+  name=18989>&nbsp;</A> 
+  <P></P></LI></UL>
+<P>Each edge of a Voronoi diagram is part of the perpendicular bisector of two 
+points in <EM>S</EM>, since this is the line that partitions the plane between 
+the points. The conceptually simplest method to construct Voronoi diagrams is 
+randomized incremental construction. To add another site to the diagram, locate 
+the cell that contains it and add the perpendicular bisectors between the new 
+site and all sites defining impacted regions. When the sites are inserted in 
+random order, only a small number of regions are likely to be impacted. <A 
+name=18992>&nbsp;</A><A name=18993>&nbsp;</A> 
+<P>However, the method of choice is Fortune's sweepline algorithm, especially 
+since robust implementations of it are readily available. Use an existing 
+implementation instead of trying to develop your own. The algorithm works by 
+projecting the set of sites in the plane into a set of cones in three dimensions 
+such that the Voronoi diagram is defined by projecting the cones back onto the 
+plane. The advantages of Fortune's algorithm are (1) it runs in optimal <IMG 
+height=18 alt=tex2html_wrap_inline29982 src="Voronoi Diagrams_files/IMG291.gif" 
+width=51 align=middle 
+tppabs="http://evo.apm.tuwien.ac.at/AlgDesignManual/BOOK/BOOK6/IMG291.GIF"> 
+time, (2) it is reasonable to implement, and (3) we need not store the entire 
+diagram if we can use it as we sweep over it. <A name=18994>&nbsp;</A><A 
+name=18995>&nbsp;</A> 
+<P>There is an interesting relationship between convex hulls in <EM>d+1</EM> 
+dimensions and Delaunay triangulations (or equivalently Vornoi diagrams) in 
+<EM>d</EM>-dimensions, which provides the best way to construct Voronoi diagrams 
+in higher dimensions. By projecting each site in <IMG height=10 
+alt=tex2html_wrap_inline29984 src="Voronoi Diagrams_files/IMG1505.gif" width=14 
+align=bottom 
+tppabs="http://evo.apm.tuwien.ac.at/AlgDesignManual/BOOK/BOOK7/IMG1505.GIF"> 
+<IMG height=18 alt=tex2html_wrap_inline29986 
+src="Voronoi Diagrams_files/IMG1506.gif" width=76 align=middle 
+tppabs="http://evo.apm.tuwien.ac.at/AlgDesignManual/BOOK/BOOK7/IMG1506.GIF"> 
+into the point <IMG height=24 alt=tex2html_wrap_inline29988 
+src="Voronoi Diagrams_files/IMG1507.gif" width=121 align=middle 
+tppabs="http://evo.apm.tuwien.ac.at/AlgDesignManual/BOOK/BOOK7/IMG1507.GIF"> , 
+taking the convex hull of this (<I>d</I>+1)-dimensional point set and then 
+projecting back into <EM>d</EM> dimensions we obtain the Delaunay triangulation. 
+Details are given in the references below. Programs that compute 
+higher-dimensional convex hulls are discussed in Section <A 
+href="http://www2.toki.or.id/book/AlgDesignManual/BOOK/BOOK4/NODE185.HTM#convexhull" 
+tppabs="http://evo.apm.tuwien.ac.at/AlgDesignManual/BOOK/BOOK4/NODE185.HTM#convexhull"><IMG 
+alt=gif src="Voronoi Diagrams_files/CROSOTIF.gif" align=bottom 
+tppabs="http://evo.apm.tuwien.ac.at/AlgDesignManual/ICONS/CROSOTIF.GIF"></A>. <A 
+name=19001>&nbsp;</A><A name=19002>&nbsp;</A> 
+<P>Several important variations of standard Voronoi diagrams arise in practice. 
+See the references below for details: 
+<P>
+<UL>
+  <LI><EM>Non-Euclidean distance metrics</EM> - Recall that the idea of a 
+  Voronoi diagram is to decompose space into regions of influence around each of 
+  the given sites. Thus far, we have assumed that Euclidean distance measures 
+  influence, but for many applications this is inappropriate. If people drive to 
+  McDonald's, the time it takes to get there depends upon where the major roads 
+  are. Efficient algorithms are known for constructing Voronoi diagrams under a 
+  variety of different metrics, and for curved or constrained objects. <A 
+  name=19005>&nbsp;</A>
+  <LI><EM>Power diagrams</EM> - These structures decompose space into regions of 
+  influence around the sites, where the sites are no longer constrained to have 
+  all the same power. Imagine a map of the listening range of a set of radio 
+  stations operating at a given frequency. The region of influence around a 
+  station depends both on the power of its transmitter and the position of 
+  neighboring transmitters. <A name=19007>&nbsp;</A><A name=19008>&nbsp;</A><A 
+  name=19009>&nbsp;</A>
+  <LI><EM><EM>k</EM>th-order and furthest-site diagrams</EM> - The idea of 
+  decomposing space into regions sharing some property can be taken beyond 
+  closest-point Voronoi diagrams. Any point within a single cell of the 
+  <EM>k</EM>th-order Voronoi diagram shares the same set of <EM>k</EM> closest 
+  points in <EM>S</EM>. In furthest-site diagrams, any point within a particular 
+  region shares the same furthest point in <EM>S</EM>. Point location (see 
+  Section <A 
+  href="http://www2.toki.or.id/book/AlgDesignManual/BOOK/BOOK4/NODE190.HTM#pointlocation" 
+  tppabs="http://evo.apm.tuwien.ac.at/AlgDesignManual/BOOK/BOOK4/NODE190.HTM#pointlocation"><IMG 
+  alt=gif src="Voronoi Diagrams_files/CROSOTIF.gif" align=bottom 
+  tppabs="http://evo.apm.tuwien.ac.at/AlgDesignManual/ICONS/CROSOTIF.GIF"></A>) 
+  on these structures permits fast retrieval of the appropriate points. <A 
+  name=19016>&nbsp;</A><A name=19017>&nbsp;</A> 
+  <P></P></LI></UL>
+<P>
+<P><A 
+href="http://www2.toki.or.id/book/AlgDesignManual/WEBSITE/FILES2/VORORAMS.HTM" 
+tppabs="http://evo.apm.tuwien.ac.at/AlgDesignManual/WEBSITE/FILES2/VORORAMS.HTM"><B>Implementations</B></A>: 
+Steve Fortune is the author of a widely used 2D code for Voronoi diagrams and 
+Delaunay triangulations, written in C. It is based on his own sweepline 
+algorithm [<A 
+href="http://www2.toki.or.id/book/AlgDesignManual/BOOK/BOOK5/NODE232.HTM#Fortune87" 
+tppabs="http://evo.apm.tuwien.ac.at/AlgDesignManual/BOOK/BOOK5/NODE232.HTM#Fortune87">For87</A>] 
+for Voronoi diagrams and is likely to be the right code to try first. It is 
+available from Netlib (see Section <A 
+href="http://www2.toki.or.id/book/AlgDesignManual/BOOK/BOOK5/NODE213.HTM#netlib" 
+tppabs="http://evo.apm.tuwien.ac.at/AlgDesignManual/BOOK/BOOK5/NODE213.HTM#netlib"><IMG 
+alt=gif src="Voronoi Diagrams_files/CROSOTIF.gif" align=bottom 
+tppabs="http://evo.apm.tuwien.ac.at/AlgDesignManual/ICONS/CROSOTIF.GIF"></A>) at 
+http://netlib.bell-labs.com/netlib/voronoi/index.html. <A name=19023>&nbsp;</A> 
+<P>LEDA (see Section <A 
+href="http://www2.toki.or.id/book/AlgDesignManual/BOOK/BOOK5/NODE212.HTM#LEDA" 
+tppabs="http://evo.apm.tuwien.ac.at/AlgDesignManual/BOOK/BOOK5/NODE212.HTM#LEDA"><IMG 
+alt=gif src="Voronoi Diagrams_files/CROSOTIF.gif" align=bottom 
+tppabs="http://evo.apm.tuwien.ac.at/AlgDesignManual/ICONS/CROSOTIF.GIF"></A>) 
+provides an implementation of a randomized incremental construction algorithm 
+for planar Voronoi diagrams in C++. <A name=19025>&nbsp;</A><A 
+name=19026>&nbsp;</A> 
+<P>Higher-dimensional and furthest-site Voronoi diagrams can be constructed as a 
+special case of higher-dimensional convex hulls. Qhull [<A 
+href="http://www2.toki.or.id/book/AlgDesignManual/BOOK/BOOK5/NODE232.HTM#BDH95" 
+tppabs="http://evo.apm.tuwien.ac.at/AlgDesignManual/BOOK/BOOK5/NODE232.HTM#BDH95">BDH97</A>] 
+appears to be the convex hull code of choice in three dimensions and beyond. It 
+is written in C, and it can also construct Delaunay triangulations and 
+half-space intersections. Qhull has been widely used in scientific applications 
+and has a well-maintained home page at http://www.geom.umn.edu/software/qhull/. 
+<A name=19028>&nbsp;</A> 
+<P>The Stanford GraphBase (see Section <A 
+href="http://www2.toki.or.id/book/AlgDesignManual/BOOK/BOOK5/NODE215.HTM#graphbase" 
+tppabs="http://evo.apm.tuwien.ac.at/AlgDesignManual/BOOK/BOOK5/NODE215.HTM#graphbase"><IMG 
+alt=gif src="Voronoi Diagrams_files/CROSOTIF.gif" align=bottom 
+tppabs="http://evo.apm.tuwien.ac.at/AlgDesignManual/ICONS/CROSOTIF.GIF"></A>) 
+contains an implementation of a randomized incremental algorithm to construct 
+Voronoi diagrams and Delaunay triangulations for use as a generator of planar 
+graph instances. <A name=19030>&nbsp;</A><A name=19031>&nbsp;</A> 
+<P>Algorithm 558 [<A 
+href="http://www2.toki.or.id/book/AlgDesignManual/BOOK/BOOK5/NODE232.HTM#acmalg558" 
+tppabs="http://evo.apm.tuwien.ac.at/AlgDesignManual/BOOK/BOOK5/NODE232.HTM#acmalg558">Che80</A>] 
+of the <EM>Collected Algorithms of the ACM</EM> is a Fortran code for the 
+multifacility location problem. It is based on a network flow approach, instead 
+of using Voronoi diagrams. Interestingly, the network flow code is taken from 
+Nijenhuis and Wilf (see Section <A 
+href="http://www2.toki.or.id/book/AlgDesignManual/BOOK/BOOK5/NODE221.HTM#wilf" 
+tppabs="http://evo.apm.tuwien.ac.at/AlgDesignManual/BOOK/BOOK5/NODE221.HTM#wilf"><IMG 
+alt=gif src="Voronoi Diagrams_files/CROSOTIF.gif" align=bottom 
+tppabs="http://evo.apm.tuwien.ac.at/AlgDesignManual/ICONS/CROSOTIF.GIF"></A>). 
+See Section <A 
+href="http://www2.toki.or.id/book/AlgDesignManual/BOOK/BOOK5/NODE213.HTM#netlib" 
+tppabs="http://evo.apm.tuwien.ac.at/AlgDesignManual/BOOK/BOOK5/NODE213.HTM#netlib"><IMG 
+alt=gif src="Voronoi Diagrams_files/CROSOTIF.gif" align=bottom 
+tppabs="http://evo.apm.tuwien.ac.at/AlgDesignManual/ICONS/CROSOTIF.GIF"></A>. <A 
+name=19036>&nbsp;</A><A name=19037>&nbsp;</A><A name=19038>&nbsp;</A> <A 
+name=19039>&nbsp;</A> 
+<P>
+<P><B>Notes</B>: Voronoi diagrams were studied by Dirichlet in 1850 and are 
+occasionally referred to as <EM>Dirichlet tessellations</EM>. They are named 
+after G. Voronoi, who discussed them in a 1908 paper. In mathematics, concepts 
+get named after the last person to discover them. <A name=19043>&nbsp;</A> 
+<P>Aurenhammer [<A 
+href="http://www2.toki.or.id/book/AlgDesignManual/BOOK/BOOK5/NODE232.HTM#Aurenhammer91" 
+tppabs="http://evo.apm.tuwien.ac.at/AlgDesignManual/BOOK/BOOK5/NODE232.HTM#Aurenhammer91">Aur91</A>] 
+and Fortune [<A 
+href="http://www2.toki.or.id/book/AlgDesignManual/BOOK/BOOK5/NODE232.HTM#Fortune92" 
+tppabs="http://evo.apm.tuwien.ac.at/AlgDesignManual/BOOK/BOOK5/NODE232.HTM#Fortune92">For92</A>] 
+provide excellent surveys on Voronoi diagrams and associated variants such as 
+power diagrams. The first <IMG height=18 alt=tex2html_wrap_inline29992 
+src="Voronoi Diagrams_files/IMG1508.gif" width=45 align=middle 
+tppabs="http://evo.apm.tuwien.ac.at/AlgDesignManual/BOOK/BOOK7/IMG1508.GIF"> 
+algorithm for constructing Voronoi diagrams was based on divide-and-conquer and 
+is due to Shamos and Hoey [<A 
+href="http://www2.toki.or.id/book/AlgDesignManual/BOOK/BOOK5/NODE232.HTM#SH75" 
+tppabs="http://evo.apm.tuwien.ac.at/AlgDesignManual/BOOK/BOOK5/NODE232.HTM#SH75">SH75</A>]. 
+Good expositions of Fortune's sweepline algorithm for constructing Voronoi 
+diagrams in <IMG height=18 alt=tex2html_wrap_inline29994 
+src="Voronoi Diagrams_files/IMG1508.gif" width=45 align=middle 
+tppabs="http://evo.apm.tuwien.ac.at/AlgDesignManual/BOOK/BOOK7/IMG1508.GIF"> [<A 
+href="http://www2.toki.or.id/book/AlgDesignManual/BOOK/BOOK5/NODE232.HTM#Fortune87" 
+tppabs="http://evo.apm.tuwien.ac.at/AlgDesignManual/BOOK/BOOK5/NODE232.HTM#Fortune87">For87</A>] 
+include [<A 
+href="http://www2.toki.or.id/book/AlgDesignManual/BOOK/BOOK5/NODE232.HTM#ORourke94" 
+tppabs="http://evo.apm.tuwien.ac.at/AlgDesignManual/BOOK/BOOK5/NODE232.HTM#ORourke94">O'R94</A>]. 
+Good expositions on the relationship between Delaunay triangulations and 
+(<I>d</I>+1)-dimensional convex hulls [<A 
+href="http://www2.toki.or.id/book/AlgDesignManual/BOOK/BOOK5/NODE232.HTM#ES86" 
+tppabs="http://evo.apm.tuwien.ac.at/AlgDesignManual/BOOK/BOOK5/NODE232.HTM#ES86">ES86</A>] 
+include [<A 
+href="http://www2.toki.or.id/book/AlgDesignManual/BOOK/BOOK5/NODE232.HTM#ORourke94" 
+tppabs="http://evo.apm.tuwien.ac.at/AlgDesignManual/BOOK/BOOK5/NODE232.HTM#ORourke94">O'R94</A>]. 
+
+<P>In a <EM>k</EM>th-order Voronoi diagram, we partition the plane such that 
+each point in a region is closest to the same set of <EM>k</EM> sites. Using the 
+algorithm of [<A 
+href="http://www2.toki.or.id/book/AlgDesignManual/BOOK/BOOK5/NODE232.HTM#ES86" 
+tppabs="http://evo.apm.tuwien.ac.at/AlgDesignManual/BOOK/BOOK5/NODE232.HTM#ES86">ES86</A>], 
+the complete set of <EM>k</EM>th-order Voronoi diagrams can be constructed in 
+<IMG height=20 alt=tex2html_wrap_inline29998 
+src="Voronoi Diagrams_files/IMG1510.gif" width=30 align=middle 
+tppabs="http://evo.apm.tuwien.ac.at/AlgDesignManual/BOOK/BOOK7/IMG1510.GIF"> 
+time. By doing point location on this structure, the <EM>k</EM> nearest 
+neighbors to a query point can be found in <IMG height=18 
+alt=tex2html_wrap_inline30000 src="Voronoi Diagrams_files/IMG1511.gif" width=58 
+align=middle 
+tppabs="http://evo.apm.tuwien.ac.at/AlgDesignManual/BOOK/BOOK14/IMG1511.GIF"> . 
+Expositions on <EM>k</EM>th-order Voronoi diagrams include [<A 
+href="http://www2.toki.or.id/book/AlgDesignManual/BOOK/BOOK5/NODE232.HTM#ORourke94" 
+tppabs="http://evo.apm.tuwien.ac.at/AlgDesignManual/BOOK/BOOK5/NODE232.HTM#ORourke94">O'R94</A>, 
+<A 
+href="http://www2.toki.or.id/book/AlgDesignManual/BOOK/BOOK5/NODE232.HTM#PS85" 
+tppabs="http://evo.apm.tuwien.ac.at/AlgDesignManual/BOOK/BOOK5/NODE232.HTM#PS85">PS85</A>]. 
+
+<P>The smallest enclosing circle problem can be solved in <IMG height=18 
+alt=tex2html_wrap_inline30002 src="Voronoi Diagrams_files/IMG1508.gif" width=45 
+align=middle 
+tppabs="http://evo.apm.tuwien.ac.at/AlgDesignManual/BOOK/BOOK7/IMG1508.GIF"> 
+time using (<I>n</I>-1)st order Voronoi diagrams [<A 
+href="http://www2.toki.or.id/book/AlgDesignManual/BOOK/BOOK5/NODE232.HTM#PS85" 
+tppabs="http://evo.apm.tuwien.ac.at/AlgDesignManual/BOOK/BOOK5/NODE232.HTM#PS85">PS85</A>]. 
+In fact, there exist linear-time algorithms based on low-dimensional linear 
+programming [<A 
+href="http://www2.toki.or.id/book/AlgDesignManual/BOOK/BOOK5/NODE232.HTM#Megiddo83" 
+tppabs="http://evo.apm.tuwien.ac.at/AlgDesignManual/BOOK/BOOK5/NODE232.HTM#Megiddo83">Meg83</A>]. 
+A linear algorithm for computing the Voronoi diagram of a convex polygon is 
+given by [<A 
+href="http://www2.toki.or.id/book/AlgDesignManual/BOOK/BOOK5/NODE232.HTM#AGSS87" 
+tppabs="http://evo.apm.tuwien.ac.at/AlgDesignManual/BOOK/BOOK5/NODE232.HTM#AGSS87">AGSS89</A>]. 
+<A name=19061>&nbsp;</A> 
+<P><B>Related Problems</B>: Nearest neighbor search (see page <A 
+href="http://www2.toki.or.id/book/AlgDesignManual/BOOK/BOOK4/NODE188.HTM#nearestneighbor" 
+tppabs="http://evo.apm.tuwien.ac.at/AlgDesignManual/BOOK/BOOK4/NODE188.HTM#nearestneighbor"><IMG 
+alt=gif src="Voronoi Diagrams_files/CROSOTIF.gif" align=bottom 
+tppabs="http://evo.apm.tuwien.ac.at/AlgDesignManual/ICONS/CROSOTIF.GIF"></A>), 
+point location (see page <A 
+href="http://www2.toki.or.id/book/AlgDesignManual/BOOK/BOOK4/NODE190.HTM#pointlocation" 
+tppabs="http://evo.apm.tuwien.ac.at/AlgDesignManual/BOOK/BOOK4/NODE190.HTM#pointlocation"><IMG 
+alt=gif src="Voronoi Diagrams_files/CROSOTIF.gif" align=bottom 
+tppabs="http://evo.apm.tuwien.ac.at/AlgDesignManual/ICONS/CROSOTIF.GIF"></A>), 
+triangulation (see page <A 
+href="http://www2.toki.or.id/book/AlgDesignManual/BOOK/BOOK4/NODE186.HTM#triangulations" 
+tppabs="http://evo.apm.tuwien.ac.at/AlgDesignManual/BOOK/BOOK4/NODE186.HTM#triangulations"><IMG 
+alt=gif src="Voronoi Diagrams_files/CROSOTIF.gif" align=bottom 
+tppabs="http://evo.apm.tuwien.ac.at/AlgDesignManual/ICONS/CROSOTIF.GIF"></A>). 
+<A name=19067>&nbsp;</A> <A name=19068>&nbsp;</A> <A name=19069>&nbsp;</A> 
+<P>
+<HR>
+<A href="http://www2.toki.or.id/book/AlgDesignManual/BOOK/BOOK4/NODE188.HTM" 
+name=tex2html5754 
+tppabs="http://evo.apm.tuwien.ac.at/AlgDesignManual/BOOK/BOOK4/NODE188.HTM"><IMG 
+height=24 alt=next src="Voronoi Diagrams_files/NEXT_TIF.gif" width=37 
+align=bottom 
+tppabs="http://evo.apm.tuwien.ac.at/AlgDesignManual/ICONS/NEXT_TIF.GIF"></A> <A 
+href="http://www2.toki.or.id/book/AlgDesignManual/BOOK/BOOK4/NODE183.HTM" 
+name=tex2html5752 
+tppabs="http://evo.apm.tuwien.ac.at/AlgDesignManual/BOOK/BOOK4/NODE183.HTM"><IMG 
+height=24 alt=up src="Voronoi Diagrams_files/00000016.gif" width=26 align=bottom 
+tppabs="http://evo.apm.tuwien.ac.at/AlgDesignManual/ICONS/00000016.GIF"></A> <A 
+href="http://www2.toki.or.id/book/AlgDesignManual/BOOK/BOOK4/NODE186.HTM" 
+name=tex2html5746 
+tppabs="http://evo.apm.tuwien.ac.at/AlgDesignManual/BOOK/BOOK4/NODE186.HTM"><IMG 
+height=24 alt=previous src="Voronoi Diagrams_files/PS_MOTIF.gif" width=63 
+align=bottom 
+tppabs="http://evo.apm.tuwien.ac.at/AlgDesignManual/ICONS/PS_MOTIF.GIF"></A> <A 
+href="http://www2.toki.or.id/book/AlgDesignManual/BOOK/BOOK/NODE4.HTM" 
+name=tex2html5756 
+tppabs="http://evo.apm.tuwien.ac.at/AlgDesignManual/BOOK/BOOK/NODE4.HTM"><IMG 
+height=24 alt=contents src="Voronoi Diagrams_files/CONTOTIF.gif" width=65 
+align=bottom 
+tppabs="http://evo.apm.tuwien.ac.at/AlgDesignManual/ICONS/CONTOTIF.GIF"></A> <A 
+href="http://www2.toki.or.id/book/AlgDesignManual/BOOK/BOOK5/NODE233.HTM" 
+name=tex2html5757 
+tppabs="http://evo.apm.tuwien.ac.at/AlgDesignManual/BOOK/BOOK5/NODE233.HTM"><IMG 
+height=24 alt=index src="Voronoi Diagrams_files/INDEOTIF.gif" width=43 
+align=bottom 
+tppabs="http://evo.apm.tuwien.ac.at/AlgDesignManual/ICONS/INDEOTIF.GIF"></A> <A 
+href="http://www2.toki.or.id/book/AlgDesignManual/INDEX.HTM" 
+tppabs="http://evo.apm.tuwien.ac.at/AlgDesignManual/INDEX.HTM"><IMG alt=CD 
+src="Voronoi Diagrams_files/CDHOME08.gif" align=bottom 
+tppabs="http://evo.apm.tuwien.ac.at/AlgDesignManual/ICONS/CDHOME08.GIF"></A> <A 
+href="http://www2.toki.or.id/book/AlgDesignManual/LEC/LECTURES/ALL.HTM" 
+tppabs="http://evo.apm.tuwien.ac.at/AlgDesignManual/LEC/LECTURES/ALL.HTM"><IMG 
+alt=CD src="Voronoi Diagrams_files/LECHOME5.gif" align=bottom 
+tppabs="http://evo.apm.tuwien.ac.at/AlgDesignManual/ICONS/LECHOME5.GIF"></A> <A 
+href="http://www2.toki.or.id/book/AlgDesignManual/WEBSITE/INDEX.HTM" 
+tppabs="http://evo.apm.tuwien.ac.at/AlgDesignManual/WEBSITE/INDEX.HTM"><IMG 
+alt=Algorithms src="Voronoi Diagrams_files/ALGO0006.gif" align=bottom 
+tppabs="http://evo.apm.tuwien.ac.at/AlgDesignManual/ICONS/ALGO0006.GIF"></A> 
+<BR><B>Next:</B> <A 
+href="http://www2.toki.or.id/book/AlgDesignManual/BOOK/BOOK4/NODE188.HTM" 
+name=tex2html5755 
+tppabs="http://evo.apm.tuwien.ac.at/AlgDesignManual/BOOK/BOOK4/NODE188.HTM">Nearest 
+Neighbor Search</A> <B>Up:</B> <A 
+href="http://www2.toki.or.id/book/AlgDesignManual/BOOK/BOOK4/NODE183.HTM" 
+name=tex2html5753 
+tppabs="http://evo.apm.tuwien.ac.at/AlgDesignManual/BOOK/BOOK4/NODE183.HTM">Computational 
+Geometry</A> <B>Previous:</B> <A 
+href="http://www2.toki.or.id/book/AlgDesignManual/BOOK/BOOK4/NODE186.HTM" 
+name=tex2html5747 
+tppabs="http://evo.apm.tuwien.ac.at/AlgDesignManual/BOOK/BOOK4/NODE186.HTM">Triangulation</A> 
+
+<P>
+<ADDRESS><I>Algorithms <BR>Mon Jun 2 23:33:50 EDT 1997</I> 
+</ADDRESS></BODY></HTML>

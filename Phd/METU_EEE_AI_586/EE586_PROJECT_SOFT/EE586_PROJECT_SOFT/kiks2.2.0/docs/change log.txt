@@ -1,0 +1,229 @@
+
+- 2.2.0 (2004-03-01) -
+* KiKS is now donationware. Make sure you read and understand the terms of use when starting KiKS.
+* Ambient light sensors have larger field-of-view when close to light sources. Tweak field-of-view to your liking by adjusting KIKS_SIM_LIGHT_FEXP in kiks_preferences.m.
+* Added kiks_siminfo_setrobot() for positioning the robot on the arena.
+* Added kiks_print() for printing messages. Use this function instead of disp() if you want your messages to appear instantly when running KiKS in active mode.
+* Added background noise to k213 camera and proximity sensors. See kiks_preferences.m for tweaking.
+* Added the KAD (KiKS Arena Data) file format, which is vector-based and more compact than TIF files. Will be useful when/if KiKS goes 3D. TIF files are still fully supported.
+
+- 2.1.6 (2003-05-24) -
+* Matlab R12 compability fixes in load/save arena.
+
+- 2.1.5 (2003-05-19) -
+* Further improved handling of malformed data sent to kiks_ksend
+* kiks_spawn_robot does not draw 'ghost' robots if called more than once
+* Discovered that switching from passive to active mode while running a behavior with loops is a bad idea, since KiKS will break in and disturb the running behavior. There is no way to detect this situation, so the only way to avoid problems is to make sure one isn't running a behavior from the Matlab prompt before switching to active mode.
+* Compressed the demo arenas using Matlab's built-in imwrite function.
+* Fixed 'kiks_arena_subrobot' bug when clicking the reset button.
+* Added GUI editing tools.
+* Default wall color can be specified in kiks_preferences.m.
+* k213 linear vision module a bit more polished.
+* Added ability to turn off normalization of the K213 camera image (simulating the 'fixed shutter speed' modification) using KIKS_K213_NONORMALIZE in kiks_preferences.m.
+
+- 2.1.4 (2003-05-11) -
+* Added a command line interface in the KiKS GUI, which can be used to execute any Matlab commands, functions, and scripts. Output is written in the Matlab window aswell as in the KiKS history window. All commands entered are evaluated in the base Matlab workspace using evalc().
+* Added 'active' mode, which lets you experiment with the simulated robot without having to write and run an entire Matlab script. In practice, you can now enter the commands
+>> ref=kiks_kopen([-1,9600,1]);
+>> kiks_ksend(['D,1,1' 10],ref);
+in the command line interface and the simulated robot will start moving smoothly, just as a real robot would. There is no need to force the world to update manually, and all kiks_ksend commands have immediate effect. This mode is useful for playing around with the robot and learning how different commands work. You can still start scripts and run entire behaviors when KiKS is in active mode. The only difference between active mode and how KiKS normally operates (from now on called 'passive mode') is that in active mode, KiKS takes control of the Matlab session and actively keeps the simulated world updated. For this reason you have to enter all commands in the KiKS command line interface.
+* Scroll bug when monitoring KiKSnet server fixed.
+* Remote robots have the same body color as the local robot.
+* Made log history window resizable.
+* Kiks_ksend stricter and more robust towards protocol errors.
+* Bug in sliding code that caused the robot to jump or slide in the wrong direction when colliding while travelling backwards fixed.
+* The logical || and && operators are only supported by Matlab R13 and have been replaced by the | and & operators, which are supported by Matlab R11,R12 and R13.
+* Bug that would corrupt object data when for example switching between the 'clean' demo and the 'siminfo' demo fixed.
+
+- 2.1.3 (2003-05-07) -
+* KiKS no longer spams the Matlab console. Click the 'view log history' button in the KiKS GUI for a list of the last 1,000 KiKS messages. The size of the log history can be adjusted in kiks_preferences.m.
+* The robot does not spawn until a behavior is started (by calling the kiks_kopen function) when connected to KiKSnet. This takes care of the 'sitting duck' problem when connecting to a KiKSnet server where battle is already in progress. Click the 'place robot' button in the KiKS GUI to place the robot in the arena manually.
+* kiks_reginfo.m bug that prevented new users from registering KiKS fixed.
+* Includes KiKSnet beta 4:
+  + CPU load reduced.
+  + Evaluation robots lose energy even when they are standing still.
+* KiKSnet monitoring improved with detailed information about each connected client.
+* Added two-line server.m script in the demos/battle directory that demonstrates how to start a password-protected KiKSnet server from the Matlab command line.
+* Since the proximity/light sensors are placed relatively low on Khepera robots, lights are no longer visible over walls and objects, but are still considered slightly elevated so robots and objects cannot collide with them.
+
+- 2.1.2 (2003-04-21) -
+* Status bar added to GUI.
+* Client-server roundtrip time (ping time) added to GUI.
+* Evaluation copies of KiKS can connect to KiKSnet. Evaluation copies are treated as single user licenses, with the following limitations:
+  + Evaluation robots do not regenerate energy
+  + Evaluation robots lose some energy when moving
+  + When energy reaches 0 for an evaluation robot, it will become unable to move.
+* License tool improved.
+* New demo: 'battle'. Demonstrates the battle turret and occasionally shoots a fellow robot in the process. The radio turret is used to apologize.
+* Support for the K-team Radio Turret on KiKSnet. The Radio Turret works according to the K-team Radio turret manual available at http://www.k-team.com/download/khepera/documentation/RadioTurretManual.pdf.
+* Support for fictional Battle Turret. The Battle turret has turret id 99 and works like any Khepera extension turret. The battle turret supports the following commands:
+  B: Returns version
+  F: Fires cannon and returns target information:
+  + Target id (-1 if obstacle was hit, otherwise robot radio id)
+  + Distance to target (-1 if shot could not be fired)
+  S: Returns Battle turret sensor information:
+  + Robot X position (mm from left edge of arena)
+  + Robot Y position (mm from top edge of arena)
+  + Robot angle
+  + Distance to whatever the turret is aiming at (mm from front of Khepera)
+  + Turret energy level in percent
+  + Turret energy level in points
+  + Number of times shot by other robots
+  The Battle turret has a limited energy supply. Each shot with the cannon costs 5 energy points, and getting shot by another robot costs 10 energy points. Energy re-charges at a rate of 1 point per second. There is no reload time between shots. For fairness, the KiKSnet server handles enerything related to energy and firing the cannon. Maximum energy level is directly proportional to the radius of the robot, so large robots have better firepower than small robots, but are on the other hand easier to hit.
+* kiks_siminfo_setobject only worked in Matlab R13 since it used boolean true/false expressions. To fix this, open kiks2\siminfo\kiks_siminfo_setobjects.m in the Matlab editor and replace all instances of 'false' with the number 0, and all instances of 'true' with the number 1.
+* Misc. bug fixes.
+
+- 2.1.1 (2003-04-04) -
+* New demo behaviour 'siminfo'. It demonstrates how objects can be manipulated using the  kiks_siminfo_objects and kiks_siminfo_setobject commands.
+* kiks_siminfo_khepdist renamed to kiks_siminfo_robotdist
+* kiks_siminfo_kheppath renamed to kiks_siminfo_robotpath
+* kiks_siminfo_kheppos renamed to kiks_siminfo_robotpos
+* kiks_siminfo_setobject can be used to change the object properties returned by kiks_siminfo_objects. Type 
+  >> help kiks_siminfo_setobject;
+  for more information.
+* kiks_siminfo_objects now return 2 more columns with speed and angle of each object.
+* Added 1.4Ghz AMD Athlon to emulated CPUs.
+* Added 1.2Ghz AMD Athlon to emulated CPUs.
+* Added 1Ghz Intel Pentium III to emulated CPUs.
+* Khepera II has the same diameter between wheels as Khepera I.
+* Robots no longer get stuck when they collide with an object, but slide slowly with the rotation unaffected. Not completely realistic since there should be some rotation against the obstacle, but way better than just getting stuck.
+* kiks.m and kiks_arena.m accept the name of a TIF file as arena, so
+  >> kiks('myarena.tif');
+  automatically converts the TIF file to an arena and a colormask and starts up KiKS.
+* Includes KiKSnet Beta 2. KiKSnet now only consists of a small Win32 application which can be administrated from KiKS. To start a dedicated KiKSnet server, start kiksnet.exe from a command line. Then use KiKS to administrate the KiKSnet server by entering the address of the computer running KiKSnet in the "server" field and pressing "administrate KiKSnet server". The current arena will be uploaded to the KiKSnet server, and the server will then be ready to accept clients. It is not necessary for the administrator to stay connected to the server. Note that you do not need to have Matlab installed on the computer running KiKSnet!
+* KiKSnet Beta 2 does not support objects or lights. Support for objects and lights will be added in a future release but for now, we're focusing on developing a fast and robust server with full support for robots and the battle turret for some free-for-all laserdome-type fun.
+* Server-side client prediction scheme implemented in KiKSnet. The server predicts and interpolates the movement of all connected clients to provide for fluid movement of robots.
+* KiKSnet protocol changes. KiKSnet beta 2 is not compatible with KiKSnet beta 1.
+* License scheme simplified. License data is entered manually and verified once the user tries to connect to a KiKSnet server. Users download files directly from www.tstorm.se instead of using the (rather error-prone) e-mail interface.
+* Unregistered copies of KiKS check www.tstorm.se for updates.
+
+- 2.1.0 (2003-03-03) -
+* Sensor simulation improved. Proximity sensor response should be much smoother and somewhat faster than before, but this comes at a cost of 4 megabytes more to download.
+* Matlab R13 compability fixes.
+* External turrets are located in kiks/turrets/. New turrets are easily added.
+* KiKS is now completely open source since p-code generated with Matlab R12 cannot be used in Matlab R13.
+* Root directory renamed to kiks2 to avoid version conflicts, since the directory structure has been changed.
+
+- 2.0.6 (2003-02-15) -
+* kiks_setup.m works again.
+* Khepera II is larger than Khepera (70 vs. 55mm diameter).
+* First step towards opening up KiKS for custom robots taken. Edit the file Khepera_custom.m in the robots directory to get an idea of what I have in mind.
+
+- 2.0.5 (2003-02-13) -
+* Another license handling bug fixed. This one only affected multi-user licenses.
+
+- 2.0.4 (2002-11-12) -
+* License handling bugs fixed.
+* Removed default kiks_data.mat from KiKS distribution.
+  It is recommended that you calibrate KiKS to suit your computer by running kiks_calibrate().
+
+- 2.0.3 (2002-11-11) -
+* Includes KiKSnet beta 1. Read KiKSnet.txt for more information.
+* Added experimental simulation of the Khepera II robot.
+* Added kiks_siminfo_speed(), which returns information about how fast the simulation is running compared to real time.
+  This information is also visible under the timer in the KiKS GUI.
+* Added Angelo Tzimopoulos' 733Mhz PentiumIII to emulated CPUs.
+* Invalidated licenses BD23L-XXXX and BK11V-XXXX due to violations of the license terms.
+* kiks_spawn can be used to place objects in the arena. Type 'help kiks_spawn' at the Matlab prompt for more information.
+* A bug that could mess up the internal arena representation in kiks_reset fixed.
+
+- 2.0.2 (2002-10-28) -
+* Missing 'J' command in kiks_ksend (used by kSetProfile) added.
+* Added kiks_siminfo_objects(), which returns position data of all objects in the arena.
+* Added kiks_siminfo_kheppath(), which returns the coordinates of the path travelled by the Khepera.
+
+- 2.0.1 (2002-07-31) -
+* 'kiks_sublight' bug in kiks_reset fixed.
+* kiks_arena() bugs fixed.
+
+- 2.0.0 (2002-07-16) -
+* Added pause(||) and step forward(|>) buttons to simulator, allowing you to pause the simulator without any kind of impact on behaviors.
+* KiKS GUI and KiKS Arena windows merged into one resizable window.
+* Save/load arena replaced by checkpoint/reset arena.	
+* Various optimizations to speed up the simulator noticably.
+* WinXP+Matlab R12 support
+* KiKSnet support. Only one Khepera can be simulated in each KiKS session. KiKSnet must be used to simulate several Kheperas.
+* "Max speed" time mode renamed to the more appropriate "high precision".
+* Two methods of accelerating the simulation are available:
+  "Emulate CPU speed" - only in "high precision" time mode. Realistically emulates another CPU.
+  "Target speed" - available in both time modes. More unrealistic, but allows for very fast simulations.
+* Cylinder objects recoded. They now have the same physics as, and work in conjunction with, balls.
+
+- 1.13 (2001-03-23) -
+* KiKS no longer requires the "Image Processing" toolbox.
+* KiKS can recover from the 'clear all' command, by reinitializing the simulation system. No more windows that can't be closed.
+
+- 1.12 (2001-03-08) -
+* A small CPU emulation bug fixed
+* Proximity neural networks are removed from the KiKS distribution, since they have to be trained on the system KiKS is to be used on. This means that the unregistered version of KiKS can only run in "fast sensors" mode, since the tools for training the neural networks  are only available by registering KiKS.
+* Added more CPU types to CPU emulation
+
+- 1.11 (2001-02-10) -
+* KiKS tries to start up even if the Image Processing Toolbox could not be detected
+* Demo scripts use default settings if no arguments provided. E.g. to see the maze demo, change dir to kiks\demos\maze\ and run 'maze':
+  >> cd [...]\kiks\demos\maze;
+  >> maze;
+
+- 1.10 (2000-12-12) -
+* Rewrote sensor and camera functions to use matrix operations instead of loops for faster execution
+* Old time related bug in kiks_ksend.m fixed
+* Removed "sensor accuracy" listbox from GUI; it can be adjusted in kiks_preferences.m, but this will probably not be necessary.
+* Unix path problem fixed
+
+- 1.09 (2000-11-20) -
+* Project load/save rewritten to include colormask
+* Added "emulate CPU speed" - you can make the simulator behave like it was running on a faster or slower machine in order to see how computer speed affects the behaviour you are developing. If you choose to emulate a slower computer, the simulation will of course run faster and vice versa
+* Added computer speed test to kiks_calibrate - run kiks_calibrate without arguments to only measure computer speed. Old calibration data will be saved, if available, so there is no need to redo the entire calibration procedure.
+* Made GUI more compact, added some stuff to GUI (time, version, license data)
+* Speed improvements
+* Visualization improved; Grab the Khepera on the camera using the mouse to move it, grab the Khepera anywhere on the dark green area to rotate it
+* Recoded "wall clock" time mode; "max speed" mode still recommended though
+* Better kiks_kopen/kiks_ksend/kiks_kclose error handling
+* Image Processing toolbox is required to run KiKS, Neural Network toolbox is optional. KiKS does not work with the non-US student edition of MatLab thanks to the matrix size restriction
+* Added the kiks_preferences.m file, for variables that are "safe" to adjust
+* KiKS now checks the Matlab path
+* Added motion blur to linear vision module simulation
+* Improved ball physics; may improve cylinder and robot physics later on
+* Misc small fixes
+
+- 1.08 (2000-11-10) -
+* Fixes a problem with the kiks_update_ball function that would screw up collision detection and linear vision simulation.
+
+- 1.07 (2000-10-30) -
+* Added ball object (balls and cylinders are not intended to be used at the same time - they will not work well together)
+* Added support for linear vision camera
+* Added ability to specify grayscale colors of the arena walls using a colormask matrix:
+  colormask matrix must be the same size as the arena matrix.
+  For each '1' element in the arena matrix at position [x,y], set [x,y] in the colormask matrix to the color you want the wall to have.
+  The easiest way to create an arena with a colormask is to draw a _grayscale_ (256 colors) picture using e.g. Photoshop, save the picture as .tif, and use the command
+  >> [arena,colormask]=kiks_tif2arena(filename);
+  where filename is the name of the .tif file.
+  All completely black areas (RGB=#000000) will be regarded as floor by this function, and the rest of the colors should be used to draw the walls. So if you want a black wall, draw it using RGB #010101.
+  There are a few sample pictures in the demos/football/ directory.
+* Made proximity sensors a bit color sensitive
+* Made proximity sensors more accurate overall and added "fast" sensor mode which is a bit less accurate.
+* Skipped a version number since 1.05 and 1.06 got mixed up...			
+			
+- 1.05 (2000-10-16) -
+* Misc. bug fixes. (At least I thought so, but a huge mistake on my part made this version a useless mix of 1.05/1.06)
+
+- 1.04 (2000-10-12) -
+* Speed and memory optimizations, registration related stuff.
+
+- 1.03 (2000-10-10) -
+* Added ability to define robot and object positions in the 'arena' matrix.
+* Visualization made more accurate.
+* Added the kiks_generate_maze function:
+  >> kiks(kiks_generate_maze(10,10,80,15));
+  will generate a 10x10 maze with a path width of 80 and a wall width of 15 and start up kiks.
+* Added kiks_arena(arena) which replaces the current used arena with the one specified.
+* Added new demo that uses these two functions - look in the demos/maze/ directory.
+
+- 1.02 (2000-10-06) -
+* A few UNIX compability issues resolved.
+
+- 1.01 (2000-10-04) -
+* Calibration related crash/hang bugs fixed.
+
+- 1.00 (2000-09-26) -
+* First public release.

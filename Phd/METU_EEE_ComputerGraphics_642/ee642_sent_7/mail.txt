@@ -1,0 +1,33 @@
+Merhaba Hocam,
+
+Ekte "Linear ve BiCubic Coons Surfaces" ödevini bulabilirsiniz..
+ 
+(EE642Project_ssirtkaya_Linear&bicubicCoons.zip). Dosya biraz büyük 
+olduðu için zipleyerek gönderiyorum. Zip dosyasýný bloklanmamasý için 
+þifreledim.. Þifre ee642.
+
+Geçen sefer olduðu gibi, incelemek isterseniz diye kaynak dosyalarýný da gönderiyorum.
+
+Yeni eklemelerle birlikte deðiþen kullanýcý el kitabýnýn beþinci
+sürümü de ektedir (EE642Project_USER MANUALv1.5_Salim.doc). 
+
+Linear Coons Surface çiziminde kenarlar clamped end cubic spline seçilmiþtir (End conditionlar deðiþtirilebilir).
+
+Linear ve Bicubic Coons Surface çizim menülerine "DRAW->Surfaces" butonlarýný týklayarak ulaþabilirsiniz. Bu iki surface çiziminde çok fazla input girilmesi gerektiði için end conditionlara ait inputlarý dosyadan yükleme þeklinde oluþturdum. Örnek dosyalarý ekte bulabilirsiniz (BicubicCoonsEndConds.txt, LinearCoonsEndConds.txt). Çizimi yapmadan gerekli end-condition dosyasýný yüklemeniz gerekiyor. Yüklemezseniz hepsini 0 alacaktýr. 
+
+Örnek olarak bir Linear Coons Surface çizimini adým adým anlatmak isterim 
+
+- Run EE642Project_Salim_linear&bicubicCoons.exe
+- Press "DRAW" -> "Surfaces" -> "Linear Coons Surface"
+- Select four points on the display with your mouse and enter their z axis values to the input boxes at the lower-right part of the gui
+- Press "Load End Conditions" button and select "LinearCoonsEndConds.txt" file from the pop-up menu. Press OK
+- Press "Apply" button. The surface will show-up
+- Press "EDIT" button and apply whichever 3D transformation you want
+
+Eksik ya da hatalý olduðunu düþündüðünüz konularý bildirmenizden mutluluk duyarým.
+
+Teþekkürler
+
+Saygýlarýmla
+
+Salim SIRTKAYA

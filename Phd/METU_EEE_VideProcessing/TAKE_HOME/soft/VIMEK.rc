@@ -1,0 +1,268 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOG DISCARDABLE  0, 0, 235, 55
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "About VIMEK"
+FONT 8, "MS Sans Serif"
+BEGIN
+    ICON            IDR_MAINFRAME,IDC_STATIC,11,17,20,20
+    LTEXT           "VIMEK Version 1.0",IDC_STATIC,40,10,119,8,SS_NOPREFIX
+    LTEXT           "Copyright (C) 2005",IDC_STATIC,40,25,119,8
+    DEFPUSHBUTTON   "OK",IDOK,178,7,50,14,WS_GROUP
+END
+
+IDD_VIMEK_DIALOG DIALOGEX 0, 0, 566, 290
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_APPWINDOW
+CAPTION "MPEG7 - Feature Extractor"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,218,269,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,274,269,50,14
+    PUSHBUTTON      "PROCESS...",IDC_BUTTON1,65,269,62,14
+    PUSHBUTTON      "Track Features",IDC_BUTTON2,147,269,53,14,NOT 
+                    WS_VISIBLE
+    CTEXT           "",IDC_STATIC_MOTION,355,196,97,18,SS_CENTERIMAGE,
+                    WS_EX_STATICEDGE
+    PUSHBUTTON      "Open Video...",IDC_BUTTON4,7,268,52,15
+    GROUPBOX        "",IDC_GROUPBOX_VIDEO,8,3,236,166
+    CTEXT           "Processing Frames ",IDC_STATIC_process,366,220,75,15,
+                    SS_CENTERIMAGE | WS_BORDER
+    CTEXT           "",IDC_STATIC_FR1,382,236,20,15,SS_CENTERIMAGE | 
+                    WS_BORDER
+    CTEXT           "",IDC_STATIC_FR2,402,236,20,15,SS_CENTERIMAGE | 
+                    WS_BORDER
+    CTEXT           "Select the frame numbers ",IDC_STATIC,7,196,91,17,
+                    SS_NOTIFY | SS_CENTERIMAGE | WS_BORDER
+    EDITTEXT        IDC_EDIT_startframe,21,227,27,12,ES_AUTOHSCROLL | 
+                    ES_NUMBER,WS_EX_CLIENTEDGE
+    EDITTEXT        IDC_EDIT_endframe,58,227,27,12,ES_AUTOHSCROLL | 
+                    ES_NUMBER,WS_EX_CLIENTEDGE
+    CTEXT           "start",IDC_STATIC,21,216,27,11,SS_CENTERIMAGE,
+                    WS_EX_STATICEDGE
+    CTEXT           "end",IDC_STATIC,58,216,27,11,SS_CENTERIMAGE,
+                    WS_EX_STATICEDGE
+    LTEXT           " INFO",IDC_STATIC_textheader,255,10,26,15,
+                    SS_CENTERIMAGE | WS_BORDER
+    CTEXT           "Select Block Size",IDC_STATIC,107,196,84,17,SS_NOTIFY | 
+                    SS_CENTERIMAGE | WS_BORDER
+    COMBOBOX        IDC_COMBO_blockSize,107,217,84,49,CBS_DROPDOWN | 
+                    WS_VSCROLL | WS_TABSTOP
+    LISTBOX         IDC_LIST_txtOut,255,28,304,144,LBS_SORT | 
+                    LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+    CTEXT           "Max. D_Color",IDC_STATIC,218,196,56,17,SS_NOTIFY | 
+                    SS_CENTERIMAGE | WS_BORDER
+    EDITTEXT        IDC_EDIT_nDColor,231,215,27,12,ES_AUTOHSCROLL | 
+                    ES_NUMBER,WS_EX_CLIENTEDGE
+END
+
+
+#ifndef _MAC
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904B0"
+        BEGIN
+            VALUE "FileDescription", "VIMEK MFC Application\0"
+            VALUE "FileVersion", "1, 0, 0, 1\0"
+            VALUE "InternalName", "VIMEK\0"
+            VALUE "LegalCopyright", "Copyright (C) 2005\0"
+            VALUE "OriginalFilename", "VIMEK.EXE\0"
+            VALUE "ProductName", "VIMEK Application\0"
+            VALUE "ProductVersion", "1, 0, 0, 1\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END
+
+#endif    // !_MAC
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO MOVEABLE PURE 
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 228
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 48
+    END
+
+    IDD_VIMEK_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 559
+        VERTGUIDE, 218
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 283
+        HORZGUIDE, 196
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog Info
+//
+
+IDD_VIMEK_DIALOG DLGINIT
+BEGIN
+    IDC_COMBO_blockSize, 0x403, 4, 0
+0x7834, 0x0034, 
+    IDC_COMBO_blockSize, 0x403, 4, 0
+0x7838, 0x0038, 
+    IDC_COMBO_blockSize, 0x403, 6, 0
+0x3631, 0x3178, 0x0036, 
+    0
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_ABOUTBOX            "&About VIMEK..."
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// Turkish resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_TRK)
+#ifdef _WIN32
+LANGUAGE LANG_TURKISH, SUBLANG_DEFAULT
+#pragma code_page(1254)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE MOVEABLE PURE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE MOVEABLE PURE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE MOVEABLE PURE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)\r\n"
+    "#ifdef _WIN32\r\n"
+    "LANGUAGE 9, 1\r\n"
+    "#pragma code_page(1252)\r\n"
+    "#endif //_WIN32\r\n"
+    "#include ""res\\VIMEK.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "#include ""afxres.rc""         // Standard components\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON    DISCARDABLE     "res\\VIMEK.ico"
+#endif    // Turkish resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE 9, 1
+#pragma code_page(1252)
+#endif //_WIN32
+#include "res\VIMEK.rc2"  // non-Microsoft Visual C++ edited resources
+#include "afxres.rc"         // Standard components
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

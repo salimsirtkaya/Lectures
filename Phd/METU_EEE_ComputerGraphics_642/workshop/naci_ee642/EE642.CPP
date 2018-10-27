@@ -1,0 +1,2666 @@
+#include "mouseinc.h"
+#include <conio.h>
+#include <graphics.h>
+#include <stdlib.h>
+#include <iostream.h>
+#include <ctype.h>
+#include <math.h>
+#include <dos.h>
+#include <string.h>
+#include <stdio.h>
+
+struct myobject
+{
+	int xx[20];
+	int yy[20];
+	int zz[20];
+	int pointn;
+};
+
+const double pi=3.141592654;
+
+// these are parameters for screen view
+
+int outf=5; // outter frame
+int title=20; // 15 pixels for title
+int menuxt=outf+1; // borders for menu
+int menuyt=2*outf+title+2;
+int menuxb=125;
+int xorg=380;	//x origin
+int yorg=240;	//y origin
+int menus=25; // size of menu is 25 pixels along y
+
+int i,j,k,l; // counters for loops
+
+int Menu_Select=0;
+int pattern,patch;
+float csx[10],csy[10];
+float surfX[10],surfY[10];
+
+float R[20][20][3];
+
+void Grid();
+void Dialog2(char txt[8], int dtype, int num);
+void Dialog1(int dtype);
+void DisplayMousePosition(void);
+
+void GeneralView()
+{
+	// draws a white frame
+	setfillstyle(1,WHITE);
+	bar(0,0,getmaxx(),outf);
+	bar(0,0,outf,getmaxy());
+	bar(0,getmaxy()-outf,getmaxx(),getmaxy());
+	bar(getmaxx()-outf,0,getmaxx(),getmaxy());
+	
+	// makes a title
+	bar(outf+1,outf+1+title,getmaxx()-outf,outf+1+title+outf);
+	setfillstyle(1,LIGHTBLUE);
+	bar(outf+1,outf+1,getmaxx()-outf-1,outf+1+title);
+	settextstyle(1, HORIZ_DIR, 1);
+	setcolor(BLACK);
+	outtextxy(outf+2,outf,"EE 642  PROJECT");
+	settextstyle(2, HORIZ_DIR, 5);
+	outtextxy(outf+500,outf+4,"by M. Naci ORHAN");
+	
+	// makes command line
+	setfillstyle(1,LIGHTBLUE);
+	bar(outf+1,getmaxy()-title-outf,getmaxx()-outf-1,getmaxy()-outf-1);
+	setfillstyle(1,WHITE);
+	bar(outf+1,getmaxy()-title-2*outf,getmaxx()-outf-1,getmaxy()-title-outf-1);
+	Dialog1(2);
+}
+
+void Menu() //Draw MENU
+{
+	HideMouse();
+	setfillstyle(1,LIGHTGRAY);
+	bar(menuxt,menuyt,menuxb,getmaxy()-2*outf-title-1);
+	setcolor(BLACK);
+	for (i=1;i<10;i++)
+		line(menuxt,menuyt+i*menus,menuxb,menuyt+i*menus);
+	setcolor(BLUE);
+	switch (Menu_Select)
+	{
+	case 0: 
+		outtextxy(menuxt+5,outf+1+title+outf+3,"Select Object");
+		outtextxy(menuxt+5,outf+1+title+outf+3+1*menus,"Transformation");
+		outtextxy(menuxt+5,outf+1+title+outf+3+2*menus,"Plane Curves");
+		outtextxy(menuxt+5,outf+1+title+outf+3+3*menus,"Space Curves");
+		outtextxy(menuxt+5,outf+1+title+outf+3+4*menus,"Plane Surfaces");
+		outtextxy(menuxt+5,outf+1+title+outf+3+8*menus,"exit");
+		break;
+		
+	case 1: 
+		outtextxy(menuxt+5,outf+1+title+outf+3,"2-D (triangle)");
+		outtextxy(menuxt+5,outf+1+title+outf+3+1*menus,"3-D (cube)");
+		outtextxy(menuxt+5,outf+1+title+outf+3+2*menus,"Draw 2D object");
+		outtextxy(menuxt+5,outf+1+title+outf+3+3*menus,"Draw 3D object");
+		break;
+		
+	case 2: 
+		outtextxy(menuxt+5,outf+1+title+outf+3,"scaling");
+		outtextxy(menuxt+5,outf+1+title+outf+3+1*menus,"shearing");
+		outtextxy(menuxt+5,outf+1+title+outf+3+2*menus,"rotation");
+		outtextxy(menuxt+5,outf+1+title+outf+3+3*menus,"reflection");
+		outtextxy(menuxt+5,outf+1+title+outf+3+4*menus,"translation");
+		outtextxy(menuxt+5,outf+1+title+outf+3+5*menus,"perspective");
+		outtextxy(menuxt+5,outf+1+title+outf+3+6*menus,"main menu");
+		outtextxy(menuxt+5,outf+1+title+outf+3+7*menus,"clear screen");
+		break;
+
+	case 3: 
+		outtextxy(menuxt+5,outf+1+title+outf+3,"circle");
+		outtextxy(menuxt+5,outf+1+title+outf+3+1*menus,"ellipse");
+		outtextxy(menuxt+5,outf+1+title+outf+3+2*menus,"parabola");
+		outtextxy(menuxt+5,outf+1+title+outf+3+3*menus,"hyperbola");
+		outtextxy(menuxt+5,outf+1+title+outf+3+4*menus,"3-point circle");
+		outtextxy(menuxt+5,outf+1+title+outf+3+5*menus,"main menu");
+		outtextxy(menuxt+5,outf+1+title+outf+3+6*menus,"clear screen");
+		break;
+	
+	case 4: 
+		outtextxy(menuxt+5,outf+1+title+outf+3,"Cubic Spline");
+		outtextxy(menuxt+5,outf+1+title+outf+3+1*menus,"Parab. Blend");
+		outtextxy(menuxt+5,outf+1+title+outf+3+2*menus,"Bezier Curves");
+		outtextxy(menuxt+5,outf+1+title+outf+3+3*menus,"B-Spline");
+		outtextxy(menuxt+5,outf+1+title+outf+3+4*menus,"");
+		outtextxy(menuxt+5,outf+1+title+outf+3+5*menus,"main menu");
+		outtextxy(menuxt+5,outf+1+title+outf+3+6*menus,"clear screen");
+		break;
+
+	case 5:
+		outtextxy(menuxt+5,outf+1+title+outf+3,"clamped end CS");
+		outtextxy(menuxt+5,outf+1+title+outf+3+1*menus,"relaxed end CS");
+		outtextxy(menuxt+5,outf+1+title+outf+3+2*menus,"cyclic CS");
+		outtextxy(menuxt+5,outf+1+title+outf+3+3*menus,"anticyclic CS");
+		outtextxy(menuxt+5,outf+1+title+outf+3+4*menus,"previous menu");
+		outtextxy(menuxt+5,outf+1+title+outf+3+5*menus,"clear screen");
+		break;
+
+	case 6:
+		outtextxy(menuxt+5,outf+1+title+outf+3,"Bilinear");
+		outtextxy(menuxt+5,outf+1+title+outf+3+1*menus,"Lofted");
+		outtextxy(menuxt+5,outf+1+title+outf+3+2*menus,"BiCubic");
+		outtextxy(menuxt+5,outf+1+title+outf+3+3*menus,"Bezier Surface");
+		outtextxy(menuxt+5,outf+1+title+outf+3+4*menus,"BSpline Surface");
+		outtextxy(menuxt+5,outf+1+title+outf+3+5*menus,"main menu");
+		outtextxy(menuxt+5,outf+1+title+outf+3+6*menus,"clear screen");
+		break;
+
+	case 7:
+		outtextxy(menuxt+5,outf+1+title+outf+3,"Rotate_x 90'");
+		outtextxy(menuxt+5,outf+1+title+outf+3+1*menus,"Rotate_y 90'");
+		outtextxy(menuxt+5,outf+1+title+outf+3+2*menus,"Rotate_z 90'");
+		outtextxy(menuxt+5,outf+1+title+outf+3+5*menus,"previous menu");
+		outtextxy(menuxt+5,outf+1+title+outf+3+6*menus,"clear screen");
+		break;
+		
+	} // switch
+	ShowMouse();
+}
+
+int getcommand()
+{
+	int x,y,b;
+	LastPressPosition(0,&x,&y,&b);
+	
+	if ((x>menuxt) && (x<120)){
+		if (y>(outf+outf+title+1) && y<(outf+outf+title+1+menus))
+			return 1;
+		if (y>(outf+outf+title+1+menus+1) && y<(outf+outf+title+1+2*menus))
+			return 2;
+		if (y>(outf+outf+title+1+2*menus+1) && y<(outf+outf+title+1+3*menus))
+			return 3;
+		if (y>(outf+outf+title+1+3*menus+1) && y<(outf+outf+title+1+4*menus))
+			return 4;
+		if (y>(outf+outf+title+1+4*menus+1) && y<(outf+outf+title+1+5*menus))
+			return 5;
+		if (y>(outf+outf+title+1+5*menus+1) && y<(outf+outf+title+1+6*menus))
+			return 6;
+		if (y>(outf+outf+title+1+6*menus+1) && y<(outf+outf+title+1+7*menus))
+			return 7;
+		if (y>(outf+outf+title+1+7*menus+1) && y<(outf+outf+title+1+8*menus))
+			return 8;
+		if (y>(outf+outf+title+1+8*menus+1) && y<(outf+outf+title+1+9*menus))
+			return 9;
+	}
+	
+	return 0;
+}
+
+void Grid(void)
+{
+	int i;
+	setfillstyle(1,BLACK);
+	bar(menuxt+121,2*outf+title+2,getmaxx()-outf,getmaxy()-2*outf-title-1);
+	setcolor(RED);
+	rectangle(130,40,630,440);
+	line(380,40,380,440);
+	line(130,240,630,240);
+	setlinestyle(1,1,1); // dotted line
+	setcolor(LIGHTGRAY);
+	for (i=1;i<10;i++)	// draw y grids
+	{
+		line(130+25*i,40,130+25*i,440);
+		line(380+25*i,40,380+25*i,440);
+	}
+	for (i=1;i<8;i++)  // draw x grids
+	{
+		line(130,40+25*i,630,40+25*i);
+		line(130,240+25*i,630,240+25*i);
+	}
+	setlinestyle(0,1,1);  // restore original line settings
+} // end of Grid
+
+void Display (myobject OBJ)
+{
+	for (i=2;i<OBJ.pointn+1;i++)
+		line(OBJ.xx[i],OBJ.yy[i],OBJ.xx[i-1],OBJ.yy[i-1]);
+	line(OBJ.xx[1],OBJ.yy[1],OBJ.xx[OBJ.pointn],OBJ.yy[OBJ.pointn]);
+} //end display
+
+
+
+myobject Rotationt(int angle, myobject OBJ)
+{
+	int i;
+	int xo[20],yo[20]; // transform to origin
+	int xr[20],yr[20]; // rotation at the origin
+	int xm[20],ym[20]; // retransform to my coordinate frame
+	
+	myobject OBJop;
+
+	for (i=1;i<=OBJ.pointn;i++)
+	{
+		xo[i]= (OBJ.xx[i]-xorg);
+		yo[i]= -(OBJ.yy[i]-yorg);
+		
+		xr[i]=ceil((xo[i]*(cos(3.14/180*angle))) - (yo[i]*sin(3.14/180*angle)));
+		yr[i]=ceil((xo[i]*(sin(3.14/180*angle))) + (yo[i]*cos(3.14/180*angle)));
+		
+		xm[i]=xr[i]+xorg;
+		ym[i]=-yr[i]+yorg;
+		
+		OBJop.xx[i]=xm[i];
+		OBJop.yy[i]=ym[i];
+		OBJop.zz[i]=0;
+		OBJop.pointn=OBJ.pointn;
+	}
+	
+	return(OBJop);
+	
+}
+
+
+
+myobject Rotationx(int angle, myobject OBJ)
+{
+	int i;
+	int xo[20],yo[20]; // transform to origin
+	int xr[20],yr[20],zr[20]; // rotation at the origin
+	int xm[20],ym[20]; // retransform to my coordinate frame
+	
+	myobject OBJop;
+	
+	for (i=1;i<=OBJ.pointn;i++)
+	{
+		yo[i]= -(OBJ.yy[i]-yorg);
+		
+		yr[i]=ceil((yo[i]*(cos(3.14/180*angle))) - (OBJ.zz[i]*sin(3.14/180*angle)));
+		zr[i]=ceil((yo[i]*(sin(3.14/180*angle))) + (OBJ.zz[i]*cos(3.14/180*angle)));
+
+		ym[i]=-yr[i]+yorg;
+		
+		OBJop.xx[i]=OBJ.xx[i];
+		OBJop.yy[i]=ym[i];
+		OBJop.zz[i]=zr[i];
+		OBJop.pointn=OBJ.pointn;
+	}
+	
+	return(OBJop);
+	
+}
+
+myobject Rotationy(int angle, myobject OBJ)
+{
+	int i;
+	int xo[20],yo[20]; // transform to origin
+	int xr[20],yr[20],zr[20]; // rotation at the origin
+	int xm[20],ym[20]; // retransform to my coordinate frame
+	
+	myobject OBJop;
+	
+	for (i=1;i<=OBJ.pointn;i++)
+	{
+		xo[i]= (OBJ.xx[i]-xorg);
+		
+		xr[i]=ceil((xo[i]*(cos(3.14/180*angle))) + (OBJ.zz[i]*sin(3.14/180*angle)));
+		zr[i]=ceil(-(xo[i]*(sin(3.14/180*angle))) + (OBJ.zz[i]*cos(3.14/180*angle)));
+		
+		xm[i] = xr[i]+xorg;
+		
+		OBJop.xx[i]=xm[i];
+		OBJop.yy[i]=OBJ.yy[i];
+		OBJop.zz[i]=zr[i];
+		OBJop.pointn=OBJ.pointn;
+	}
+	
+	return(OBJop);
+	
+}
+
+myobject Rotationz(int angle, myobject OBJ)
+{
+	int i;
+	int xo[20],yo[20]; // transform to origin
+	int xr[20],yr[20]; // rotation at the origin
+	int xm[20],ym[20]; // retransform to my coordinate frame
+	
+	myobject OBJop;
+	
+	for (i=1;i<=OBJ.pointn;i++)
+	{
+		xo[i]= (OBJ.xx[i]-xorg);
+		yo[i]= -(OBJ.yy[i]-yorg);
+		
+		xr[i]=ceil((xo[i]*(cos(3.14/180*angle))) - (yo[i]*sin(3.14/180*angle)));
+		yr[i]=ceil((xo[i]*(sin(3.14/180*angle))) + (yo[i]*cos(3.14/180*angle)));
+		
+		xm[i]=xr[i]+xorg;
+		ym[i]=-yr[i]+yorg;
+		
+		OBJop.xx[i]=xm[i];
+		OBJop.yy[i]=ym[i];
+		OBJop.zz[i]=OBJ.zz[i];
+		OBJop.pointn=OBJ.pointn;
+	}
+	
+	return(OBJop);
+	
+}
+
+void Reflection(myobject OBJ,int type)
+{
+	setcolor(GREEN);
+	int xo[20],yo[20]; // transform to origin
+	int xref[20],yref[20]; // reflection at the origin
+	int xm[20],ym[20]; // retransform to my coordinate frame
+	if (type==1)
+	{
+		for (i=1;i<=OBJ.pointn;i++)
+		{
+			yo[i]=-(OBJ.yy[i]-240);
+			yref[i]=(OBJ.yy[i]-240);
+			ym[i]=-yref[i]+240;
+			if (i>1) line(OBJ.xx[i],ym[i],OBJ.xx[i-1],ym[i-1]);
+		}
+		line(OBJ.xx[1],ym[1],OBJ.xx[OBJ.pointn],ym[OBJ.pointn]);
+	} // if type==1
+	
+	if (type==2)
+	{
+		for (i=1;i<=OBJ.pointn;i++)
+		{
+			xo[i]=(OBJ.xx[i]-380);
+			xref[i]=-(OBJ.xx[i]-380);
+			xm[i]=xref[i]+380;
+			if (i>1) line(xm[i],OBJ.yy[i],xm[i-1],OBJ.yy[i-1]);
+		}
+		line(xm[1],OBJ.yy[1],xm[OBJ.pointn],OBJ.yy[OBJ.pointn]);
+	} // if type==2
+	
+} // end of Reflection
+
+void Scaling(int zoom, int scale, myobject OBJ)
+{
+	setcolor(LIGHTBLUE);
+	int xo[20],yo[20]; // transform to origin
+	int xs[20],ys[20]; // scalling at the origin
+	int xm[20],ym[20]; // retransform to my coordinate frame
+	if (zoom==1) // zoom out
+	{
+		for (i=1;i<=OBJ.pointn;i++)
+		{
+			yo[i]=-(OBJ.yy[i]-240);
+			ys[i]=yo[i]*scale;
+			ym[i]=-ys[i]+240;
+			
+			xo[i]=(OBJ.xx[i]-380);
+			xs[i]=xo[i]*scale;
+			xm[i]=xs[i]+380;
+			
+			if (i>1) line(xm[i],ym[i],xm[i-1],ym[i-1]);
+		}
+		line(xm[1],ym[1],xm[OBJ.pointn],ym[OBJ.pointn]);
+	} // if zoom==1
+	
+	if (zoom==2)  // zoom in
+	{
+		for (i=1;i<=OBJ.pointn;i++)
+		{
+			yo[i]=-(OBJ.yy[i]-240);
+			ys[i]=yo[i]/scale;
+			ym[i]=-ys[i]+240;
+			
+			xo[i]=(OBJ.xx[i]-380);
+			xs[i]=xo[i]/scale;
+			xm[i]=xs[i]+380;
+			
+			if (i>1) line(xm[i],ym[i],xm[i-1],ym[i-1]);
+		}
+		line(xm[1],ym[1],xm[OBJ.pointn],ym[OBJ.pointn]);
+	} // if zoom==2
+	
+} // end of Scaling
+
+void Translation(int tx, int ty, int tz,myobject OBJ)
+{
+	setcolor(CYAN);
+	int xm[20],ym[20],zm[20];
+	for (i=1;i<=OBJ.pointn;i++)
+	{
+		xm[i]=OBJ.xx[i]+tx;
+		ym[i]=OBJ.yy[i]-ty;
+		zm[i]=OBJ.zz[i]+tz;
+		
+		if (i>1) line(xm[i],ym[i],xm[i-1],ym[i-1]);
+	}
+	line(xm[1],ym[1],xm[OBJ.pointn],ym[OBJ.pointn]);
+	
+} // end of Translation
+
+void Shearing(int type, int shearing, myobject OBJ)
+{
+	setcolor(MAGENTA);
+	int xo[20],yo[20]; // transform to origin
+	int xs[20],ys[20]; // shearing at the origin
+	int xm[20],ym[20]; // retransform to my coordinate frame
+	if (type==1) // shear to x-coordinate
+	{
+		for (i=1;i<=OBJ.pointn;i++)
+		{
+			yo[i]=-(OBJ.yy[i]-240);
+			xo[i]=(OBJ.xx[i]-380);
+			ys[i]=yo[i]+xo[i]*shearing;
+			ym[i]=-ys[i]+240;
+			xm[i]=OBJ.xx[i];
+			
+			if (i>1) line(xm[i],ym[i],xm[i-1],ym[i-1]);
+		}
+		line(xm[1],ym[1],xm[OBJ.pointn],ym[OBJ.pointn]);
+	} // if type==1
+	
+	if (type==2)  // shear to y-coordinate
+	{
+		for (i=1;i<=OBJ.pointn;i++)
+		{
+			yo[i]=-(OBJ.yy[i]-240);
+			xo[i]=(OBJ.xx[i]-380);
+			xs[i]=xo[i]+yo[i]*shearing;
+			xm[i]=xs[i]+250;
+			ym[i]=OBJ.yy[i];
+			
+			if (i>1) line(xm[i],ym[i],xm[i-1],ym[i-1]);
+		}
+		line(xm[1],ym[1],xm[OBJ.pointn],ym[OBJ.pointn]);
+	} // if type==2
+
+} // end of Shearing
+
+
+myobject Perspectivez(int prcenterx,int prcentery,int prcenterz, myobject OBJ)
+{
+	int i;
+	int xo[20],yo[20]; // transform to origin
+	float xr[20],yr[20],zr[20]; // rotation at the origin
+	float a,b,c;
+	int xri[20],yri[20],zri[20];
+	int xm[20],ym[20]; // retransform to my coordinate frame
+
+	myobject OBJop;
+
+	for (i=1;i<=OBJ.pointn;i++)
+	{
+		xo[i]= (OBJ.xx[i]-xorg);
+		yo[i]= -(OBJ.yy[i]-yorg);
+		if (prcenterx==0)
+			a=0;
+		else
+			a=float(xo[i])/float(prcenterx);
+		if (prcentery==0)
+			b=0;
+		else
+			b=float(yo[i])/float(prcentery);
+		if (prcenterz==0)
+			c=0;
+		else
+			c=float(OBJ.zz[i])/(prcenterz);
+
+		xr[i]=float(xo[i])/(1+a+b+c);
+		yr[i]=float(yo[i])/(1+a+b+c);
+		zr[i]=float(OBJ.zz[i])/(1+a+b+c);
+
+		xri[i]=ceil(xr[i]);
+		yri[i]=ceil(yr[i]);
+		zri[i]=ceil(zr[i]);
+
+		xm[i]=xri[i]+xorg;
+		ym[i]=-yri[i]+yorg;
+
+		OBJop.xx[i]=xm[i];
+		OBJop.yy[i]=ym[i];
+		OBJop.zz[i]=zri[i];
+		OBJop.pointn=OBJ.pointn;
+	}
+	return(OBJop);
+}
+
+void DisplayMousePosition(void)
+{
+	int X,Y,ST;
+	char *chx,*chy;
+	int decx,signx,decy,signy;
+
+	GetMousePosition(&X,&Y,&ST);
+	X=X-xorg;
+	Y=yorg-Y;
+
+	setfillstyle(1,BLACK);
+	bar(510,455,getmaxx()-6,472);
+	setcolor(WHITE);
+	outtextxy(524,455,"x:");
+	chx = fcvt(X, 0, &decx, &signx);
+	if (X<0) outtextxy(524+12,455,"-");
+	if (X>0) outtextxy(524+12,455," ");
+	outtextxy(524+12+10,455,chx);
+
+	outtextxy(584,455,"y:");
+	chy = fcvt(Y, 0, &decy, &signy);
+	if (Y<0) outtextxy(584+12,455,"-");
+	if (Y>0) outtextxy(584+12,455," ");
+	outtextxy(584+12+10,455,chy);
+
+	delay(50);
+}; // end of DisplayMousePosition
+
+myobject Create_Object(int objectype)
+{
+	int i=0,num,X,Y,B;
+	char txt[8];
+	myobject DEFOBJ;
+	DEFOBJ.pointn=0;
+	SetMouseRange(130,40,630,480);
+
+	do
+	{
+		setfillstyle(1,LIGHTBLUE);
+		bar(outf+1,getmaxy()-title-outf,getmaxx()-outf-1,getmaxy()-outf-1);
+		setfillstyle(1,RED);
+		bar(290,455,460,472);
+		setcolor(BLACK);
+		outtextxy(300,455,"PRESS HERE TO FINISH");
+		do
+		{
+			LastPressPosition(0,&X,&Y,&B);
+			DisplayMousePosition();
+		} while (B==0);
+
+		if (Y<=440)
+		{
+			putpixel(X,Y,YELLOW);
+			i++;
+			DEFOBJ.pointn++;
+			DEFOBJ.xx[i]=X;
+			DEFOBJ.yy[i]=Y;
+			if (objectype==0)		// 2D object
+				DEFOBJ.zz[i]=0;
+			else		// 3D object
+			{
+				Dialog2(txt,16,num);
+				DEFOBJ.zz[i]=atoi(txt);
+			}
+			if (i>1)
+			{
+				HideMouse();
+				setcolor(YELLOW);
+				line(DEFOBJ.xx[i],DEFOBJ.yy[i],DEFOBJ.xx[i-1],DEFOBJ.yy[i-1]);
+				ShowMouse();
+			}
+		}
+	} while (Y<=440);
+
+	HideMouse();
+	setcolor(YELLOW);
+	line(DEFOBJ.xx[i],DEFOBJ.yy[i],DEFOBJ.xx[1],DEFOBJ.yy[1]);
+	ShowMouse();
+	SetMouseRange(outf+1,outf+title+outf+1,getmaxx()-outf-1,getmaxy()-outf-1);
+	return DEFOBJ;
+}
+
+void Dialog1(int dtype)
+{
+	HideMouse();
+	setfillstyle(1,BLUE);
+	bar(outf+1,getmaxy()-title-outf,getmaxx()-outf-1,getmaxy()-outf-1);
+	setcolor(WHITE);
+	if (dtype==0)
+		outtextxy(10,455," ");
+	if (dtype==1)
+		outtextxy(10,455,"Perspective Transformations are not defined for 2D-Objects... ");
+	if (dtype==2)
+	{
+		setfillstyle(1,LIGHTBLUE);
+		bar(outf+1,getmaxy()-title-outf,getmaxx()-outf-1,getmaxy()-outf-1);
+		outtextxy(10,455,"x-axis: 500 pixels, x-grid: 25 pixels     y-axis: 400 pixels,y-grid: 25 pixels");
+	}
+	if (dtype==3)
+		outtextxy(10,455,"Select the 3 points of the circle using mouse");
+	if (dtype==4)
+		outtextxy(10,455,"Enter 6 points using mouse to define the path ...");
+	if (dtype==5)
+		outtextxy(10,455,"Enter 4 points using mouse to define parabolic blending polygon...");
+	if (dtype==6)
+		outtextxy(10,455,"Enter the points of the B-spline using mouse...");
+	if (dtype==7)
+		outtextxy(10,455,"Enter the 4 points defining the mesh, using mouse...");
+	if (dtype==8)
+		outtextxy(10,455,"Enter the start&end points of two cubic splines defining the mesh...");
+
+	ShowMouse();
+}
+
+void Dialog2(char txt[8], int dtype, int num)
+{
+	HideMouse();
+
+	setfillstyle(1,BLUE);
+	bar(outf+1,getmaxy()-title-outf,getmaxx()-outf-1,getmaxy()-outf-1);
+	setfillstyle(1,BLACK);
+	bar(85,455,125,472);
+	
+	setcolor(YELLOW);
+	if (dtype==1)
+		outtextxy(130,455,"angle of rotation about origin");
+	if (dtype==2)
+		outtextxy(130,455,"angle of rotation about x");
+	if (dtype==3)
+		outtextxy(130,455,"angle of rotation about y ");
+	if (dtype==4)
+		outtextxy(130,455,"angle of rotation about z ");
+	if (dtype==5)
+		outtextxy(130,455,"enter 1 for x-axis, 2 for y-axis");
+	if (dtype==6)
+		outtextxy(130,455,"enter the scale factor");
+	if (dtype==7)
+		outtextxy(130,455,"1 for zoom-out, 2 for zoom-in");
+	if (dtype==8)
+		outtextxy(130,455,"amount of translation along x-axis");
+	if (dtype==9)
+		outtextxy(130,455,"amount of translation along y-axis");
+	if (dtype==10)
+		outtextxy(130,455,"amount of translation along z-axis");
+	if (dtype==11)
+		outtextxy(130,455,"1 for x-coor, 2 for y-coor");
+	if (dtype==12)
+		outtextxy(130,455,"enter the amount of shearing");
+	if (dtype==13)
+		outtextxy(130,455,"enter the x-coordinate for the projection center");
+	if (dtype==14)
+		outtextxy(130,455,"enter the y-coordinate for the projection center");
+	if (dtype==15)
+		outtextxy(130,455,"enter the z-coordinate for the projection center");
+	if (dtype==16)
+		outtextxy(130,455,"enter the z-coordinate for the object");
+	if (dtype==17)
+		outtextxy(130,455,"enter the x-coordinate for the origin");
+	if (dtype==18)
+		outtextxy(130,455,"enter the y-coordinate for the origin");
+	if (dtype==19)
+		outtextxy(130,455,"enter the radius");
+	if (dtype==20)
+		outtextxy(130,455,"enter the x radius");
+	if (dtype==21)
+		outtextxy(130,455,"enter the y radius");
+	if (dtype==22)
+		outtextxy(130,455,"enter the angle of x symmetry axis wrt x-axis");
+	if (dtype==23)
+		outtextxy(130,455,"y^2=4ax enter the value of parameter 'a'");
+	if (dtype==24)
+		outtextxy(130,455,"(x^2/a^2) - (y^2/b^2) = 1 enter the value of parameter 'a'");
+	if (dtype==25)
+		outtextxy(130,455,"(x^2/a^2) - (y^2/b^2) = 1 enter the value of parameter 'b'");
+	if (dtype==26)
+		outtextxy(130,455,"enter 1 for new path definition, enter 2 for using the old path");
+	if (dtype==27)
+		outtextxy(130,455,"enter the value of the x derivative at the initial point");
+	if (dtype==28)
+		outtextxy(130,455,"enter the value of the y derivative at the initial point");
+	if (dtype==29)
+		outtextxy(130,455,"enter the value of the x derivative at the final point");
+	if (dtype==30)
+		outtextxy(130,455,"enter the value of the y derivative at the final point");
+	if (dtype==31)
+		outtextxy(130,455,"enter the number of vertices for the B-spline (maximum 10 points)");
+	if (dtype==32)
+		outtextxy(130,455,"enter the degree of B-spline (k >= 2)");
+
+
+	setcolor(GREEN);
+	char key=' ';
+	char control=' '; // this variable checks whether user presses esc twice
+	int i;
+	for (i=0;i<9;i++)
+		txt[i]=' ';
+	num=0;
+	key=getch();
+	while (key!=toascii(13))
+	{
+		if (key==toascii(27))
+		{
+			num=0;
+			for (i=0;i<9;i++)
+				txt[i]=' ';
+			setfillstyle(1,BLACK);
+			bar(85,455,125,472);
+		} else
+			if (key==toascii(8))
+			{
+				if (num>0)
+				{
+					txt[num-1]=' ';
+					num--;
+				}
+				setfillstyle(1,BLACK);
+				bar(85,455,125,472);
+				outtextxy(90,455,txt);
+			}else if (num<8)
+			{
+				txt[num]=key;
+				outtextxy(90,455,txt);
+				num++;
+			}
+			key=getch();
+			if (control==toascii(27) && key==toascii(27))
+				key=toascii(13); else
+				control=key;
+	} // while
+
+	setfillstyle(1,LIGHTBLUE);
+	bar(outf+1,getmaxy()-title-outf,getmaxx()-outf-1,getmaxy()-outf-1);
+	ShowMouse();
+}; // end of Dialog2
+
+void draw_circle(int x,int y,int r)
+{
+	int i;
+	double teta_inc,xcircle,ycircle;
+
+	teta_inc=2*pi/3600;
+	r=abs(r);
+	for(i=0;i<3600;i++)
+	{
+		xcircle = r*cos(teta_inc*i);
+		ycircle = r*sin(teta_inc*i);
+		if (((x+xcircle<630) && (x+xcircle>130)) && ((y-ycircle<440) && (y-ycircle>40)))
+			putpixel(xcircle+x,y-ycircle,LIGHTGREEN);
+	}
+};
+
+void draw_ellipse(int x,int y,int rx,int ry,int angle)
+{
+	int i;
+	double teta_inc,xellipse,yellipse,xellipse_r,yellipse_r;
+
+	teta_inc=2*pi/3600;
+	rx=abs(rx);
+	ry=abs(ry);
+	for(i=0;i<3600;i++)
+	{
+		xellipse = rx*cos(teta_inc*i);
+		yellipse = ry*sin(teta_inc*i);
+		xellipse_r = (xellipse*cos(pi/180*angle))-(yellipse*sin(pi/180*angle));
+		yellipse_r = (xellipse*sin(pi/180*angle))+(yellipse*cos(pi/180*angle));
+		putpixel(xellipse_r+x,y-yellipse_r,LIGHTRED);
+	}
+};
+
+void draw_parabola(int a)
+{
+	double teta_inc=0.0005;
+	double xparab=0,yparab=0;
+
+	do
+	{
+		putpixel(xparab+380,240-yparab,LIGHTBLUE);
+		putpixel(xparab+380,240+yparab,LIGHTBLUE);
+		xparab = xparab + yparab*teta_inc + a*(teta_inc*teta_inc);
+		yparab = yparab + 2*a*teta_inc;
+	}  while(((xparab<250) && (xparab>-249)) && ((yparab<200) && (yparab>-200)));
+};
+
+void draw_hyperbola(int a,int b)
+{
+	const double cosh_teta_inc=cosh(0.003);
+	const double sinh_teta_inc=sinh(0.003);
+	double xhypb=a,yhypb=0;
+	double xhypb_1,yhypb_1;
+
+	do
+	{
+		putpixel(xhypb+380,240-yhypb,LIGHTCYAN);
+		putpixel(xhypb+380,240+yhypb,LIGHTCYAN);
+		putpixel(-xhypb+380,240-yhypb,LIGHTCYAN);
+		putpixel(-xhypb+380,240+yhypb,LIGHTCYAN);
+		xhypb_1 = (xhypb*cosh_teta_inc) + (double(a)/double(b)*yhypb*sinh_teta_inc);
+		yhypb_1 = (double(b)/double(a)*xhypb*sinh_teta_inc) + (yhypb*cosh_teta_inc);
+		xhypb = xhypb_1;
+		yhypb = yhypb_1;
+	}  while(((xhypb<250) && (xhypb>-249)) && ((yhypb<200) && (yhypb>-200)));
+};
+
+
+int* Draw_3Point_circle(void)
+{
+	int i=0,num,X,Y,B;
+	float px[3],py[3];
+	float h,k,r,hp,kp;
+	int circle_param[3];
+
+	Dialog1(3);
+	SetMouseRange(130,40,630,440);
+
+	for (i=0;i<3;i++)
+	{
+		do
+		{
+			LastPressPosition(0,&X,&Y,&B);
+			DisplayMousePosition();
+		} while (B==0);
+
+		putpixel(X,Y,YELLOW);
+		px[i]=X-380;
+		py[i]=240-Y;
+	}
+
+	HideMouse();
+	SetMouseRange(outf+1,outf+title+outf+1,getmaxx()-outf-1,getmaxy()-outf-1);
+	Dialog1(0);
+
+	px[1]=px[1]-px[0];
+	px[2]=px[2]-px[0];
+	py[1]=py[1]-py[0];
+	py[2]=py[2]-py[0];
+	hp=(((px[2]*px[2]+py[2]*py[2])*py[1])-((px[1]*px[1]+py[1]*py[1])*py[2]))/(2*px[2]*py[1]-2*px[1]*py[2]);
+	kp=((px[1]*px[1]+py[1]*py[1])-2*px[1]*hp)/(2*py[1]);
+	h=hp+px[0];
+	k=kp+py[0];
+	r=sqrt(hp*hp+kp*kp);
+	circle_param[0]=int (h);
+	circle_param[1]=int (k);
+	circle_param[2]=int (r);
+	return(circle_param);
+}
+
+void CubicSpline(int CS_type)
+{
+	int i,j,X,Y,B,color;
+
+	float B1x[10],B1y[10],B2x[10],B2y[10],B3x[10],B3y[10],B4x[10],B4y[10];
+	float derx[10],dery[10];
+	int pat_select=1,num;
+	char txt2[8];
+
+	if (pattern==1)
+	{
+		Dialog2(txt2,26,num);
+		pat_select=atoi(txt2);
+		if (pat_select==1)
+		{			
+			Dialog1(4);
+			SetMouseRange(130,40,630,440);
+			
+			for (i=0;i<6;i++)
+			{
+				do
+				{
+					LastPressPosition(0,&X,&Y,&B);
+					DisplayMousePosition();
+				} while (B==0);
+				
+				HideMouse();
+				putpixel(X,Y,YELLOW);
+				csx[i]=float (X);
+				csy[i]=float (Y);
+				setcolor(BROWN);
+				if (i>0)
+					line(csx[i],csy[i],csx[i-1],csy[i-1]);
+				ShowMouse();
+			}
+			
+			pattern=1;
+				HideMouse();
+			SetMouseRange(outf+1,outf+title+outf+1,getmaxx()-outf-1,getmaxy()-outf-1);
+			Dialog1(0);
+		}
+	}
+	else
+	{
+		Dialog1(4);
+		SetMouseRange(130,40,630,440);
+		
+		for (i=0;i<6;i++)
+		{
+			do
+			{
+				LastPressPosition(0,&X,&Y,&B);
+				DisplayMousePosition();
+			} while (B==0);
+			
+			HideMouse();
+			putpixel(X,Y,YELLOW);
+			csx[i]=float (X);
+			csy[i]=float (Y);
+			setcolor(BROWN);
+			if (i>0)
+				line(csx[i],csy[i],csx[i-1],csy[i-1]);
+			ShowMouse();
+		}
+		
+		pattern=1;
+		HideMouse();
+		SetMouseRange(outf+1,outf+title+outf+1,getmaxx()-outf-1,getmaxy()-outf-1);
+		Dialog1(0);
+	}
+	
+	if (CS_type==1)
+	{
+		Dialog2(txt2,27,num);
+		derx[0]=atoi(txt2);
+		Dialog2(txt2,28,num);
+		dery[0]=atoi(txt2);
+		Dialog2(txt2,29,num);
+		derx[5]=atoi(txt2);
+		Dialog2(txt2,30,num);
+		dery[5]=atoi(txt2);
+		
+	//	derx[0]=200;
+	//	dery[0]=-200;
+	//	derx[5]=200;
+	//	dery[5]=-200;	
+
+		derx[1]= (-0.2679*derx[0])+(0.2679*3*(csx[2]-csx[0]))-(0.0718*3*(csx[3]-csx[1]))+(0.0191*3*(csx[4]-csx[2]))-(0.0048*3*(csx[5]-csx[3]))+(0.0048*derx[5]);
+		dery[1]= (-0.2679*dery[0])+(0.2679*3*(csy[2]-csy[0]))-(0.0718*3*(csy[3]-csy[1]))+(0.0191*3*(csy[4]-csy[2]))-(0.0048*3*(csy[5]-csy[3]))+(0.0048*dery[5]);
+
+		derx[2]= (0.0718*derx[0])-(0.0718*3*(csx[2]-csx[0]))+(0.2871*3*(csx[3]-csx[1]))-(0.0766*3*(csx[4]-csx[2]))+(0.0191*3*(csx[5]-csx[3]))-(0.0191*derx[5]);
+		dery[2]= (0.0718*dery[0])-(0.0718*3*(csy[2]-csy[0]))+(0.2871*3*(csy[3]-csy[1]))-(0.0766*3*(csy[4]-csy[2]))+(0.0191*3*(csy[5]-csy[3]))-(0.0191*dery[5]);
+		
+		derx[3]= (-0.0191*derx[0])+(0.0191*3*(csx[2]-csx[0]))-(0.0766*3*(csx[3]-csx[1]))+(0.2871*3*(csx[4]-csx[2]))-(0.0718*3*(csx[5]-csx[3]))+(0.0718*derx[5]);
+		dery[3]= (-0.0191*dery[0])+(0.0191*3*(csy[2]-csy[0]))-(0.0766*3*(csy[3]-csy[1]))+(0.2871*3*(csy[4]-csy[2]))-(0.0718*3*(csy[5]-csy[3]))+(0.0718*dery[5]);
+		
+		derx[4]= (0.0048*derx[0])-(0.2679*3*(csx[2]-csx[0]))+(0.0191*3*(csx[3]-csx[1]))-(0.0718*3*(csx[4]-csx[2]))+(0.2679*3*(csx[5]-csx[3]))-(0.2679*derx[5]);
+		dery[4]= (0.0048*dery[0])-(0.2679*3*(csy[2]-csy[0]))+(0.0191*3*(csy[3]-csy[1]))-(0.0718*3*(csy[4]-csy[2]))+(0.2679*3*(csy[5]-csy[3]))-(0.2679*dery[5]);
+	}
+	else if (CS_type==2)
+	{
+		derx[0]= (1.1547*3/2*(csx[1]-csx[0]))-(0.1547*3*(csx[2]-csx[0]))+(0.0415*3*(csx[3]-csx[1]))-(0.0112*3*(csx[4]-csx[2]))+(0.0032*3*(csx[5]-csx[3]))-(0.0008*6*(csx[5]-csx[4]));
+		dery[0]= (1.1547*3/2*(csy[1]-csy[0]))-(0.1547*3*(csy[2]-csy[0]))+(0.0415*3*(csy[3]-csy[1]))-(0.0112*3*(csy[4]-csy[2]))+(0.0032*3*(csy[5]-csy[3]))-(0.0008*6*(csy[5]-csy[4]));
+
+		derx[1]= (-0.3094*3/2*(csx[1]-csx[0]))+(0.3094*3*(csx[2]-csx[0]))-(0.0829*3*(csx[3]-csx[1]))+(0.0223*3*(csx[4]-csx[2]))-(0.0064*3*(csx[5]-csx[3]))+(0.0016*6*(csx[5]-csx[4]));
+		dery[1]= (-0.3094*3/2*(csy[1]-csy[0]))+(0.3094*3*(csy[2]-csy[0]))-(0.0829*3*(csy[3]-csy[1]))+(0.0223*3*(csy[4]-csy[2]))-(0.0064*3*(csy[5]-csy[3]))+(0.0016*6*(csy[5]-csy[4]));
+				
+		derx[2]= (0.0829*3/2*(csx[1]-csx[0]))-(0.0829*3*(csx[2]-csx[0]))+(0.2903*3*(csx[3]-csx[1]))-(0.0781*3*(csx[4]-csx[2]))+(0.0223*3*(csx[5]-csx[3]))-(0.0056*6*(csx[5]-csx[4]));
+		dery[2]= (0.0829*3/2*(csy[1]-csy[0]))-(0.0829*3*(csy[2]-csy[0]))+(0.2903*3*(csy[3]-csy[1]))-(0.0781*3*(csy[4]-csy[2]))+(0.0223*3*(csy[5]-csy[3]))-(0.0056*6*(csy[5]-csy[4]));
+		
+		derx[3]= (-0.0223*3/2*(csx[1]-csx[0]))+(0.0223*3*(csx[2]-csx[0]))-(0.0781*3*(csx[3]-csx[1]))+(0.2903*3*(csx[4]-csx[2]))-(0.0829*3*(csx[5]-csx[3]))+(0.0207*6*(csx[5]-csx[4]));
+		dery[3]= (-0.0223*3/2*(csy[1]-csy[0]))+(0.0223*3*(csy[2]-csy[0]))-(0.0781*3*(csy[3]-csy[1]))+(0.2903*3*(csy[4]-csy[2]))-(0.0829*3*(csy[5]-csy[3]))+(0.0207*6*(csy[5]-csy[4]));
+
+		derx[4]= (0.0064*3/2*(csx[1]-csx[0]))-(0.0064*3*(csx[2]-csx[0]))+(0.0223*3*(csx[3]-csx[1]))-(0.0829*3*(csx[4]-csx[2]))+(0.3094*3*(csx[5]-csx[3]))-(0.0774*6*(csx[5]-csx[4]));
+		dery[4]= (0.0064*3/2*(csy[1]-csy[0]))-(0.0064*3*(csy[2]-csy[0]))+(0.0223*3*(csy[3]-csy[1]))-(0.0829*3*(csy[4]-csy[2]))+(0.3094*3*(csy[5]-csy[3]))-(0.0774*6*(csy[5]-csy[4]));
+
+		derx[5]= (-0.0032*3/2*(csx[1]-csx[0]))+(0.0032*3*(csx[2]-csx[0]))-(0.0112*3*(csx[3]-csx[1]))+(0.0415*3*(csx[4]-csx[2]))-(0.1547*3*(csx[5]-csx[3]))+(0.2887*6*(csx[5]-csx[4]));
+		dery[5]= (-0.0032*3/2*(csy[1]-csy[0]))+(0.0032*3*(csy[2]-csy[0]))-(0.0112*3*(csy[3]-csy[1]))+(0.0415*3*(csy[4]-csy[2]))-(0.1547*3*(csy[5]-csy[3]))+(0.2887*6*(csy[5]-csy[4]));		
+	}
+	else if (CS_type==3)
+	{
+		
+		derx[0]= (0.2879*3*(csx[1]-csx[0]-csx[4]+csx[5]))-(0.0758*3*(csx[2]-csx[0]))+(0.0152*3*(csx[3]-csx[1]))+(0.0152*3*(csx[4]-csx[2]))-(0.0758*3*(csx[5]-csx[3]));
+		dery[0]= (0.2879*3*(csy[1]-csy[0]-csy[4]+csy[5]))-(0.0758*3*(csy[2]-csy[0]))+(0.0152*3*(csy[3]-csy[1]))+(0.0152*3*(csy[4]-csy[2]))-(0.0758*3*(csy[5]-csy[3]));
+		
+		derx[1]= (-0.0758*3*(csx[1]-csx[0]-csx[4]+csx[5]))+(0.2879*3*(csx[2]-csx[0]))-(0.0758*3*(csx[3]-csx[1]))+(0.0152*3*(csx[4]-csx[2]))+(0.0152*3*(csx[5]-csx[3]));
+		dery[1]= (-0.0758*3*(csy[1]-csy[0]-csy[4]+csy[5]))+(0.2879*3*(csy[2]-csy[0]))-(0.0758*3*(csy[3]-csy[1]))+(0.0152*3*(csy[4]-csy[2]))+(0.0152*3*(csy[5]-csy[3]));
+				
+		derx[2]= (0.0152*3*(csx[1]-csx[0]-csx[4]+csx[5]))-(0.0758*3*(csx[2]-csx[0]))+(0.2879*3*(csx[3]-csx[1]))-(0.0758*3*(csx[4]-csx[2]))+(0.0152*3*(csx[5]-csx[3]));
+		dery[2]= (0.0152*3*(csy[1]-csy[0]-csy[4]+csy[5]))-(0.0758*3*(csy[2]-csy[0]))+(0.2879*3*(csy[3]-csy[1]))-(0.0758*3*(csy[4]-csy[2]))+(0.0152*3*(csy[5]-csy[3]));
+		
+		derx[3]= (0.0152*3*(csx[1]-csx[0]-csx[4]+csx[5]))+(0.0152*3*(csx[2]-csx[0]))-(0.0758*3*(csx[3]-csx[1]))+(0.2879*3*(csx[4]-csx[2]))-(0.0758*3*(csx[5]-csx[3]));
+		dery[3]= (0.0152*3*(csy[1]-csy[0]-csy[4]+csy[5]))+(0.0152*3*(csy[2]-csy[0]))-(0.0758*3*(csy[3]-csy[1]))+(0.2879*3*(csy[4]-csy[2]))-(0.0758*3*(csy[5]-csy[3]));
+
+		derx[4]= (-0.0758*3*(csx[1]-csx[0]-csx[4]+csx[5]))+(0.0152*3*(csx[2]-csx[0]))+(0.0152*3*(csx[3]-csx[1]))-(0.0758*3*(csx[4]-csx[2]))+(0.2879*3*(csx[5]-csx[3]));
+		dery[4]= (-0.0758*3*(csy[1]-csy[0]-csy[4]+csy[5]))+(0.0152*3*(csy[2]-csy[0]))+(0.0152*3*(csy[3]-csy[1]))-(0.0758*3*(csy[4]-csy[2]))+(0.2879*3*(csy[5]-csy[3]));
+				
+		derx[5]= derx[0];
+		dery[5]= dery[0];
+	}
+	else if (CS_type==4)
+	{
+
+		derx[0]= (0.2895*3*(csx[1]-csx[0]+csx[4]-csx[5]))-(0.0789*3*(csx[2]-csx[0]))+(0.0263*3*(csx[3]-csx[1]))-(0.0263*3*(csx[4]-csx[2]))+(0.0789*3*(csx[5]-csx[3]));
+		dery[0]= (0.2895*3*(csy[1]-csy[0]+csy[4]-csy[5]))-(0.0789*3*(csy[2]-csy[0]))+(0.0263*3*(csy[3]-csy[1]))-(0.0263*3*(csy[4]-csy[2]))+(0.0789*3*(csy[5]-csy[3]));
+		
+		derx[1]= (-0.0789*3*(csx[1]-csx[0]+csx[4]-csx[5]))+(0.2895*3*(csx[2]-csx[0]))-(0.0789*3*(csx[3]-csx[1]))+(0.0263*3*(csx[4]-csx[2]))-(0.0263*3*(csx[5]-csx[3]));
+		dery[1]= (-0.0789*3*(csy[1]-csy[0]+csy[4]-csy[5]))+(0.2895*3*(csy[2]-csy[0]))-(0.0789*3*(csy[3]-csy[1]))+(0.0263*3*(csy[4]-csy[2]))-(0.0263*3*(csy[5]-csy[3]));
+				
+		derx[2]= (0.0263*3*(csx[1]-csx[0]+csx[4]-csx[5]))-(0.0789*3*(csx[2]-csx[0]))+(0.2895*3*(csx[3]-csx[1]))-(0.0789*3*(csx[4]-csx[2]))+(0.0263*3*(csx[5]-csx[3]));
+		dery[2]= (0.0263*3*(csy[1]-csy[0]+csy[4]-csy[5]))-(0.0789*3*(csy[2]-csy[0]))+(0.2895*3*(csy[3]-csy[1]))-(0.0789*3*(csy[4]-csy[2]))+(0.0263*3*(csy[5]-csy[3]));
+		
+		derx[3]= (-0.0263*3*(csx[1]-csx[0]+csx[4]-csx[5]))+(0.0263*3*(csx[2]-csx[0]))-(0.0789*3*(csx[3]-csx[1]))+(0.2895*3*(csx[4]-csx[2]))-(0.0789*3*(csx[5]-csx[3]));
+		dery[3]= (-0.0263*3*(csy[1]-csy[0]+csy[4]-csy[5]))+(0.0263*3*(csy[2]-csy[0]))-(0.0789*3*(csy[3]-csy[1]))+(0.2895*3*(csy[4]-csy[2]))-(0.0789*3*(csy[5]-csy[3]));
+
+		derx[4]= (0.0789*3*(csx[1]-csx[0]+csx[4]-csx[5]))-(0.0263*3*(csx[2]-csx[0]))+(0.0263*3*(csx[3]-csx[1]))-(0.0789*3*(csx[4]-csx[2]))+(0.2895*3*(csx[5]-csx[3]));
+		dery[4]= (0.0789*3*(csy[1]-csy[0]+csy[4]-csy[5]))-(0.0263*3*(csy[2]-csy[0]))+(0.0263*3*(csy[3]-csy[1]))-(0.0789*3*(csy[4]-csy[2]))+(0.2895*3*(csy[5]-csy[3]));
+				
+		derx[5]= -derx[0];
+		dery[5]= -dery[0];
+	}
+
+	for (i=0;i<5;i++)
+	{
+		B1x[i]=(csx[i]);
+		B1y[i]=(csy[i]);
+		B2x[i]=derx[i];
+		B2y[i]=dery[i];
+		B3x[i]=3*(csx[i+1]-csx[i])-2*derx[i]-derx[i+1];
+		B3y[i]=3*(csy[i+1]-csy[i])-2*dery[i]-dery[i+1];
+		B4x[i]=2*(csx[i]-csx[i+1])+derx[i]+derx[i+1];
+		B4y[i]=2*(csy[i]-csy[i+1])+dery[i]+dery[i+1];
+	}
+	do
+	{
+		color=random(16);
+	} while ((color==0) || (color==8) || (color==6));
+
+	for (i=0;i<5;i++)
+	{
+		for (j=0;j<2000;j++)
+		{
+			putpixel(B1x[i]+B2x[i]*j/2000+B3x[i]*j*j/2000/2000+B4x[i]*j*j*j/2000/2000/2000,
+				B1y[i]+B2y[i]*j/2000+B3y[i]*j*j/2000/2000+B4y[i]*j*j*j/2000/2000/2000,
+				color);
+		} // for j
+	}
+	ShowMouse();
+}; // end of CubicSpline
+
+
+void BezierSpline(void)
+{
+	int i,j,X,Y,B,color;
+	float bsx=0,bsy=0,fj;
+	int pat_select=1,num;
+	char text[8];
+
+	if (pattern==1)
+	{
+		Dialog2(text,26,num);
+		pat_select=atoi(text);
+		if (pat_select==1)
+		{
+			Dialog1(4);
+			SetMouseRange(130,40,630,440);
+
+			for (i=0;i<6;i++)
+			{
+				do
+				{
+					LastPressPosition(0,&X,&Y,&B);
+					DisplayMousePosition();
+				} while (B==0);
+
+				HideMouse();
+				putpixel(X,Y,YELLOW);
+				csx[i]=float (X);
+				csy[i]=float (Y);
+				setcolor(BROWN);
+				if (i>0)
+					line(csx[i],csy[i],csx[i-1],csy[i-1]);
+				ShowMouse();
+			}
+
+			pattern=1;
+				HideMouse();
+			SetMouseRange(outf+1,outf+title+outf+1,getmaxx()-outf-1,getmaxy()-outf-1);
+			Dialog1(0);
+		}
+	}
+	else
+	{
+		Dialog1(4);
+		SetMouseRange(130,40,630,440);
+
+		for (i=0;i<6;i++)
+		{
+			do
+			{
+				LastPressPosition(0,&X,&Y,&B);
+				DisplayMousePosition();
+			} while (B==0);
+
+			HideMouse();
+			putpixel(X,Y,YELLOW);
+			csx[i]=float (X);
+			csy[i]=float (Y);
+			setcolor(BROWN);
+			if (i>0)
+				line(csx[i],csy[i],csx[i-1],csy[i-1]);
+			ShowMouse();
+		}
+
+		pattern=1;
+		HideMouse();
+		SetMouseRange(outf+1,outf+title+outf+1,getmaxx()-outf-1,getmaxy()-outf-1);
+		Dialog1(0);
+	}
+
+	do
+	{
+		color=random(16);
+	} while ((color==0) || (color==8) || (color==6));
+
+
+	for (j=0;j<2000;j++)
+	{
+		fj=float(j);
+		bsx=((1*csx[0]*(1-(fj/2000))*(1-(fj/2000))*(1-(fj/2000))*(1-(fj/2000))*(1-(fj/2000)))
+			+(5*csx[1]*(1-(fj/2000))*(1-(fj/2000))*(1-(fj/2000))*(1-(fj/2000))*(fj/2000))
+			+(10*csx[2]*(1-(fj/2000))*(1-(fj/2000))*(1-(fj/2000))*(fj/2000)*(fj/2000))
+			+(10*csx[3]*(1-(fj/2000))*(1-(fj/2000))*(fj/2000)*(fj/2000)*(fj/2000))
+			+(5*csx[4]*(1-(fj/2000))*(fj/2000)*(fj/2000)*(fj/2000)*(fj/2000))
+			+(1*csx[5]*(fj/2000)*(fj/2000)*(fj/2000)*(fj/2000)*(fj/2000)));
+
+		bsy=((1*csy[0]*(1-(fj/2000))*(1-(fj/2000))*(1-(fj/2000))*(1-(fj/2000))*(1-(fj/2000)))
+			+(5*csy[1]*(1-(fj/2000))*(1-(fj/2000))*(1-(fj/2000))*(1-(fj/2000))*(fj/2000))
+			+(10*csy[2]*(1-(fj/2000))*(1-(fj/2000))*(1-(fj/2000))*(fj/2000)*(fj/2000))
+			+(10*csy[3]*(1-(fj/2000))*(1-(fj/2000))*(fj/2000)*(fj/2000)*(fj/2000))
+			+(5*csy[4]*(1-(fj/2000))*(fj/2000)*(fj/2000)*(fj/2000)*(fj/2000))
+			+(1*csy[5]*(fj/2000)*(fj/2000)*(fj/2000)*(fj/2000)*(fj/2000)));
+
+		putpixel(bsx,bsy,color);
+	} // for j
+	ShowMouse();
+}
+
+
+void ParabolicBlending(void)
+{
+	int i,j,X,Y,B,color;
+	float pbx[4],pby[4];
+	int num;
+	char text[8];
+	float gama1,d,alfa,to,cos_teta1,gama2,e,beta,t,cos_teta2,fj,rt,st;
+	float Pofr_x,Pofr_y,Qofs_x,Qofs_y,Coft_x,Coft_y;
+
+	Dialog1(5);
+	SetMouseRange(130,40,630,440);
+	
+	for (i=0;i<4;i++)
+	{
+		do
+		{
+			LastPressPosition(0,&X,&Y,&B);
+			DisplayMousePosition();
+		} while (B==0);
+		
+		HideMouse();
+		putpixel(X,Y,YELLOW);
+		pbx[i]=float (X);
+		pby[i]=float (Y);
+		setcolor(YELLOW);
+		if (i>0)
+			line(pbx[i],pby[i],pbx[i-1],pby[i-1]);
+		ShowMouse();
+	}
+	
+	HideMouse();
+	SetMouseRange(outf+1,outf+title+outf+1,getmaxx()-outf-1,getmaxy()-outf-1);
+	Dialog1(0);
+	
+	gama1=(((pbx[1]-pbx[0])*(pbx[2]-pbx[0]))+((pby[1]-pby[0])*(pby[2]-pby[0])))/(((pbx[2]-pbx[0])*(pbx[2]-pbx[0]))+((pby[2]-pby[0])*(pby[2]-pby[0])));
+	d=sqrt(((pbx[2]-pbx[0])*(pbx[2]-pbx[0]))+((pby[2]-pby[0])*(pby[2]-pby[0])));
+	alfa=1/(d*d*gama1*(1-gama1));
+	to=sqrt(((pbx[2]-pbx[1])*(pbx[2]-pbx[1]))+((pby[2]-pby[1])*(pby[2]-pby[1])));
+	cos_teta1=(((pbx[2]-pbx[1])*(pbx[2]-pbx[0]))+((pby[2]-pby[1])*(pby[2]-pby[0])))/(to*d);
+	
+	gama2=(((pbx[2]-pbx[1])*(pbx[3]-pbx[1]))+((pby[2]-pby[1])*(pby[3]-pby[1])))/(((pbx[3]-pbx[1])*(pbx[3]-pbx[1]))+((pby[3]-pby[1])*(pby[3]-pby[1])));
+	e=sqrt(((pbx[3]-pbx[1])*(pbx[3]-pbx[1]))+((pby[3]-pby[1])*(pby[3]-pby[1])));
+	beta=1/(e*e*gama2*(1-gama2));
+	cos_teta2=(((pbx[2]-pbx[1])*(pbx[3]-pbx[1]))+((pby[2]-pby[1])*(pby[3]-pby[1])))/(to*e);
+	
+	for (j=0;j<=1000;j++)
+	{
+		fj=float(j);
+		t=to*fj/1000;
+		rt=gama1*d+t*cos_teta1;
+		st=t*cos_teta2;
+		Pofr_x=pbx[0]+((pbx[2]-pbx[0])*rt/d)+(alfa*rt*(d-rt)*((pbx[1]-pbx[0])-(gama1*(pbx[2]-pbx[0]))));
+		Pofr_y=pby[0]+((pby[2]-pby[0])*rt/d)+(alfa*rt*(d-rt)*((pby[1]-pby[0])-(gama1*(pby[2]-pby[0]))));
+		Qofs_x=pbx[1]+((pbx[3]-pbx[1])*st/e)+(beta*st*(e-st)*((pbx[2]-pbx[1])-(gama2*(pbx[3]-pbx[1]))));
+		Qofs_y=pby[1]+((pby[3]-pby[1])*st/e)+(beta*st*(e-st)*((pby[2]-pby[1])-(gama2*(pby[3]-pby[1]))));
+		Coft_x=((1-(t/to))*Pofr_x) + (Qofs_x*t/to);
+		Coft_y=((1-(t/to))*Pofr_y) + (Qofs_y*t/to);
+		
+		putpixel(Coft_x,Coft_y,CYAN);
+	} // for j
+	ShowMouse();
+}
+
+void BSpline(int n,int ks)
+{
+	int i,j,k,s,tmax,X,Y,B;
+	float pbsx[10],pbsy[10];
+	int num;
+	char text[8];
+	float t,bs_px,bs_py,temp1,temp2;
+	int knot[20];
+	float N[20][20];
+
+	Dialog1(6);
+	SetMouseRange(130,40,630,440);
+
+	for (i=0;i<20;i++)
+		knot[i]=0;
+	bs_px=0;bs_py=0;
+
+	for (i=0;i<n;i++)
+	{
+		do
+		{
+			LastPressPosition(0,&X,&Y,&B);
+			DisplayMousePosition();
+		} while (B==0);
+
+		HideMouse();
+		putpixel(X,Y,YELLOW);
+		pbsx[i]=float (X);
+		pbsy[i]=float (Y);
+		setcolor(YELLOW);
+		if (i>0)
+			line(pbsx[i],pbsy[i],pbsx[i-1],pbsy[i-1]);
+		ShowMouse();
+	}
+
+	HideMouse();
+	SetMouseRange(outf+1,outf+title+outf+1,getmaxx()-outf-1,getmaxy()-outf-1);
+	Dialog1(0);
+
+	n=n-1;
+	tmax=n-ks+2;
+	for (i=0;i<ks;i++)
+		knot[i]=0;
+	for (i=ks;i<tmax+ks-1;i++)
+		knot[i]=i-ks+1;
+	for (i=0;i<ks;i++)
+		knot[ks+tmax-1+i]=tmax;
+
+	for (j=0;j<=tmax*1000;j++)
+	{
+		t=float(j)/1000;
+		for (k=1;k<=ks;k++)
+		{
+			for (i=0;i<=n;i++)
+			{
+				if(k==1)
+				{
+					if(((t>=knot[i])&&(t<knot[i+1]))||(t==knot[i]))
+						N[i][k]=1;
+					else
+						N[i][k]=0;
+				}
+				else
+				{
+					if ((knot[i+k-1]-knot[i])==0)
+						temp1=0;
+					else
+						temp1=((t-knot[i])*N[i][k-1]/(knot[i+k-1]-knot[i]));
+					if ((knot[i+k]-knot[i+1])==0)
+						temp2=0;
+					else
+						temp2=((knot[i+k]-t)*N[i+1][k-1]/(knot[i+k]-knot[i+1]));
+
+					N[i][k]= temp1 + temp2;
+				}
+			}
+		}
+		for(s=0;s<=n;s++)
+		{
+			bs_px = bs_px+pbsx[s]*N[s][ks];
+			bs_py = bs_py+pbsy[s]*N[s][ks];
+		}
+		putpixel(bs_px,bs_py,LIGHTBLUE);
+		bs_px=0;
+        bs_py=0;
+	}
+
+	ShowMouse();
+}
+
+
+void Bilinear_Surface(void)
+{
+	int iu,iw,X,Y,B;
+	float bl_sX[30][30],bl_sY[30][30],u,w;
+
+	Dialog1(7);
+	SetMouseRange(130,40,630,440);
+
+	for (i=0;i<4;i++)
+	{
+		do
+		{
+			LastPressPosition(0,&X,&Y,&B);
+			DisplayMousePosition();
+		} while (B==0);
+
+		HideMouse();
+		putpixel(X,Y,YELLOW);
+		surfX[i]=float (X);
+		surfY[i]=float (Y);
+		setcolor(BROWN);
+		if (i>0)
+			line(surfX[i],surfY[i],surfX[i-1],surfY[i-1]);
+		if (i==3)
+			line(surfX[3],surfY[3],surfX[0],surfY[0]);
+		ShowMouse();
+	}
+
+	HideMouse();
+	SetMouseRange(outf+1,outf+title+outf+1,getmaxx()-outf-1,getmaxy()-outf-1);
+	Dialog1(0);
+
+	for (iu=0;iu<=10;iu++)
+	{
+		for (iw=0;iw<=10;iw++)
+		{
+			u=float(iu)/10;
+			w=float(iw)/10;
+			bl_sX[iu][iw]=((surfX[0]*(1-u)*(1-w))+(surfX[3]*(1-u)*w)+(surfX[1]*u*(1-w))+(surfX[2]*u*w));
+			bl_sY[iu][iw]=((surfY[0]*(1-u)*(1-w))+(surfY[3]*(1-u)*w)+(surfY[1]*u*(1-w))+(surfY[2]*u*w));
+		} //for iw
+	} // for iu
+
+	setcolor(GREEN);
+	for (iu=0;iu<=10;iu++)
+	{
+		for (iw=0;iw<=10;iw++)
+		{
+		if (iw>0)
+			line(bl_sX[iu][iw-1],bl_sY[iu][iw-1],bl_sX[iu][iw],bl_sY[iu][iw]);
+		if (iu>0)
+			line(bl_sX[iu-1][iw],bl_sY[iu-1][iw],bl_sX[iu][iw],bl_sY[iu][iw]);
+		} //for iw
+	} // for iu
+	ShowMouse();
+}
+
+void Loft_Surface(void)
+{
+	int iu,iw,X,Y,B;
+	float u,w,derx,dery;
+	float B11x,B12x,B13x,B14x,B21x,B22x,B23x,B24x;
+	float B11y,B12y,B13y,B14y,B21y,B22y,B23y,B24y;
+	float P0x,P0y,P1x,P1y,Qx[30][30],Qy[30][30];
+
+	Dialog1(8);
+	SetMouseRange(130,40,630,440);
+
+	for (i=0;i<4;i++)
+	{
+		do
+		{
+			LastPressPosition(0,&X,&Y,&B);
+			DisplayMousePosition();
+		} while (B==0);
+
+		HideMouse();
+		putpixel(X,Y,YELLOW);
+		surfX[i]=float (X);
+		surfY[i]=float (Y);
+		ShowMouse();
+	}
+
+	setcolor(BROWN);
+	line(surfX[1],surfY[1],surfX[0],surfY[0]);
+	line(surfX[3],surfY[3],surfX[2],surfY[2]);
+	HideMouse();
+	SetMouseRange(outf+1,outf+title+outf+1,getmaxx()-outf-1,getmaxy()-outf-1);
+	Dialog1(0);
+
+	derx=200;dery=-200;
+	B11x=surfX[0];
+	B11y=surfY[0];
+	B12x=derx;
+	B12y=dery;
+	B13x=3*(surfX[1]-surfX[0])-(2*derx)-derx;
+	B13y=3*(surfY[1]-surfY[0])-(2*dery)-dery;
+	B14x=2*(surfX[0]-surfX[1])+derx+derx;
+	B14y=2*(surfY[0]-surfY[1])+dery+dery;
+
+	B21x=surfX[2];B21y=surfY[2];
+	B22x=derx;B22y=dery;
+	B23x=3*(surfX[3]-surfX[2])-(2*derx)-derx;
+	B23y=3*(surfY[3]-surfY[2])-(2*dery)-dery;
+	B24x=2*(surfX[2]-surfX[3])+derx+derx;
+	B24y=2*(surfY[2]-surfY[3])+dery+dery;
+
+	for (iu=0;iu<=15;iu++)
+	{
+		u=float(iu)/15;
+		P0x=B11x+B12x*u+B13x*u*u+B14x*u*u*u;
+		P0y=B11y+B12y*u+B13y*u*u+B14y*u*u*u;
+		P1x=B21x+B22x*u+B23x*u*u+B24x*u*u*u;
+		P1y=B21y+B22y*u+B23y*u*u+B24y*u*u*u;
+
+		for (iw=0;iw<=15;iw++)
+		{
+			w=float(iw)/15;
+			Qx[iu][iw] =P0x*(1-w)+P1x*w;
+			Qy[iu][iw] =P0y*(1-w)+P1y*w;
+		}
+	} // for iw
+
+	setcolor(YELLOW);
+	for (iu=0;iu<=15;iu++)
+	{
+		for (iw=0;iw<=15;iw++)
+		{
+		if (iw>0)
+			line(Qx[iu][iw-1],Qy[iu][iw-1],Qx[iu][iw],Qy[iu][iw]);
+		if (iu>0)
+			line(Qx[iu-1][iw],Qy[iu-1][iw],Qx[iu][iw],Qy[iu][iw]);
+		} //for iw
+	} // for iu
+
+	ShowMouse();
+}
+
+void BiCubic(void)
+{
+	float sample;
+	float Mm[4][4][3],Pm[4][4][3],Q_C[30][30][3];
+	int i,j,k,iw,iu;
+	float u,w,Fu[4],Fw[4],sum[4],sum2,sum1;
+	char cline[400],text[15];
+	FILE *read_stream;
+
+	if((read_stream  = fopen( "bicubic.txt", "r" )) == NULL) {
+		printf( "The bicubic surface data file 'bicubic.txt' does not exist. Please check the file and directory !!!\n");
+		exit(0);
+	}
+
+	fgets(cline, 400, read_stream );
+	fgets(cline, 400, read_stream );
+	fgets(cline, 400, read_stream );
+	fgets(cline, 400, read_stream );
+
+	for (k=0;k<4;k++)
+	{
+		fscanf (read_stream, "%s\t", &text);
+		fscanf (read_stream, "%s\t", &text);
+		for (i=0;i<4;i++)
+		{
+			for (j=0;j<3;j++)
+			{
+				fscanf (read_stream, "%g\t", &sample);
+				Mm[i][k][j]=sample;
+			}
+		}
+	}
+	fclose(read_stream);
+
+	for (j=0;j<3;j++)
+		Pm[0][0][j]=Mm[0][0][j];
+	for (j=0;j<3;j++)
+		Pm[0][1][j]=Mm[0][1][j];
+	for (j=0;j<3;j++)
+		Pm[0][2][j]=Mm[1][0][j];
+	for (j=0;j<3;j++)
+		Pm[0][3][j]=Mm[1][1][j];
+
+	for (j=0;j<3;j++)
+		Pm[1][0][j]=Mm[0][2][j];
+	for (j=0;j<3;j++)
+		Pm[1][1][j]=Mm[0][3][j];
+	for (j=0;j<3;j++)
+		Pm[1][2][j]=Mm[1][2][j];
+	for (j=0;j<3;j++)
+		Pm[1][3][j]=Mm[1][3][j];
+
+	for (j=0;j<3;j++)
+		Pm[2][0][j]=Mm[2][0][j];
+	for (j=0;j<3;j++)
+		Pm[2][1][j]=Mm[2][1][j];
+	for (j=0;j<3;j++)
+		Pm[2][2][j]=Mm[3][0][j];
+	for (j=0;j<3;j++)
+		Pm[2][3][j]=Mm[3][1][j];
+
+	for (j=0;j<3;j++)
+		Pm[3][0][j]=Mm[2][2][j];
+	for (j=0;j<3;j++)
+		Pm[3][1][j]=Mm[2][3][j];
+	for (j=0;j<3;j++)
+		Pm[3][2][j]=Mm[3][2][j];
+	for (j=0;j<3;j++)
+		Pm[3][3][j]=Mm[3][3][j];
+
+	for(i=0;i<2;i++)
+	{
+		for(j=0;j<2;j++)
+		{
+			Pm[i][j][0]=Pm[i][j][0]+380;
+			Pm[i][j][1]=240-Pm[i][j][1];
+		}
+	}
+
+	for (iu=0;iu<=15;iu++)
+	{
+		u=float(iu)/15;
+		Fu[0]=(2*u*u*u)-(3*u*u)+1;
+		Fu[1]=-(2*u*u*u)+(3*u*u);
+		Fu[2]=(u*u*u)-(2*u*u)+u;
+		Fu[3]=(u*u*u)-(u*u);
+		for (iw=0;iw<=15;iw++)
+		{
+			w=float(iw)/15;
+			sum[0]=0;sum[1]=0;sum[2]=0;sum[3]=0;
+			Fw[0]=(2*w*w*w)-(3*w*w)+1;
+			Fw[1]=-(2*w*w*w)+(3*w*w);
+			Fw[2]=(w*w*w)-(2*w*w)+w;
+			Fw[3]=(w*w*w)-(w*w);
+			for (k=0;k<3;k++)
+			{
+				sum2=0;
+				for (i=0;i<4;i++)
+				{
+					sum1=0;
+					for (j=0;j<4;j++)
+						sum1=Fw[j]*Pm[i][j][k]+sum1;
+					sum[i]=sum1;
+				}
+				for (i=0;i<4;i++)
+				{
+					sum2 =Fu[i]*sum[i]+sum2;
+				}
+				Q_C[iu][iw][k]=sum2;
+			}
+		}
+	}
+
+	for (k=0;k<2;k++)
+	{
+		for (j=0;j<=15;j++)
+		{
+			for (i=0;i<=15;i++)
+			{
+				R[i][j][k]=Q_C[i][j][k];
+			}
+		}
+	}
+
+	setcolor(YELLOW);
+	for (iu=0;iu<=15;iu++)
+	{
+		for (iw=0;iw<=15;iw++)
+		{
+		if (iw>0)
+			line(Q_C[iu][iw-1][0],Q_C[iu][iw-1][1],Q_C[iu][iw][0],Q_C[iu][iw][1]);
+		if (iu>0)
+			line(Q_C[iu-1][iw][0],Q_C[iu-1][iw][1],Q_C[iu][iw][0],Q_C[iu][iw][1]);
+		} //for iw
+	} // for iu
+
+}
+
+float fact(int n) // calculates n!
+	{
+		if (n==0) return 1;
+		if (n==1) return 1;
+		float f=1;
+		int i;
+		for (i=1;i<=n;i++)
+			f=f*i;
+		return f;
+	} // end of fact
+
+void Bezier_Surface(void)
+{
+	float sample;
+	float Bm[10][10][3],Q_C[30][30][3];
+	int i,j,k,iw,iu,num_u,num_w;
+	float u,w,Fu[10],Fw[10],sum[10],J[10],K[10],sum2,sum1;
+	char cline[400],text[15];
+	FILE *read_stream;
+
+	float x,w1,y;
+
+	if((read_stream  = fopen( "bezier.txt", "r" )) == NULL) {
+		printf( "The bezier surface data file 'bezier.txt' does not exist. Please check the file and directory !!!\n");
+		exit(0);
+	}
+
+	fscanf(read_stream,"%d\t",&num_u);
+	fscanf(read_stream,"%d\t",&num_w);
+	fgets(cline, 400, read_stream );
+	fgets(cline, 400, read_stream );
+
+
+	for (i=0;i<num_u;i++)
+	{
+		for (j=0;j<num_w;j++)
+		{
+			for (k=0;k<3;k++)
+			{
+				fscanf (read_stream, "%g\t", &sample);
+				if (k==0)
+					Bm[i][j][k]=sample+380;
+				else if (k==1)
+					Bm[i][j][k]=240-sample;
+				else
+					Bm[i][j][k]=sample;
+			}
+		}
+	}
+	fclose(read_stream);
+
+	setcolor(LIGHTBLUE);
+	for (i=0;i<num_u;i++)
+	{
+		for(j=1;j<num_w;j++)
+			line(Bm[i][j-1][0],Bm[i][j-1][1],Bm[i][j][0],Bm[i][j][1]);
+	}
+	for (i=0;i<num_w;i++)
+	{
+		for(j=1;j<num_u;j++)
+			line(Bm[j-1][i][0],Bm[j-1][i][1],Bm[j][i][0],Bm[j][i][1]);
+	}
+
+
+
+	for(i=0;i<num_u;i++)
+		J[i]=fact(num_u-1)/(fact(num_u-1-i)*fact(i));
+	for(i=0;i<num_w;i++)
+		K[i]=fact(num_w-1)/(fact(num_w-1-i)*fact(i));
+
+	for (iu=0;iu<=15;iu++)
+	{
+		u=float(iu)/15;
+		for (iw=0;iw<=15;iw++)
+		{
+			w=float(iw)/15;
+			sum[0]=0;sum[1]=0;sum[2]=0;sum[3]=0;
+			for (k=0;k<3;k++)
+			{
+				sum2=0;
+				for (i=0;i<num_u;i++)
+				{
+					sum1=0;
+					for (j=0;j<num_w;j++)
+					{
+						if (w==0)
+						{
+							Fw[j]=0;
+							Fw[0]=K[j];
+						}
+						else if (w==1)
+						{
+							Fw[j]=0;
+							Fw[num_w-1]=K[j];
+						}
+						else
+							Fw[j]=K[j]*pow(w,j)*pow((1-w),(num_w-1-j));
+						sum1=Fw[j]*Bm[i][j][k]+sum1;
+					}
+					sum[i]=sum1;
+				}
+				for (i=0;i<num_u;i++)
+				{
+					if (u==0)
+					{
+						Fu[i]=0;
+						Fu[0]=J[i];
+					}
+					else if (u==1)
+					{
+						Fu[i]=0;
+						Fu[num_u-1]=J[i];
+					}
+					else
+						Fu[i]=J[i]*pow(u,i)*pow((1-u),(num_u-1-i));
+					sum2 =Fu[i]*sum[i]+sum2;
+				}
+				Q_C[iu][iw][k]=sum2;
+			}
+		}
+	}
+
+	for (k=0;k<2;k++)
+	{
+		for (j=0;j<=15;j++)
+		{
+			for (i=0;i<=15;i++)
+			{
+				R[i][j][k]=Q_C[i][j][k];
+			}
+		}
+	}
+
+	setcolor(YELLOW);
+	for (iu=0;iu<=15;iu++)
+	{
+		for (iw=0;iw<=15;iw++)
+		{
+		if (iw>0)
+			line(Q_C[iu][iw-1][0],Q_C[iu][iw-1][1],Q_C[iu][iw][0],Q_C[iu][iw][1]);
+		if (iu>0)
+			line(Q_C[iu-1][iw][0],Q_C[iu-1][iw][1],Q_C[iu][iw][0],Q_C[iu][iw][1]);
+		} //for iw
+	} // for iu
+
+}
+
+
+void Rotate(int tip)
+
+{
+	int iu,iw,i,j,k;
+	float Rtemp[16][16][3];
+
+		for (j=0;j<=15;j++)
+		{
+			for (i=0;i<=15;i++)
+			{
+				Rtemp[i][j][0]=0;
+				Rtemp[i][j][1]=0;
+				Rtemp[i][j][2]=0;
+			}
+		}
+
+
+	if (tip==1)
+	{
+		for (j=0;j<=15;j++)
+		{
+			for (i=0;i<=15;i++)
+			{
+				Rtemp[i][j][0]=R[i][j][0];
+				Rtemp[i][j][1]=240+R[i][j][2];
+				Rtemp[i][j][2]=(240-R[i][j][1]);
+			}
+		}
+	}
+
+	if (tip==2)
+	{
+		for (j=0;j<=15;j++)
+		{
+			for (i=0;i<=15;i++)
+			{
+				Rtemp[i][j][0]=R[i][j][2]+380;
+				Rtemp[i][j][1]=R[i][j][1];
+				Rtemp[i][j][2]=-(R[i][j][0]-380);
+			}
+		}
+	}
+
+	if (tip==3)
+	{
+		for (j=0;j<=15;j++)
+		{
+			for (i=0;i<=15;i++)
+			{
+				Rtemp[i][j][0]=-(240-R[i][j][1])+380;
+				Rtemp[i][j][1]=240-(R[i][j][0]-380);
+				Rtemp[i][j][2]=R[i][j][2];
+			}
+		}
+	}
+
+		for (j=0;j<=15;j++)
+		{
+			for (i=0;i<=15;i++)
+			{
+				R[i][j][0]=Rtemp[i][j][0];
+				R[i][j][1]=Rtemp[i][j][1];
+				R[i][j][2]=Rtemp[i][j][2];
+			}
+		}
+
+	setcolor(GREEN);
+	for (iu=0;iu<=15;iu++)
+	{
+		for (iw=0;iw<=15;iw++)
+		{
+		if (iw>0)
+			line(Rtemp[iu][iw-1][0],Rtemp[iu][iw-1][1],Rtemp[iu][iw][0],Rtemp[iu][iw][1]);
+		if (iu>0)
+			line(Rtemp[iu-1][iw][0],Rtemp[iu-1][iw][1],Rtemp[iu][iw][0],Rtemp[iu][iw][1]);
+		} //foriw
+	} // for iu
+
+}
+
+/*************************************
+*************************************
+*************************************/
+
+void BSpline_Surface(void)
+{
+	int i,j,ku,kw,s,tmaxu,tmaxw,n,m,kindex;
+	float BSSx[30][30],BSSy[30][30],BSSz[30][30],sample;
+	float BSx[10][10],BSy[10][10],BSz[10][10];
+	int knotu[10],knotw[10],iu,iw;
+	float N[5][5][20],M[5][5][20];
+	float temp1,temp2,tempx,tempy,tempz;
+	char cline[400];
+	FILE *read_stream, *in;
+	float u,w;
+
+
+	float lx[16],ly[16];
+	if((read_stream  = fopen( "bspline.txt", "r" )) == NULL) {
+		printf( "The b-spline surface data file 'bspline.txt' does not exist. Please check the file and directory !!!\n");
+
+		//exit(0);
+	}
+
+	fscanf(read_stream,"%d\t",&n);
+	fscanf(read_stream,"%d\t",&ku);
+	fscanf(read_stream,"%d\t",&m);
+	fscanf(read_stream,"%d\t",&kw);
+	fgets(cline, 400, read_stream );
+	fgets(cline, 400, read_stream );
+
+
+	for (i=0;i<n;i++)
+	{
+		for (j=0;j<m;j++)
+		{
+			fscanf (read_stream, "%g\t", &sample);
+			BSx[i][j]=sample+380;
+			fscanf (read_stream, "%g\t", &sample);
+			BSy[i][j]=240-sample;
+			fscanf (read_stream, "%g\t", &sample);
+			BSz[i][j]=sample;
+		}
+	}
+	fclose(read_stream);
+
+	setcolor(LIGHTBLUE);
+	for (i=0;i<n;i++)
+	{
+		for(j=1;j<m;j++)
+			line(BSx[i][j-1],BSy[i][j-1],BSx[i][j],BSy[i][j]);
+	}
+	for (i=0;i<n;i++)
+	{
+		for(j=1;j<m;j++)
+			line(BSx[j-1][i],BSy[j-1][i],BSx[j][i],BSy[j][i]);
+	}
+
+
+n=4;m=4;ku=2;kw=2;
+
+
+	tempx=0;tempy=0;tempz=0;
+	n=n-1;
+	m=m-1;
+	tmaxu=n-ku+2;
+	tmaxw=m-kw+2;
+	for (i=0;i<ku;i++)
+		knotu[i]=0;
+	for (i=ku;i<tmaxu+ku-1;i++)
+		knotu[i]=i-ku+1;
+	for (i=0;i<ku;i++)
+		knotu[ku+tmaxu-1+i]=tmaxu;
+
+	for (i=0;i<kw;i++)
+		knotw[i]=0;
+	for (i=kw;i<tmaxw+kw-1;i++)
+		knotw[i]=i-kw+1;
+	for (i=0;i<kw;i++)
+		knotw[kw+tmaxw-1+i]=tmaxw;
+
+
+	for (iu=0;iu<=tmaxu*5;iu++)
+	{
+		u=float(iu)/5/float(tmaxu);
+
+		for (k=1;k<=ku;k++)
+		{
+			kindex=k-1;
+			for (i=0;i<=n;i++)
+			{
+				if(k==1)
+				{
+					if(((u>=knotu[i])&&(u<knotu[i+1]))||(u==knotu[i]))
+						N[i][kindex][iu]=1;
+					else
+						N[i][kindex][iu]=0;
+					if(((u>=knotu[n+1])&&(u<knotu[n+1+1]))||(u==knotu[n+1]))
+						N[n+1][kindex][iu]=1;
+					else
+						N[n+1][kindex][iu]=0;
+				}
+				else
+				{
+					if ((knotu[i+k-1]-knotu[i])==0)
+						temp1=0;
+					else
+						temp1=((u-knotu[i])*N[i][kindex-1][iu])/(knotu[i+k-1]-knotu[i]);
+					if ((knotu[i+k]-knotu[i+1])==0)
+						temp2=0;
+					else
+						temp2=((knotu[i+k]-u)*N[i+1][kindex-1][iu]/(knotu[i+k]-knotu[i+1]));
+
+					N[i][kindex][iu]= (temp1+temp2);
+				}
+			}
+		}
+	}
+
+	for (iu=0;iu<=tmaxu*5;iu++)
+	{
+		j=0;
+		for (i=0;i<n;i++)
+			{
+				tempx=((BSx[i][j]*N[i][ku-1][iu])+tempx);
+				tempy=((BSy[i][j]*N[i][ku-1][iu])+tempy);
+				tempz=((BSz[i][j]*N[i][ku-1][iu])+tempz);
+			}
+
+			lx[iu]=tempx;
+			ly[iu]=tempy;
+
+			tempx=0;tempy=0;tempz=0;
+		
+	}
+
+
+
+	for (iw=0;iw<=tmaxw*5;iw++)
+	{
+		w=float(iw)/5/float(tmaxw);
+
+		for (k=1;k<=kw;k++)
+		{
+			kindex=k-1;
+			for (i=0;i<=n;i++)
+			{
+				if(k==1)
+				{
+					if(((w>=knotw[i])&&(w<knotw[i+1]))||(w==knotw[i]))
+						M[i][kindex][iw]=1;
+					else
+						M[i][kindex][iw]=0;
+					if(((w>=knotw[m+1])&&(w<knotw[m+1+1]))||(w==knotw[m+1]))
+						M[m+1][kindex][iw]=1;
+					else
+						M[m+1][kindex][iw]=0;
+				}
+				else
+				{
+					if ((knotw[i+k-1]-knotw[i])==0)
+						temp1=0;
+					else
+						temp1=((w-knotw[i])*M[i][kindex-1][iw]/(knotw[i+k-1]-knotw[i]));
+					if ((knotw[i+k]-knotw[i+1])==0)
+						temp2=0;
+					else
+						temp2=((knotw[i+k]-w)*M[i+1][kindex-1][iw]/(knotw[i+k]-knotw[i+1]));
+
+					M[i][kindex][iw]=(temp1+temp2);
+				}
+			}
+		}
+	}
+
+	for (iu=0;iu<=tmaxu*5;iu++)
+	{
+		for (iw=0;iw<=tmaxw*5;iw++)
+		{
+			for (i=0;i<n;i++)
+			{
+				for (j=0;j<m;j++)
+				{
+					tempx=((BSx[i][j]*N[i][ku-1][iu]*M[j][kw-1][iw])+tempx);
+					tempy=((BSy[i][j]*N[i][ku-1][iu]*M[j][kw-1][iw])+tempy);
+					tempz=((BSz[i][j]*N[i][ku-1][iu]*M[j][kw-1][iw])+tempz);
+				}
+			}
+			BSSx[iu][iw]=tempx;
+			BSSy[iu][iw]=tempy;
+			BSSz[iu][iw]=tempz;
+		  	tempx=0;tempy=0;tempz=0;
+		}
+	}
+
+	setcolor(YELLOW);
+	for (iu=0;iu<=15;iu++)
+	{
+		for (iw=0;iw<=15;iw++)
+		{
+		if (iw>0)
+			line(BSSx[iu][iw-1],BSSy[iu][iw-1],BSSx[iu][iw],BSSy[iu][iw]);
+		if (iu>0)
+			line(BSSx[iu-1][iw],BSSy[iu-1][iw],BSSx[iu][iw],BSSy[iu][iw]);
+		} //for iw
+	} // for iu
+
+
+
+	ShowMouse();
+}
+
+
+
+/**************************************
+***************************************/
+
+//******************************************************************/
+//* 						MAIN					               */
+//******************************************************************/
+
+void main()
+{
+	int gdriver = DETECT, gmode;
+	/* initiOBJze graphics mode */
+	initgraph(&gdriver, &gmode,"C:\\BORLANDC\\BGI");
+
+	GeneralView();
+	Menu_Select=0; // main menu
+	Menu();
+	Grid();
+	ResetMouse();
+	SetMouseRange(outf+1,outf+title+outf+1,getmaxx()-outf-1,getmaxy()-outf-1);
+
+	int X,Y,B,C,M,K,K2,K3;
+	int xl[2],yl[2];
+	char txt[8];
+	int num,angle;
+	int anglex,angley,anglez,anglet; // rotation parameters
+	char Object_Dim=0;
+	int ref; // reflection parameters
+	int scale,zoom; // scalling parameters
+	int tx,ty,tz; // translation parameters
+	int shearing,stype; // shearing parameters
+	int prcenterx,prcentery,prcenterz; //perspective transformation parameters
+	int cx_org,cy_org,cradius; //draw circle parameters
+	int ex_org,ey_org,eradius_x,eradius_y,eangle; //draw ellipse parameters
+	int aparam,bparam;//draw parabola and hyperbola parameters
+	int *c_param;
+	int vertex_num,order_BS; //B-Spline parameters
+
+	myobject OBJ,OBJ2,rot,rot2;
+
+	do
+	{
+		ShowMouse();
+		do
+		LastPressPosition(0,&X,&Y,&B);
+		while (B==0);
+
+		do
+		C=getcommand();
+		while (C==0);
+
+		switch (C)
+		{
+		case 1:
+			Menu_Select=1;
+			GeneralView();
+			Menu();
+			do
+			LastPressPosition(0,&X,&Y,&B);
+			while (B==0);
+			
+			do
+			M=getcommand();
+			while (M==0);
+
+			switch (M)
+			{
+			case 1: // draw triangle
+				Grid();
+				OBJ.pointn=3;
+				OBJ.xx[1]=380; OBJ.yy[1]=240; OBJ.zz[1]=0;
+				OBJ.xx[2]=50+380; OBJ.yy[2]=240-25; OBJ.zz[2]=0;
+				OBJ.xx[3]=50+380; OBJ.yy[3]=240; OBJ.zz[3]=0;
+				setlinestyle(SOLID_LINE,1,1);
+				setcolor(YELLOW);
+				for (i=2;i<OBJ.pointn+1;i++)
+					line(OBJ.xx[i],OBJ.yy[i],OBJ.xx[i-1],OBJ.yy[i-1]);
+				line(OBJ.xx[1],OBJ.yy[1],OBJ.xx[OBJ.pointn],OBJ.yy[OBJ.pointn]);
+				Object_Dim=0;
+				Menu_Select=0;
+				Menu();
+				break;
+			case 2: // draw cube
+				Grid();
+				OBJ.pointn=16;
+				OBJ.xx[1]=380; OBJ.yy[1]=240; OBJ.zz[1]=0;
+				OBJ.xx[2]=380+50; OBJ.yy[2]=240; OBJ.zz[2]=0;
+				OBJ.xx[3]=380+50; OBJ.yy[3]=240; OBJ.zz[3]=50;
+				OBJ.xx[4]=380+50; OBJ.yy[4]=240-50; OBJ.zz[4]=50;
+				OBJ.xx[5]=380+50; OBJ.yy[5]=240-50; OBJ.zz[5]=0;
+				OBJ.xx[6]=380+50; OBJ.yy[6]=240; OBJ.zz[6]=0;
+				OBJ.xx[7]=380; OBJ.yy[7]=240; OBJ.zz[7]=0;
+				OBJ.xx[8]=380; OBJ.yy[8]=240; OBJ.zz[8]=50;
+				OBJ.xx[9]=380+50; OBJ.yy[9]=240; OBJ.zz[9]=50;
+				OBJ.xx[10]=380;OBJ.yy[10]=240;OBJ.zz[10]=50;
+				OBJ.xx[11]=380; OBJ.yy[11]=240-50; OBJ.zz[11]=50;
+				OBJ.xx[12]=380; OBJ.yy[12]=240-50; OBJ.zz[12]=0;
+				OBJ.xx[13]=380+50; OBJ.yy[13]=240-50; OBJ.zz[13]=0;
+				OBJ.xx[14]=380+50; OBJ.yy[14]=240-50; OBJ.zz[14]=50;
+				OBJ.xx[15]=380; OBJ.yy[15]=240-50; OBJ.zz[15]=50;
+				OBJ.xx[16]=380; OBJ.yy[16]=240-50; OBJ.zz[16]=0;
+
+				setlinestyle(SOLID_LINE,1,1);
+				setcolor(YELLOW);
+				for (i=2;i<OBJ.pointn+1;i++)
+					line(OBJ.xx[i],OBJ.yy[i],OBJ.xx[i-1],OBJ.yy[i-1]);
+				line(OBJ.xx[1],OBJ.yy[1],OBJ.xx[OBJ.pointn],OBJ.yy[OBJ.pointn]);
+				Object_Dim=1;
+				Menu_Select=0;
+				Menu();
+				break;
+			case 3: // Draw 2D object
+				Grid();
+				OBJ=Create_Object(0);
+				Object_Dim=0;
+				Menu_Select=0;
+				HideMouse();
+				Menu();
+				GeneralView();
+				ShowMouse();
+				break;
+			case 4: // Draw 3D object
+				Grid();
+				OBJ=Create_Object(1);
+				Object_Dim=1;
+				Menu_Select=0;
+				HideMouse();
+				Menu();
+				GeneralView();
+				ShowMouse();
+				break;
+
+			} // switch M
+			
+			do
+			LastPressPosition(0,&X,&Y,&B);
+			while (B==0);
+
+			break;
+
+			case 2:
+				Menu_Select=2;
+				GeneralView();
+				Menu();
+				
+				do
+				{
+					do
+					LastPressPosition(0,&X,&Y,&B);
+					while (B==0);
+					
+					do
+					M=getcommand();
+					while (M==0);
+
+					switch (M)
+					{
+					case 1: // scaling
+						Dialog2(txt,7,num);
+						zoom=atoi(txt);
+						Dialog2(txt,6,num);
+						scale=atoi(txt);
+						Scaling(zoom,scale,OBJ);
+						GeneralView();
+						Menu();
+						break;
+					case 2: // shearing
+						Dialog2(txt,11,num);
+						stype=atoi(txt);
+						Dialog2(txt,12,num);
+						shearing=atoi(txt);
+						Shearing(stype,shearing,OBJ);
+						Menu();
+						GeneralView();
+						break;
+					case 3: // rotation
+						if (Object_Dim==0)
+						{
+							Dialog2(txt,1,num);
+							anglet=atoi(txt);
+							OBJ2=Rotationt(anglet,OBJ);
+							setcolor(LIGHTGREEN);
+							Display(OBJ2);
+						}
+						else
+						{
+							Dialog2(txt,2,num);
+							anglex=atoi(txt);
+							OBJ2=Rotationx(anglex,OBJ);
+							setcolor(LIGHTGREEN);
+							Display(OBJ2);
+							
+							Dialog2(txt,3,num);
+							angley=atoi(txt);
+							OBJ2=Rotationy(angley,OBJ2);
+							Grid();
+							setcolor(YELLOW);
+							Display(OBJ);
+							setcolor(BLUE);
+							Display(OBJ2);
+							Dialog2(txt,4,num);
+							anglez=atoi(txt);
+							OBJ2=Rotationz(anglez,OBJ2);
+							Grid();
+							setcolor(YELLOW);
+							Display(OBJ);
+							setcolor(CYAN);
+							Display(OBJ2);
+						}
+						
+						GeneralView();
+						Menu();
+						break;
+					case 4: // reflection
+						Dialog2(txt,5,num);
+						ref=atoi(txt);
+						if (ref==1)
+							Reflection(OBJ,1);
+						if (ref==2)
+							Reflection(OBJ,2);
+						GeneralView();
+						Menu();
+						break;
+					case 5: // translation
+						Dialog2(txt,8,num);
+						tx=atoi(txt);
+						Dialog2(txt,9,num);
+						ty=atoi(txt);
+						if (Object_Dim==0)
+							tz=0;
+						else
+						{
+							Dialog2(txt,10,num);
+							tz=atoi(txt);
+						}
+						Translation(tx,ty,tz,OBJ);
+						GeneralView();
+						Menu();
+						break;
+					case 6: // perspective transformation on the z=0 plane
+						if (Object_Dim==0)
+						{
+							Dialog1(1);
+						}
+						else
+						{
+							Dialog2(txt,13,num);
+							prcenterx=atoi(txt);
+							Dialog2(txt,14,num);
+							prcentery=atoi(txt);
+							Dialog2(txt,15,num);
+							prcenterz=atoi(txt);
+							OBJ2=Perspectivez(prcenterx,prcentery,prcenterz,OBJ);
+							GeneralView();
+							Menu();
+							Grid();
+							setcolor(YELLOW);
+							Display(OBJ);
+							setcolor(MAGENTA);
+							Display(OBJ2);
+						}
+						break;
+
+					case 8: // clear
+						Grid();
+						GeneralView();
+						break;
+						
+	  } // switch M
+	  } while(M!=7);// do
+	  do
+	  LastPressPosition(0,&X,&Y,&B);
+	  while (B==0);
+	  Menu_Select=0;
+	  GeneralView();
+	  Menu();
+	  break;
+
+
+		case 3:  //Plane Curves
+			Menu_Select=3;
+			GeneralView();
+			Menu();
+
+			do
+			{
+				do
+				LastPressPosition(0,&X,&Y,&B);
+				while (B==0);
+				
+				do
+				M=getcommand();
+				while (M==0);
+
+				switch (M)
+				{
+				case 1: // draw circle
+
+					Dialog2(txt,17,num);
+					cx_org=atoi(txt)+380;
+					Dialog2(txt,18,num);
+					cy_org=240-atoi(txt);
+					Dialog2(txt,19,num);
+					cradius=atoi(txt);
+					draw_circle(cx_org,cy_org,cradius);
+					GeneralView();
+					break;
+				case 2: // draw ellipse
+					Dialog2(txt,17,num);
+					ex_org=atoi(txt)+380;
+					Dialog2(txt,18,num);
+					ey_org=240-atoi(txt);
+					Dialog2(txt,20,num);
+					eradius_x=atoi(txt);
+					Dialog2(txt,21,num);
+					eradius_y=atoi(txt);
+					Dialog2(txt,22,num);
+					eangle=atoi(txt);
+					draw_ellipse(ex_org,ey_org,eradius_x,eradius_y,eangle);
+					break;
+				case 3: // draw parabola
+					Dialog2(txt,23,num);
+					aparam=atoi(txt);
+					draw_parabola(aparam);
+					break;
+				case 4: // draw hyperbola
+					Dialog2(txt,24,num);
+					aparam=atoi(txt);
+					Dialog2(txt,25,num);
+					bparam=atoi(txt);
+					draw_hyperbola(aparam,bparam);
+					break;
+				case 5: // draw 3 point circle
+					c_param=Draw_3Point_circle();
+					cx_org = 380+c_param[0];
+					cy_org = 240-c_param[1];
+					cradius = c_param[2];
+					draw_circle(cx_org,cy_org,cradius);
+					ShowMouse();
+					break;
+				case 6: // main menu
+					Grid();
+					Menu_Select=0;
+					Menu();
+					break;
+				case 7: // clear
+					Grid();
+					GeneralView();
+					break;
+				}
+			} while(M!=6);// do
+			do
+			LastPressPosition(0,&X,&Y,&B);
+			while (B==0);
+			Menu_Select=0;
+			GeneralView();
+			Menu();
+			break;
+
+
+		case 4:  //Space Curves
+			Menu_Select=4;
+			GeneralView();
+			Menu();
+
+			do
+			{
+				do
+				LastPressPosition(0,&X,&Y,&B);
+				while (B==0);
+				
+				do
+				M=getcommand();
+				while (M==0);
+
+				switch (M)
+				{
+				case 1: // Cubic spline
+					
+					Menu_Select=5;
+					GeneralView();
+					Menu();
+
+					do
+					{
+						do
+						LastPressPosition(0,&X,&Y,&B);
+						while (B==0);
+				
+						do
+						K=getcommand();
+						while (K==0);
+
+						switch (K)
+						{
+						case 1://clamped end condition										
+							CubicSpline(1);
+							Menu();
+							GeneralView();
+							ShowMouse();
+							break;
+						case 2://relaxed end condition										
+							CubicSpline(2);
+							Menu();
+							GeneralView();
+							ShowMouse();
+							break;
+						case 3://cyclic end condition										
+							CubicSpline(3);
+							Menu();
+							GeneralView();
+							ShowMouse();
+							break;
+						case 4://anticyclic end condition					
+							CubicSpline(4);
+							Menu();
+							GeneralView();
+							ShowMouse();
+							break;
+						case 5://Return to cubicpline main menu				
+							Menu_Select=4;
+							Menu();
+							GeneralView();
+							break;
+						case 6: // clear
+							Grid();
+							GeneralView();
+							break;
+						}
+					} while(K!=5);// do
+							
+					break;
+				case 2: // 
+			  //	Grid();
+					ParabolicBlending();
+					Menu();
+					GeneralView();
+					break;
+				case 3: // 
+					BezierSpline();
+					Menu();
+					GeneralView();
+					break;
+				case 4: //
+					Dialog2(txt,31,num);
+					vertex_num=atoi(txt);
+					if (vertex_num<3)
+						vertex_num=3;
+					if (vertex_num>10)
+						vertex_num=10;
+					Dialog2(txt,32,num);
+					order_BS=atoi(txt);
+					if (order_BS<2)
+						order_BS=2;
+					if (order_BS>vertex_num)
+						order_BS=vertex_num;
+					BSpline(vertex_num,order_BS);
+					Menu();
+					GeneralView();
+					break;
+				case 5: // 
+					
+					break;
+				case 6: // main menu
+					Grid();
+					Menu_Select=0;
+					Menu();
+					break;
+				case 7: // clear
+					Grid();
+					GeneralView();
+					break;
+				}
+			} while(M!=6);// do
+			do
+			LastPressPosition(0,&X,&Y,&B);
+			while (B==0);
+			Menu_Select=0;
+			GeneralView();
+			Menu();
+			break;
+
+
+
+		case 5:  //Space Curves
+			Menu_Select=6;
+			GeneralView();
+			Menu();
+
+			do
+			{
+				do
+				LastPressPosition(0,&X,&Y,&B);
+				while (B==0);
+
+				do
+				M=getcommand();
+				while (M==0);
+
+				switch (M)
+				{
+				case 1: // Bilinear surface patch
+				//	Grid();
+					Bilinear_Surface();
+					Menu();
+					GeneralView();
+					break;
+				case 2: // Lofted Surface
+				//	Grid();
+					Loft_Surface();
+					Menu();
+					GeneralView();
+					break;
+				case 3: // BiCubic Surface Patch
+					BiCubic();
+
+					Menu_Select=7;
+					GeneralView();
+					Menu();
+
+					do
+					{
+						do
+						LastPressPosition(0,&X,&Y,&B);
+						while (B==0);
+
+						do
+						K2=getcommand();
+						while (K2==0);
+
+						switch (K2)
+						{
+						case 1:
+							Rotate(1);
+							Menu();
+							ShowMouse();
+							break;
+						case 2:
+							Rotate(2);
+							Menu();
+							ShowMouse();
+							break;
+						case 3:
+							Rotate(3);
+							Menu();
+							ShowMouse();
+							break;
+						case 6://Return to spacecurves main menu				
+							Menu_Select=6;
+							Menu();
+							GeneralView();
+							break;
+						case 7: // clear
+							Grid();
+							GeneralView();
+							break;
+						}
+					} while(K2!=6);// do
+//					Menu();
+//					GeneralView();
+					break;
+				case 4: // Bezier Surface Patch
+					Bezier_Surface();
+					Menu_Select=7;
+					GeneralView();
+					Menu();
+
+					do
+					{
+						do
+						LastPressPosition(0,&X,&Y,&B);
+						while (B==0);
+
+						do
+						K3=getcommand();
+						while (K3==0);
+
+						switch (K3)
+						{
+						case 1:
+							Rotate(1);
+							Menu();
+							ShowMouse();
+							break;
+						case 2:
+							Rotate(2);
+							Menu();
+							ShowMouse();
+							break;
+						case 3:
+							Rotate(3);
+							Menu();
+							ShowMouse();
+							break;
+						case 6://Return to spacecurves main menu
+							Menu_Select=6;
+							Menu();
+							GeneralView();
+							break;
+						case 7: // clear
+							Grid();
+							GeneralView();
+							break;
+						}
+					} while(K3!=6);// do
+//					Menu();
+//					GeneralView();
+					break;
+				case 5: // 
+					Grid();
+					GeneralView();
+					BSpline_Surface();
+					break;
+				case 6: // main menu
+					Grid();
+					Menu_Select=0;
+					Menu();
+					break;
+				case 7: // clear
+					Grid();
+					GeneralView();
+					break;
+				}
+			} while(M!=6);// do
+			do
+			LastPressPosition(0,&X,&Y,&B);
+			while (B==0);
+			Menu_Select=0;
+			GeneralView();
+			Menu();
+			break;
+
+} // switch C
+
+do
+LastPressPosition(0,&X,&Y,&B);
+while (B==0);
+
+}while(C!=9);
+
+closegraph();
+}

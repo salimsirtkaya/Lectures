@@ -1,0 +1,27 @@
+// 642Managed.cpp: implementation of the C642Managed class.
+//
+//////////////////////////////////////////////////////////////////////
+
+#include "stdafx.h"
+#include "EE642Project.h"
+#include "642Managed.h"
+
+#ifdef _DEBUG
+#undef THIS_FILE
+static char THIS_FILE[]=__FILE__;
+#define new DEBUG_NEW
+#endif
+
+//////////////////////////////////////////////////////////////////////
+// Construction/Destruction
+//////////////////////////////////////////////////////////////////////
+
+C642Managed::C642Managed()
+{
+
+}
+
+C642Managed::~C642Managed()
+{
+
+}

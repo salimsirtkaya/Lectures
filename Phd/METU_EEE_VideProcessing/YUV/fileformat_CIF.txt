@@ -1,0 +1,30 @@
+
+
+The input (original) sequence format is as follows.
+CIF = 352x288 luma resolution with 4:2:0 chroma subsampling.
+
+           352
+     +-------------+
+     |             |
+     |     Y       | 288
+     |             |
+     |             |
+     +-------------+
+       176
+     +------+
+     |  U   |
+     |      |144
+     +------+
+     |  V   |
+     |      |144
+     +------+
+
+
+Each component is raster-scanned from the top left corner down to the
+bottom right corner. The Y, U and V components are then concatenated
+together for each frame. 
+
+In the cif format, all frames in the sequence are 
+concatenated in one big file. 
+
+You can also download a yuv player(YUVviewer) from our website.

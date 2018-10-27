@@ -1,0 +1,243 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0053)http://www.cim.mcgill.ca/~cathy/project765/node4.html -->
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others --><HTML><HEAD><TITLE>Implementation issues</TITLE>
+<META content="Implementation issues" name=description>
+<META content=report name=keywords>
+<META content=document name=resource-type>
+<META content=global name=distribution>
+<META http-equiv=Content-Type content="text/html; charset=iso-8859-1">
+<META content="MSHTML 6.00.2900.2802" name=GENERATOR>
+<META http-equiv=Content-Style-Type content=text/css><LINK 
+href="Implementation issues_dosyalar/report.css" rel=STYLESHEET><LINK 
+href="node5.html" rel=next><LINK href="node3.html" rel=previous><LINK 
+href="report.html" rel=up><LINK href="node5.html" rel=next></HEAD>
+<BODY><!--Navigation Panel--><A 
+href="http://www.cim.mcgill.ca/~cathy/project765/node5.html" 
+name=tex2html59><IMG height=24 alt=next src="" width=37 align=bottom 
+border=0></A> <A href="http://www.cim.mcgill.ca/~cathy/project765/report.html" 
+name=tex2html57><IMG height=24 alt=up src="" width=26 align=bottom border=0></A> 
+<A href="http://www.cim.mcgill.ca/~cathy/project765/node3.html" 
+name=tex2html51><IMG height=24 alt=previous src="" width=63 align=bottom 
+border=0></A> <BR><B>Next:</B> <A 
+href="http://www.cim.mcgill.ca/~cathy/project765/node5.html" 
+name=tex2html60>Experimental Results</A> <B>Up:</B> <A 
+href="http://www.cim.mcgill.ca/~cathy/project765/report.html" 
+name=tex2html58>Experimenting with the FastSLAM</A> <B>Previous:</B> <A 
+href="http://www.cim.mcgill.ca/~cathy/project765/node3.html" name=tex2html52>The 
+FastSLAM approach</A> <BR><BR><!--End of Navigation Panel-->
+<H1><A name=SECTION00040000000000000000></A><A 
+name=sec:approach></A><BR>Implementation issues </H1>For the purpose of 
+experimentation, an implementation of FastSLAM was devised for the case of a 
+synchronous drive robot equipped with a fiducial finder capable of measuring 
+range and bearing to fiducial beacons in a planar environment. The control input 
+<IMG height=34 alt="$ u_t$" src="Implementation issues_dosyalar/img5.png" 
+width=21 align=middle border=0> is composed of a speed <IMG height=34 
+alt="$ v_t$" src="Implementation issues_dosyalar/img29.png" width=20 
+align=middle border=0> and a turn rate <IMG height=34 alt="$ \omega_t$" 
+src="Implementation issues_dosyalar/img30.png" width=22 align=middle border=0>. 
+The motion model assumes that these controls are corrupted by zero-mean Gaussian 
+noise and the <IMG height=17 alt="$ x$" 
+src="Implementation issues_dosyalar/img31.png" width=15 align=bottom border=0> 
+and <IMG height=34 alt="$ y$" src="Implementation issues_dosyalar/img32.png" 
+width=15 align=middle border=0> position of the robot and its orientation <IMG 
+height=17 alt="$ \theta$" src="Implementation issues_dosyalar/img9.png" width=14 
+align=bottom border=0> are thus given by <BR>
+<DIV align=center><!-- MATH
+ \begin{eqnarray}
+v_t & \sim & \mathcal{N}(0, \sigma_v) \\
+\omega_t & \sim & \mathcal{N}(0, \sigma_\omega)\\
+x_t & = & x_{t-1} - \frac{v_t(\sin \theta_{t-1} - \sin (\theta_{t-1}+\omega_t \Delta
+  t))}{\omega_t}\\
+y_t & = & y_{t-1} + \frac{v_t(\cos \theta_{t-1} - \cos (\theta_{t-1}+\omega_t \Delta
+  t))}{\omega_t}\\
+\theta_t & = & \theta_{t-1} + \omega_t \Delta t,
+\end{eqnarray}
+ -->
+<TABLE cellPadding=0 width="100%" align=center>
+  <TBODY>
+  <TR vAlign=center>
+    <TD noWrap align=right><IMG height=34 alt="$\displaystyle v_t$" 
+      src="Implementation issues_dosyalar/img33.png" width=20 align=middle 
+      border=0></TD>
+    <TD noWrap align=middle width=10><IMG height=34 alt="$\displaystyle \sim$" 
+      src="Implementation issues_dosyalar/img34.png" width=20 align=middle 
+      border=0></TD>
+    <TD noWrap align=left><IMG height=37 
+      alt="$\displaystyle \mathcal{N}(0, \sigma_v)$" 
+      src="Implementation issues_dosyalar/img35.png" width=74 align=middle 
+      border=0></TD>
+    <TD align=right width=10>(2)</TD></TR>
+  <TR vAlign=center>
+    <TD noWrap align=right><IMG height=34 alt="$\displaystyle \omega_t$" 
+      src="Implementation issues_dosyalar/img36.png" width=22 align=middle 
+      border=0></TD>
+    <TD noWrap align=middle width=10><IMG height=34 alt="$\displaystyle \sim$" 
+      src="Implementation issues_dosyalar/img34.png" width=20 align=middle 
+      border=0></TD>
+    <TD noWrap align=left><IMG height=37 
+      alt="$\displaystyle \mathcal{N}(0, \sigma_\omega)$" 
+      src="Implementation issues_dosyalar/img37.png" width=76 align=middle 
+      border=0></TD>
+    <TD align=right width=10>(3)</TD></TR>
+  <TR vAlign=center>
+    <TD noWrap align=right><IMG height=34 alt="$\displaystyle x_t$" 
+      src="Implementation issues_dosyalar/img38.png" width=21 align=middle 
+      border=0></TD>
+    <TD noWrap align=middle width=10><IMG height=34 alt="$\displaystyle =$" 
+      src="Implementation issues_dosyalar/img39.png" width=19 align=middle 
+      border=0></TD>
+    <TD noWrap align=left><IMG height=62 
+      alt="$\displaystyle x_{t-1} - \frac{v_t(\sin \theta_{t-1} - \sin (\theta_{t-1}+\omega_t \Delta&#10;t))}{\omega_t}$" 
+      src="Implementation issues_dosyalar/img40.png" width=308 align=middle 
+      border=0></TD>
+    <TD align=right width=10>(4)</TD></TR>
+  <TR vAlign=center>
+    <TD noWrap align=right><IMG height=34 alt="$\displaystyle y_t$" 
+      src="Implementation issues_dosyalar/img41.png" width=20 align=middle 
+      border=0></TD>
+    <TD noWrap align=middle width=10><IMG height=34 alt="$\displaystyle =$" 
+      src="Implementation issues_dosyalar/img39.png" width=19 align=middle 
+      border=0></TD>
+    <TD noWrap align=left><IMG height=62 
+      alt="$\displaystyle y_{t-1} + \frac{v_t(\cos \theta_{t-1} - \cos (\theta_{t-1}+\omega_t \Delta&#10;t))}{\omega_t}$" 
+      src="Implementation issues_dosyalar/img42.png" width=310 align=middle 
+      border=0></TD>
+    <TD align=right width=10>(5)</TD></TR>
+  <TR vAlign=center>
+    <TD noWrap align=right><IMG height=34 alt="$\displaystyle \theta_t$" 
+      src="Implementation issues_dosyalar/img43.png" width=19 align=middle 
+      border=0></TD>
+    <TD noWrap align=middle width=10><IMG height=34 alt="$\displaystyle =$" 
+      src="Implementation issues_dosyalar/img39.png" width=19 align=middle 
+      border=0></TD>
+    <TD noWrap align=left><IMG height=34 
+      alt="$\displaystyle \theta_{t-1} + \omega_t \Delta t,$" 
+      src="Implementation issues_dosyalar/img44.png" width=104 align=middle 
+      border=0></TD>
+    <TD align=right width=10>(6)</TD></TR></TBODY></TABLE></DIV><BR clear=all>
+<P></P>where <IMG height=18 alt="$ \Delta t$" 
+src="Implementation issues_dosyalar/img45.png" width=27 align=bottom border=0> 
+is the amount of time elapsed between time <IMG height=34 alt="$ t-1$" 
+src="Implementation issues_dosyalar/img46.png" width=44 align=middle border=0> 
+and time <IMG height=17 alt="$ t$" src="Implementation issues_dosyalar/img6.png" 
+width=12 align=bottom border=0>. 
+<P>A measurement <IMG height=34 alt="$ z_t$" 
+src="Implementation issues_dosyalar/img7.png" width=19 align=middle border=0> is 
+composed of a range <IMG height=34 alt="$ r_t$" 
+src="Implementation issues_dosyalar/img47.png" width=19 align=middle border=0> 
+and bearing <IMG height=34 alt="$ \phi_t$" 
+src="Implementation issues_dosyalar/img48.png" width=21 align=middle border=0>. 
+The observation model for a fiducial landmark <IMG height=17 alt="$ k$" 
+src="Implementation issues_dosyalar/img1.png" width=15 align=bottom border=0> 
+located at position <!-- MATH
+ $\theta_k
+= (x_k,y_k)$
+ --><IMG height=37 
+alt="$ \theta_k&#10;= (x_k,y_k)$" src="Implementation issues_dosyalar/img49.png" 
+width=106 align=middle border=0> is given by <BR>
+<DIV align=center><!-- MATH
+ \begin{eqnarray}
+r_t = \sqrt{(x_k - x_t)^2+(y_k - y_t)^2} + \delta_r\\
+\phi_t = \arctan \left({\frac{y_k - y_t}{x_k - x_t}}\right) + \delta_\phi,
+\end{eqnarray}
+ -->
+<TABLE cellPadding=0 width="100%" align=center>
+  <TBODY>
+  <TR vAlign=center>
+    <TD noWrap align=right><IMG height=46 
+      alt="$\displaystyle r_t = \sqrt{(x_k - x_t)^2+(y_k - y_t)^2} + \delta_r$" 
+      src="Implementation issues_dosyalar/img50.png" width=283 align=middle 
+      border=0></TD>
+    <TD>&nbsp;</TD>
+    <TD>&nbsp;</TD>
+    <TD align=right width=10>(7)</TD></TR>
+  <TR vAlign=center>
+    <TD noWrap align=right><IMG height=63 
+      alt="$\displaystyle \phi_t = \arctan \left({\frac{y_k - y_t}{x_k - x_t}}\right) + \delta_\phi,$" 
+      src="Implementation issues_dosyalar/img51.png" width=237 align=middle 
+      border=0></TD>
+    <TD>&nbsp;</TD>
+    <TD>&nbsp;</TD>
+    <TD align=right width=10>(8)</TD></TR></TBODY></TABLE></DIV><BR clear=all>
+<P></P>where <IMG height=34 alt="$ \delta_r$" 
+src="Implementation issues_dosyalar/img52.png" width=20 align=middle border=0> 
+and <!-- MATH
+ $\delta_\phi$
+ --><IMG height=34 alt="$ \delta_\phi$" 
+src="Implementation issues_dosyalar/img53.png" width=22 align=middle border=0> 
+are zero mean Gaussian noise variables. 
+<P>The FastSLAM algorithm was implemented as described in section <A 
+href="http://www.cim.mcgill.ca/~cathy/project765/node3.html#sec:framework">3</A> 
+with three important modifications. First, as already mentioned, the algorithm 
+was only implemented in its naive form, without using clever data structures to 
+reduce computational complexity as in [<A 
+href="http://www.cim.mcgill.ca/~cathy/project765/node9.html#montemerlo02">16</A>,<A 
+href="http://www.cim.mcgill.ca/~cathy/project765/node9.html#thrun04">21</A>]. 
+The reasons for this are that (1) self-balancing trees are difficult to 
+implement; (2) the experiments in this work were to be conducted on small 
+environments and would not benefit very much from the speed-up and (3) the goal 
+of this project was to explore the statistical concepts used in FastSLAM rather 
+than to reproduce Montemerlo <I>et al.</I>'s results exactly. 
+<P>The second important modification has to do with the estimation of landmark 
+locations. Montemerlo <I>et al.</I> use the EKF to update the landmark position 
+estimates within a particle. The basic mechanism of the EKF is to linearise the 
+prediction and observation models by a first order Taylor series expansion so 
+that standard Kalman filtering can be used. It is well known that the EKF is not 
+only suboptimal, but also prone to underestimate uncertainty. A succession of 
+linearisation errors may also cause it to diverge in certain cases. Because 
+these problems were indeed experienced in early stages of this work, the 
+unscented Kalman filter (UKF) [<A 
+href="http://www.cim.mcgill.ca/~cathy/project765/node9.html#julier97">12</A>,<A 
+href="http://www.cim.mcgill.ca/~cathy/project765/node9.html#wan00">22</A>] was 
+used instead of the EKF. The UKF works by sampling a small set of carefully 
+chosen points to represent Gaussian estimates and applying the (non-linearised) 
+observation and prediction models to these points. A new Gaussian estimate is 
+formed from the results of these calculations. While the UKF is also a 
+suboptimal estimation method, it has been shown to produce much more accurate 
+estimates than the EKF. 
+<P>The third important modification concerns the problem of merging the 
+individual maps obtained from the particle set into a single map. This is not an 
+obvious task in the case of unknown data association as different particles may 
+then carry different estimates of the number of landmarks present in the 
+environment. The problem can be viewed as a big data association task. The 
+solution adopted in this work was to project all the landmark location estimates 
+of all particles into a single map and use a clustering method to group 
+landmarks which are likely to correspond to each other. The mean and covariance 
+of each cluster can then be used as a final landmark location estimate in the 
+merged map. A suitable clustering method for doing this is based on the minimal 
+spanning tree (MST) [<A 
+href="http://www.cim.mcgill.ca/~cathy/project765/node9.html#zahn71">23</A>]. The 
+MST of the map containing all the landmarks from all the particles is computed 
+using Euclidean distance to measure the weight of an edge between a pair of 
+landmarks. Clusters are then found by removing the heaviest edges in the tree 
+until the heaviest edge is lighter than a certain threshold (for instance, the 
+expected minimum separation between landmarks). In addition to performing 
+unsupervised matching between maps corresponding to different particles, this 
+technique provides an additional mechanism to get rid of spurious landmarks, 
+which will typically get clustered with nearby measurements. 
+<P>
+<HR>
+<!--Navigation Panel--><A 
+href="http://www.cim.mcgill.ca/~cathy/project765/node5.html" 
+name=tex2html59><IMG height=24 alt=next 
+src="Implementation issues_dosyalar/next.png" width=37 align=bottom 
+border=0></A> <A href="http://www.cim.mcgill.ca/~cathy/project765/report.html" 
+name=tex2html57><IMG height=24 alt=up 
+src="Implementation issues_dosyalar/up.png" width=26 align=bottom border=0></A> 
+<A href="http://www.cim.mcgill.ca/~cathy/project765/node3.html" 
+name=tex2html51><IMG height=24 alt=previous 
+src="Implementation issues_dosyalar/prev.png" width=63 align=bottom 
+border=0></A> <BR><B>Next:</B> <A 
+href="http://www.cim.mcgill.ca/~cathy/project765/node5.html" 
+name=tex2html60>Experimental Results</A> <B>Up:</B> <A 
+href="http://www.cim.mcgill.ca/~cathy/project765/report.html" 
+name=tex2html58>Experimenting with the FastSLAM</A> <B>Previous:</B> <A 
+href="http://www.cim.mcgill.ca/~cathy/project765/node3.html" name=tex2html52>The 
+FastSLAM approach</A> <!--End of Navigation Panel-->
+<ADDRESS>Catherine Laporte 2005-01-27 </ADDRESS></BODY></HTML>

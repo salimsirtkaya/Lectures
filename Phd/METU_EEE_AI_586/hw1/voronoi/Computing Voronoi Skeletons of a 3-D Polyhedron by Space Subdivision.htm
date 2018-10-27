@@ -1,0 +1,37 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0043)http://www.cs.huji.ac.il/~arir/vg3-abs.html -->
+<HTML><HEAD><TITLE>Computing Voronoi Skeletons of a 3-D Polyhedron by Space Subdivision</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=windows-1254">
+<META content="MSHTML 6.00.2900.2802" name=GENERATOR></HEAD>
+<BODY>
+<H2>Computing Voronoi Skeletons of a 3-D Polyhedron by Space Subdivision </H2>
+<H3><A href="http://www.cs.huji.ac.il/~michals">Michal Etzion</A> and <A 
+href="http://www.cs.huji.ac.il/~arir">Ari Rappoport</A> </H3>We tackle the 
+problem of computing the Voronoi diagram of a linear 3-D polyhedron. The main 
+difficulty with the computation is that the diagram's edges and vertices are of 
+relatively high algebraic degrees. As a result, previous approaches to the 
+problem have been non-robust, difficult to implement, or not provenly correct. 
+<P>We introduce three new proximity skeletons related to the Voronoi diagram: 
+(1) the <I>Voronoi Graph (VG)</I>, which contains the complete symbolic 
+information of the Voronoi diagram without containing any geometry; (2) the 
+<I>Approximate Voronoi Graph (AVG)</I>, which deals with degenerate diagrams by 
+collapsing sub-graphs of the VG into single nodes; and (3) the <I>Proximity 
+Structure Diagram (PSD)</I>, which enhances the VG with a geometric 
+approximation of Voronoi elements to any desired accuracy. The new skeletons are 
+important for both theoretical and practical reasons. Many applications that 
+extract the proximity information of the object from its Voronoi diagram can use 
+the Voronoi graphs or the PSD instead. In addition, the skeletons can be used as 
+initial structures for a robust and efficient global or local computation of the 
+Voronoi diagram. 
+<P>We present a space subdivision algorithm to construct the new skeletons, 
+having three main advantages. First, it solves at most uni-variate quartic 
+polynomials. This stands in sharp contrast to previous approaches, which require 
+the solution of a non-linear tri-variate system of equations. Second, the 
+algorithm enables purely local computation of the skeletons in any limited 
+region of interest. Third, the algorithm is simple to implement. 
+<P>
+<HR>
+<I>Computational Geometry: Theory and Applications, </I>21(3):87-120, March 
+2002. 
+<HR>
+</BODY></HTML>

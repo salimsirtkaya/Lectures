@@ -1,0 +1,22 @@
+This note describes the matlab files that are available 
+as lecture notes to accompany "Introduction to Spectral Analysis" by 
+P. Stoica and R. Moses.
+
+The matlab directory contains:
+
+ ch2     -  contains the .m files as described at the end of each of
+ ch3        these five chapters
+ ch4     
+ ch5     
+ ch6   
+
+ data    -  data files in .mat format for use with the exercises
+ extras  -  extra .m files that may be useful
+
+
+The entire matlab directory can also be downloaded as a single Unix archive 
+(.tar) file matlab.tar.
+
+
+If you have problems with our ftp site, please send mail to
+ftpadmin@prenhall.com.

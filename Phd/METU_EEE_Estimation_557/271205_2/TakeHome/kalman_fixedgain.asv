@@ -1,0 +1,76 @@
+%% EE557 - Estimation Theory - TakeHome - Kalman Filtering %%
+%% Salim SIRTKAYA - 112346
+%% Fall 205-2006
+%% Kalman gain is fixed
+%% this function plots the error of the predicted state (part c of the take home) 
+
+function [X_filt,X_predict,X_prediction_error,X_filter_error,Norm_L] =  kalman_fixedgain(title,L,X,Y,S0,Xm0,R,Q,C,N,A,G)
+
+% fixed gain matrices
+
+X_filt(:,:,1) = L*Y(:,:,1); % first sample of the filtered state X(1|1)
+
+X_predict(:,:,1) =zeros(4,1); %Xm0; % first sample of the predicted state X(1|0)
+
+S_filt = (eye(4)-L*C)*S0; % first iteration of the filtered covariance matrix S(1|1)
+
+S_predict = S0; % first iteration of the predicted covariance matrix S(1|0)
+
+for k = 2:N
+    X_predict(:,:,k) = A*X_filt(:,:,k-1);
+    
+    S_predict = A*S_filt*A' + G*Q*G';
+
+    S_filt = (eye(4)-L*C)*S_predict;
+    
+    X_filt(:,:,k) = A*X_filt(:,:,k-1) + L * (Y(:,:,k) - C*A*X_filt(:,:,k-1));
+end
+
+X_prediction_error = X - X_predict;
+X_filter_error = X - X_filt;
+    
+x_predict(1:N) = X_predict(1,1,:);
+y_predict(1:N) = X_predict(3,1,:);
+figure;
+plot(x_predict,y_predict);
+TITLE([title,' -fixed gain - predicted state']);
+
+x_filter(1:N) = X_filt(1,1,:);
+y_filter(1:N) = X_filt(3,1,:);
+figure;
+plot(x_filter,y_filter);
+TITLE([title,' -fixed gain - filtered state']);
+
+x_prediction_error(1:N) = X_prediction_error(1,1,:);
+vx_prediction_error(1:N) = X_prediction_error(2,1,:);
+y_prediction_error(1:N) = X_prediction_error(3,1,:);
+vy_prediction_error(1:N) = X_prediction_error(4,1,:);
+
+%rms errors of the predicted state
+x_prediction_rms = sqrt(mean(x_prediction_error.^2)); 
+vx_prediction_rms = sqrt(mean(vx_prediction_error.^2)); 
+y_prediction_rms = sqrt(mean(y_prediction_error.^2)); 
+vy_prediction_rms = sqrt(mean(vy_prediction_error.^2)); 
+
+figure;
+TITLE([title,' -fixed gain - prediction state errors']);
+Subplot(2,2,1),plot(x_prediction_error);TITLE([title,' -fixed gain - predicted state error in x position']);
+Subplot(2,2,2),plot(vx_prediction_error);TITLE([title,' -fixed gain - predicted state error in x velocity']);
+Subplot(2,2,3),plot(y_prediction_error);TITLE([title,' -fixed gain - predicted state error in y position']);
+Subplot(2,2,4),plot(vy_prediction_error);TITLE([title,' -fixed gain - predicted state error in y velocity']);
+
+
+x_filter_error(1:N) = X_filter_error(1,1,:);
+vx_filter_error(1:N) = X_filter_error(1,1,:);
+y_filter_error(1:N) = X_filter_error(1,1,:);
+vy_filter_error(1:N) = X_filter_error(1,1,:);
+
+figure;
+TITLE([title,' -fixed gain - filtered state errors']);
+Subplot(2,2,1),plot(x_filter_error);TITLE([title,' -fixed gain - filtered state error in x position']);
+Subplot(2,2,2),plot(vx_filter_error);TITLE([title,' -fixed gain - filtered state error in x velocity']);
+Subplot(2,2,3),plot(y_filter_error);TITLE([title,' -fixed gain - filtered state error in y position']);
+Subplot(2,2,4),plot(vy_filter_error);TITLE([title,' -fixed gain - filtered state error in y velocity']);
+
+
+    

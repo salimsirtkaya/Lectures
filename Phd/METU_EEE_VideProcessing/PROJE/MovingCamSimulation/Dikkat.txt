@@ -1,0 +1,4 @@
+-	PlaneWorld giris ekranina m_maskBmp ref to ptr olarak giriyor ama 0 olarak çýkýyor, 
+new operator gorunmuyor.
+-	PlaneWorld ekrani açilinca m_regionMap temizlenmiyor. Openfile'a konulabilir.
+-	PlaneWorld icin Cancel islemiyor.

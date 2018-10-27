@@ -1,0 +1,23 @@
+Merhaba Hocam,
+
+Ekte b-spline odevini bulabilirsiniz..
+ 
+(EE642Project_Salim_bsplines.zip). Dosya biraz büyük 
+olduðu için zipleyerek gönderiyorum. Zip dosyasýný bloklanmamasý için 
+þifreledim.. Þifre ee642.
+
+Geçen sefer olduðu gibi, incelemek isterseniz diye kaynak dosyalarýný da gönderiyorum.
+
+Yeni eklemelerle birlikte deðiþen kullanýcý el kitabýnýn dördüncü
+sürümü de ektedir (EE642Project_USER MANUALv1.3_Salim.doc). 
+
+B-spline menüsünde eðrinin derecesini girip, istediðiniz noktalarý seçip (sayý deðiþken) enter ya da apply tuþuna basmanýz yeterli..
+
+Space curve'lerin transform edilme iþlemini henüz implement etmediðimi, þimdilik sadece çizim iþlemini gerçekleþtirebileceðinizi belirtmek isterim. Bu fonksiyonu (çizilen tüm curvelerin transform edilebilmesi) bundan sonraki ilk ödeve yetiþtirmeye çalýþacaðým.
+
+Eksik ya da hatalý olduðunu düþündüðünüz konularý bildirmenizden mutluluk duyarým.
+
+Teþekkürler
+
+Saygýlarýmla
+Salim SIRTKAYA

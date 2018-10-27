@@ -1,0 +1,19 @@
+Merhaba Hocam,
+
+Ekte bilinear ve lofted surface patch ödevini bulabilirsiniz..
+ 
+(EE642Project_Salim_bilinear&loftedsurfaces.zip). Dosya biraz büyük 
+olduðu için zipleyerek gönderiyorum. Zip dosyasýný bloklanmamasý için 
+þifreledim.. Þifre ee642.
+
+Geçen sefer olduðu gibi, incelemek isterseniz diye kaynak dosyalarýný da gönderiyorum.
+
+Yeni eklemelerle birlikte deðiþen kullanýcý el kitabýnýn dördüncü
+sürümü de ektedir (EE642Project_USER MANUALv1.4_Salim.doc). 
+
+Eksik ya da hatalý olduðunu düþündüðünüz konularý bildirmenizden mutluluk duyarým.
+
+Teþekkürler
+
+Saygýlarýmla
+Salim SIRTKAYA

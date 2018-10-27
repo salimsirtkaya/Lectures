@@ -1,0 +1,2606 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0120)http://geradts.com/html/Documents/USE%20OF%20KHOROS%20IN%20DEBLURRING%20TECHNIQUES%20IN%20VIDEO%20IMAGE%20PROCESSING.htm -->
+<!-- saved from url=(0044)http://www.image.nrips.go.jp/~zeno/PART1.htm --><HTML 
+xmlns="http://www.w3.org/TR/REC-html40" xmlns:v = 
+"urn:schemas-microsoft-com:vml" xmlns:o = 
+"urn:schemas-microsoft-com:office:office" xmlns:w = 
+"urn:schemas-microsoft-com:office:word"><HEAD><TITLE>USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+<META content=Word.Document name=ProgId>
+<META content="MSHTML 6.00.2900.2523" name=GENERATOR>
+<META content="Microsoft Word 9" name=Originator><LINK 
+href="./USE%20OF%20KHOROS%20IN%20DEBLURRING%20TECHNIQUES%20IN%20VIDEO%20IMAGE%20PROCESSING_files/filelist.xml" 
+rel=File-List><LINK 
+href="./USE%20OF%20KHOROS%20IN%20DEBLURRING%20TECHNIQUES%20IN%20VIDEO%20IMAGE%20PROCESSING_files/editdata.mso" 
+rel=Edit-Time-Data><!--[if !mso]>
+<STYLE>v\:* {
+	BEHAVIOR: url(#default#VML)
+}
+o\:* {
+	BEHAVIOR: url(#default#VML)
+}
+w\:* {
+	BEHAVIOR: url(#default#VML)
+}
+.shape {
+	BEHAVIOR: url(#default#VML)
+}
+</STYLE>
+<![endif]--><!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>Zeno Geradts</o:Author>
+  <o:Template>Normal</o:Template>
+  <o:LastAuthor>Zeno Geradts</o:LastAuthor>
+  <o:Revision>4</o:Revision>
+  <o:TotalTime>57</o:TotalTime>
+  <o:Created>2000-06-12T18:57:00Z</o:Created>
+  <o:LastSaved>2000-06-12T19:55:00Z</o:LastSaved>
+  <o:Pages>21</o:Pages>
+  <o:Words>10021</o:Words>
+  <o:Characters>57122</o:Characters>
+  <o:Lines>476</o:Lines>
+  <o:Paragraphs>114</o:Paragraphs>
+  <o:CharactersWithSpaces>70149</o:CharactersWithSpaces>
+  <o:Version>9.3821</o:Version>
+ </o:DocumentProperties>
+</xml><![endif]-->
+<STYLE>@font-face {
+	font-family: Wingdings;
+}
+@page Section1 {size: 8.5in 11.0in; margin: 1.0in 1.25in 1.0in 1.25in; mso-header-margin: .5in; mso-footer-margin: .5in; mso-paper-source: 0; }
+P.MsoNormal {
+	FONT-SIZE: 12pt; MARGIN: 0in 0in 0pt; COLOR: black; FONT-FAMILY: "Times New Roman"; mso-style-parent: ""; mso-pagination: widow-orphan; mso-fareast-font-family: "Times New Roman"
+}
+LI.MsoNormal {
+	FONT-SIZE: 12pt; MARGIN: 0in 0in 0pt; COLOR: black; FONT-FAMILY: "Times New Roman"; mso-style-parent: ""; mso-pagination: widow-orphan; mso-fareast-font-family: "Times New Roman"
+}
+DIV.MsoNormal {
+	FONT-SIZE: 12pt; MARGIN: 0in 0in 0pt; COLOR: black; FONT-FAMILY: "Times New Roman"; mso-style-parent: ""; mso-pagination: widow-orphan; mso-fareast-font-family: "Times New Roman"
+}
+H1 {
+	FONT-WEIGHT: bold; FONT-SIZE: 16pt; MARGIN: 12pt 0in 3pt 0.3in; COLOR: black; TEXT-INDENT: -0.3in; FONT-FAMILY: Arial; TEXT-ALIGN: center; mso-pagination: widow-orphan; mso-style-next: Normal; mso-outline-level: 1; mso-list: l30 level1 lfo44; tab-stops: list .3in; mso-font-kerning: 16.0pt
+}
+H2 {
+	FONT-WEIGHT: bold; FONT-SIZE: 18pt; MARGIN: 0in 0in 0pt 0.4in; COLOR: black; TEXT-INDENT: -0.4in; FONT-FAMILY: "Times New Roman"; TEXT-ALIGN: center; mso-pagination: widow-orphan; mso-style-next: Normal; mso-outline-level: 2; mso-list: l30 level2 lfo44; tab-stops: list .4in; mso-bidi-font-size: 12.0pt
+}
+H3 {
+	FONT-WEIGHT: bold; FONT-SIZE: 13pt; MARGIN: 12pt 0in 3pt 0.5in; COLOR: black; TEXT-INDENT: -0.5in; FONT-FAMILY: Arial; mso-pagination: widow-orphan; mso-style-next: Normal; mso-outline-level: 3; mso-list: l30 level3 lfo44; tab-stops: list .5in
+}
+H4 {
+	FONT-WEIGHT: bold; FONT-SIZE: 14pt; MARGIN: 12pt 0in 3pt 0.6in; COLOR: black; TEXT-INDENT: -0.6in; FONT-FAMILY: "Times New Roman"; mso-pagination: widow-orphan; mso-style-next: Normal; mso-outline-level: 4; mso-list: l30 level4 lfo44; tab-stops: list .6in
+}
+H5 {
+	FONT-WEIGHT: bold; FONT-SIZE: 13pt; MARGIN: 12pt 0in 3pt 0.7in; COLOR: black; TEXT-INDENT: -0.7in; FONT-STYLE: italic; FONT-FAMILY: "Times New Roman"; mso-pagination: widow-orphan; mso-style-next: Normal; mso-outline-level: 5; mso-list: l30 level5 lfo44; tab-stops: list .7in
+}
+H6 {
+	FONT-WEIGHT: bold; FONT-SIZE: 11pt; MARGIN: 12pt 0in 3pt 0.8in; COLOR: black; TEXT-INDENT: -0.8in; FONT-FAMILY: "Times New Roman"; mso-pagination: widow-orphan; mso-style-next: Normal; mso-outline-level: 6; mso-list: l30 level6 lfo44; tab-stops: list .8in
+}
+P.MsoHeading7 {
+	FONT-SIZE: 12pt; MARGIN: 12pt 0in 3pt 0.9in; COLOR: black; TEXT-INDENT: -0.9in; FONT-FAMILY: "Times New Roman"; mso-pagination: widow-orphan; mso-fareast-font-family: "Times New Roman"; mso-style-next: Normal; mso-outline-level: 7; mso-list: l30 level7 lfo44; tab-stops: list .9in
+}
+LI.MsoHeading7 {
+	FONT-SIZE: 12pt; MARGIN: 12pt 0in 3pt 0.9in; COLOR: black; TEXT-INDENT: -0.9in; FONT-FAMILY: "Times New Roman"; mso-pagination: widow-orphan; mso-fareast-font-family: "Times New Roman"; mso-style-next: Normal; mso-outline-level: 7; mso-list: l30 level7 lfo44; tab-stops: list .9in
+}
+DIV.MsoHeading7 {
+	FONT-SIZE: 12pt; MARGIN: 12pt 0in 3pt 0.9in; COLOR: black; TEXT-INDENT: -0.9in; FONT-FAMILY: "Times New Roman"; mso-pagination: widow-orphan; mso-fareast-font-family: "Times New Roman"; mso-style-next: Normal; mso-outline-level: 7; mso-list: l30 level7 lfo44; tab-stops: list .9in
+}
+P.MsoHeading8 {
+	FONT-SIZE: 12pt; MARGIN: 12pt 0in 3pt 1in; COLOR: black; TEXT-INDENT: -1in; FONT-STYLE: italic; FONT-FAMILY: "Times New Roman"; mso-pagination: widow-orphan; mso-fareast-font-family: "Times New Roman"; mso-style-next: Normal; mso-outline-level: 8; mso-list: l30 level8 lfo44; tab-stops: list 1.0in
+}
+LI.MsoHeading8 {
+	FONT-SIZE: 12pt; MARGIN: 12pt 0in 3pt 1in; COLOR: black; TEXT-INDENT: -1in; FONT-STYLE: italic; FONT-FAMILY: "Times New Roman"; mso-pagination: widow-orphan; mso-fareast-font-family: "Times New Roman"; mso-style-next: Normal; mso-outline-level: 8; mso-list: l30 level8 lfo44; tab-stops: list 1.0in
+}
+DIV.MsoHeading8 {
+	FONT-SIZE: 12pt; MARGIN: 12pt 0in 3pt 1in; COLOR: black; TEXT-INDENT: -1in; FONT-STYLE: italic; FONT-FAMILY: "Times New Roman"; mso-pagination: widow-orphan; mso-fareast-font-family: "Times New Roman"; mso-style-next: Normal; mso-outline-level: 8; mso-list: l30 level8 lfo44; tab-stops: list 1.0in
+}
+P.MsoHeading9 {
+	FONT-SIZE: 11pt; MARGIN: 12pt 0in 3pt 1.1in; COLOR: black; TEXT-INDENT: -1.1in; FONT-FAMILY: Arial; mso-pagination: widow-orphan; mso-fareast-font-family: "Times New Roman"; mso-style-next: Normal; mso-outline-level: 9; mso-list: l30 level9 lfo44; tab-stops: list 1.1in
+}
+LI.MsoHeading9 {
+	FONT-SIZE: 11pt; MARGIN: 12pt 0in 3pt 1.1in; COLOR: black; TEXT-INDENT: -1.1in; FONT-FAMILY: Arial; mso-pagination: widow-orphan; mso-fareast-font-family: "Times New Roman"; mso-style-next: Normal; mso-outline-level: 9; mso-list: l30 level9 lfo44; tab-stops: list 1.1in
+}
+DIV.MsoHeading9 {
+	FONT-SIZE: 11pt; MARGIN: 12pt 0in 3pt 1.1in; COLOR: black; TEXT-INDENT: -1.1in; FONT-FAMILY: Arial; mso-pagination: widow-orphan; mso-fareast-font-family: "Times New Roman"; mso-style-next: Normal; mso-outline-level: 9; mso-list: l30 level9 lfo44; tab-stops: list 1.1in
+}
+P.MsoToc1 {
+	FONT-SIZE: 12pt; MARGIN: 0in 0in 0pt; COLOR: black; FONT-FAMILY: "Times New Roman"; mso-pagination: widow-orphan; mso-fareast-font-family: "Times New Roman"; mso-style-next: Normal; mso-style-update: auto
+}
+LI.MsoToc1 {
+	FONT-SIZE: 12pt; MARGIN: 0in 0in 0pt; COLOR: black; FONT-FAMILY: "Times New Roman"; mso-pagination: widow-orphan; mso-fareast-font-family: "Times New Roman"; mso-style-next: Normal; mso-style-update: auto
+}
+DIV.MsoToc1 {
+	FONT-SIZE: 12pt; MARGIN: 0in 0in 0pt; COLOR: black; FONT-FAMILY: "Times New Roman"; mso-pagination: widow-orphan; mso-fareast-font-family: "Times New Roman"; mso-style-next: Normal; mso-style-update: auto
+}
+P.MsoToc2 {
+	FONT-SIZE: 12pt; MARGIN: 0in 0in 0pt 12pt; COLOR: black; FONT-FAMILY: "Times New Roman"; mso-pagination: widow-orphan; mso-fareast-font-family: "Times New Roman"; mso-style-next: Normal; mso-style-update: auto
+}
+LI.MsoToc2 {
+	FONT-SIZE: 12pt; MARGIN: 0in 0in 0pt 12pt; COLOR: black; FONT-FAMILY: "Times New Roman"; mso-pagination: widow-orphan; mso-fareast-font-family: "Times New Roman"; mso-style-next: Normal; mso-style-update: auto
+}
+DIV.MsoToc2 {
+	FONT-SIZE: 12pt; MARGIN: 0in 0in 0pt 12pt; COLOR: black; FONT-FAMILY: "Times New Roman"; mso-pagination: widow-orphan; mso-fareast-font-family: "Times New Roman"; mso-style-next: Normal; mso-style-update: auto
+}
+P.MsoToc3 {
+	FONT-SIZE: 12pt; MARGIN: 0in 0in 0pt 24pt; COLOR: black; FONT-FAMILY: "Times New Roman"; mso-pagination: widow-orphan; mso-fareast-font-family: "Times New Roman"; mso-style-next: Normal; mso-style-update: auto
+}
+LI.MsoToc3 {
+	FONT-SIZE: 12pt; MARGIN: 0in 0in 0pt 24pt; COLOR: black; FONT-FAMILY: "Times New Roman"; mso-pagination: widow-orphan; mso-fareast-font-family: "Times New Roman"; mso-style-next: Normal; mso-style-update: auto
+}
+DIV.MsoToc3 {
+	FONT-SIZE: 12pt; MARGIN: 0in 0in 0pt 24pt; COLOR: black; FONT-FAMILY: "Times New Roman"; mso-pagination: widow-orphan; mso-fareast-font-family: "Times New Roman"; mso-style-next: Normal; mso-style-update: auto
+}
+P.MsoToc4 {
+	FONT-SIZE: 12pt; MARGIN: 0in 0in 0pt 0.5in; COLOR: black; FONT-FAMILY: "Times New Roman"; mso-pagination: widow-orphan; mso-fareast-font-family: "Times New Roman"; mso-style-next: Normal; mso-style-update: auto
+}
+LI.MsoToc4 {
+	FONT-SIZE: 12pt; MARGIN: 0in 0in 0pt 0.5in; COLOR: black; FONT-FAMILY: "Times New Roman"; mso-pagination: widow-orphan; mso-fareast-font-family: "Times New Roman"; mso-style-next: Normal; mso-style-update: auto
+}
+DIV.MsoToc4 {
+	FONT-SIZE: 12pt; MARGIN: 0in 0in 0pt 0.5in; COLOR: black; FONT-FAMILY: "Times New Roman"; mso-pagination: widow-orphan; mso-fareast-font-family: "Times New Roman"; mso-style-next: Normal; mso-style-update: auto
+}
+P.MsoToc5 {
+	FONT-SIZE: 12pt; MARGIN: 0in 0in 0pt 48pt; COLOR: black; FONT-FAMILY: "Times New Roman"; mso-pagination: widow-orphan; mso-fareast-font-family: "Times New Roman"; mso-style-next: Normal; mso-style-update: auto
+}
+LI.MsoToc5 {
+	FONT-SIZE: 12pt; MARGIN: 0in 0in 0pt 48pt; COLOR: black; FONT-FAMILY: "Times New Roman"; mso-pagination: widow-orphan; mso-fareast-font-family: "Times New Roman"; mso-style-next: Normal; mso-style-update: auto
+}
+DIV.MsoToc5 {
+	FONT-SIZE: 12pt; MARGIN: 0in 0in 0pt 48pt; COLOR: black; FONT-FAMILY: "Times New Roman"; mso-pagination: widow-orphan; mso-fareast-font-family: "Times New Roman"; mso-style-next: Normal; mso-style-update: auto
+}
+P.MsoToc6 {
+	FONT-SIZE: 12pt; MARGIN: 0in 0in 0pt 60pt; COLOR: black; FONT-FAMILY: "Times New Roman"; mso-pagination: widow-orphan; mso-fareast-font-family: "Times New Roman"; mso-style-next: Normal; mso-style-update: auto
+}
+LI.MsoToc6 {
+	FONT-SIZE: 12pt; MARGIN: 0in 0in 0pt 60pt; COLOR: black; FONT-FAMILY: "Times New Roman"; mso-pagination: widow-orphan; mso-fareast-font-family: "Times New Roman"; mso-style-next: Normal; mso-style-update: auto
+}
+DIV.MsoToc6 {
+	FONT-SIZE: 12pt; MARGIN: 0in 0in 0pt 60pt; COLOR: black; FONT-FAMILY: "Times New Roman"; mso-pagination: widow-orphan; mso-fareast-font-family: "Times New Roman"; mso-style-next: Normal; mso-style-update: auto
+}
+P.MsoToc7 {
+	FONT-SIZE: 12pt; MARGIN: 0in 0in 0pt 1in; COLOR: black; FONT-FAMILY: "Times New Roman"; mso-pagination: widow-orphan; mso-fareast-font-family: "Times New Roman"; mso-style-next: Normal; mso-style-update: auto
+}
+LI.MsoToc7 {
+	FONT-SIZE: 12pt; MARGIN: 0in 0in 0pt 1in; COLOR: black; FONT-FAMILY: "Times New Roman"; mso-pagination: widow-orphan; mso-fareast-font-family: "Times New Roman"; mso-style-next: Normal; mso-style-update: auto
+}
+DIV.MsoToc7 {
+	FONT-SIZE: 12pt; MARGIN: 0in 0in 0pt 1in; COLOR: black; FONT-FAMILY: "Times New Roman"; mso-pagination: widow-orphan; mso-fareast-font-family: "Times New Roman"; mso-style-next: Normal; mso-style-update: auto
+}
+P.MsoToc8 {
+	FONT-SIZE: 12pt; MARGIN: 0in 0in 0pt 84pt; COLOR: black; FONT-FAMILY: "Times New Roman"; mso-pagination: widow-orphan; mso-fareast-font-family: "Times New Roman"; mso-style-next: Normal; mso-style-update: auto
+}
+LI.MsoToc8 {
+	FONT-SIZE: 12pt; MARGIN: 0in 0in 0pt 84pt; COLOR: black; FONT-FAMILY: "Times New Roman"; mso-pagination: widow-orphan; mso-fareast-font-family: "Times New Roman"; mso-style-next: Normal; mso-style-update: auto
+}
+DIV.MsoToc8 {
+	FONT-SIZE: 12pt; MARGIN: 0in 0in 0pt 84pt; COLOR: black; FONT-FAMILY: "Times New Roman"; mso-pagination: widow-orphan; mso-fareast-font-family: "Times New Roman"; mso-style-next: Normal; mso-style-update: auto
+}
+P.MsoToc9 {
+	FONT-SIZE: 12pt; MARGIN: 0in 0in 0pt 96pt; COLOR: black; FONT-FAMILY: "Times New Roman"; mso-pagination: widow-orphan; mso-fareast-font-family: "Times New Roman"; mso-style-next: Normal; mso-style-update: auto
+}
+LI.MsoToc9 {
+	FONT-SIZE: 12pt; MARGIN: 0in 0in 0pt 96pt; COLOR: black; FONT-FAMILY: "Times New Roman"; mso-pagination: widow-orphan; mso-fareast-font-family: "Times New Roman"; mso-style-next: Normal; mso-style-update: auto
+}
+DIV.MsoToc9 {
+	FONT-SIZE: 12pt; MARGIN: 0in 0in 0pt 96pt; COLOR: black; FONT-FAMILY: "Times New Roman"; mso-pagination: widow-orphan; mso-fareast-font-family: "Times New Roman"; mso-style-next: Normal; mso-style-update: auto
+}
+P.MsoHeader {
+	FONT-SIZE: 12pt; MARGIN: 0in 0in 0pt; COLOR: black; FONT-FAMILY: "Times New Roman"; mso-pagination: widow-orphan; mso-fareast-font-family: "Times New Roman"; tab-stops: center 3.0in right 6.0in
+}
+LI.MsoHeader {
+	FONT-SIZE: 12pt; MARGIN: 0in 0in 0pt; COLOR: black; FONT-FAMILY: "Times New Roman"; mso-pagination: widow-orphan; mso-fareast-font-family: "Times New Roman"; tab-stops: center 3.0in right 6.0in
+}
+DIV.MsoHeader {
+	FONT-SIZE: 12pt; MARGIN: 0in 0in 0pt; COLOR: black; FONT-FAMILY: "Times New Roman"; mso-pagination: widow-orphan; mso-fareast-font-family: "Times New Roman"; tab-stops: center 3.0in right 6.0in
+}
+P.MsoBodyText {
+	FONT-SIZE: 12pt; MARGIN: 0in 0in 0pt; COLOR: black; FONT-FAMILY: "Times New Roman"; TEXT-ALIGN: center; mso-pagination: widow-orphan; mso-fareast-font-family: "Times New Roman"
+}
+LI.MsoBodyText {
+	FONT-SIZE: 12pt; MARGIN: 0in 0in 0pt; COLOR: black; FONT-FAMILY: "Times New Roman"; TEXT-ALIGN: center; mso-pagination: widow-orphan; mso-fareast-font-family: "Times New Roman"
+}
+DIV.MsoBodyText {
+	FONT-SIZE: 12pt; MARGIN: 0in 0in 0pt; COLOR: black; FONT-FAMILY: "Times New Roman"; TEXT-ALIGN: center; mso-pagination: widow-orphan; mso-fareast-font-family: "Times New Roman"
+}
+A:link {
+	COLOR: #0000ee; TEXT-DECORATION: underline; text-underline: single
+}
+SPAN.MsoHyperlink {
+	COLOR: #0000ee; TEXT-DECORATION: underline; text-underline: single
+}
+A:visited {
+	COLOR: #551a8b; TEXT-DECORATION: underline; text-underline: single
+}
+SPAN.MsoHyperlinkFollowed {
+	COLOR: #551a8b; TEXT-DECORATION: underline; text-underline: single
+}
+P {
+	FONT-SIZE: 12pt; MARGIN-LEFT: 0in; COLOR: black; MARGIN-RIGHT: 0in; FONT-FAMILY: "Times New Roman"; mso-pagination: widow-orphan; mso-fareast-font-family: "Times New Roman"; mso-margin-top-alt: auto; mso-margin-bottom-alt: auto
+}
+TT {
+	mso-fareast-font-family: "Courier New"; mso-ascii-font-family: "Courier New"; mso-hansi-font-family: "Courier New"; mso-bidi-font-family: "Courier New"
+}
+DIV.Section1 {
+	page: Section1
+}
+OL {
+	MARGIN-BOTTOM: 0in
+}
+UL {
+	MARGIN-BOTTOM: 0in
+}
+</STYLE>
+<!--[if gte mso 9]><xml>
+ <o:shapedefaults v:ext="edit" spidmax="1027"/>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <o:shapelayout v:ext="edit">
+  <o:idmap v:ext="edit" data="1"/>
+ </o:shapelayout></xml><![endif]-->
+<META content="Zeno Geradts" name=Author>
+<META content=article name=Classification>
+<META content="Use of Khoros for deblurring techniques in image processing" 
+name=Description>
+<META 
+content="forensic image processing&#13;&#13;&#10;maximum entropy, total variation, image restoration" 
+name=KeyWords></HEAD>
+<BODY lang=EN-US style="tab-interval: .5in" vLink=#551a8b aLink=#ff0000 
+link=#0000ee bgColor=white>
+<DIV class=Section1>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><B><SPAN 
+style="FONT-SIZE: 20pt; mso-bidi-font-size: 12.0pt">USE&nbsp;OF&nbsp;KHOROS&nbsp;FOR&nbsp;DEBLURRING 
+TECHNIQUES IN VIDEO IMAGE PROCESSING<o:p></o:p></SPAN></B></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><B><SPAN 
+style="FONT-SIZE: 20pt; mso-bidi-font-size: 12.0pt"><![if !supportEmptyParas]><![endif]>&nbsp;<o:p></o:p></SPAN></B></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>Keywords: maximum 
+entropy, total variation, image restoration</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><IMG id=_x0000_i2319 
+height=287 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00001.gif" 
+width=574 border=0></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>AUTHOR: ZENO 
+GERADTS</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>Netherlands Forensic 
+Institute</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>Volmerlaan 17</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>2288 GD 
+Rijswijk<BR>Netherlands</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><A 
+href="http://forensic.to/">http://forensic.to/</A></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><![if !supportEmptyParas]><![endif]>&nbsp;<o:p></o:p></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>Email <A 
+href="mailto:zeno@holmes.nl">zeno@holmes.nl</A></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><![if !supportEmptyParas]><![endif]>&nbsp;<o:p></o:p></P>
+<P style="TEXT-ALIGN: center" 
+align=center><![if !supportEmptyParas]><![endif]>&nbsp;<o:p></o:p></P>
+<H2 
+style="MARGIN-LEFT: 0in; TEXT-INDENT: 0in; mso-list: none; tab-stops: .5in"><A 
+name=_Toc485481156>ABSTRACT</A></H2>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>In the last decade 
+many systems for forensic images have been developed. Further in banks, shops 
+and roads many video camera's are making images of robberies and other criminal 
+activities. Often images are blurred due to defocusing, movement or poor 
+lighting condition. For this reason often the question for deblurring the images 
+is requested at forensic laboratories.</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>In this research 
+report different methods for deblurring of digital images are compared Since the 
+computer speed is getting faster each year, more complex methods for deblurring 
+can be used. In the last five years many new methods for deblurring images are 
+developed. They are developed for aerospace and medicine research (Maximum 
+Entropy method) or for military purposes (Total Variation). A comparison is made 
+with other methods as Wiener-filtering. In preliminary research it appeared 
+however that simple methods as local contrast enhancement might give a better 
+result.</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>It appears that the 
+Maximum Entropy-method in combination with a premodel of the estimated blur 
+function, will give a better result than the Wiener restoration. The resulting 
+image is more stable. Further for larger areas the Total Variation method works 
+well for noise suppression. Sometimes simpler methods can be more suitable for 
+deblurring the images. A problem in forensic images is that often the blur 
+function is not known. More efforts should be made to improve the Total 
+Variation Method and reduce the computing time.</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><![if !supportEmptyParas]><![endif]>&nbsp;<o:p></o:p></P>
+<H1><A name=_Toc485481157><![if !supportLists]>1<SPAN 
+style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN><![endif]>Table of Contents</A></H1>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><![if !supportEmptyParas]><![endif]>&nbsp;<o:p></o:p></P>
+<P class=MsoToc2 style="tab-stops: right dotted 431.5pt"><!--[if supportFields]><span
+style='mso-element:field-begin'></span><span style="mso-spacerun: yes"> </span>TOC
+\o &quot;1-3&quot; \h \z <span style='mso-element:field-separator'></span><![endif]--><SPAN 
+class=MsoHyperlink><A 
+href="http://geradts.com/html/Documents/USE%20OF%20KHOROS%20IN%20DEBLURRING%20TECHNIQUES%20IN%20VIDEO%20IMAGE%20PROCESSING.htm#_Toc485481156"><SPAN 
+style="mso-bidi-font-size: 18.0pt">ABSTRACT</SPAN><SPAN 
+style="DISPLAY: none; COLOR: black; TEXT-DECORATION: none; text-underline: none; mso-hide: screen"><SPAN 
+style="mso-tab-count: 1 dotted">. </SPAN></SPAN><!--[if supportFields]><span
+style='color:black;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'><span style='mso-element:field-begin'></span></span><span
+style='color:black;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'> PAGEREF _Toc485481156 \h </span><span style='color:black;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-separator'></span></span><![endif]--><SPAN 
+style="DISPLAY: none; COLOR: black; TEXT-DECORATION: none; text-underline: none; mso-hide: screen">1</SPAN><SPAN 
+style="DISPLAY: none; COLOR: black; TEXT-DECORATION: none; text-underline: none; mso-hide: screen"><!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003400380035003400380031003100350036000000</w:data>
+</xml><![endif]--></SPAN><!--[if supportFields]><span style='color:black;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-end'></span></span><![endif]--></A></SPAN><SPAN 
+style="COLOR: windowtext"><o:p></o:p></SPAN></P>
+<P class=MsoToc1 style="tab-stops: 24.0pt right dotted 431.5pt"><SPAN 
+class=MsoHyperlink><A 
+href="http://geradts.com/html/Documents/USE%20OF%20KHOROS%20IN%20DEBLURRING%20TECHNIQUES%20IN%20VIDEO%20IMAGE%20PROCESSING.htm#_Toc485481157">1<SPAN 
+style="COLOR: windowtext; TEXT-DECORATION: none; text-underline: none"><SPAN 
+style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </SPAN></SPAN>Table of 
+Contents<SPAN 
+style="DISPLAY: none; COLOR: black; TEXT-DECORATION: none; text-underline: none; mso-hide: screen"><SPAN 
+style="mso-tab-count: 1 dotted">. </SPAN></SPAN><!--[if supportFields]><span
+style='color:black;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'><span style='mso-element:field-begin'></span></span><span
+style='color:black;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'> PAGEREF _Toc485481157 \h </span><span style='color:black;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-separator'></span></span><![endif]--><SPAN 
+style="DISPLAY: none; COLOR: black; TEXT-DECORATION: none; text-underline: none; mso-hide: screen">1</SPAN><SPAN 
+style="DISPLAY: none; COLOR: black; TEXT-DECORATION: none; text-underline: none; mso-hide: screen"><!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003400380035003400380031003100350037000000</w:data>
+</xml><![endif]--></SPAN><!--[if supportFields]><span style='color:black;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-end'></span></span><![endif]--></A></SPAN><SPAN 
+style="COLOR: windowtext"><o:p></o:p></SPAN></P>
+<P class=MsoToc1 style="tab-stops: 24.0pt right dotted 431.5pt"><SPAN 
+class=MsoHyperlink><A 
+href="http://geradts.com/html/Documents/USE%20OF%20KHOROS%20IN%20DEBLURRING%20TECHNIQUES%20IN%20VIDEO%20IMAGE%20PROCESSING.htm#_Toc485481158">2<SPAN 
+style="COLOR: windowtext; TEXT-DECORATION: none; text-underline: none"><SPAN 
+style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN>Introduction<SPAN 
+style="DISPLAY: none; COLOR: black; TEXT-DECORATION: none; text-underline: none; mso-hide: screen"><SPAN 
+style="mso-tab-count: 1 dotted">. </SPAN></SPAN><!--[if supportFields]><span
+style='color:black;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'><span style='mso-element:field-begin'></span></span><span
+style='color:black;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'> PAGEREF _Toc485481158 \h </span><span style='color:black;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-separator'></span></span><![endif]--><SPAN 
+style="DISPLAY: none; COLOR: black; TEXT-DECORATION: none; text-underline: none; mso-hide: screen">2</SPAN><SPAN 
+style="DISPLAY: none; COLOR: black; TEXT-DECORATION: none; text-underline: none; mso-hide: screen"><!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003400380035003400380031003100350038000000</w:data>
+</xml><![endif]--></SPAN><!--[if supportFields]><span style='color:black;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-end'></span></span><![endif]--></A></SPAN><SPAN 
+style="COLOR: windowtext"><o:p></o:p></SPAN></P>
+<P class=MsoToc1 style="tab-stops: 24.0pt right dotted 431.5pt"><SPAN 
+class=MsoHyperlink><A 
+href="http://geradts.com/html/Documents/USE%20OF%20KHOROS%20IN%20DEBLURRING%20TECHNIQUES%20IN%20VIDEO%20IMAGE%20PROCESSING.htm#_Toc485481159">3<SPAN 
+style="COLOR: windowtext; TEXT-DECORATION: none; text-underline: none"><SPAN 
+style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </SPAN></SPAN>Blur and 
+Noise<SPAN 
+style="DISPLAY: none; COLOR: black; TEXT-DECORATION: none; text-underline: none; mso-hide: screen"><SPAN 
+style="mso-tab-count: 1 dotted">. </SPAN></SPAN><!--[if supportFields]><span
+style='color:black;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'><span style='mso-element:field-begin'></span></span><span
+style='color:black;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'> PAGEREF _Toc485481159 \h </span><span style='color:black;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-separator'></span></span><![endif]--><SPAN 
+style="DISPLAY: none; COLOR: black; TEXT-DECORATION: none; text-underline: none; mso-hide: screen">3</SPAN><SPAN 
+style="DISPLAY: none; COLOR: black; TEXT-DECORATION: none; text-underline: none; mso-hide: screen"><!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003400380035003400380031003100350039000000</w:data>
+</xml><![endif]--></SPAN><!--[if supportFields]><span style='color:black;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-end'></span></span><![endif]--></A></SPAN><SPAN 
+style="COLOR: windowtext"><o:p></o:p></SPAN></P>
+<P class=MsoToc1 style="tab-stops: 24.0pt right dotted 431.5pt"><SPAN 
+class=MsoHyperlink><A 
+href="http://geradts.com/html/Documents/USE%20OF%20KHOROS%20IN%20DEBLURRING%20TECHNIQUES%20IN%20VIDEO%20IMAGE%20PROCESSING.htm#_Toc485481160">4<SPAN 
+style="COLOR: windowtext; TEXT-DECORATION: none; text-underline: none"><SPAN 
+style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </SPAN></SPAN>Maximum 
+Entropy<SPAN 
+style="DISPLAY: none; COLOR: black; TEXT-DECORATION: none; text-underline: none; mso-hide: screen"><SPAN 
+style="mso-tab-count: 1 dotted">. </SPAN></SPAN><!--[if supportFields]><span
+style='color:black;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'><span style='mso-element:field-begin'></span></span><span
+style='color:black;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'> PAGEREF _Toc485481160 \h </span><span style='color:black;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-separator'></span></span><![endif]--><SPAN 
+style="DISPLAY: none; COLOR: black; TEXT-DECORATION: none; text-underline: none; mso-hide: screen">3</SPAN><SPAN 
+style="DISPLAY: none; COLOR: black; TEXT-DECORATION: none; text-underline: none; mso-hide: screen"><!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003400380035003400380031003100360030000000</w:data>
+</xml><![endif]--></SPAN><!--[if supportFields]><span style='color:black;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-end'></span></span><![endif]--></A></SPAN><SPAN 
+style="COLOR: windowtext"><o:p></o:p></SPAN></P>
+<P class=MsoToc2 style="tab-stops: 48.0pt right dotted 431.5pt"><SPAN 
+class=MsoHyperlink><A 
+href="http://geradts.com/html/Documents/USE%20OF%20KHOROS%20IN%20DEBLURRING%20TECHNIQUES%20IN%20VIDEO%20IMAGE%20PROCESSING.htm#_Toc485481161"><SPAN 
+style="mso-bidi-font-size: 18.0pt">4.1</SPAN><SPAN 
+style="COLOR: windowtext; TEXT-DECORATION: none; text-underline: none"><SPAN 
+style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN><SPAN style="mso-bidi-font-size: 18.0pt">Introduction</SPAN><SPAN 
+style="DISPLAY: none; COLOR: black; TEXT-DECORATION: none; text-underline: none; mso-hide: screen"><SPAN 
+style="mso-tab-count: 1 dotted">. </SPAN></SPAN><!--[if supportFields]><span
+style='color:black;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'><span style='mso-element:field-begin'></span></span><span
+style='color:black;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'> PAGEREF _Toc485481161 \h </span><span style='color:black;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-separator'></span></span><![endif]--><SPAN 
+style="DISPLAY: none; COLOR: black; TEXT-DECORATION: none; text-underline: none; mso-hide: screen">3</SPAN><SPAN 
+style="DISPLAY: none; COLOR: black; TEXT-DECORATION: none; text-underline: none; mso-hide: screen"><!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003400380035003400380031003100360031000000</w:data>
+</xml><![endif]--></SPAN><!--[if supportFields]><span style='color:black;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-end'></span></span><![endif]--></A></SPAN><SPAN 
+style="COLOR: windowtext"><o:p></o:p></SPAN></P>
+<P class=MsoToc2 style="tab-stops: 48.0pt right dotted 431.5pt"><SPAN 
+class=MsoHyperlink><A 
+href="http://geradts.com/html/Documents/USE%20OF%20KHOROS%20IN%20DEBLURRING%20TECHNIQUES%20IN%20VIDEO%20IMAGE%20PROCESSING.htm#_Toc485481162"><SPAN 
+style="mso-bidi-font-size: 18.0pt">4.2</SPAN><SPAN 
+style="COLOR: windowtext; TEXT-DECORATION: none; text-underline: none"><SPAN 
+style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN><SPAN style="mso-bidi-font-size: 18.0pt">Classical Maximum 
+Entropy</SPAN><SPAN 
+style="DISPLAY: none; COLOR: black; TEXT-DECORATION: none; text-underline: none; mso-hide: screen"><SPAN 
+style="mso-tab-count: 1 dotted">. </SPAN></SPAN><!--[if supportFields]><span
+style='color:black;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'><span style='mso-element:field-begin'></span></span><span
+style='color:black;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'> PAGEREF _Toc485481162 \h </span><span style='color:black;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-separator'></span></span><![endif]--><SPAN 
+style="DISPLAY: none; COLOR: black; TEXT-DECORATION: none; text-underline: none; mso-hide: screen">3</SPAN><SPAN 
+style="DISPLAY: none; COLOR: black; TEXT-DECORATION: none; text-underline: none; mso-hide: screen"><!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003400380035003400380031003100360032000000</w:data>
+</xml><![endif]--></SPAN><!--[if supportFields]><span style='color:black;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-end'></span></span><![endif]--></A></SPAN><SPAN 
+style="COLOR: windowtext"><o:p></o:p></SPAN></P>
+<P class=MsoToc2 style="tab-stops: 48.0pt right dotted 431.5pt"><SPAN 
+class=MsoHyperlink><A 
+href="http://geradts.com/html/Documents/USE%20OF%20KHOROS%20IN%20DEBLURRING%20TECHNIQUES%20IN%20VIDEO%20IMAGE%20PROCESSING.htm#_Toc485481163"><SPAN 
+style="mso-bidi-font-size: 18.0pt">4.3</SPAN><SPAN 
+style="COLOR: windowtext; TEXT-DECORATION: none; text-underline: none"><SPAN 
+style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN><SPAN style="mso-bidi-font-size: 18.0pt">Bayesian probability 
+theory: the Cox axioms</SPAN><SPAN 
+style="DISPLAY: none; COLOR: black; TEXT-DECORATION: none; text-underline: none; mso-hide: screen"><SPAN 
+style="mso-tab-count: 1 dotted">. </SPAN></SPAN><!--[if supportFields]><span
+style='color:black;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'><span style='mso-element:field-begin'></span></span><span
+style='color:black;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'> PAGEREF _Toc485481163 \h </span><span style='color:black;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-separator'></span></span><![endif]--><SPAN 
+style="DISPLAY: none; COLOR: black; TEXT-DECORATION: none; text-underline: none; mso-hide: screen">4</SPAN><SPAN 
+style="DISPLAY: none; COLOR: black; TEXT-DECORATION: none; text-underline: none; mso-hide: screen"><!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003400380035003400380031003100360033000000</w:data>
+</xml><![endif]--></SPAN><!--[if supportFields]><span style='color:black;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-end'></span></span><![endif]--></A></SPAN><SPAN 
+style="COLOR: windowtext"><o:p></o:p></SPAN></P>
+<P class=MsoToc2 style="tab-stops: 48.0pt right dotted 431.5pt"><SPAN 
+class=MsoHyperlink><A 
+href="http://geradts.com/html/Documents/USE%20OF%20KHOROS%20IN%20DEBLURRING%20TECHNIQUES%20IN%20VIDEO%20IMAGE%20PROCESSING.htm#_Toc485481164"><SPAN 
+style="mso-bidi-font-size: 18.0pt">4.4</SPAN><SPAN 
+style="COLOR: windowtext; TEXT-DECORATION: none; text-underline: none"><SPAN 
+style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN><SPAN style="mso-bidi-font-size: 18.0pt">The axioms of maximum 
+entropy</SPAN><SPAN 
+style="DISPLAY: none; COLOR: black; TEXT-DECORATION: none; text-underline: none; mso-hide: screen"><SPAN 
+style="mso-tab-count: 1 dotted">. </SPAN></SPAN><!--[if supportFields]><span
+style='color:black;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'><span style='mso-element:field-begin'></span></span><span
+style='color:black;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'> PAGEREF _Toc485481164 \h </span><span style='color:black;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-separator'></span></span><![endif]--><SPAN 
+style="DISPLAY: none; COLOR: black; TEXT-DECORATION: none; text-underline: none; mso-hide: screen">4</SPAN><SPAN 
+style="DISPLAY: none; COLOR: black; TEXT-DECORATION: none; text-underline: none; mso-hide: screen"><!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003400380035003400380031003100360034000000</w:data>
+</xml><![endif]--></SPAN><!--[if supportFields]><span style='color:black;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-end'></span></span><![endif]--></A></SPAN><SPAN 
+style="COLOR: windowtext"><o:p></o:p></SPAN></P>
+<P class=MsoToc2 style="tab-stops: 48.0pt right dotted 431.5pt"><SPAN 
+class=MsoHyperlink><A 
+href="http://geradts.com/html/Documents/USE%20OF%20KHOROS%20IN%20DEBLURRING%20TECHNIQUES%20IN%20VIDEO%20IMAGE%20PROCESSING.htm#_Toc485481165"><SPAN 
+style="mso-bidi-font-size: 18.0pt">4.5</SPAN><SPAN 
+style="COLOR: windowtext; TEXT-DECORATION: none; text-underline: none"><SPAN 
+style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN><SPAN 
+style="mso-bidi-font-size: 18.0pt">Quantification</SPAN><SPAN 
+style="DISPLAY: none; COLOR: black; TEXT-DECORATION: none; text-underline: none; mso-hide: screen"><SPAN 
+style="mso-tab-count: 1 dotted">. </SPAN></SPAN><!--[if supportFields]><span
+style='color:black;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'><span style='mso-element:field-begin'></span></span><span
+style='color:black;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'> PAGEREF _Toc485481165 \h </span><span style='color:black;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-separator'></span></span><![endif]--><SPAN 
+style="DISPLAY: none; COLOR: black; TEXT-DECORATION: none; text-underline: none; mso-hide: screen">6</SPAN><SPAN 
+style="DISPLAY: none; COLOR: black; TEXT-DECORATION: none; text-underline: none; mso-hide: screen"><!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003400380035003400380031003100360035000000</w:data>
+</xml><![endif]--></SPAN><!--[if supportFields]><span style='color:black;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-end'></span></span><![endif]--></A></SPAN><SPAN 
+style="COLOR: windowtext"><o:p></o:p></SPAN></P>
+<P class=MsoToc3 style="tab-stops: 1.0in right dotted 431.5pt"><SPAN 
+class=MsoHyperlink><A 
+href="http://geradts.com/html/Documents/USE%20OF%20KHOROS%20IN%20DEBLURRING%20TECHNIQUES%20IN%20VIDEO%20IMAGE%20PROCESSING.htm#_Toc485481166">4.5.1<SPAN 
+style="COLOR: windowtext; TEXT-DECORATION: none; text-underline: none"><SPAN 
+style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN>Choice of regularization parameter<SPAN 
+style="DISPLAY: none; COLOR: black; TEXT-DECORATION: none; text-underline: none; mso-hide: screen"><SPAN 
+style="mso-tab-count: 1 dotted"> </SPAN></SPAN><!--[if supportFields]><span
+style='color:black;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'><span style='mso-element:field-begin'></span></span><span
+style='color:black;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'> PAGEREF _Toc485481166 \h </span><span style='color:black;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-separator'></span></span><![endif]--><SPAN 
+style="DISPLAY: none; COLOR: black; TEXT-DECORATION: none; text-underline: none; mso-hide: screen">7</SPAN><SPAN 
+style="DISPLAY: none; COLOR: black; TEXT-DECORATION: none; text-underline: none; mso-hide: screen"><!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003400380035003400380031003100360036000000</w:data>
+</xml><![endif]--></SPAN><!--[if supportFields]><span style='color:black;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-end'></span></span><![endif]--></A></SPAN><SPAN 
+style="COLOR: windowtext"><o:p></o:p></SPAN></P>
+<P class=MsoToc2 style="tab-stops: 48.0pt right dotted 431.5pt"><SPAN 
+class=MsoHyperlink><A 
+href="http://geradts.com/html/Documents/USE%20OF%20KHOROS%20IN%20DEBLURRING%20TECHNIQUES%20IN%20VIDEO%20IMAGE%20PROCESSING.htm#_Toc485481167"><SPAN 
+style="mso-bidi-font-size: 18.0pt">4.6</SPAN><SPAN 
+style="COLOR: windowtext; TEXT-DECORATION: none; text-underline: none"><SPAN 
+style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN><SPAN style="mso-bidi-font-size: 18.0pt">Premodel by 
+Gull</SPAN><SPAN 
+style="DISPLAY: none; COLOR: black; TEXT-DECORATION: none; text-underline: none; mso-hide: screen"><SPAN 
+style="mso-tab-count: 1 dotted"> </SPAN></SPAN><!--[if supportFields]><span
+style='color:black;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'><span style='mso-element:field-begin'></span></span><span
+style='color:black;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'> PAGEREF _Toc485481167 \h </span><span style='color:black;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-separator'></span></span><![endif]--><SPAN 
+style="DISPLAY: none; COLOR: black; TEXT-DECORATION: none; text-underline: none; mso-hide: screen">8</SPAN><SPAN 
+style="DISPLAY: none; COLOR: black; TEXT-DECORATION: none; text-underline: none; mso-hide: screen"><!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003400380035003400380031003100360037000000</w:data>
+</xml><![endif]--></SPAN><!--[if supportFields]><span style='color:black;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-end'></span></span><![endif]--></A></SPAN><SPAN 
+style="COLOR: windowtext"><o:p></o:p></SPAN></P>
+<P class=MsoToc1 style="tab-stops: 24.0pt right dotted 431.5pt"><SPAN 
+class=MsoHyperlink><A 
+href="http://geradts.com/html/Documents/USE%20OF%20KHOROS%20IN%20DEBLURRING%20TECHNIQUES%20IN%20VIDEO%20IMAGE%20PROCESSING.htm#_Toc485481168">5<SPAN 
+style="COLOR: windowtext; TEXT-DECORATION: none; text-underline: none"><SPAN 
+style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </SPAN></SPAN>Minimal 
+Total Variation<SPAN 
+style="DISPLAY: none; COLOR: black; TEXT-DECORATION: none; text-underline: none; mso-hide: screen"><SPAN 
+style="mso-tab-count: 1 dotted">. </SPAN></SPAN><!--[if supportFields]><span
+style='color:black;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'><span style='mso-element:field-begin'></span></span><span
+style='color:black;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'> PAGEREF _Toc485481168 \h </span><span style='color:black;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-separator'></span></span><![endif]--><SPAN 
+style="DISPLAY: none; COLOR: black; TEXT-DECORATION: none; text-underline: none; mso-hide: screen">9</SPAN><SPAN 
+style="DISPLAY: none; COLOR: black; TEXT-DECORATION: none; text-underline: none; mso-hide: screen"><!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003400380035003400380031003100360038000000</w:data>
+</xml><![endif]--></SPAN><!--[if supportFields]><span style='color:black;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-end'></span></span><![endif]--></A></SPAN><SPAN 
+style="COLOR: windowtext"><o:p></o:p></SPAN></P>
+<P class=MsoToc2 style="tab-stops: 48.0pt right dotted 431.5pt"><SPAN 
+class=MsoHyperlink><A 
+href="http://geradts.com/html/Documents/USE%20OF%20KHOROS%20IN%20DEBLURRING%20TECHNIQUES%20IN%20VIDEO%20IMAGE%20PROCESSING.htm#_Toc485481169"><SPAN 
+style="mso-bidi-font-size: 18.0pt">5.1</SPAN><SPAN 
+style="COLOR: windowtext; TEXT-DECORATION: none; text-underline: none"><SPAN 
+style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN><SPAN style="mso-bidi-font-size: 18.0pt">MTV 
+definitions</SPAN><SPAN 
+style="DISPLAY: none; COLOR: black; TEXT-DECORATION: none; text-underline: none; mso-hide: screen"><SPAN 
+style="mso-tab-count: 1 dotted">. </SPAN></SPAN><!--[if supportFields]><span
+style='color:black;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'><span style='mso-element:field-begin'></span></span><span
+style='color:black;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'> PAGEREF _Toc485481169 \h </span><span style='color:black;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-separator'></span></span><![endif]--><SPAN 
+style="DISPLAY: none; COLOR: black; TEXT-DECORATION: none; text-underline: none; mso-hide: screen">10</SPAN><SPAN 
+style="DISPLAY: none; COLOR: black; TEXT-DECORATION: none; text-underline: none; mso-hide: screen"><!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003400380035003400380031003100360039000000</w:data>
+</xml><![endif]--></SPAN><!--[if supportFields]><span style='color:black;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-end'></span></span><![endif]--></A></SPAN><SPAN 
+style="COLOR: windowtext"><o:p></o:p></SPAN></P>
+<P class=MsoToc2 style="tab-stops: 48.0pt right dotted 431.5pt"><SPAN 
+class=MsoHyperlink><A 
+href="http://geradts.com/html/Documents/USE%20OF%20KHOROS%20IN%20DEBLURRING%20TECHNIQUES%20IN%20VIDEO%20IMAGE%20PROCESSING.htm#_Toc485481170"><SPAN 
+style="mso-bidi-font-size: 18.0pt">5.2</SPAN><SPAN 
+style="COLOR: windowtext; TEXT-DECORATION: none; text-underline: none"><SPAN 
+style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN><SPAN 
+style="mso-bidi-font-size: 18.0pt">Discretization</SPAN><SPAN 
+style="DISPLAY: none; COLOR: black; TEXT-DECORATION: none; text-underline: none; mso-hide: screen"><SPAN 
+style="mso-tab-count: 1 dotted">. </SPAN></SPAN><!--[if supportFields]><span
+style='color:black;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'><span style='mso-element:field-begin'></span></span><span
+style='color:black;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'> PAGEREF _Toc485481170 \h </span><span style='color:black;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-separator'></span></span><![endif]--><SPAN 
+style="DISPLAY: none; COLOR: black; TEXT-DECORATION: none; text-underline: none; mso-hide: screen">13</SPAN><SPAN 
+style="DISPLAY: none; COLOR: black; TEXT-DECORATION: none; text-underline: none; mso-hide: screen"><!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003400380035003400380031003100370030000000</w:data>
+</xml><![endif]--></SPAN><!--[if supportFields]><span style='color:black;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-end'></span></span><![endif]--></A></SPAN><SPAN 
+style="COLOR: windowtext"><o:p></o:p></SPAN></P>
+<P class=MsoToc2 style="tab-stops: 48.0pt right dotted 431.5pt"><SPAN 
+class=MsoHyperlink><A 
+href="http://geradts.com/html/Documents/USE%20OF%20KHOROS%20IN%20DEBLURRING%20TECHNIQUES%20IN%20VIDEO%20IMAGE%20PROCESSING.htm#_Toc485481171"><SPAN 
+style="mso-bidi-font-size: 18.0pt">5.3</SPAN><SPAN 
+style="COLOR: windowtext; TEXT-DECORATION: none; text-underline: none"><SPAN 
+style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN><SPAN style="mso-bidi-font-size: 18.0pt">MTV algorithm</SPAN><SPAN 
+style="DISPLAY: none; COLOR: black; TEXT-DECORATION: none; text-underline: none; mso-hide: screen"><SPAN 
+style="mso-tab-count: 1 dotted">.. </SPAN></SPAN><!--[if supportFields]><span
+style='color:black;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'><span style='mso-element:field-begin'></span></span><span
+style='color:black;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'> PAGEREF _Toc485481171 \h </span><span style='color:black;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-separator'></span></span><![endif]--><SPAN 
+style="DISPLAY: none; COLOR: black; TEXT-DECORATION: none; text-underline: none; mso-hide: screen">15</SPAN><SPAN 
+style="DISPLAY: none; COLOR: black; TEXT-DECORATION: none; text-underline: none; mso-hide: screen"><!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003400380035003400380031003100370031000000</w:data>
+</xml><![endif]--></SPAN><!--[if supportFields]><span style='color:black;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-end'></span></span><![endif]--></A></SPAN><SPAN 
+style="COLOR: windowtext"><o:p></o:p></SPAN></P>
+<P class=MsoToc1 style="tab-stops: 24.0pt right dotted 431.5pt"><SPAN 
+class=MsoHyperlink><A 
+href="http://geradts.com/html/Documents/USE%20OF%20KHOROS%20IN%20DEBLURRING%20TECHNIQUES%20IN%20VIDEO%20IMAGE%20PROCESSING.htm#_Toc485481172">6<SPAN 
+style="COLOR: windowtext; TEXT-DECORATION: none; text-underline: none"><SPAN 
+style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN>Experiments<SPAN 
+style="DISPLAY: none; COLOR: black; TEXT-DECORATION: none; text-underline: none; mso-hide: screen"><SPAN 
+style="mso-tab-count: 1 dotted">. </SPAN></SPAN><!--[if supportFields]><span
+style='color:black;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'><span style='mso-element:field-begin'></span></span><span
+style='color:black;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'> PAGEREF _Toc485481172 \h </span><span style='color:black;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-separator'></span></span><![endif]--><SPAN 
+style="DISPLAY: none; COLOR: black; TEXT-DECORATION: none; text-underline: none; mso-hide: screen">15</SPAN><SPAN 
+style="DISPLAY: none; COLOR: black; TEXT-DECORATION: none; text-underline: none; mso-hide: screen"><!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003400380035003400380031003100370032000000</w:data>
+</xml><![endif]--></SPAN><!--[if supportFields]><span style='color:black;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-end'></span></span><![endif]--></A></SPAN><SPAN 
+style="COLOR: windowtext"><o:p></o:p></SPAN></P>
+<P class=MsoToc2 style="tab-stops: 48.0pt right dotted 431.5pt"><SPAN 
+class=MsoHyperlink><A 
+href="http://geradts.com/html/Documents/USE%20OF%20KHOROS%20IN%20DEBLURRING%20TECHNIQUES%20IN%20VIDEO%20IMAGE%20PROCESSING.htm#_Toc485481173"><SPAN 
+style="mso-bidi-font-size: 18.0pt">6.1</SPAN><SPAN 
+style="COLOR: windowtext; TEXT-DECORATION: none; text-underline: none"><SPAN 
+style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN><SPAN style="mso-bidi-font-size: 18.0pt">Image processing package 
+Khoros</SPAN><SPAN 
+style="DISPLAY: none; COLOR: black; TEXT-DECORATION: none; text-underline: none; mso-hide: screen"><SPAN 
+style="mso-tab-count: 1 dotted">. </SPAN></SPAN><!--[if supportFields]><span
+style='color:black;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'><span style='mso-element:field-begin'></span></span><span
+style='color:black;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'> PAGEREF _Toc485481173 \h </span><span style='color:black;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-separator'></span></span><![endif]--><SPAN 
+style="DISPLAY: none; COLOR: black; TEXT-DECORATION: none; text-underline: none; mso-hide: screen">15</SPAN><SPAN 
+style="DISPLAY: none; COLOR: black; TEXT-DECORATION: none; text-underline: none; mso-hide: screen"><!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003400380035003400380031003100370033000000</w:data>
+</xml><![endif]--></SPAN><!--[if supportFields]><span style='color:black;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-end'></span></span><![endif]--></A></SPAN><SPAN 
+style="COLOR: windowtext"><o:p></o:p></SPAN></P>
+<P class=MsoToc2 style="tab-stops: 48.0pt right dotted 431.5pt"><SPAN 
+class=MsoHyperlink><A 
+href="http://geradts.com/html/Documents/USE%20OF%20KHOROS%20IN%20DEBLURRING%20TECHNIQUES%20IN%20VIDEO%20IMAGE%20PROCESSING.htm#_Toc485481174"><SPAN 
+style="mso-bidi-font-size: 18.0pt">6.2</SPAN><SPAN 
+style="COLOR: windowtext; TEXT-DECORATION: none; text-underline: none"><SPAN 
+style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN><SPAN style="mso-bidi-font-size: 18.0pt">Images for 
+experiments</SPAN><SPAN 
+style="DISPLAY: none; COLOR: black; TEXT-DECORATION: none; text-underline: none; mso-hide: screen"><SPAN 
+style="mso-tab-count: 1 dotted">. </SPAN></SPAN><!--[if supportFields]><span
+style='color:black;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'><span style='mso-element:field-begin'></span></span><span
+style='color:black;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'> PAGEREF _Toc485481174 \h </span><span style='color:black;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-separator'></span></span><![endif]--><SPAN 
+style="DISPLAY: none; COLOR: black; TEXT-DECORATION: none; text-underline: none; mso-hide: screen">16</SPAN><SPAN 
+style="DISPLAY: none; COLOR: black; TEXT-DECORATION: none; text-underline: none; mso-hide: screen"><!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003400380035003400380031003100370034000000</w:data>
+</xml><![endif]--></SPAN><!--[if supportFields]><span style='color:black;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-end'></span></span><![endif]--></A></SPAN><SPAN 
+style="COLOR: windowtext"><o:p></o:p></SPAN></P>
+<P class=MsoToc2 style="tab-stops: 48.0pt right dotted 431.5pt"><SPAN 
+class=MsoHyperlink><A 
+href="http://geradts.com/html/Documents/USE%20OF%20KHOROS%20IN%20DEBLURRING%20TECHNIQUES%20IN%20VIDEO%20IMAGE%20PROCESSING.htm#_Toc485481175"><SPAN 
+style="mso-bidi-font-size: 18.0pt">6.3</SPAN><SPAN 
+style="COLOR: windowtext; TEXT-DECORATION: none; text-underline: none"><SPAN 
+style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN><SPAN style="mso-bidi-font-size: 18.0pt">Methods used in 
+Experiments</SPAN><SPAN 
+style="DISPLAY: none; COLOR: black; TEXT-DECORATION: none; text-underline: none; mso-hide: screen"><SPAN 
+style="mso-tab-count: 1 dotted">. </SPAN></SPAN><!--[if supportFields]><span
+style='color:black;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'><span style='mso-element:field-begin'></span></span><span
+style='color:black;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'> PAGEREF _Toc485481175 \h </span><span style='color:black;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-separator'></span></span><![endif]--><SPAN 
+style="DISPLAY: none; COLOR: black; TEXT-DECORATION: none; text-underline: none; mso-hide: screen">16</SPAN><SPAN 
+style="DISPLAY: none; COLOR: black; TEXT-DECORATION: none; text-underline: none; mso-hide: screen"><!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003400380035003400380031003100370035000000</w:data>
+</xml><![endif]--></SPAN><!--[if supportFields]><span style='color:black;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-end'></span></span><![endif]--></A></SPAN><SPAN 
+style="COLOR: windowtext"><o:p></o:p></SPAN></P>
+<P class=MsoToc3 style="tab-stops: 1.0in right dotted 431.5pt"><SPAN 
+class=MsoHyperlink><A 
+href="http://geradts.com/html/Documents/USE%20OF%20KHOROS%20IN%20DEBLURRING%20TECHNIQUES%20IN%20VIDEO%20IMAGE%20PROCESSING.htm#_Toc485481176">6.3.1<SPAN 
+style="COLOR: windowtext; TEXT-DECORATION: none; text-underline: none"><SPAN 
+style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN>Experiment with Wiener-filter<SPAN 
+style="DISPLAY: none; COLOR: black; TEXT-DECORATION: none; text-underline: none; mso-hide: screen"><SPAN 
+style="mso-tab-count: 1 dotted"> </SPAN></SPAN><!--[if supportFields]><span
+style='color:black;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'><span style='mso-element:field-begin'></span></span><span
+style='color:black;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'> PAGEREF _Toc485481176 \h </span><span style='color:black;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-separator'></span></span><![endif]--><SPAN 
+style="DISPLAY: none; COLOR: black; TEXT-DECORATION: none; text-underline: none; mso-hide: screen">17</SPAN><SPAN 
+style="DISPLAY: none; COLOR: black; TEXT-DECORATION: none; text-underline: none; mso-hide: screen"><!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003400380035003400380031003100370036000000</w:data>
+</xml><![endif]--></SPAN><!--[if supportFields]><span style='color:black;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-end'></span></span><![endif]--></A></SPAN><SPAN 
+style="COLOR: windowtext"><o:p></o:p></SPAN></P>
+<P class=MsoToc3 style="tab-stops: 1.0in right dotted 431.5pt"><SPAN 
+class=MsoHyperlink><A 
+href="http://geradts.com/html/Documents/USE%20OF%20KHOROS%20IN%20DEBLURRING%20TECHNIQUES%20IN%20VIDEO%20IMAGE%20PROCESSING.htm#_Toc485481177">6.3.2<SPAN 
+style="COLOR: windowtext; TEXT-DECORATION: none; text-underline: none"><SPAN 
+style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN>Experiment with Cannon-filter<SPAN 
+style="DISPLAY: none; COLOR: black; TEXT-DECORATION: none; text-underline: none; mso-hide: screen"><SPAN 
+style="mso-tab-count: 1 dotted"> </SPAN></SPAN><!--[if supportFields]><span
+style='color:black;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'><span style='mso-element:field-begin'></span></span><span
+style='color:black;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'> PAGEREF _Toc485481177 \h </span><span style='color:black;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-separator'></span></span><![endif]--><SPAN 
+style="DISPLAY: none; COLOR: black; TEXT-DECORATION: none; text-underline: none; mso-hide: screen">17</SPAN><SPAN 
+style="DISPLAY: none; COLOR: black; TEXT-DECORATION: none; text-underline: none; mso-hide: screen"><!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003400380035003400380031003100370037000000</w:data>
+</xml><![endif]--></SPAN><!--[if supportFields]><span style='color:black;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-end'></span></span><![endif]--></A></SPAN><SPAN 
+style="COLOR: windowtext"><o:p></o:p></SPAN></P>
+<P class=MsoToc3 style="tab-stops: 1.0in right dotted 431.5pt"><SPAN 
+class=MsoHyperlink><A 
+href="http://geradts.com/html/Documents/USE%20OF%20KHOROS%20IN%20DEBLURRING%20TECHNIQUES%20IN%20VIDEO%20IMAGE%20PROCESSING.htm#_Toc485481178">6.3.3<SPAN 
+style="COLOR: windowtext; TEXT-DECORATION: none; text-underline: none"><SPAN 
+style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN>Experiments with Maximum Entropy<SPAN 
+style="DISPLAY: none; COLOR: black; TEXT-DECORATION: none; text-underline: none; mso-hide: screen"><SPAN 
+style="mso-tab-count: 1 dotted">. </SPAN></SPAN><!--[if supportFields]><span
+style='color:black;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'><span style='mso-element:field-begin'></span></span><span
+style='color:black;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'> PAGEREF _Toc485481178 \h </span><span style='color:black;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-separator'></span></span><![endif]--><SPAN 
+style="DISPLAY: none; COLOR: black; TEXT-DECORATION: none; text-underline: none; mso-hide: screen">18</SPAN><SPAN 
+style="DISPLAY: none; COLOR: black; TEXT-DECORATION: none; text-underline: none; mso-hide: screen"><!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003400380035003400380031003100370038000000</w:data>
+</xml><![endif]--></SPAN><!--[if supportFields]><span style='color:black;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-end'></span></span><![endif]--></A></SPAN><SPAN 
+style="COLOR: windowtext"><o:p></o:p></SPAN></P>
+<P class=MsoToc3 style="tab-stops: 1.0in right dotted 431.5pt"><SPAN 
+class=MsoHyperlink><A 
+href="http://geradts.com/html/Documents/USE%20OF%20KHOROS%20IN%20DEBLURRING%20TECHNIQUES%20IN%20VIDEO%20IMAGE%20PROCESSING.htm#_Toc485481179">6.3.4<SPAN 
+style="COLOR: windowtext; TEXT-DECORATION: none; text-underline: none"><SPAN 
+style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN>Experiments with MTV<SPAN 
+style="DISPLAY: none; COLOR: black; TEXT-DECORATION: none; text-underline: none; mso-hide: screen"><SPAN 
+style="mso-tab-count: 1 dotted">.. </SPAN></SPAN><!--[if supportFields]><span
+style='color:black;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'><span style='mso-element:field-begin'></span></span><span
+style='color:black;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'> PAGEREF _Toc485481179 \h </span><span style='color:black;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-separator'></span></span><![endif]--><SPAN 
+style="DISPLAY: none; COLOR: black; TEXT-DECORATION: none; text-underline: none; mso-hide: screen">19</SPAN><SPAN 
+style="DISPLAY: none; COLOR: black; TEXT-DECORATION: none; text-underline: none; mso-hide: screen"><!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003400380035003400380031003100370039000000</w:data>
+</xml><![endif]--></SPAN><!--[if supportFields]><span style='color:black;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-end'></span></span><![endif]--></A></SPAN><SPAN 
+style="COLOR: windowtext"><o:p></o:p></SPAN></P>
+<P class=MsoToc1 style="tab-stops: 24.0pt right dotted 431.5pt"><SPAN 
+class=MsoHyperlink><A 
+href="http://geradts.com/html/Documents/USE%20OF%20KHOROS%20IN%20DEBLURRING%20TECHNIQUES%20IN%20VIDEO%20IMAGE%20PROCESSING.htm#_Toc485481180">7<SPAN 
+style="COLOR: windowtext; TEXT-DECORATION: none; text-underline: none"><SPAN 
+style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN>Conclusions<SPAN 
+style="DISPLAY: none; COLOR: black; TEXT-DECORATION: none; text-underline: none; mso-hide: screen"><SPAN 
+style="mso-tab-count: 1 dotted">. </SPAN></SPAN><!--[if supportFields]><span
+style='color:black;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'><span style='mso-element:field-begin'></span></span><span
+style='color:black;display:none;mso-hide:screen;text-decoration:none;
+text-underline:none'> PAGEREF _Toc485481180 \h </span><span style='color:black;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-separator'></span></span><![endif]--><SPAN 
+style="DISPLAY: none; COLOR: black; TEXT-DECORATION: none; text-underline: none; mso-hide: screen">20</SPAN><SPAN 
+style="DISPLAY: none; COLOR: black; TEXT-DECORATION: none; text-underline: none; mso-hide: screen"><!--[if gte mso 9]><xml>
+ <w:data>08D0C9EA79F9BACE118C8200AA004BA90B02000000080000000E0000005F0054006F0063003400380035003400380031003100380030000000</w:data>
+</xml><![endif]--></SPAN><!--[if supportFields]><span style='color:black;
+display:none;mso-hide:screen;text-decoration:none;text-underline:none'><span
+style='mso-element:field-end'></span></span><![endif]--></A></SPAN><SPAN 
+style="COLOR: windowtext"><o:p></o:p></SPAN></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><!--[if supportFields]><span
+style='mso-element:field-end'></span><![endif]--><![if !supportEmptyParas]><![endif]>&nbsp;<o:p></o:p></P>
+<H1><A name=_Toc485481158></A><A 
+name=_Toc340585039></A><![if !supportLists]><SPAN 
+style="mso-bookmark: _Toc485481158">2<SPAN 
+style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN><![endif]><SPAN 
+style="mso-bookmark: _Toc485481158">Introduction</SPAN></H1>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>In forensic 
+investigations, often the visual information is kept in for example handwriting, 
+hairs, fibers, fingerprints, toolmarks and video-images. At present more often 
+the images are stored and digitized by an image acquisition system. By acquiring 
+the image in the system, there will be often some degradation of the image in 
+the system. For that reason, image restoration and enhancement techniques for 
+improving degraded forensic images attract high attention. Under some conditions 
+these techniques are able to enhance obscured, blurred or noisy images. In 
+practice sometimes the following degradations can be restored:</P>
+<P class=MsoHeader 
+style="MARGIN-LEFT: 0.5in; TEXT-INDENT: -0.25in; TEXT-ALIGN: center; mso-list: l2 level1 lfo47; tab-stops: list .5in center 3.0in right 6.0in" 
+align=center><![if !supportLists]><SPAN style="FONT-FAMILY: Symbol">·<SPAN 
+style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN><![endif]>Over- and Under Exposure</P>
+<P class=MsoHeader 
+style="MARGIN-LEFT: 0.5in; TEXT-INDENT: -0.25in; TEXT-ALIGN: center; mso-list: l2 level1 lfo47; tab-stops: list .5in center 3.0in right 6.0in" 
+align=center><![if !supportLists]><SPAN style="FONT-FAMILY: Symbol">·<SPAN 
+style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN><![endif]>Pictures Taken out of focus</P>
+<P class=MsoHeader 
+style="MARGIN-LEFT: 0.5in; TEXT-INDENT: -0.25in; TEXT-ALIGN: center; mso-list: l2 level1 lfo47; tab-stops: list .5in center 3.0in right 6.0in" 
+align=center><![if !supportLists]><SPAN style="FONT-FAMILY: Symbol">·<SPAN 
+style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN><![endif]>Point Spread Function of the lens</P>
+<P class=MsoHeader 
+style="MARGIN-LEFT: 0.5in; TEXT-INDENT: -0.25in; TEXT-ALIGN: center; mso-list: l2 level1 lfo47; tab-stops: list .5in center 3.0in right 6.0in" 
+align=center><![if !supportLists]><SPAN style="FONT-FAMILY: Symbol">·<SPAN 
+style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN><![endif]>Smear by movement of camera or subject</P>
+<P class=MsoHeader 
+style="MARGIN-LEFT: 0.5in; TEXT-INDENT: -0.25in; TEXT-ALIGN: center; mso-list: l2 level1 lfo47; tab-stops: list .5in center 3.0in right 6.0in" 
+align=center><![if !supportLists]><SPAN style="FONT-FAMILY: Symbol">·<SPAN 
+style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN><![endif]>Grain structures</P>
+<P class=MsoHeader 
+style="MARGIN-LEFT: 0.5in; TEXT-INDENT: -0.25in; TEXT-ALIGN: center; mso-list: l2 level1 lfo47; tab-stops: list .5in center 3.0in right 6.0in" 
+align=center><![if !supportLists]><SPAN style="FONT-FAMILY: Symbol">·<SPAN 
+style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN><![endif]>Noise from system</P>
+<P class=MsoHeader 
+style="MARGIN-LEFT: 0.5in; TEXT-INDENT: -0.25in; TEXT-ALIGN: center; mso-list: l2 level1 lfo47; tab-stops: list .5in center 3.0in right 6.0in" 
+align=center><![if !supportLists]><SPAN style="FONT-FAMILY: Symbol">·<SPAN 
+style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN><![endif]>Jitter in the video system</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><![if !supportEmptyParas]><![endif]>&nbsp;<o:p></o:p></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>Since the techniques 
+for over- and under-exposure are well known, in this report the techniques for 
+the Gaussian blur and noise blur will be handled.</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><![if !supportEmptyParas]><![endif]>&nbsp;<o:p></o:p></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>In the past often 
+linear techniques (Wiener filter) have been applied to restorate the image. From 
+aerospace research it appeared however that non-linear methods as the Maximum 
+Entropy-method might be more appropriate to restore images. Further Rudin et.al. 
+have published on the Total Variation-techniques to restore blurred image. Many 
+new improvements on those methods have been developed. The developers of those 
+algorithms claim that the results are better than the Wiener restoration or 
+linear techniques. This is explained in the fact video-systems and photographic 
+emulsions have non-linearity.</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>This research report 
+is a result of a literature and experimental study of two months at the National 
+Research Institute of Police Science in Japan by Zeno Geradts and implementation 
+of the MTV-algorithm at the Netherlands Forensic Science Laboratory. The 
+background and the principles of the different methods are described and some 
+results of artificial and real cases are given. The reason for choosing the 
+non-linear methods will be given. In the first paragraphs the physical 
+backgrounds of blur and noise will be given.</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><![if !supportEmptyParas]><![endif]>&nbsp;<o:p></o:p></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>The development in 
+integrated image processing systems in new video system also plays an important 
+role in the acquisition of those images. For this reason attention is given to 
+image processing algorithms that are implemented or expected in image 
+acquisition systems. Other sources for degradation in acquiring the digital 
+images are described.</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>Further the practical 
+implementation of the algorithms in our imaging software is given. A short 
+manual on installation procedures and use of the system is described. Some 
+examples are given for actual cases and simulated cases.</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>In the final part of 
+this report conclusions and suggestions for further research are given.</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><A 
+name=_Toc340585040></A><SPAN style="FONT-SIZE: 13.5pt"><![if !supportEmptyParas]><![endif]>&nbsp;<o:p></o:p></SPAN></P>
+<H1><A name=_Toc485481159><![if !supportLists]>3<SPAN 
+style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN><![endif]>Blur and Noise</A></H1>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>In forensic 
+investigation nowadays often images are acquired by digitizing images. Also in 
+image databases as the system Drugfire in which cartridge cases of firearms are 
+stored. Another example are video images that are taken from for example bank 
+robberies. In this system blur and noise can be added in the acquired image.</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>Since the 
+astronomical, military and medical researcher could use parallel computers, they 
+developed many new algorithms. Nowadays the faster computers are also available 
+for forensic laboratories and the algorithms can be used for actual cases and 
+databases. In forensics research often the whole procedure of image processing 
+has to be proven in court. For this reason it is important to know the 
+background of the source for blur and noise. The results of image processing 
+should be handled with great care and qualified examiners should interpret the 
+results of the image processing algorithms.</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>The next sources for 
+blur are often described in literature:</P>
+<P class=MsoHeader 
+style="MARGIN-LEFT: 0.5in; TEXT-INDENT: -0.25in; TEXT-ALIGN: center; mso-list: l26 level1 lfo48; tab-stops: list .5in center 3.0in right 6.0in" 
+align=center><![if !supportLists]><SPAN style="FONT-FAMILY: Symbol">·<SPAN 
+style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN><![endif]>Motion blur caused by movement of the system or 
+object</P>
+<P class=MsoHeader 
+style="MARGIN-LEFT: 0.5in; TEXT-INDENT: -0.25in; TEXT-ALIGN: center; mso-list: l26 level1 lfo48; tab-stops: list .5in center 3.0in right 6.0in" 
+align=center><![if !supportLists]><SPAN style="FONT-FAMILY: Symbol">·<SPAN 
+style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN><![endif]>Gaussian blur caused by defocusing of the system</P>
+<P class=MsoHeader 
+style="MARGIN-LEFT: 0.5in; TEXT-INDENT: -0.25in; TEXT-ALIGN: center; mso-list: l26 level1 lfo48; tab-stops: list .5in center 3.0in right 6.0in" 
+align=center><![if !supportLists]><SPAN style="FONT-FAMILY: Symbol">·<SPAN 
+style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN><![endif]>Blur caused by air pollution</P>
+<P class=MsoHeader 
+style="MARGIN-LEFT: 0.5in; TEXT-INDENT: -0.25in; TEXT-ALIGN: center; mso-list: l26 level1 lfo48; tab-stops: list .5in center 3.0in right 6.0in" 
+align=center><![if !supportLists]><SPAN style="FONT-FAMILY: Symbol">·<SPAN 
+style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN><![endif]>Blur caused by the lens system</P>
+<P class=MsoHeader style="MARGIN-LEFT: 0.25in"><![if !supportEmptyParas]><![endif]>&nbsp;<o:p></o:p></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>Also the next sources 
+for noise are well known:</P>
+<P class=MsoHeader 
+style="MARGIN-LEFT: 0.5in; TEXT-INDENT: -0.25in; TEXT-ALIGN: center; mso-list: l21 level1 lfo49; tab-stops: list .5in center 3.0in right 6.0in" 
+align=center><![if !supportLists]><SPAN style="FONT-FAMILY: Symbol">·<SPAN 
+style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN><![endif]>Quantization noise that is caused because the data in 
+each pixel (separate element of an image) is quantified in grey-values from 0 
+till 255.</P>
+<P class=MsoHeader 
+style="MARGIN-LEFT: 0.5in; TEXT-INDENT: -0.25in; TEXT-ALIGN: center; mso-list: l21 level1 lfo49; tab-stops: list .5in center 3.0in right 6.0in" 
+align=center><![if !supportLists]><SPAN style="FONT-FAMILY: Symbol">·<SPAN 
+style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN><![endif]>system noise (white noise), for example noise which is a 
+result of under lightening</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><![if !supportEmptyParas]><![endif]>&nbsp;<o:p></o:p></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>In the past few 
+decades many image restoration and reconstruction algorithms have been 
+developed. Most of those methods where applied in the astronomy or medical 
+equipment like X-ray photographs. In astronomy the Gaussian blur often can be 
+determined from the system. This is caused because in practice the images of 
+many objects (for example stars) can be used to determine the blur function. In 
+forensic imaging however often the Gaussian blur function is not known. The 
+shape of the blur function is the other unknown parameter.</P>
+<H1><A name=_Toc485481160></A><A 
+name=_Toc340585041></A><![if !supportLists]><SPAN 
+style="mso-bookmark: _Toc485481160">4<SPAN 
+style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN><![endif]><SPAN style="mso-bookmark: _Toc485481160">Maximum 
+Entropy</SPAN></H1>
+<H2 
+style="MARGIN-LEFT: 0in; TEXT-INDENT: 0in; mso-list: none; tab-stops: .5in"><A 
+name=_Toc340585042></A><![if !supportEmptyParas]><![endif]>&nbsp;<o:p></o:p></H2>
+<H2><A name=_Toc485481161><![if !supportLists]>4.1<SPAN 
+style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp; 
+</SPAN><![endif]>Introduction</A></H2>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>In this chapter the 
+maximum entropy will be explained. First the basics of the classical maximum 
+entropy will be given as described by Gull et.al.. Since we use a specially 
+developed toolbox from the NASA research fund for the maximum entropy, the next 
+models will be explained in more detail:</P>
+<P class=MsoHeader 
+style="MARGIN-LEFT: 0.5in; TEXT-INDENT: -0.25in; TEXT-ALIGN: center; mso-list: l45 level1 lfo50; tab-stops: list .5in center 3.0in right 6.0in" 
+align=center><![if !supportLists]><SPAN style="FONT-FAMILY: Symbol">·<SPAN 
+style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN><![endif]>Classical Bayesian maximum entropy</P>
+<P class=MsoHeader 
+style="MARGIN-LEFT: 0.5in; TEXT-INDENT: -0.25in; TEXT-ALIGN: center; mso-list: l45 level1 lfo50; tab-stops: list .5in center 3.0in right 6.0in" 
+align=center><![if !supportLists]><SPAN style="FONT-FAMILY: Symbol">·<SPAN 
+style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN><![endif]>Premodel by Gull</P>
+<P class=MsoHeader 
+style="MARGIN-LEFT: 0.5in; TEXT-INDENT: -0.25in; TEXT-ALIGN: center; mso-list: l45 level1 lfo50; tab-stops: list .5in center 3.0in right 6.0in" 
+align=center><![if !supportLists]><SPAN style="FONT-FAMILY: Symbol">·<SPAN 
+style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN><![endif]>Chi-method of determining regularization parameters by 
+Thompson et.al..</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><![if !supportEmptyParas]><![endif]>&nbsp;<o:p></o:p></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>The maximum 
+entropy-filter will guarantee positive restoration and is based on modeling the 
+object as a probability density function through Maxwell-Boltzmann statistical 
+arguments. If the object f is normalized to unit energy, then each f<SUB>i 
+</SUB>scalar value can be interpreted as a probability (possibly the probability 
+that grey-value is present at the i-th sample of the object). Then the entropy 
+of the object would be given by: Equation 3-1</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><IMG id=_x0000_i2320 
+height=49 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00002.gif" 
+width=104 border=0></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><![if !supportEmptyParas]><![endif]>&nbsp;<o:p></o:p></P>
+<H2><A name=_Toc485481162></A><A 
+name=_Toc340585043></A><![if !supportLists]><SPAN 
+style="mso-bookmark: _Toc485481162">4.2<SPAN 
+style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN><![endif]><SPAN style="mso-bookmark: _Toc485481162">Classical 
+Maximum Entropy</SPAN></H2>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>In this chapter the 
+Maximum Entropy is explained further. Since the maximum Entropy algorithm 
+requires many higher order functions and numerical approximations, this chapter 
+will be rather mathematical. First the base of the Bayesian Maximum Entropy is 
+described, after this the mathematical part is described in detail.</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>A simple mode of 
+reasoning allows us to construct general theories. If there is a general theory 
+at all, it must apply to particular cases. In particular, if we already know the 
+answer for the simple cases, this constrains the general theory by falsifying 
+all those which gave the wrong answer. If enough such cases can be found to 
+constrain the general theory completely, then there will not be any freedom be 
+left and the theory will be fully defined.</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>In real life general 
+theories have some "loose ends", such as the cosmological terms in the general 
+relativity. Those loose ends are allowed by experimental errors on the 
+constraining observations. However, sometimes there are some real loose ends in 
+the theory.</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><![if !supportEmptyParas]><![endif]>&nbsp;<o:p></o:p></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>This mode of 
+reasoning will be used three times here, leading to the Bayesian probability 
+theory, the maximum entropy (MaxEnt) and finally to images. Firstly, if there is 
+a general language for assumptions, it must be that of ordinary probability 
+theory, with our assumptions being quantified as probabilities. So we will use 
+the probability theory <A name=_Ref339252114></A>. However, probability theory 
+describes how we must modulate our assumptions in the light of evidence, but it 
+does not tell us how to assign the prior probabilities that we need in order to 
+start the scheme. Secondly, if there is a general way of assigning positive 
+additive distributions (such as probability distributions), then it must be 
+MaxEnt: one source of this argument is Shore and Johnson. This argument does not 
+address in the reliability of MaxEnt distributions, in the sense that the 
+distributions are not quantified. Thirdly if there is a general quantification 
+of distributions, their probabilities must be exponential in their entropy. 
+Frieden, Gull and Daniel prove this</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><![if !supportEmptyParas]><![endif]>&nbsp;<o:p></o:p></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>Of course it remains 
+possible that there is no general theory, in which case all arguments would 
+break down. Different problems need different theories. Although in sociological 
+studies are analyzed in different ways, there are no known examples in which 
+Bayesian methods give a demonstrably incorrect result.</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>The classic MaxEnt 
+formulae in fact will give much freedom, and the underlying mathematics can be 
+turned into advantage.</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>The following 
+chapters will summarize the use of Classic MaxEnt in the real image 
+reconstruction.</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><![if !supportEmptyParas]><![endif]>&nbsp;<o:p></o:p></P>
+<H2><A name=_Toc485481163></A><A 
+name=_Toc340585044></A><![if !supportLists]><SPAN 
+style="mso-bookmark: _Toc485481163">4.3<SPAN 
+style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN><![endif]><SPAN style="mso-bookmark: _Toc485481163">Bayesian 
+probability theory: the Cox axioms</SPAN></H2>
+<P class=MsoNormal><![if !supportEmptyParas]><![endif]>&nbsp;<o:p></o:p></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>In science we will 
+base theories based on experiences in the past. Logical reasoning, added by 
+mathematics, is the intellectual tool we bring in for making the new theories 
+applicable to our experiences.</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>It is well accepted 
+in science that if we have the different possibilities' k, l, m, n, a minimal 
+requirement is that we are able to rank our preferences consistently</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>.<IMG id=_x0000_i2321 
+height=22 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00003.gif" 
+width=357 border=0>Equation 3-2</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>In this way the 
+transitive ranking can be mapped onto real number, by assigning numerical codes 
+P(k), P(l):Equation 3-3<IMG id=_x0000_i2322 height=22 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00004.gif" 
+width=222 border=0></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>If there is a general 
+common language it must apply for simple cases. The next axioms are given by Cox 
+and are difficult to argue against:</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><![if !supportEmptyParas]><![endif]>&nbsp;<o:p></o:p></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>Axiom A:</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><I>If we first 
+specify our preference for k being true, then specify our preference for l being 
+true (given k), then we have implicitly defined our preference for k and l 
+together.<o:p></o:p></I></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><I><![if !supportEmptyParas]><![endif]>&nbsp;<o:p></o:p></I></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>Axiom B:</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><I>If we specify our 
+preference for k being true, then we have implicitly specified our preference 
+for its negation k<o:p></o:p></I></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><I>Considering these 
+mild requirements, Cox showed that there is a mapping of the original code P 
+into other codes' pr that obey the usual rules of the probability theory. 
+<o:p></o:p></I></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><I><BR></I>Equation 
+3-4</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><IMG id=_x0000_i2323 
+height=22 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00005.gif" 
+width=178 border=0><SPAN style="FONT-SIZE: 10pt">Equation 3-5</SPAN></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><IMG id=_x0000_i2324 
+height=22 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00006.gif" 
+width=149 border=0></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><![if !supportEmptyParas]><![endif]>&nbsp;<o:p></o:p></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>Although many efforts 
+are expended on arguments to contradict axioms A en B with an axiom C, no such 
+contradictory axiom has been demonstrated yet. Bays' theorem itself tells us how 
+to modulate the probabilities in accordance with extra evidence. It does not 
+assign probabilities in the first place. For this we use MaxEnt.</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><![if !supportEmptyParas]><![endif]>&nbsp;<o:p></o:p></P>
+<H2><A name=_Toc485481164></A><A 
+name=_Toc340585045></A><![if !supportLists]><SPAN 
+style="mso-bookmark: _Toc485481164">4.4<SPAN 
+style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN><![endif]><SPAN style="mso-bookmark: _Toc485481164">The axioms of 
+maximum entropy</SPAN></H2>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>The probability 
+distribution p(x) of a variable x is an example of a positive additive 
+distribution. It is positive in construction. It is additive in the sense that 
+the overall probability in a domain D equals the sum of the probabilities in any 
+decomposition into sub domains, and we write it as: Equation 3-6</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><IMG id=_x0000_i2325 
+height=51 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00007.gif" 
+width=282 border=0></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>In an optical image 
+(with incoherent light) we will have also a positive, additive distribution.</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>It is simpler to 
+investigate the general problem of assigning a positive additive distribution 
+(PAD) then the specific problem of probability distribution.</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><![if !supportEmptyParas]><![endif]>&nbsp;<o:p></o:p></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>We investigate the 
+general problem of assigning PAD f(x), given some definitive but uncompleted 
+constraints on it. If there is a rule for assigning a PAD, then it must give 
+sensible results in simple cases. The "four entropy-axioms"- so-called because 
+they lead to the entropic formulae relate to such cases. Proofs of the 
+consequences of the axioms as formulated are given by Skilling<A 
+name=_Ref339259663></A>.</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><![if !supportEmptyParas]><![endif]>&nbsp;<o:p></o:p></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>Axiom I : "Subset 
+Independence"</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><I>A separate 
+treatment of individual separate distributions should give the same assignment 
+as joint treatment of their union. More formally: if constraint C1 applies to 
+f(x) in domain x D1 and C2 applies to a separate domain x D2, then the 
+assignment </I></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>should give: Equation 
+3-7</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><IMG id=_x0000_i2326 
+height=22 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00008.gif" 
+width=292 border=0></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>where f(D|C) means 
+the PAD assigned in domain D on basis of constraints C. The consequence of this 
+constraint is that the PAD f should be assigned by maximizing over f some 
+integral of the form: Equation 3-8</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><IMG id=_x0000_i2327 
+height=32 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00009.gif" 
+width=206 border=0></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>: function as yet 
+unknown</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>m: Lesbesgue measure 
+associated with x which must be given before the integral can be defined</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>The effect of this 
+basic axiom is to eliminate all cross-terms between the different domains.</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><![if !supportEmptyParas]><![endif]>&nbsp;<o:p></o:p></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><![if !supportEmptyParas]><![endif]>&nbsp;<o:p></o:p></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><I>Axiom 2: 
+"co-ordinate invariance"<o:p></o:p></I></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><I>The PAD should 
+transform as a density under co-ordinate transformations. The consequence of 
+this axiom is that the PAD should be assigned by maximising over f some integral 
+of invariants:Equation 3-9<o:p></o:p></I></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><IMG id=_x0000_i2328 
+height=49 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00010.gif" 
+width=217 border=0></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>And still is unknown. 
+The most important axiom is next.</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><![if !supportEmptyParas]><![endif]>&nbsp;<o:p></o:p></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><I>Axiom 3: System 
+Independence<o:p></o:p></I></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><I>If a portion q of 
+a population has a certain property, then the proportion of any sub-population 
+having that property should properly assign as q. For example if 1/3 of the 
+people have blue eyes in the Netherlands, then the proportion of the left handed 
+people having blue eyes should also be assigned a value of 
+1/3.<o:p></o:p></I></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><![if !supportEmptyParas]><![endif]>&nbsp;<o:p></o:p></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>The consequence of 
+this axiom is that the only integral of invariants whose maximum always selects 
+these assignments, regardless of any other subdivision that may be present, 
+is:Equation 3-10</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><IMG id=_x0000_i2329 
+height=43 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00011.gif" 
+width=213 border=0></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>where c is a 
+constant</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>Axiom 4: Scaling</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>In the absence of 
+additional information, the PAD should be assigned equal to the given measure 
+(instead of being merely proportional). This a practical condition, since this 
+is more convenient than that it is a deep requirement.</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>Consequence: The PAD 
+f should be assigned by maximizing over f:<A name=_Ref339259746></A> Equation 
+3-11</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><IMG id=_x0000_i2330 
+height=43 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00012.gif" 
+width=300 border=0></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>m(x)dx: ensure that 
+the global maximum of S, at f(x) = m(x) is zero, which is both convenient 
+and</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>required for other 
+purposes<SUP> ix</SUP></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>Caused by the 
+entropic form, we call S as defined in Equation 3-11 the entropy of the 
+positive, additive distribution f. It reduces to the usual cross-entropy 
+formula: Equation 3-12</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><IMG id=_x0000_i2331 
+height=41 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00013.gif" 
+width=125 border=0></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>if f and m are 
+normalized.</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>The MaxEnt-entropy 
+gives sensible results in simple cases, so if there is general assignment 
+method, it should be MaxEnt, since no other axiom 5 has been proven yet.</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>The arguments above 
+do not proof that MaxEnt assignment is reliable. Would a slightly different PAD 
+be much more inferior? Furthermore experimental data are usually noisy, so they 
+do not constitute testable information about a PAD-function. Noisy images will 
+define the likelihood or conditional probability p(data|f) as a function of f. 
+In a proper Bayesian analysis we need the quantified probability p(f), because 
+we have to set a measure m.</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><![if !supportEmptyParas]><![endif]>&nbsp;<o:p></o:p></P>
+<H2><A name=_Toc485481165></A><A 
+name=_Toc340585046></A><![if !supportLists]><SPAN 
+style="mso-bookmark: _Toc485481165">4.5<SPAN 
+style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN><![endif]><SPAN 
+style="mso-bookmark: _Toc485481165">Quantification</SPAN></H2>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>The reliability of an 
+estimate is usually described in terms of ranges and domains, leading us to 
+investigate probability integrals over domains V of possible PADs f(x), 
+digitized for convenience into r cells as (f1, f2..fr) .Equation 3-13</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><IMG id=_x0000_i2332 
+height=51 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00014.gif" 
+width=216 border=0></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>Where M(f) is the 
+measure on the space of PAD's. By definition the single PAD we most prefer is 
+the most probable. We identify this with the PAD assigned by MaxEnt. Hence 
+p(f|m) must be of the form :Equation 3-14</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><![if !supportEmptyParas]><![endif]>&nbsp;<o:p></o:p></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><IMG id=_x0000_i2333 
+height=22 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00015.gif" 
+width=248 border=0></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><![if !supportEmptyParas]><![endif]>&nbsp;<o:p></o:p></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>We do not know which 
+function this might be. Now S has the units (dimensions) of the total f, so this 
+monotonic function must incorporate a dimensional constant . This is not an 
+absolute constant, so that :<A name=_Ref339267890></A>Equation 3-15</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><IMG id=_x0000_i2334 
+height=51 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00016.gif" 
+width=237 border=0><SPAN style="FONT-SIZE: 10pt">dr</SPAN></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>Where<IMG 
+id=_x0000_i2335 height=21 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00017.gif" 
+width=14 border=0> is a monotonic function of dimensionless argument 
+and:Equation 3-16</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><IMG id=_x0000_i2336 
+height=51 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00018.gif" 
+width=238 border=0></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>In the partition 
+function that ensures that p(f|m) is properly normalized.</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>To find , we repeat 
+the same kind of reasoning we had before. Finding a simple case for which the 
+results are known and arguing that any general theory must apply for this 
+specific example. Suppose it is raining (drops each with the quantum size q) at 
+r cells (i=1,2....r) at random with Poisson expectation . This arrangement 
+satisfies the entropic axioms, and the probability of occupation numbers n is 
+known (from symmetry and straightforward counting of possible outcomes) to be: 
+Equation 3-17</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><IMG id=_x0000_i2337 
+height=47 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00019.gif" 
+width=154 border=0></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>Define f<SUB>i 
+</SUB>= n<SUB>i </SUB>q and m<SUB>i </SUB>=<SUB>i</SUB>.q to remain finite as 
+the quantum size q is allowed to approach zero. Then the image-space of f 
+becomes constructed from micro cells of volume q<SUP><SPAN 
+style="FONT-SIZE: 13.5pt">r</SPAN></SUP>, each associated with one lattice-point 
+of integers (n<SUB>1</SUB>,n<SUB>2</SUB>...n<SUB>r</SUB>). So we have, as q 
+tends to 0: <BR>Equation 3-18</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><IMG id=_x0000_i2338 
+height=59 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00020.gif" 
+width=432 border=0></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>Because we take n 
+large, we may Stirling's formula: Equation 3-19</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><IMG id=_x0000_i2339 
+height=27 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00021.gif" 
+width=149 border=0></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>to obtain (accurately 
+to within O(1/n)):Equation 3-20</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><IMG id=_x0000_i2340 
+height=83 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00022.gif" 
+width=384 border=0></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>Here we recognize the 
+entropy on r cells: Equation 3-21</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><IMG id=_x0000_i2341 
+height=46 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00023.gif" 
+width=228 border=0></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>so that Equation 
+3-22</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><IMG id=_x0000_i2342 
+height=70 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00024.gif" 
+width=238 border=0></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>If we compare this 
+with the previous formula Equation 3-15, then we can identify: Equation 3-23</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><IMG id=_x0000_i2343 
+height=40 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00025.gif" 
+width=286 border=0></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>Further we can 
+identify: Equation 3-24</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><IMG id=_x0000_i2344 
+height=46 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00026.gif" 
+width=245 border=0></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>It is important that 
+the square-root factors in the Stirling's-formula could enable us to derive the 
+measure M. This allowed us to make the passage between the point wise 
+probability comparisons and full probability integrals over domains.</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>A natural 
+interpretation of the measure is as the invariant volume <IMG id=_x0000_i2345 
+height=26 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00027.gif" 
+width=62 border=0>of a metric g defined on the space. The space of the PADs will 
+be: <BR>Equation 3-25</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><IMG id=_x0000_i2346 
+height=75 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00028.gif" 
+width=201 border=0></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>which equals the 
+entropy curvature S <SUP>2</SUP>S / f.f. This quantity is also known as the 
+Fisher information matrix.</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>This analysis used 
+large numbers of small quanta q, so that is large. This limit will also ensure 
+us that each n<SUB>i </SUB>will almost certainly be close the expected value 
+<SUB>I. </SUB>Further we can expect that: Equation 3-26</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><IMG id=_x0000_i2347 
+height=25 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00029.gif" 
+width=64 border=0></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>To summarize if there 
+is a general prior for positive additive distributions in f, it must be: 
+Equation 3-27</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><IMG id=_x0000_i2348 
+height=45 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00030.gif" 
+width=169 border=0></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>and furthermore: 
+Equation 3-28</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><IMG id=_x0000_i2349 
+height=53 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00031.gif" 
+width=180 border=0></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>where Equation 
+3-29</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><IMG id=_x0000_i2350 
+height=51 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00032.gif" 
+width=169 border=0></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>In this quantified 
+prior only one variable exists which cannot be fixed a priori because it is 
+dimensional.</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><![if !supportEmptyParas]><![endif]>&nbsp;<o:p></o:p></P>
+<H3 style="TEXT-ALIGN: center" align=center><A name=_Toc485481166></A><A 
+name=_Toc340585047></A><![if !supportLists]><SPAN 
+style="mso-bookmark: _Toc485481166">4.5.1<SPAN 
+style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN><![endif]><SPAN style="mso-bookmark: _Toc485481166">Choice of 
+regularization parameter</SPAN></H3>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>One drawback of the 
+classical maximum entropy-method is that images do not consist out of raindrops 
+of which are thrown randomly as is given in Equation 3-15. The results of the 
+classical maximum entropy restoration were often disappointing. In the 
+literature different ways for better results are described. For this reason 
+Gull<A name=_Ref339274115></A> developed some better models for choosing the 
+regularization parameter.</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>For the 
+regularization parameter, Gullx described a way to determine this variable. The 
+problem with this variable is that it is dimensional, and its best-fitting value 
+varies quite strongly with the type and quality of the data that is available. 
+Further the influence of noise in images is very important for the results of 
+this kind of image processing.</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>For this reason it 
+can only be determined posterior. For this reason Gull went to the other side of 
+the problem, the likelihood that is written as: Equation 3-30</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><IMG id=_x0000_i2351 
+height=45 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00033.gif" 
+width=149 border=0></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>where</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><IMG id=_x0000_i2352 
+height=32 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00034.gif" 
+width=106 border=0></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>N: number of data</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>L(f): all details of 
+experimental set-up and accuracy's of measurement</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>For the common case 
+of independent, Gaussian errors, this reduces to <IMG id=_x0000_i2353 height=43 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00035.gif" 
+width=56 border=0>, but other types of errors like Poisson noises are important. 
+In forensic image processing the overall level of noise is most often not known, 
+so we will eventually generalize to: Equation 3-31</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><IMG id=_x0000_i2354 
+height=59 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00036.gif" 
+width=124 border=0></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>However we assume 
+that the errors are known in advance, so that =1. The joint PDF of data and 
+image is: Equation 3-32</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><IMG id=_x0000_i2355 
+height=26 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00037.gif" 
+width=180 border=0></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>Based on Bayes 
+theorem this is also proportional to the posterior probability distribution for 
+f: p(f|D,,m). The maximum of this distribution as a function of f might be our 
+best reconstruction and will occur at the maximum of: Equation 3-33</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><IMG id=_x0000_i2356 
+height=22 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00038.gif" 
+width=85 border=0></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>Methods of choosing 
+by CHI-square-method</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>For choosing the 
+smoothing parameter the method of regularization is described by Thomson et.al.. 
+The objective of those methods is to produce an estimate of some unknown 
+quantity f, usually a vector or a function, with the help of the data g. The 
+estimate can be formulated in: Equation 3-34</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><IMG id=_x0000_i2357 
+height=31 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00039.gif" 
+width=138 border=0></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>Where:</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>: a measure of lack 
+of fidelity to the data g</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>: a regularization 
+functional, measuring roughness in a well-defined sense</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>: the regularization 
+parameter</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>The criterion of 
+Equation 3-34 is expressed in very general terms, and specification of a 
+particular method entails making choices of , and . As far as and are concerned, 
+sensible choices are usually made on the basis of context and/or prior knowledge 
+about the true f.</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>The models of images 
+can be described as linear additive models. If n denotes the number of pixels, 
+we have:</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>Equation 3-35</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><IMG id=_x0000_i2358 
+height=22 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00040.gif" 
+width=84 border=0></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>in which g and f are 
+n x 1 vectors, H is the n x n point-spread-matrix defining the systematic blur, 
+and n x 1 vector describes the blur. We assume that the noise has a Gaussian 
+distribution.</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>This will motivate 
+the choice of: Equation 3-36</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><IMG id=_x0000_i2359 
+height=24 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00041.gif" 
+width=262 border=0></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>For we shall choose a 
+quadratic function of the form: Equation 3-37</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><IMG id=_x0000_i2360 
+height=25 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00042.gif" 
+width=89 border=0></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>In this formula C 
+represents a nonnegative-definite matrix. Our estimate f to be denoted as f() is 
+the solution of :Equation 3-38</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><IMG id=_x0000_i2361 
+height=39 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00043.gif" 
+width=229 border=0></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>It follows that: 
+Equation 3-39</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><IMG id=_x0000_i2362 
+height=58 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00044.gif" 
+width=182 border=0></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>In maximum entropy no 
+explicit minimum exists. In practice however this method also seems to work for 
+other problems in which no explicit minimum are existent. To find a value for 
+one can first determine this value by the chi-test and further trying setting 
+the manually. For this we purpose will use the CHI-test by :Equation 3-40</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><IMG id=_x0000_i2363 
+height=57 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00045.gif" 
+width=168 border=0></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>This will be 
+calculated further numerically.</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><![if !supportEmptyParas]><![endif]>&nbsp;<o:p></o:p></P>
+<H2><A name=_Toc485481167><![if !supportLists]>4.6<SPAN 
+style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp; </SPAN><![endif]>Premodel 
+by Gull</A></H2>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>In practice often the 
+Bayesian choice of will often lead to a reconstruction that is over-fitted. 
+Despite this the classic entropy-model is the correct answer to the problem. If 
+we would modify variable there would be a lack of theoretical grounds to defend 
+this choice. In fact it was the purity of the derivation of the joint pdf that 
+is conditional on the knowledge of the initial model m. This model was first 
+introduced as a measure on the x-scale of pixels, but is a point in the f-space 
+and acts as a "model" here. The only freedom that was left in the hypothesis 
+space is to consider variation in the model. The fact that the model is flat, 
+expresses our lack of prior information about the structure of the picture.</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>There are large areas 
+of the picture where the lighting is generally light or dark, with interesting 
+details superimposed. There are correlation's from pixel to pixel present in the 
+image that we have ignored so far. Our earlier MaxEnt-Axiom I forbids us to put 
+the pixel-to-pixel-correlation's directly into our p(f|m,). For this reason we 
+must circumvent the axiom in a subtle way.</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>Suppose we have a 
+case in which four images are combined in one video. We have for example two 
+images of the counter of the bank and two images of the entrance at night. Axiom 
+I is designed to protect us from letting the reconstruction of the images of the 
+counter influence our images of the entrance at night. There is however nothing 
+to prevent us from taking different m<SUB>0 </SUB>-levels for each part. In fact 
+is would be extremely desirable to have different values for those levels. So we 
+can subdivide the space further. If we have the counter there might be a desk 
+and some people working behind it. We can subdivide the image further.</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>If we continue to 
+subdivide, we can get a better model, closer to the reconstruction and we expect 
+that will increase. On the other side by introducing extra parameters there 
+might be some drawbacks. We might get penalties for this in a way that it makes 
+no sense to modify the model. In this model it is very important that no sharp 
+boundaries exist, since this will influence our image.</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>We are now in a 
+position to formulate a new, flexible hypothesis that is suitable for the 
+reconstruction itself: Equation 3-41</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><IMG id=_x0000_i2364 
+height=19 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00046.gif" 
+width=118 border=0></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>Where</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>b: model-blur PSF</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><![if !supportEmptyParas]><![endif]>&nbsp;<o:p></o:p></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>To complete the 
+analysis we must assign a prior for a premodel m'. We treat m' as an image and 
+use the entropic prior:Equation 3-42</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><IMG id=_x0000_i2365 
+height=25 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00047.gif" 
+width=157 border=0></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>where</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>T: S(m',flat)</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>: new Lagrange 
+multiplier for the m'-space entropy T</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>We restrict ourselves 
+to the mathematically tractable case of quadratic S and T, gaussian blurs and 
+uniform noise-level, for which L, S and T matrices are all simultaneously 
+diagonal in Fourier space. The Bayesian calculation of ' and ', now yields in : 
+<BR>Equation 3-43</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><IMG id=_x0000_i2366 
+height=46 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00048.gif" 
+width=312 border=0><SPAN style="FONT-SIZE: 10pt">Equation 3-44</SPAN></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><IMG id=_x0000_i2367 
+height=48 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00049.gif" 
+width=314 border=0></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>where <IMG 
+id=_x0000_i2368 height=26 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00050.gif" 
+width=21 border=0>are eigenvalue of B<SUP>t</SUP>B and Equation 3-45</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><IMG id=_x0000_i2369 
+height=46 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00051.gif" 
+width=461 border=0></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>The noise level can 
+be estimated as before:Equation 3-46</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><IMG id=_x0000_i2370 
+height=50 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00052.gif" 
+width=238 border=0></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>Here is once again a 
+neat division of the degrees of freedom between S, T and L.</P>
+<H1><A name=_Toc485481168></A><A 
+name=_Toc340585048></A><![if !supportLists]><SPAN 
+style="mso-bookmark: _Toc485481168">5<SPAN 
+style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN><![endif]><SPAN style="mso-bookmark: _Toc485481168">Minimal Total 
+Variation</SPAN></H1>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>The Total 
+Variation-technique is described by Rudin et.al. in a sequence of papers,.. This 
+method claims to improve the blur and remove noise. The method is based on the 
+total variation in the image that is minimized subject to constraints involving 
+the point spread function and the statistics of the noise. The constraints are 
+implemented using the Lagrange multipliers. L. Rudin claims in one of his 
+articles that the method is non-invasive and non-oscillatory.</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>The theoretical 
+backgrounds are based on shockwave-theories. The TV-based theories involve 
+minimizing:</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>the absolute integral 
+of the curvature along a feature curve, so also no smooth curves are allowed</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>The total variation 
+of the magnitude of the gradient of the intensity along and across feature 
+curves</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>Total variation of 
+curvature along level sets to allow cusps and piecewise convex interfaces</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>The variational 
+problems (1) and (2) yield fourth order non-linear PDE's for the evolution part 
+of the restoration procedure, while (3) yield in sixth order PDE. The Total 
+Variation Measure will minimize the geometrical oscillations of 'features' in 
+reconstructed images, subject to image degradation constraints.</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>Noise might be 
+spatially correlated to the solution of this algorithm. A set of global 
+constraints will reduce the resolution of the restoration. Fine features may be 
+grossly altered when the algorithm interprets them to be the results of the 
+statistical variation. A better restoration is obtained by using the 
+Lagrange-multipliers whose steady state solution satisfies constraints that are 
+local to individual curves and regions. The next constraints are considered:</P>
+<P class=MsoHeader 
+style="MARGIN-LEFT: 0.5in; TEXT-INDENT: -0.25in; TEXT-ALIGN: center; mso-list: l28 level1 lfo51; tab-stops: list .5in center 3.0in right 6.0in" 
+align=center><![if !supportLists]><SPAN style="FONT-FAMILY: Symbol">·<SPAN 
+style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN><![endif]>blurring kernel and noise statistics</P>
+<P class=MsoHeader 
+style="MARGIN-LEFT: 0.5in; TEXT-INDENT: -0.25in; TEXT-ALIGN: center; mso-list: l28 level1 lfo51; tab-stops: list .5in center 3.0in right 6.0in" 
+align=center><![if !supportLists]><SPAN style="FONT-FAMILY: Symbol">·<SPAN 
+style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN><![endif]>divergence free and hence-area preserving</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><![if !supportEmptyParas]><![endif]>&nbsp;<o:p></o:p></P>
+<H2><A name=_Toc485481169></A><A 
+name=_Toc340585049></A><![if !supportLists]><SPAN 
+style="mso-bookmark: _Toc485481169">5.1<SPAN 
+style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN><![endif]><SPAN style="mso-bookmark: _Toc485481169">MTV 
+definitions</SPAN></H2>
+<P class=MsoBodyText>Suppose we have the following problem: <BR>Equation 4-1</P>
+<P class=MsoBodyText><IMG id=_x0000_i2371 height=31 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00053.gif" 
+width=192 border=0></P>
+<P class=MsoBodyText>where</P>
+<P class=MsoBodyText><IMG id=_x0000_i2372 height=27 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00054.gif" 
+width=14 border=0><SPAN style="FONT-SIZE: 10pt">: gaussian white 
+noise</SPAN></P>
+<P class=MsoBodyText><SPAN 
+style="FONT-FAMILY: Symbol; mso-ascii-font-family: 'Times New Roman'">·</SPAN><SPAN 
+style="mso-spacerun: yes">&nbsp; </SPAN>u<SUB>0</SUB>(x,y): observed intensity 
+function</P>
+<P class=MsoBodyText><SPAN 
+style="FONT-FAMILY: Symbol; mso-ascii-font-family: 'Times New Roman'">·</SPAN><SPAN 
+style="mso-spacerun: yes">&nbsp; </SPAN>u(x,y): the image to be restored</P>
+<P class=MsoBodyText>Both images are defined on a region in R<SUP>1</SUP>. The 
+method is general, since A only needs to be a compact operator in the 
+Lagrange-operator.</P>
+<P class=MsoBodyText>The functional measure used in this chapter is the Total 
+Variation that is a functional based on the derivatives of u:</P>
+<P class=MsoBodyText>Equation 4-2</P>
+<P class=MsoBodyText><IMG id=_x0000_i2373 height=42 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00055.gif" 
+width=190 border=0></P>
+<P class=MsoBodyText>The variation of the image is a direct measure of how 
+oscillatory it is. The space of functions of bounded variation is appropriate 
+for discontinuous functions, which is well know from the field of shock 
+calculations. This space is defined on a bounded convex region in R<SUP>d</SUP>, 
+d = 1, 2, 3, whose boundary is Lipschitz continuous.</P>
+<P class=MsoBodyText>Definition</P>
+<P class=MsoBodyText>C(W) is the set of all continuous function's u on W.</P>
+<P class=MsoBodyText>C01(W;Rd) is the set of all continuous differentiable Rd 
+functions u on W for which the closure of {u(x) ¹ 0} is bounded in W.</P>
+<P class=MsoBodyText>Lp(W) is the set of all measurable function u defined on W 
+such that ò½u½p &lt; ¥ for all 1 £ p &lt; ¥. A measure is given by ½u½p = ò½u½p 
+dW.</P>
+<P class=MsoBodyText>Then we define a set of test functions V: <BR>Equation 3V = 
+{v Î C<SUB>0</SUB><SUP>1</SUP>(W;R<SUP>d</SUP>) : ½v(x)½ £ 1 for all x Î W}</P>
+<P class=MsoBodyText>The BV semi-norm, or total variation is defined 
+<BR>Equation 4</P>
+<P class=MsoBodyText>J<SUB>0</SUB>(u) = sup ò<SUB>W</SUB> (-u div v) dx</P>
+<P class=MsoBodyText>over all v Î V. If v Î C<SUB>0</SUB>(W), it follows by 
+using integration by parts that <BR>Equation 5</P>
+<P class=MsoBodyText>J<SUB>0</SUB>(u) = ò<SUB>W</SUB> ½Ñu½ dx</P>
+<P class=MsoBodyText>The space of functions of bounded variation on W is defined 
+by <BR>Equation 6</P>
+<P class=MsoBodyText>BV(W) = {u Î L<SUP>1</SUP>(W) : J<SUB>0</SUB>(u) &lt; 
+¥}</P>
+<P class=MsoBodyText>This functional is to be minimized subject to the 
+constraints <BR>Equation 7</P>
+<P class=MsoBodyText><IMG id=_x0000_i2374 height=42 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00056.gif" 
+width=209 border=0><BR><SPAN style="FONT-SIZE: 10pt">Equation 8</SPAN></P>
+<P class=MsoBodyText><IMG id=_x0000_i2375 height=42 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00057.gif" 
+width=210 border=0></P>
+<P class=MsoBodyText>For notational convenience we set: <BR>Equation 9</P>
+<P class=MsoBodyText><IMG id=_x0000_i2376 height=42 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00058.gif" 
+width=174 border=0><BR><SPAN style="FONT-SIZE: 10pt">Equation 10</SPAN></P>
+<P class=MsoBodyText><IMG id=_x0000_i2377 height=42 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00059.gif" 
+width=220 border=0><BR><SPAN style="FONT-SIZE: 10pt">Equation 11</SPAN></P>
+<P class=MsoBodyText><IMG id=_x0000_i2378 height=42 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00060.gif" 
+width=149 border=0></P>
+<P class=MsoBodyText>The reconstruction problem called Minimal Total Variation 
+(MTV) is</P>
+<P class=MsoBodyText>Equation 12</P>
+<P class=MsoBodyText>minimise {H(u) <TT><SPAN 
+style="FONT-SIZE: 10pt; FONT-FAMILY: 'Courier New'">³</SPAN></TT> I(u) = 
+s<SUP>2</SUP>, I<SUB>1</SUB>(u) = <IMG id=_x0000_i2379 height=42 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00061.gif" 
+width=98 border=0>4-2}</P>
+<P class=MsoBodyText>Using Lagrange multipliers this is equivalent to</P>
+<P class=MsoBodyText>Equation 13</P>
+<P class=MsoBodyText>minimize {H(u) - lI(u) - l<SUB>1</SUB>I<SUB>1</SUB>(u)} <BR 
+style="mso-special-character: line-break"><![if !supportLineBreakNewLine]><BR 
+style="mso-special-character: line-break"><![endif]></P>
+<P class=MsoBodyText><A name=_Toc340585051></A>Euler - Lagrange equations</P>
+<P class=MsoBodyText>To solve this minimization problem we need calculus of 
+variations. The variational derivatives are <BR>Equation 14</P>
+<P class=MsoBodyText><IMG id=_x0000_i2380 height=38 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00062.gif" 
+width=126 border=0><SPAN style="FONT-SIZE: 10pt">Equation 15</SPAN></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><IMG id=_x0000_i2381 
+height=26 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00063.gif" 
+width=198 border=0><SPAN style="FONT-SIZE: 10pt">Equation 16</SPAN></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><IMG id=_x0000_i2382 
+height=22 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00064.gif" 
+width=82 border=0></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>where A<SUP>*</SUP> 
+denotes the ad joint integral operator. The last equation holds if <BR>Equation 
+17</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><IMG id=_x0000_i2383 
+height=42 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00065.gif" 
+width=209 border=0></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>and equivalently for 
+A<SUP>*</SUP>. This is true up to normalization for A convolution. With these 
+results we derive as the Euler Lagrange equations <BR>Equation 18</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><IMG id=_x0000_i2384 
+height=68 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00066.gif" 
+width=358 border=0></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>in W with <IMG 
+id=_x0000_i2385 height=40 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00067.gif" 
+width=62 border=0>on d W</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>Here A* is just the 
+adjoint integral operator.</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>The quantity is a 
+Lagrange multiplier chosen such that the constraint Integrating both sides lead 
+to òl<SUB>1</SUB> = 0 so l<SUB>1</SUB> º 0. <BR>Equation 19</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><IMG id=_x0000_i2386 
+height=45 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00068.gif" 
+width=156 border=0></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>where the brackets 
+define the integral over W and</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>½dI(u)½<SUP>2</SUP> = 
+ádI(u), dI(u)ñ <BR style="mso-special-character: line-break"><![if !supportLineBreakNewLine]><BR 
+style="mso-special-character: line-break"><![endif]></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>Explicitly this can 
+be written by the gradient-projection method of Rosen</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><IMG id=_x0000_i2387 
+height=57 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00069.gif" 
+width=417 border=0><SPAN style="FONT-SIZE: 10pt">4</SPAN><!---3--></P>
+<P class=MsoBodyText><SPAN 
+style="FONT-FAMILY: Symbol; mso-ascii-font-family: 'Times New Roman'">·</SPAN><SPAN 
+style="mso-spacerun: yes">&nbsp; </SPAN>for t &gt; 0, (x,y) <IMG id=_x0000_i2388 
+height=14 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00070.gif" 
+width=14 border=0>W,</P>
+<P class=MsoBodyText><SPAN 
+style="FONT-FAMILY: Symbol; mso-ascii-font-family: 'Times New Roman'">·</SPAN><SPAN 
+style="mso-spacerun: yes">&nbsp; </SPAN><IMG id=_x0000_i2389 height=42 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00071.gif" 
+width=65 border=0><SPAN style="FONT-SIZE: 10pt">, on ¶W and</SPAN></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>u(x,y,0) is given 
+such that the constraints are satisfied. The projection step is the gradient 
+projection method which just amounts to updating (t) such that it remains true 
+in time. This follows just if we define: <BR 
+style="mso-special-character: line-break"><![if !supportLineBreakNewLine]><BR 
+style="mso-special-character: line-break"><![endif]></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><IMG id=_x0000_i2390 
+height=87 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00072.gif" 
+width=306 border=0>4<SPAN style="FONT-SIZE: 10pt">-4</SPAN></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>We now have a method 
+for restoring the image. Suppose that t, the steady state should be the desired 
+restoration.</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>After this we 
+consider the restoration involving noise. We can begin with pure denoising. We 
+are given an image u<SUB>o</SUB>(x,y) in which <BR><BR 
+style="mso-special-character: line-break"><![if !supportLineBreakNewLine]><BR 
+style="mso-special-character: line-break"><![endif]></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><IMG id=_x0000_i2391 
+height=23 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00073.gif" 
+width=56 border=0></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>The unknown function 
+u(x,y) is the image which we would like to restore, and (x,y) is the noise. This 
+noise is assumed to be white noise. We know the next information:</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><IMG id=_x0000_i2392 
+height=33 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00074.gif" 
+width=48 border=0><SPAN style="FONT-SIZE: 10pt">(Mean one)</SPAN></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><IMG id=_x0000_i2393 
+height=32 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00075.gif" 
+width=98 border=0><SPAN style="FONT-SIZE: 10pt">(Given variance)</SPAN> 
+<BR><BR><BR style="mso-special-character: line-break"><![if !supportLineBreakNewLine]><BR 
+style="mso-special-character: line-break"><![endif]></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>Existence &amp; 
+uniqueness"<!--3.5 Existence &amp; uniqueness&quot;--></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>A short resumes of 
+existence and uniqueness defined by Rudin and Professor Pierre-Louis Lions will 
+be given in this chapter. First we need some definitions about function 
+spaces.</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><A 
+name=""></A>Definitions</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>L<SUP>¥</SUP>(W) is 
+the set of all function's u such that measure {sup ½u½ = ¥} = 0.</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>H<SUP>p</SUP>(W) is 
+the set of all u Î L<SUP>p</SUP>(W) such that all distributional derivatives 
+D<SUP>a</SUP>u, ½a½ £ 2 belong to L<SUP>p</SUP>(W).</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><B>Example</B> If 
+u(x) = ½x½ then u Î H<SUP>1</SUP>(W), but u Ï H<SUP>p</SUP>(W)</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>We consider the 
+following minimization problem:</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>Inf {H(u) <TT><SPAN 
+style="FONT-SIZE: 10pt; FONT-FAMILY: 'Courier New'">³</SPAN></TT> I(u) = 
+s<SUP>2</SUP>, I<SUB>1</SUB>(u) = <IMG id=_x0000_i2394 height=42 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00076.gif" 
+width=98 border=0>4-5</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>Existence is 
+guaranteed by</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><B>Theorem</B>: The 
+minimization problem admits at least one solution if A is compact from 
+L<SUP>2</SUP>(W) into L<SUP>2</SUP>(W).</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>Proof: omitted</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>The fact that A must 
+be compact excludes the case when A is the identity operator. In this case the 
+minimization problem turns out to be highly non-trivial.</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>Next we study 
+equations of thermo dynamical systems, namely</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><IMG id=_x0000_i2395 
+height=46 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00077.gif" 
+width=298 border=0><SPAN style="FONT-SIZE: 10pt">4</SPAN><!---6--> <BR><BR 
+style="mso-special-character: line-break"><![if !supportLineBreakNewLine]><BR 
+style="mso-special-character: line-break"><![endif]></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>for x Î W, t &gt; 0. 
+A is a bounded linear operator from L<SUP>2</SUP>(W) into L<SUP>2</SUP>(W), 
+A<SUP>*</SUP> denotes the ad joint. Further <IMG id=_x0000_i2396 height=46 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00078.gif" 
+width=118 border=0>4-7, i = 1,2, where a is smooth, say C<SUP>2</SUP> with 
+bounded derivatives up to order 2, a is spherically symmetric (rotational 
+invariance). In this case a(p) = ½p½. However, this function induces such 
+singularities that a proper mathematical analysis does not seem to be possible. 
+We therefore study slightly regularized variants of this choice. This 
+regularization also happens when the discretized version of (3.7) is considered. 
+Therefore, we assume that there exists a n Î (0,1) such that</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><IMG id=_x0000_i2397 
+height=49 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00079.gif" 
+width=156 border=0><SPAN style="FONT-SIZE: 10pt">4</SPAN><!---8--> <BR 
+style="mso-special-character: line-break"><![if !supportLineBreakNewLine]><BR 
+style="mso-special-character: line-break"><![endif]></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>for all p Î 
+R<SUP>2</SUP> in the sense of symmetric matrices.</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>For the real choice 
+of a, a(p) = ½p½, (3.8) does not hold for p near zero and ½p½ ® ¥. In practice 
+we truncate near p = 0 and p large.</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>The second constraint 
+requires</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><IMG id=_x0000_i2398 
+height=23 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00080.gif" 
+width=182 border=0><SPAN style="FONT-SIZE: 10pt">4</SPAN><!---9--></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>And l is given by</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><IMG id=_x0000_i2399 
+height=63 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00081.gif" 
+width=252 border=0><SPAN style="FONT-SIZE: 10pt">4<!---10--></SPAN></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>where</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><IMG id=_x0000_i2400 
+height=46 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00082.gif" 
+width=173 border=0><SPAN style="FONT-SIZE: 10pt">4</SPAN><!---11--></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>Furthermore we 
+prescribe an initial condition</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>u<SUB>t=0</SUB> = 
+u<SUP>0</SUP> in W</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>and boundary 
+condition</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><IMG id=_x0000_i2401 
+height=42 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00083.gif" 
+width=28 border=0>4<SPAN style="FONT-SIZE: 10pt">-12 = 0 on ¶W</SPAN></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>Finally we need to 
+assume that u<SUP>0</SUP> satisfies</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><IMG id=_x0000_i2402 
+height=23 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00084.gif" 
+width=189 border=0><SPAN style="FONT-SIZE: 10pt">4</SPAN><!---13--></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>The existence of some 
+u<SUP>0</SUP> satisfying this equation is not obvious. This existence is 
+certainly ensured by the assumption</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>R(A) is dense in 
+L<SUP>2</SUP>(W)</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>This condition 
+implies there exist v and w Î L<SUP>2</SUP>(W), or as smooth as we wish by 
+density and continuity of A, satisfying</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><IMG id=_x0000_i2403 
+height=23 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00085.gif" 
+width=381 border=0><SPAN style="FONT-SIZE: 10pt">4</SPAN><!---14--></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>and it is enough to 
+take u<SUP>0</SUP> = qv + (1 - q)w for some convenient q Î (0,1).</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>If A is a convolution 
+operator, i.e. A(u) = h * u then holds if and only if the Fourier transform <IMG 
+id=_x0000_i2404 height=21 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00086.gif" 
+width=14 border=0>4-15 of h satisfies</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>measure {x Î 
+R<SUP>2</SUP> ½ <IMG id=_x0000_i2405 height=21 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00087.gif" 
+width=14 border=0>4-16(x) = 0} = 0</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>The image obtained is 
+unique.</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>The equality holds if 
+u = a w + b, where a, b e R <BR><BR style="mso-special-character: line-break"><![if !supportLineBreakNewLine]><BR 
+style="mso-special-character: line-break"><![endif]></P>
+<H2><A name=_Toc485481170></A><A 
+name=_Toc340585054></A><![if !supportLists]><SPAN 
+style="mso-bookmark: _Toc485481170">5.2<SPAN 
+style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN><![endif]><SPAN 
+style="mso-bookmark: _Toc485481170">Discretization</SPAN></H2>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>The numerical method 
+in two spatial dimensions is as follows. We let</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>x<SUB>i</SUB> = ih, 
+y<SUB>i</SUB> = jh, i, j = 0, 1, ..., N.</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>Nh = 1</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>t<SUB>n</SUB>=n D t, 
+n = 0, 1, ...</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><IMG id=_x0000_i2406 
+height=25 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00088.gif" 
+width=116 border=0></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><IMG id=_x0000_i2407 
+height=27 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00089.gif" 
+width=177 border=0>4<SPAN style="FONT-SIZE: 10pt">-17</SPAN></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>The modified initial 
+data are chosen that the constraints are satisfied.</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>The numerical 
+approximation is : <BR>Equation 20</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><IMG id=_x0000_i2408 
+height=27 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00090.gif" 
+width=64 border=0></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><IMG id=_x0000_i2409 
+height=70 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00091.gif" 
+width=332 border=0><BR><IMG id=_x0000_i2410 height=70 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00092.gif" 
+width=328 border=0></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><IMG id=_x0000_i2411 
+height=22 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00093.gif" 
+width=13 border=0></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><IMG id=_x0000_i2412 
+height=27 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00094.gif" 
+width=142 border=0>4<SPAN style="FONT-SIZE: 10pt">-18</SPAN> <BR><BR 
+style="mso-special-character: line-break"><![if !supportLineBreakNewLine]><BR 
+style="mso-special-character: line-break"><![endif]></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>for i,j = 1, ..., 
+N.</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>The difference 
+operator is defined by <IMG id=_x0000_i2413 height=23 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00095.gif" 
+width=178 border=0>4-19 and similarly for <IMG id=_x0000_i2414 height=23 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00096.gif" 
+width=44 border=0>4-20.</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>The boundary 
+conditions are <BR><BR>4<!---21-->Equation 21</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><IMG id=_x0000_i2415 
+height=27 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00097.gif" 
+width=245 border=0></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>To determine l we can 
+discrete it by it definition:</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>u<SUP>n+1</SUP> = 
+p<SUP>n</SUP> - l<SUP>n</SUP> q<SUP>n</SUP></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>Now the second 
+constraint becomes</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><IMG id=_x0000_i2416 
+height=25 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00098.gif" 
+width=345 border=0><SPAN style="FONT-SIZE: 10pt">4</SPAN><!---22--></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>using discrete norms. 
+This yields a quadratic equation for l (dropping the superscript n): <BR>4<!---23--> <BR>Equation 22</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><IMG id=_x0000_i2417 
+height=63 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00099.gif" 
+width=613 border=0></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>For stability a 
+step-size restriction is given : <BR>Equation 23</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><IMG id=_x0000_i2418 
+height=41 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00100.gif" 
+width=49 border=0></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>The solutions are 
+given by</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>l<SUB>±</SUB> = 
+c<SUB>1</SUB> ± ½c<SUB>1</SUB>½ <IMG id=_x0000_i2419 height=25 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00101.gif" 
+width=57 border=0>4-24</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>where</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><IMG id=_x0000_i2420 
+height=43 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00102.gif" 
+width=168 border=0><SPAN style="FONT-SIZE: 10pt">4</SPAN><!---25--></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>and</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><IMG id=_x0000_i2421 
+height=50 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00103.gif" 
+width=260 border=0><SPAN style="FONT-SIZE: 10pt">4</SPAN><!---26--></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>If c<SUB>2</SUB> &gt; 
+1 we just set l = c<SUB>1</SUB>. If c<SUB>2</SUB> &lt; 1, we take l = 
+l<SUB>-</SUB>. It has been found [OR93] that this drives the procedure to the 
+manifold defined by the second constraint (3.5).</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>Theorem</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>If u<SUP>i</SUP> is 
+on the manifold for i = 1, ..., n, then c<SUB>2</SUB> is close to 0.</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>Proof</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>In our notation, 
+p<SUP>n</SUP> denotes the old value u<SUP>n</SUP> added by a derivative, whose 
+geometrical interpretation is a line tangent to u. The deviation of the manifold 
+is corrected by lq<SUP>n</SUP>. On the manifold we may assume that p<SUP>n</SUP> 
+» lq<SUP>n</SUP>. Then u<SUP>n+1</SUP> » p<SUP>n</SUP>, A(u<SUP>n+1</SUP>) » 
+A(p<SUP>n</SUP>) so that s<SUP>2</SUP> = ½A(u<SUP>n+1</SUP>) - g½<SUP>2</SUP> » 
+½A(p<SUP>n</SUP>) - g½<SUP>2</SUP>.</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>With the form of 
+c<SUB>2</SUB> and with the use of the Taylor expansion</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><IMG id=_x0000_i2422 
+height=40 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00104.gif" 
+width=234 border=0><SPAN style="FONT-SIZE: 10pt">4</SPAN><!---27--></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>A step size 
+restriction is imposed for stability:</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><IMG id=_x0000_i2423 
+height=42 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00105.gif" 
+width=68 border=0><SPAN style="FONT-SIZE: 10pt">4</SPAN><!---28--> <BR><BR 
+style="mso-special-character: line-break"><![if !supportLineBreakNewLine]><BR 
+style="mso-special-character: line-break"><![endif]></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>which comes from the 
+fact that we assume that our model without constraints can be regarded as a 
+diffusion equation with the MTV-measure as the inverse diffusion constant:</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><IMG id=_x0000_i2424 
+height=42 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00106.gif" 
+width=124 border=0><SPAN style="FONT-SIZE: 10pt">4</SPAN><!---29--> <BR><BR 
+style="mso-special-character: line-break"><![if !supportLineBreakNewLine]><BR 
+style="mso-special-character: line-break"><![endif]></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>Its explicit 
+difference scheme is</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" 
+align=center>u<SUB>i,j</SUB><SUP>n+1</SUP> := a u<SUB>i+1,j</SUB><SUP>n</SUP> + 
+a u<SUB>i-1,j</SUB><SUP>n</SUP> + a u<SUB>i,j+1</SUB><SUP>n</SUP> + a 
+u<SUB>i,j-1</SUB><SUP>n</SUP> + (1- 4a) u<SUB>i,j</SUB><SUP>n</SUP></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>is stable if 0 £ 4a £ 
+1. Furthermore a Dx<SUP>2</SUP> = Dt/MTV, so</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><IMG id=_x0000_i2425 
+height=43 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00107.gif" 
+width=166 border=0><SPAN style="FONT-SIZE: 10pt">4</SPAN><!---30--> <BR 
+style="mso-special-character: line-break"><![if !supportLineBreakNewLine]><BR 
+style="mso-special-character: line-break"><![endif]></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>And MTV &gt; 1 gives 
+the desired result.</P>
+<P class=MsoNormal style="TEXT-ALIGN: center" align=center>Examples:</P>
+<P class=MsoNormal style="TEXT-ALIGN: center" align=center><SPAN 
+style="FONT-FAMILY: Symbol; mso-ascii-font-family: 'Times New Roman'">·</SPAN><SPAN 
+style="mso-spacerun: yes">&nbsp; </SPAN>1) If A = I, the solution is not unique: 
+suppose we have the original one-dimensional signal {1, 1, 11, 11, 1, 1}.</P>
+<P class=MsoNormal style="TEXT-ALIGN: center" align=center><SPAN 
+style="FONT-FAMILY: Symbol; mso-ascii-font-family: 'Times New Roman'">·</SPAN><SPAN 
+style="mso-spacerun: yes">&nbsp; </SPAN>Adding N(0,1) noise, the noisy signal is 
+{2, 0, 12, 10, 2, 0}. It's MTV norm is 2 + 12 + ½-2½ + ½-8½ + ½-2½ = 26.</P>
+<P class=MsoNormal style="TEXT-ALIGN: center" align=center><SPAN 
+style="FONT-FAMILY: Symbol; mso-ascii-font-family: 'Times New Roman'">·</SPAN><SPAN 
+style="mso-spacerun: yes">&nbsp; </SPAN>A MTV solution satisfying both 
+constraints is {2, 2, 11, 10, 1, 0}. This solution has MTV norm 20, just like 
+the original signal.</P>
+<P class=MsoNormal style="TEXT-ALIGN: center" align=center><SPAN 
+style="FONT-FAMILY: Symbol; mso-ascii-font-family: 'Times New Roman'">·</SPAN><SPAN 
+style="mso-spacerun: yes">&nbsp; </SPAN>2) Suppose A = {0.25, 0.50, 0.25} and 
+the original signal is the same as in 1), then the blurred signal denotes {1, 
+3.5, 8.5, 8.5, 3.5, 1}. The 'blur variance' is 4 (2.5)<SUP>2</SUP>/6 = 25/6. To 
+satisfy the condition on which a is imaginary,</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><IMG id=_x0000_i2426 
+height=42 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00108.gif" 
+width=221 border=0><SPAN style="FONT-SIZE: 10pt">4</SPAN><!---31--> <BR><BR 
+style="mso-special-character: line-break"><![if !supportLineBreakNewLine]><BR 
+style="mso-special-character: line-break"><![endif]></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>a noise with variance 
+1 is sufficient. So in general the second constraint will not be satisfied 
+initially. <BR style="mso-special-character: line-break"><![if !supportLineBreakNewLine]><BR 
+style="mso-special-character: line-break"><![endif]></P>
+<H2><A name=_Toc485481171></A><A 
+name=_Toc340585056></A><![if !supportLists]><SPAN 
+style="mso-bookmark: _Toc485481171">5.3<SPAN 
+style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN><![endif]><SPAN style="mso-bookmark: _Toc485481171">MTV 
+algorithm</SPAN></H2>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>The algorithm to find 
+the solution picture is briefly given by</P>
+<P style="TEXT-ALIGN: center" align=center><SPAN 
+style="FONT-FAMILY: Symbol; mso-ascii-font-family: 'Times New Roman'">·</SPAN><SPAN 
+style="mso-spacerun: yes">&nbsp; </SPAN>(1) Initialise the pixel matrix 
+u<SUP>0</SUP>. Compute the convolution A(g).</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>(2) (A) Compute <IMG 
+id=_x0000_i2427 height=23 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00109.gif" 
+width=45 border=0>4-32.</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>Compute 
+v<SUB>i,j</SUB><SUP>x</SUP> = <IMG id=_x0000_i2428 height=54 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00110.gif" 
+width=141 border=0>4-33 and similar v<SUB>i-1,j</SUB><SUP>x</SUP>, 
+v<SUB>i,j</SUB><SUP>y</SUP> and v<SUB>i,j-1</SUB><SUP>y</SUP>.</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>If both <IMG 
+id=_x0000_i2429 height=23 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00111.gif" 
+width=45 border=0>4-34 are 0, then the corresponding v = 0. The MTV norm is 
+zero, so all elements of the picture are equal and nothing can be done 
+anymore.</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>(B) Compute 
+w<SUP>x</SUP> = v<SUB>i,j</SUB><SUP>x</SUP> - v<SUB>i-1,j</SUB><SUP>x</SUP> and 
+w<SUP>y</SUP> = v<SUB>i,j</SUB><SUP>y</SUP> - v<SUB>i,j-1</SUB><SUP>y</SUP>.</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>If 
+v<SUB>i,j</SUB><SUP>x</SUP> = ± 1 then w<SUP>x</SUP> = 0. Similar for 
+w<SUP>y</SUP>. This implies that constant areas remain unaltered.</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>(C) Compute 
+A(u<SUP>n</SUP>), A<SUP>*</SUP>A(u<SUP>n</SUP>).</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>Define p and q and 
+compute A(q), A(p) and l from eq. (3.18).<o:p></o:p></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><!--   -->(D) 
+Determine u<SUP>n+1</SUP> and check the constraints and the MTV-norm. Set 
+u<SUP>n</SUP> = u<SUP>n+1</SUP> and go back to (A).</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><A 
+name=_Toc340585060></A>MTV Implementation in Khoros<!--&quot;2.1.2 mtv Implementation in Mathematica&quot;--></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>For the 
+implementation in Khoros the discretization as given in this chapter is 
+implemented by J. Bijhold and A. Lentz at the Netherlands Forensic Science 
+Laboratory. To find a first iteration picture causes problems. In the case of 
+MTV without blur this picture is found by using adding function f to the given 
+signal:</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><IMG id=_x0000_i2430 
+height=23 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00112.gif" 
+width=193 border=0><SPAN style="FONT-SIZE: 10pt">4</SPAN><!---35--></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>It is chosen such 
+that the modified initial data so that both constraints are satisfied initially, 
+i.e. f has mean zero and L<SUP>2</SUP> norm one. But now information about steps 
+in the order of 4 * s can be lost:</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>Suppose a one 
+dimensional signal containing an even number of points x<SUB>i</SUB> with noise 
+n<SUB>i</SUB>, satisfying the constraints, so n has mean zero and variance 
+s<SUP>2</SUP>. The observed signal u becomes</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>u<SUB>i</SUB> = 
+x<SUB>i</SUB> + n<SUB>i</SUB></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>We take f as above 
+mentioned and derive as our first approximation</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" 
+align=center>u<SUB>i</SUB><SUP>0</SUP> = x<SUB>i</SUB> + n<SUB>i</SUB> + 
+f<SUB>i</SUB></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>Now suppose n and f 
+satisfy f<SUB>i</SUB> = n<SUB>i</SUB> = (-1)<SUP>i</SUP>s then</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" 
+align=center>u<SUB>i+1</SUB><SUP>0</SUP> - u<SUB>i</SUB><SUP>0</SUP> = 
+x<SUB>i+1</SUB> - x<SUB>i</SUB> + 4s</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>Therefore pictures 
+with low detail and high noise can not be restored without loss of information. 
+<BR 
+style="mso-special-character: line-break"><![if !supportLineBreakNewLine]><BR 
+style="mso-special-character: line-break"><![endif]></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>We did not make use 
+of the function m(a,b), as defined in. This function only uses forward 
+difference. It will leave (high) peaks unaltered, while they usually appear due 
+to noise. If necessary, e.g. when a small detail is important, this function can 
+be used.</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>The min-function 
+should be used, since we want to allow the appearance of discontinuities, i.e. 
+usually a picture contains object that is to be clearly separated from the 
+background. Numerically the border appears as a large number for <IMG 
+id=_x0000_i2431 height=23 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00113.gif" 
+width=45 border=0>4-36. Ignoring this function will lead to a smoothened border 
+and loss of information. <BR style="mso-special-character: line-break"><![if !supportLineBreakNewLine]><BR 
+style="mso-special-character: line-break"><![endif]></P>
+<H1><A name=_Toc485481172></A><A 
+name=_Toc340585061></A><![if !supportLists]><SPAN 
+style="mso-bookmark: _Toc485481172">6<SPAN 
+style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN><![endif]><SPAN 
+style="mso-bookmark: _Toc485481172">Experiments</SPAN></H1>
+<H2><A name=_Toc485481173></A><A 
+name=_Toc340585062></A><![if !supportLists]><SPAN 
+style="mso-bookmark: _Toc485481173">6.1<SPAN 
+style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN><![endif]><SPAN style="mso-bookmark: _Toc485481173">Image 
+processing package Khoros</SPAN></H2>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>For development of 
+image processing algorithms, the software package Khoros of the University of 
+New Mexico is used. The software is available free from the internet and runs on 
+UNIX-systems. In the Laboratory it is installed on SUN-Sparc-stations (SUN OS 
+4.1.3) and on a PC with the Linux operating system.</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>There are two 
+versions of Khoros, version 1.0.5 and version 2.0.2. For the research the 
+version 1.0.5 has been used since this is the most stable version. Further 
+software is available for this version for maximum entropy and some workspaces 
+are available from the National Laboratory of Forensic Science in the 
+Netherlands in which MTV can be tested. A more detailed description on using 
+this software is available in appendix I.</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>One of the advantages 
+of the Khoros software is that many universities, institutes and companies use 
+the software and develop new algorithms for this. Often the algorithms will be 
+available for other institutes to test them. This works convenient, since the 
+new developments in articles will be available to the scientific community soon. 
+Since the mathematical algorithms get more complex, this saves a lot of 
+time.</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>Further by the visual 
+development kit cantata, it becomes even easier to modify the algorithms or to 
+implement new algorithms, without having trouble to go deep in the 
+C-source-codes.</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><![if !supportEmptyParas]><![endif]>&nbsp;<o:p></o:p></P>
+<H2><A name=_Toc485481174></A><A 
+name=_Toc340585063></A><![if !supportLists]><SPAN 
+style="mso-bookmark: _Toc485481174">6.2<SPAN 
+style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN><![endif]><SPAN style="mso-bookmark: _Toc485481174">Images for 
+experiments</SPAN></H2>
+<P class=MsoNormal><![if !supportEmptyParas]><![endif]>&nbsp;<o:p></o:p></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>For the testing of 
+the algorithm experiments we used two kinds of images:</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>an image of text with 
+blur and noise</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>an image of blurred 
+Lenna with blur and noise (this image is often used in literature for image 
+processing)</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><IMG id=_x0000_i2432 
+height=256 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00114.gif" 
+width=256 border=0></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>Figure 1: Image of 
+text blurred with a gaussian with a variance of 6 pixels and a noise with a 
+variance of 100 greyvalues</P>
+<P style="TEXT-ALIGN: center" 
+align=center><![if !supportEmptyParas]><![endif]>&nbsp;<o:p></o:p></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><IMG id=_x0000_i2433 
+height=256 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00115.gif" 
+width=256 border=0></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>Figure 2: Image of 
+Lenna blurred with a gaussian with a variance of 6 pixels and a noise with a 
+variance of 100 grey-values</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>For testing the 
+algorithms the images of text and Lenna were blurred with a gaussian blur 
+function with a variance of 6 pixels and gaussian noise with a variance of 100 
+grey-values. It is assumed that these kinds of blur functions approximate real 
+life experiments. In literature most often these kinds of filters are described 
+for image restorations.</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>Since our human 
+visual system also operates in many ways like a very good image restoration 
+system, it is important to notice that the results often will be poor. 
+Mathematically spoken the results are good, but for our visual system the 
+results appear not very well.</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>The real case of the 
+number plate is restored in different ways; with different settings blur 
+functions and noise-distributions. Since the real noise function and the real 
+blur function are not known, we tried different settings for the algorithms for 
+restoring the number plate. This case is difficult, since the number of the car 
+contains only a few pixels of information.</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><![if !supportEmptyParas]><![endif]>&nbsp;<o:p></o:p></P>
+<H2><A name=_Toc485481175></A><A 
+name=_Toc340585064></A><![if !supportLists]><SPAN 
+style="mso-bookmark: _Toc485481175">6.3<SPAN 
+style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN><![endif]><SPAN style="mso-bookmark: _Toc485481175">Methods used 
+in Experiments</SPAN></H2>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>For the experiments 
+we used the next methods for deblurring:</P>
+<P class=MsoHeader 
+style="MARGIN-LEFT: 0.5in; TEXT-INDENT: -0.25in; TEXT-ALIGN: center; mso-list: l7 level1 lfo46; tab-stops: list .5in center 3.0in right 6.0in" 
+align=center><![if !supportLists]><SPAN style="FONT-FAMILY: Symbol">·<SPAN 
+style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN><![endif]>Wiener restoration</P>
+<P class=MsoHeader 
+style="MARGIN-LEFT: 0.5in; TEXT-INDENT: -0.25in; TEXT-ALIGN: center; mso-list: l7 level1 lfo46; tab-stops: list .5in center 3.0in right 6.0in" 
+align=center><![if !supportLists]><SPAN style="FONT-FAMILY: Symbol">·<SPAN 
+style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN><![endif]>Canon filtering</P>
+<P class=MsoHeader 
+style="MARGIN-LEFT: 0.5in; TEXT-INDENT: -0.25in; TEXT-ALIGN: center; mso-list: l7 level1 lfo46; tab-stops: list .5in center 3.0in right 6.0in" 
+align=center><![if !supportLists]><SPAN style="FONT-FAMILY: Symbol">·<SPAN 
+style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN><![endif]>Expectation Maximization</P>
+<P class=MsoHeader 
+style="MARGIN-LEFT: 0.5in; TEXT-INDENT: -0.25in; TEXT-ALIGN: center; mso-list: l7 level1 lfo46; tab-stops: list .5in center 3.0in right 6.0in" 
+align=center><![if !supportLists]><SPAN style="FONT-FAMILY: Symbol">·<SPAN 
+style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN><![endif]>Maximum Entropy - chi-test</P>
+<P class=MsoHeader 
+style="MARGIN-LEFT: 0.5in; TEXT-INDENT: -0.25in; TEXT-ALIGN: center; mso-list: l7 level1 lfo46; tab-stops: list .5in center 3.0in right 6.0in" 
+align=center><![if !supportLists]><SPAN style="FONT-FAMILY: Symbol">·<SPAN 
+style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN><![endif]>Maximum Entropy - Bayesian method</P>
+<P class=MsoHeader 
+style="MARGIN-LEFT: 0.5in; TEXT-INDENT: -0.25in; TEXT-ALIGN: center; mso-list: l7 level1 lfo46; tab-stops: list .5in center 3.0in right 6.0in" 
+align=center><![if !supportLists]><SPAN style="FONT-FAMILY: Symbol">·<SPAN 
+style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN><![endif]>Maximum Entropy – pre-model by Gull</P>
+<P class=MsoHeader 
+style="MARGIN-LEFT: 0.5in; TEXT-INDENT: -0.25in; TEXT-ALIGN: center; mso-list: l7 level1 lfo46; tab-stops: list .5in center 3.0in right 6.0in" 
+align=center><![if !supportLists]><SPAN style="FONT-FAMILY: Symbol">·<SPAN 
+style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN><![endif]>MTV-method by L. Rudin</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>The Maximum 
+Entropy-method (premodel by Gull) and the MTV-method are tested more intensively 
+with different noise-levels and blur functions. The other restoration methods 
+are described and some experiments are shown with a Gaussian blur function with 
+a variance of 6 and a Gaussian noise of 100 to 255 grey-values.</P>
+<H3 style="TEXT-ALIGN: center" align=center><A name=_Toc485481176></A><A 
+name=_Toc340585065></A><![if !supportLists]><SPAN 
+style="mso-bookmark: _Toc485481176">6.3.1<SPAN 
+style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN><![endif]><SPAN style="mso-bookmark: _Toc485481176">Experiment 
+with Wiener-filter</SPAN></H3>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>For the Wiener-filter 
+we used the workspace that is shown in Appendix 2. This workspace contains a 
+normal Wiener-restoration in which the Point Spread Function and the 
+Wiener-parameter can be set. The Wiener-parameter is chosen such that a good 
+result is obtained.</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><IMG id=_x0000_i2434 
+height=512 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00116.gif" 
+width=256 border=0></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>Figure 3: upper part: 
+Wiener-restoration of image, lower part : original image</P>
+<P style="TEXT-ALIGN: center" 
+align=center><![if !supportEmptyParas]><![endif]>&nbsp;<o:p></o:p></P>
+<H3 style="TEXT-ALIGN: center" align=center><A name=_Toc485481177></A><A 
+name=_Toc340583680></A><![if !supportLists]><SPAN 
+style="mso-bookmark: _Toc485481177">6.3.2<SPAN 
+style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN><![endif]><SPAN style="mso-bookmark: _Toc485481177">Experiment 
+with Cannon-filter</SPAN></H3>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>The mathematical 
+formulas of the Cannon-filter are not further explained in this report The 
+algorithm is described in Cannon and Trussel compromises between the low pass 
+effect of the Wiener filter and the early singularity if a plain inverse filter. 
+This method will determine the blur function automatically. A nice example is 
+demonstrated of a blurred image<A name=_Ref339798051></A> of an airline is 
+demonstrated <IMG id=_x0000_i2435 height=287 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00117.gif" 
+width=573 border=0></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>Figure 4: Left: 
+restored image with Canon-filter; right original image</P>
+<P style="TEXT-ALIGN: center" 
+align=center><![if !supportEmptyParas]><![endif]>&nbsp;<o:p></o:p></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>The example above is 
+the very ideal one. It contains no noise and a good blur-function. If we try to 
+restore our own image with blur and noise, the restoration will not work 
+properly. So this method depends on the kind of blur and the noise in the image. 
+In Figure 5 an example is given of the restoration. The blur function that is 
+determined from this image is not correct.</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><IMG id=_x0000_i2436 
+height=256 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00118.gif" 
+width=512 border=0><A name=_Ref339798593></A></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>Figure 5 : left : 
+blurred image, right restored image. This is not working properly since the blur 
+function is determined incorrectly by the Cannon filter</P>
+<H3 style="TEXT-ALIGN: center" align=center><A name=_Toc485481178></A><A 
+name=_Toc340583681></A><![if !supportLists]><SPAN 
+style="mso-bookmark: _Toc485481178">6.3.3<SPAN 
+style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN><![endif]><SPAN style="mso-bookmark: _Toc485481178">Experiments 
+with Maximum Entropy</SPAN></H3>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>With the different 
+methods for restoration with Maximum Entropy experiments have been done on the 
+images. The Bayesian method and the chi-square-method will not use information 
+on the Point Spread Function. However in the tests the noise-level for the 
+images is given. The first two methods appear to work well for the noisy images. 
+Deblurring however is a difficult task without giving a blurring function. I 
+think this is caused by the fact that those algorithms are suitable for 
+astronomy. In those images the information of stars is easy to translate into 
+the point spread function. However in our images, we have some different 
+information. So the methods for chi-square and Bayesian maximum entropy appear 
+not to work very well for forensic images.</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><IMG id=_x0000_i2437 
+height=256 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00119.gif" 
+width=512 border=0></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>Figure 6: Restored 
+test-image with Bayesian method. Left side: original, Right: restored image</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><IMG id=_x0000_i2438 
+height=256 
+src="USE OF KHOROS IN DEBLURRING TECHNIQUES IN VIDEO IMAGE PROCESSING_files/IMG00120.gif" 
+width=512 border=0></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>Figure 7 : Restored 
+image with chi-square maximum Entropy-method. Left side : original image, right 
+side : restored image</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>Further some tests 
+were conducted with the premodel of Gull. They gave better results, which are 
+mathematically better than the results with the Wiener-restoration. The 
+instability, which is present in the Wiener-restoration, is not present in this 
+restoration.</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>Figure 8 : 
+Restoration with premodel, kernelsize 7x7</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>Figure 9 : Maximum 
+entropy-restoration by premodel. Left side: original image, right side : 
+restored image</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>Further experiments 
+have been done with series of noise and blur-functions. It appears that the 
+results are not very good. In a few cases the results of the restorations is 
+better. However in most cases the results are worse than the original image. It 
+depends however on the noise-level and the blur-level. For testing the different 
+noise-levels, the commands in Khoros have been translated in a C-source-file. 
+This file is included in Appendix 4. The results are given in Appendix 5. It 
+appears that the filter will give instable results if there is not enough blur 
+in the image. The results are best for a gaussian blur function with a variance 
+of 4.</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>The computing time on 
+a Sparc 10 is on average 4 minutes per image of 256 x 256.</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>It appears that the 
+premodel-restoration will give some good results for the photographs and text 
+images. The algorithm will present the image in a more realistic way than with 
+Wiener-restoration. If we compare the text and real images with each other in 
+Appendix 5, it appears that the visual improvement of the image of Lenna, is 
+often not really there. This is caused by psychological factors and the method, 
+which is used for printing this report. Of course our visual system, also will 
+make some image processing, so this will give other results. Since the method of 
+Maximum Entropy will cluster the information, some clusters of information will 
+be created</P>
+<P style="TEXT-ALIGN: center" 
+align=center><![if !supportEmptyParas]><![endif]>&nbsp;<o:p></o:p></P>
+<H3 style="TEXT-ALIGN: center" align=center><A name=_Toc485481179></A><A 
+name=_Toc340583682></A><![if !supportLists]><SPAN 
+style="mso-bookmark: _Toc485481179">6.3.4<SPAN 
+style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN><![endif]><SPAN style="mso-bookmark: _Toc485481179">Experiments 
+with MTV</SPAN></H3>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>For the MTV-method a 
+workspace is developed at the Netherlands Forensic Science Laboratory. Since 
+this mathematics for this workspace is complex, the workspace might look 
+complex, because it is programmed visually. For the MTV-method the same images 
+have been tested.</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><BR><SPAN 
+style="FONT-SIZE: 10pt">Figure 10 : Result with restoration with MTV-method of 
+Lenna, c=0.1 (Top : original, Bottom : restored image)</SPAN></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>In this image the 
+MTV-parameters were stable, and it appears that the restoration is visually not 
+better than the original. The noise-suppression is however very well and this is 
+the good part of the MTV-method : it suppresses the noise very well. Depending 
+on the image better results might be obtained.</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>Figure 11: Restored 
+text image by MTV-method with c=0.1(bottom) / original (top)</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><![if !supportEmptyParas]><![endif]>&nbsp;<o:p></o:p></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>In the text image 
+part, we can see that the MTV-method does not work very well. The larger black 
+blocks and circles are restored better. The noise is suppressed, but visually 
+this image is not very well suited for this method.</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>The MTV-method takes 
+in average 30 minutes per calculation on a Sparc 10.</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>To investigate the 
+results of the MTV-method further, we restored more images with different 
+blur-functions and different amounts of noise and different values for the 
+scale-factor c. Since with MTV the noise level and blur have to be large, the 
+results are shown for the optimal working of the algorithm. In appendix 7 the 
+results are given. It appears that for the photograph of Lenna the results are 
+somewhat artificial, and for the text in most of the cases there were no better 
+results. The large black areas operate better with this kind of restoration.</P>
+<H1><A name=_Toc485481180></A><A 
+name=_Toc340583683></A><![if !supportLists]><SPAN 
+style="mso-bookmark: _Toc485481180">7<SPAN 
+style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN><![endif]><SPAN 
+style="mso-bookmark: _Toc485481180">Conclusions</SPAN></H1>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>The Maximum Entropy 
+method with the premodel of Gulls appears to work fine with blurred images and 
+can restore some of the noise in the image. It will become instable if the noise 
+level is too low.</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>The MTV-method works 
+fine for images with large black surfaces. It is necessary to improve the 
+algorithm and make experiments with other images (video-images in night-time), 
+before the optimal results are acquired</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>The higher order 
+algorithms require much computer time. Mathematical solutions or faster hardware 
+(parallel computers) are necessary to improve performance. In practice 
+interactive image processing will improve the final results</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>Further research is 
+necessary to compare simple methods for restoration with the higher order 
+methods. Sometimes simple methods might work better and faster for enhancement 
+problems, which is often demonstrated in patent literature on image 
+processing.</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center><![if !supportEmptyParas]><![endif]>&nbsp;<o:p></o:p></P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>A problem with real 
+world image processing is that the human system is also capable in good image 
+processing, see for example Brent Baxter. This will often lead to poor results 
+for the human visual system</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>Research to 
+interaction between new image processing methods in video systems and the real 
+image is necessary, since some of those methods might change the information in 
+the images</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>It might be useful to 
+develop methods for estimating the blur functions of real video systems in a 
+more appropriate way</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>More practical 
+experiments are necessary for evaluating the value of the new methods. Sometime 
+simple local contrast enhancement methods might also give a better result</P>
+<P class=MsoHeader style="TEXT-ALIGN: center" align=center>Research in the 
+interaction between the new image processing algorithms and the actual image is 
+necessary, since some of those methods might change the information in the video 
+images</P>
+<P style="MARGIN-BOTTOM: 12pt; TEXT-ALIGN: center" align=center><![if !supportEmptyParas]><![endif]>&nbsp;<o:p></o:p></P></DIV></BODY></HTML>

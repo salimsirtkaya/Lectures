@@ -1,0 +1,36 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: EE642Project - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\salim\LOCALS~1\Temp\RSPBC.tmp" with contents
+[
+/nologo /MTd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /Fp"Debug/EE642Project.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"E:\DERS\PHD\642_CG\642Project\EE642Project\RenderingArea.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\salim\LOCALS~1\Temp\RSPBC.tmp" 
+Creating temporary file "C:\DOCUME~1\salim\LOCALS~1\Temp\RSPBD.tmp" with contents
+[
+/nologo /subsystem:windows /incremental:yes /pdb:"Debug/EE642Project.pdb" /debug /machine:I386 /out:"Debug/EE642Project.exe" /pdbtype:sept 
+.\Debug\EE642Project.obj
+.\Debug\EE642ProjectDlg.obj
+.\Debug\RenderingArea.obj
+.\Debug\StdAfx.obj
+.\Debug\EE642Project.res
+]
+Creating command line "link.exe @C:\DOCUME~1\salim\LOCALS~1\Temp\RSPBD.tmp"
+<h3>Output Window</h3>
+Compiling...
+RenderingArea.cpp
+Linking...
+
+
+
+<h3>Results</h3>
+EE642Project.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

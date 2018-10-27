@@ -1,0 +1,38 @@
+EE706 DIGITAL VIDEO PROCESSING
+Spring 2005 Semester
+
+PROJECT TITLE: IMAGE BASED MOTION ESTIMATION
+
+Salim SIRTKAYA - 1124346
+
+****************************************************************************************
+Software Name : VIMEK (Visual Aided Inertial Motion Estimation via Kalman Filtering)
+VIMEK.exe
+****************************************************************************************
+
+This document describes the hardware and software requirements to run the VIMEK.exe program and how to use the program.
+
+****************************************************************************************
+Hardware Requirements:
+Pentium III or higher processor (or equivalent processors), minimum 128 MByte of RAM
+****************************************************************************************
+
+****************************************************************************************
+Software Requirements:
+DirectX 8.1, Microsoft Visual C++, MATLAB API for **
+****************************************************************************************
+
+** : These softwares are recommended. However I will put necessary dll's to the CD to run the program without the need for these softwares. I hope it will work out with dll's.
+Don't forget to put these dll's to the folder that you execute the program. In the CD the executable file "VIMEK.EXE" exists in the folder named 'EXECUTABLE'. The necessary dll's exist in this folder.
+
+****************************************************************************************
+
+How to use the VIMEK.exe program?
+
+The input to the program is any "mpeg-1" video. Sample videos will be present in the CD. You can select the input video by simply pressing the 'Open Video...' button. After selecting the video, you should press 'PROCESS...'  button to start the process. In the upper-left part you will see the input video.
+Below there exist a status box, illustrating a coarse motion activity measure. It has two modes, "MOTION" or "NO MOTION". Below this status box, there exist two bozes indicating the frame numbers processed
+
+At the right of these boxes, there exists a static box group showing the motion parameters (rotation and translation in 3 axes). These parameters are also ouputted as .txt format aunder C folder. Two files are outputted, one for rotation and one for translation components. In each file there exists 3 columns, each indicating an axis (x, y , z respectively). The filenames are time dependent.
+
+The program can be stopped by pressing ok or cancel buttons.
+The program is set to process first 575 frames of the video. If the frame number is less than 575, it will process the last frame of the sequence until it reaches a number of 575 frames processed (This last dummy part will output NO MOTION, and 0 motion parameters).

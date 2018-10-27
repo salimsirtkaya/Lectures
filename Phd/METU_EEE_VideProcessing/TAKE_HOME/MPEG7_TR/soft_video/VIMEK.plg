@@ -1,0 +1,45 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: VIMEK - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\SALIMS~1\LOCALS~1\Temp\RSP422.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /D "MSVC" /D "MSWIND" /D "D__STDC_" /D "_AFXDLL" /FR"Debug/" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"D:\DERS\PHD\VIDEO\TAKE_HOME\MPEG7_TR\soft_video\VIMEKDlg.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\SALIMS~1\LOCALS~1\Temp\RSP422.tmp" 
+Creating temporary file "C:\DOCUME~1\SALIMS~1\LOCALS~1\Temp\RSP423.tmp" with contents
+[
+quartz.lib strmiids.lib /nologo /subsystem:windows /incremental:yes /pdb:"Debug/VIMEK.pdb" /debug /machine:I386 /out:"Debug/VIMEK.exe" /pdbtype:sept 
+.\Debug\Color.obj
+.\Debug\DirectShowWrapper.obj
+.\Debug\Feature.obj
+.\Debug\GdiplusWrapper.obj
+.\Debug\imge.obj
+.\Debug\MpegFile.obj
+.\Debug\StdAfx.obj
+.\Debug\VIMEK.obj
+.\Debug\VIMEKDlg.obj
+.\Debug\VIMEKLayer.obj
+.\Debug\VIMEK.res
+]
+Creating command line "link.exe @C:\DOCUME~1\SALIMS~1\LOCALS~1\Temp\RSP423.tmp"
+<h3>Output Window</h3>
+Compiling...
+VIMEKDlg.cpp
+Linking...
+Creating command line "bscmake.exe /nologo /o"Debug/VIMEK.bsc"  .\Debug\StdAfx.sbr .\Debug\Color.sbr .\Debug\DirectShowWrapper.sbr .\Debug\Feature.sbr .\Debug\GdiplusWrapper.sbr .\Debug\imge.sbr .\Debug\MpegFile.sbr .\Debug\VIMEK.sbr .\Debug\VIMEKDlg.sbr .\Debug\VIMEKLayer.sbr"
+Creating browse info file...
+<h3>Output Window</h3>
+
+
+
+<h3>Results</h3>
+VIMEK.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

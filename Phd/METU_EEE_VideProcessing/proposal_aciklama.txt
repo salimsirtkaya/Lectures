@@ -1,0 +1,73 @@
+Possible Projects 
+  
+Error concealment techniques for stereo video
+Multiple description coding
+Multiview coding
+Mesh based video coding
+Motion/disparity estimation
+Deblurring
+Video over wireless 
+Video over internet
+ 
+
+Project Timetable and Requirements 
+  
+     Proposal (1-2 pages):  due 16 March. 
+     Preliminary report, presentation (3-4 pages): due 15 April
+     Report, (at most 10 pages):  due 25 May. 
+     Brief oral presentation and demo (10-15 minutes/project), 16-27May. 
+  
+The project requires reading of papers in one of the areas related to the course, implement/compare different approaches and if possible propose your own improvements.
+
+Each project may be performed by a single student or a group of two  students. However the proposed work for each individual should be identified in the proposal, and the actual contributions of each individual should be identified in the report. 
+
+  
+Before you sign up for a project, please consider carefully the equipment requirements and what equipment you have access to. 
+
+
+Proposal should include
+
+Project title and team members 
+An abstract  in one paragraph or two describing the project scop <!--[endif]--> 
+Detailed project plan 
+Hardware and software requirements
+
+List of references  
+
+
+        Preliminary report should include
+
+
+Project title and team members 
+An abstract  
+Literature survey
+
+Revised project plan 
+Your accomplishments 
+Remaining work 
+List of references  
+
+
+    Final report should include
+
+
+Project title and team members 
+An abstract   <!--[endif]--> 
+Your results 
+Conclusion 
+Your source code in a CD and user manual
+
+List of references   
+
+    Presentations
+
+Project title and team members 
+Main goal of the project 
+Short literature survey 
+Tasks and responsible persons 
+Demos if appropriate 
+Conclusion
+
+
+
+

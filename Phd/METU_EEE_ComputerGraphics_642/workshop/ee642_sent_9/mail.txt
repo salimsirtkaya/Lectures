@@ -1,0 +1,32 @@
+Merhaba Hocam,
+
+Ekte "BSpline Surface" ödevini bulabilirsiniz..
+ 
+(EE642Project_ssirtkaya_BSplineSurface.zip). Dosya biraz büyük 
+olduðu için zipleyerek gönderiyorum. Zip dosyasýný bloklanmamasý için 
+þifreledim.. Þifre ee642.
+
+Geçen sefer olduðu gibi, incelemek isterseniz diye kaynak dosyalarýný da gönderiyorum.
+
+Yeni eklemelerle birlikte deðiþen kullanýcý el kitabýnýn altýncý
+sürümü de ektedir (EE642Project_USER MANUALv1.8_Salim.doc). 
+
+
+BSpline Surface çizim menülerine "DRAW->Surfaces" butonlarýný týklayarak ulaþabilirsiniz. Bu çizimde çok fazla input girilmesi gerektiði için 'defining mesh' inputlarý dosyadan yükleme þeklinde oluþturdum. Örnek dosyalarý ekte bulabilirsiniz (BsplineDefiningMesh_1,2,3,4,5,6.txt). Çizimi yapmadan gerekli end-condition dosyasýný yüklemeniz gerekiyor. Yüklediðiniz anda surface otomatik olarak çizilecektir. Ekteki dosyalarý peþpeþe seçerseniz türev ve twist etkilerini ve BSpline Surface'in saðlamýþ olduðu lokal kontrol özelliðini görebilirsiniz..
+
+Örnek olarak bir BSpline Surface çizimini adým adým anlatmak isterim 
+
+- Run EE642Project_Salim_BSplineSurface.exe
+- Press "DRAW" -> "Surfaces" -> "B-Spline Surface"
+- Press "Load Defining Mesh" button and select "BsplineDefiningMesh_1.txt" file from the pop-up menu. Press OK
+- The surface will show-up automatically
+- Press "EDIT" button and apply whichever 3D transformation you want
+
+
+Eksik ya da hatalý olduðunu düþündüðünüz konularý bildirmenizden yine mutluluk duyarým.
+
+Teþekkürler
+
+Saygýlarýmla
+
+Salim SIRTKAYA

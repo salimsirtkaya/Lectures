@@ -1,0 +1,8 @@
+Group Members:
+
+Bengi KOÇ
+Salim SIRTKAYA
+Barýþ TANRIVERDÝ
+
+Project Topic:
+Simultaneous Localization and Mapping Implementation on Khepera Robot Simulator

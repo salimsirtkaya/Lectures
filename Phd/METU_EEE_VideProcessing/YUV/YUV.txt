@@ -1,0 +1,29 @@
+A video sequence stored in the YUV format is stored  by concatenating
+consecutive frames into a single big file. Each frame contains the Y pixels 
+for that frame first, followed by the U pixels (actually Cr pixel), followed 
+by V pixels (actually Cb pixels). Each component is raster-scanned from 
+the top left corner down to the bottom right corner. 
+Each pixel value is stored as a 8 bit unsigned character.
+
+For example, a frame in a QCIF sequence with 176x144 Y pixels and 
+88x72 U and V pixels is stored in the following order:
+
+           176
+     +-------------+
+     |             |
+     |     Y       | 144
+     |             |
+     |             |
+     +-------------+
+       88
+     +------+
+     |  U   |
+     |      |72
+     +------+
+     |  V   |
+     |      |72
+     +------+
+
+
+To display a YUV sequence, you can use the YUVviewer from our website 
+(see Application Tools)

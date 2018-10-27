@@ -1,0 +1,261 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0053)http://www.cim.mcgill.ca/~cathy/project765/node3.html -->
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others --><HTML><HEAD><TITLE>The FastSLAM approach</TITLE>
+<META content="The FastSLAM approach" name=description>
+<META content=report name=keywords>
+<META content=document name=resource-type>
+<META content=global name=distribution>
+<META http-equiv=Content-Type content="text/html; charset=iso-8859-1">
+<META content="MSHTML 6.00.2900.2802" name=GENERATOR>
+<META http-equiv=Content-Style-Type content=text/css><LINK 
+href="The FastSLAM approach_dosyalar/report.css" rel=STYLESHEET><LINK 
+href="node4.html" rel=next><LINK href="node2.html" rel=previous><LINK 
+href="report.html" rel=up><LINK href="node4.html" rel=next></HEAD>
+<BODY><!--Navigation Panel--><A 
+href="http://www.cim.mcgill.ca/~cathy/project765/node4.html" 
+name=tex2html49><IMG height=24 alt=next src="" width=37 align=bottom 
+border=0></A> <A href="http://www.cim.mcgill.ca/~cathy/project765/report.html" 
+name=tex2html47><IMG height=24 alt=up src="" width=26 align=bottom border=0></A> 
+<A href="http://www.cim.mcgill.ca/~cathy/project765/node2.html" 
+name=tex2html41><IMG height=24 alt=previous src="" width=63 align=bottom 
+border=0></A> <BR><B>Next:</B> <A 
+href="http://www.cim.mcgill.ca/~cathy/project765/node4.html" 
+name=tex2html50>Implementation issues</A> <B>Up:</B> <A 
+href="http://www.cim.mcgill.ca/~cathy/project765/report.html" 
+name=tex2html48>Experimenting with the FastSLAM</A> <B>Previous:</B> <A 
+href="http://www.cim.mcgill.ca/~cathy/project765/node2.html" 
+name=tex2html42>Background</A> <BR><BR><!--End of Navigation Panel-->
+<H1><A name=SECTION00030000000000000000></A><A name=sec:framework></A><BR>The 
+FastSLAM approach </H1>Consider the case of a mobile robot moving through an 
+unknown environment. The environment consists of a set of stationary 
+<I>landmarks</I>. The position of landmark <IMG height=17 alt="$ k$" 
+src="The FastSLAM approach_dosyalar/img1.png" width=15 align=bottom border=0> 
+with respect to some global reference frame is denoted <IMG height=34 
+alt="$ \theta_k$" src="The FastSLAM approach_dosyalar/img2.png" width=22 
+align=middle border=0>. The robot moves according to a known probabilistic 
+motion model <!-- MATH
+ $p(s_t|u_t,
+s_{t-1})$
+ --><IMG height=37 
+alt="$ p(s_t\vert u_t,&#10;s_{t-1})$" 
+src="The FastSLAM approach_dosyalar/img3.png" width=105 align=middle border=0>, 
+where <IMG height=34 alt="$ s_t$" src="The FastSLAM approach_dosyalar/img4.png" 
+width=19 align=middle border=0> and <IMG height=34 alt="$ u_t$" 
+src="The FastSLAM approach_dosyalar/img5.png" width=21 align=middle border=0> 
+denote the robot configuration and the control input at time <IMG height=17 
+alt="$ t$" src="The FastSLAM approach_dosyalar/img6.png" width=12 align=bottom 
+border=0>, respectively. As the robot moves around, it takes measurements of the 
+landmarks in its environment. A measurement <IMG height=34 alt="$ z_t$" 
+src="The FastSLAM approach_dosyalar/img7.png" width=19 align=middle border=0> is 
+related to the position of a landmark through a stochastic observation model <!-- MATH
+ $p(z_t|s_t,\theta, n_t)$
+ --><IMG height=37 
+alt="$ p(z_t\vert s_t,\theta, n_t)$" 
+src="The FastSLAM approach_dosyalar/img8.png" width=106 align=middle border=0>, 
+where <IMG height=17 alt="$ \theta$" 
+src="The FastSLAM approach_dosyalar/img9.png" width=14 align=bottom border=0> is 
+the set of all landmark positions and <IMG height=34 alt="$ n_t$" 
+src="The FastSLAM approach_dosyalar/img10.png" width=22 align=middle border=0> 
+is the index of the particular landmark observed at time <IMG height=17 
+alt="$ t$" src="The FastSLAM approach_dosyalar/img6.png" width=12 align=bottom 
+border=0>. 
+<P>The SLAM problem is that of simultaneously inferring the location of all 
+landmarks in the environment and the path followed by the robot based on a set 
+of measurements and inputs. Ideally, one would like to recover the posterior 
+distribution <!-- MATH
+ $p(s^t, \theta_1, \ldots, \theta_K|z^t,
+u^t)$
+ --><IMG 
+height=37 alt="$ p(s^t, \theta_1, \ldots, \theta_K\vert z^t,&#10;u^t)$" 
+src="The FastSLAM approach_dosyalar/img11.png" width=177 align=middle border=0>, 
+where <IMG height=17 alt="$ K$" src="The FastSLAM approach_dosyalar/img12.png" 
+width=22 align=bottom border=0> is the number of landmarks observed so far and 
+the notation <IMG height=19 alt="$ s^t$" 
+src="The FastSLAM approach_dosyalar/img13.png" width=19 align=bottom border=0> 
+denotes <!-- MATH
+ $s_1, \ldots, s_t$
+ --><IMG height=34 
+alt="$ s_1, \ldots, s_t$" src="The FastSLAM approach_dosyalar/img14.png" 
+width=78 align=middle border=0> (and similarly for other variables). In [<A 
+href="http://www.cim.mcgill.ca/~cathy/project765/node9.html#montemerlo02">16</A>,<A 
+href="http://www.cim.mcgill.ca/~cathy/project765/node9.html#thrun04">21</A>], 
+Montemerlo <I>et al.</I> provide a solution in the easier case where the data 
+associations <!-- MATH
+ $n_1,\ldots, n_t$
+ --><IMG height=34 
+alt="$ n_1,\ldots, n_t$" src="The FastSLAM approach_dosyalar/img15.png" width=82 
+align=middle border=0> are known; that is, their solution infers <!-- MATH
+ $p(s^t, \theta_1, \ldots, \theta_K|z^t,u^t, n^t)$
+ --><IMG height=37 
+alt="$ p(s^t, \theta_1, \ldots, \theta_K\vert z^t,u^t, n^t)$" 
+src="The FastSLAM approach_dosyalar/img16.png" width=202 align=middle border=0>. 
+
+<P>The key observation underlying the FastSLAM approach is that given a known 
+robot path, measurements corresponding to different landmarks are independent of 
+each other. This is illustrated in figure <A 
+href="http://www.cim.mcgill.ca/~cathy/project765/node3.html#fig:slam_bayes">1</A> 
+where the SLAM problem is represented as a Bayesian network. Observe that 
+measurements corresponding to the landmark locations <IMG height=34 
+alt="$ \theta_1$" src="The FastSLAM approach_dosyalar/img17.png" width=21 
+align=middle border=0> and <IMG height=34 alt="$ \theta_2$" 
+src="The FastSLAM approach_dosyalar/img18.png" width=21 align=middle border=0> 
+are only linked together through their joint dependence on the robot path <IMG 
+height=19 alt="$ s^t$" src="The FastSLAM approach_dosyalar/img13.png" width=19 
+align=bottom border=0>. Using this observation to factor the desired posterior 
+distribution yields 
+<P></P>
+<DIV align=center><!-- MATH
+ \begin{equation}
+p(s^t, \theta_1, \ldots, \theta_K|z^t, u^t, n^t) =
+p(s^t|z^t, u^t, n^t)
+\prod_{k=1}^{K}p(\theta_k|s^t, z^t, u^t, n^t). 
+\end{equation}
+ -->
+<TABLE cellPadding=0 width="100%" align=center>
+  <TBODY>
+  <TR vAlign=center>
+    <TD noWrap align=middle><IMG height=77 
+      alt="$\displaystyle p(s^t, \theta_1, \ldots, \theta_K\vert z^t, u^t, n^t) = p(s^t\vert z^t, u^t, n^t) \prod_{k=1}^{K}p(\theta_k\vert s^t, z^t, u^t, n^t).$" 
+      src="The FastSLAM approach_dosyalar/img19.png" width=506 align=middle 
+      border=0></TD>
+    <TD noWrap align=right width=10>(1)</TD></TR></TBODY></TABLE></DIV><BR 
+clear=all>
+<P></P>
+<P>
+<DIV align=center><A name=fig:slam_bayes></A><A name=199></A>
+<TABLE>
+  <CAPTION align=bottom><STRONG>Figure 1:</STRONG> A Bayesian network depicting 
+  the structure of the SLAM problem (copied from [<A 
+  href="http://www.cim.mcgill.ca/~cathy/project765/node9.html#montemerlo02">16</A>]).</CAPTION>
+  <TBODY>
+  <TR>
+    <TD>
+      <DIV align=center><IMG height=172 
+      alt=\includegraphics[height=1.5in]{slam_bayes.eps} 
+      src="The FastSLAM approach_dosyalar/img20.png" width=309 align=bottom 
+      border=0> </DIV></TD></TR></TBODY></TABLE></DIV>
+<P>This factorisation decouples the SLAM problem into a path estimation problem 
+and individual conditional landmark location problems. In FastSLAM, a particle 
+filter is used to estimate the path of the robot by maintaining an estimate of 
+its current configuration. Each particle maintains its own estimate of the 
+landmark locations. Because these are conditionally independent of each other 
+given robot path, they may each be maintained by a low-dimensional EKF. 
+<P>Based on the control input <IMG height=34 alt="$ u_t$" 
+src="The FastSLAM approach_dosyalar/img5.png" width=21 align=middle border=0>, a 
+measurement <IMG height=34 alt="$ z_t$" 
+src="The FastSLAM approach_dosyalar/img7.png" width=19 align=middle border=0> 
+and its data association <IMG height=34 alt="$ n_t$" 
+src="The FastSLAM approach_dosyalar/img10.png" width=22 align=middle border=0>, 
+a FastSLAM update is performed as follows. First, each particle is updated 
+individually. For a particle <IMG height=17 alt="$ m$" 
+src="The FastSLAM approach_dosyalar/img21.png" width=21 align=bottom border=0>, 
+this involves updating the local pose estimate <!-- MATH
+ $s_t^{\lbrack m \rbrack}$
+ --><IMG height=47 
+alt="$ s_t^{\lbrack m \rbrack}$" src="The FastSLAM approach_dosyalar/img22.png" 
+width=34 align=middle border=0> by sampling the motion model. The measurement 
+<IMG height=34 alt="$ z_t$" src="The FastSLAM approach_dosyalar/img7.png" 
+width=19 align=middle border=0> and data association <IMG height=34 alt="$ n_t$" 
+src="The FastSLAM approach_dosyalar/img10.png" width=22 align=middle border=0> 
+are then used to update the appropriate local landmark location estimate <!-- MATH
+ $\theta_{n_t}^{\lbrack m\rbrack}$
+ --><IMG height=47 
+alt="$ \theta_{n_t}^{\lbrack m\rbrack}$" 
+src="The FastSLAM approach_dosyalar/img23.png" width=34 align=middle border=0> 
+using the standard EKF equations. Each particle is assigned an importance weight 
+proportional to the likelihood of the measurement given the estimated robot 
+pose. This quantity is computed in the prediction stage of the EKF. Once all 
+particles have been updated, a new set of particles is generated through 
+importance sampling, which involves drawing samples from the old particle set 
+with a probability proportional to their importance weights. 
+<P>Assuming the number <IMG height=17 alt="$ M$" 
+src="The FastSLAM approach_dosyalar/img24.png" width=25 align=bottom border=0> 
+of particles remains fixed over time and there are <IMG height=17 alt="$ K$" 
+src="The FastSLAM approach_dosyalar/img12.png" width=22 align=bottom border=0> 
+landmarks, a naive implementation of this algorithm results in <IMG height=37 
+alt="$ O(MK)$" src="The FastSLAM approach_dosyalar/img25.png" width=72 
+align=middle border=0> time complexity for a SLAM update, mainly because of the 
+importance resampling stage which requires the landmark estimates of a given 
+particle to be copied an arbitrary number of times. The authors show, however, 
+that this complexity may be further reduced to <!-- MATH
+ $O(M\log K)$
+ --><IMG 
+height=37 alt="$ O(M\log K)$" src="The FastSLAM approach_dosyalar/img26.png" 
+width=102 align=middle border=0>. This is achieved by storing the Gaussian 
+landmark location estimates for each particle in tree-like data structures. This 
+transforms the linear time copying operation into a logarithmic time operation 
+which involves modifying a path in the tree. As discussed in section <A 
+href="http://www.cim.mcgill.ca/~cathy/project765/node4.html#sec:approach">4</A>, 
+this aspect of the work was not implemented and thus will not be elaborated 
+further here. The reader is referred to [<A 
+href="http://www.cim.mcgill.ca/~cathy/project765/node9.html#montemerlo02">16</A>,<A 
+href="http://www.cim.mcgill.ca/~cathy/project765/node9.html#thrun04">21</A>] for 
+a more comprehensive explanation. 
+<P>The authors propose an extension of FastSLAM to the case of unknown data 
+association. Instead of computing <!-- MATH
+ $p(s^t, \theta_1, \ldots, \theta_K|z^t,
+u^t)$
+ --><IMG height=37 
+alt="$ p(s^t, \theta_1, \ldots, \theta_K\vert z^t,&#10;u^t)$" 
+src="The FastSLAM approach_dosyalar/img11.png" width=177 align=middle border=0>, 
+which requires a marginalisation over data association sequences <IMG height=19 
+alt="$ n^t$" src="The FastSLAM approach_dosyalar/img27.png" width=22 
+align=bottom border=0>, they estimate <IMG height=34 alt="$ n_t$" 
+src="The FastSLAM approach_dosyalar/img10.png" width=22 align=middle border=0> 
+for each particle by standard nearest neighbour gating. <!-- MATH
+ $n_t^{\lbrack m \rbrack}$
+ --><IMG height=47 
+alt="$ n_t^{\lbrack m \rbrack}$" src="The FastSLAM approach_dosyalar/img28.png" 
+width=36 align=middle border=0> then takes the value of the landmark index which 
+maximises the likelihood of the measurement <IMG height=34 alt="$ z_t$" 
+src="The FastSLAM approach_dosyalar/img7.png" width=19 align=middle border=0> 
+given the local robot pose estimate 
+<!-- MATH
+ $s_t^{\lbrack m \rbrack}$
+ --><IMG height=47 
+alt="$ s_t^{\lbrack m \rbrack}$" src="The FastSLAM approach_dosyalar/img22.png" 
+width=34 align=middle border=0>. If the maximum likelihood is below some 
+threshold, a new landmark is introduced in the map for particle <IMG height=17 
+alt="$ m$" src="The FastSLAM approach_dosyalar/img21.png" width=21 align=bottom 
+border=0>. This process may introduce spurious landmarks in the map. In order to 
+avoid the problems that this may cause, landmarks which are theoretically 
+visible but fail to be observed are removed from the map. 
+<P>FastSLAM offers many improvements over the traditional EKF-based SLAM 
+framework. In addition to the obvious reduction in computational complexity, the 
+technique intrinsically provides a way of maintaining several data association 
+hypotheses. This is an important advantage, given that a single data association 
+error can cause the EKF-based strategy to fatally diverge. In FastSLAM particles 
+with incorrect data association eventually ``die'' because of their low 
+importance weights, thereby reducing the impact of such errors. Computational 
+efficiency and robustness, however, come at a cost. Indeed, maintaining one map 
+of the environment within each particle leads to the important question of how 
+these maps, should be merged after sufficient exploration. This question becomes 
+especially complicated in the case of unknown data association, where all 
+particles do not necessarily maintain the same number of landmarks. Curiously, 
+the issue is barely mentioned in the original papers. 
+<P>
+<HR>
+<!--Navigation Panel--><A 
+href="http://www.cim.mcgill.ca/~cathy/project765/node4.html" 
+name=tex2html49><IMG height=24 alt=next 
+src="The FastSLAM approach_dosyalar/next.png" width=37 align=bottom 
+border=0></A> <A href="http://www.cim.mcgill.ca/~cathy/project765/report.html" 
+name=tex2html47><IMG height=24 alt=up 
+src="The FastSLAM approach_dosyalar/up.png" width=26 align=bottom border=0></A> 
+<A href="http://www.cim.mcgill.ca/~cathy/project765/node2.html" 
+name=tex2html41><IMG height=24 alt=previous 
+src="The FastSLAM approach_dosyalar/prev.png" width=63 align=bottom 
+border=0></A> <BR><B>Next:</B> <A 
+href="http://www.cim.mcgill.ca/~cathy/project765/node4.html" 
+name=tex2html50>Implementation issues</A> <B>Up:</B> <A 
+href="http://www.cim.mcgill.ca/~cathy/project765/report.html" 
+name=tex2html48>Experimenting with the FastSLAM</A> <B>Previous:</B> <A 
+href="http://www.cim.mcgill.ca/~cathy/project765/node2.html" 
+name=tex2html42>Background</A> <!--End of Navigation Panel-->
+<ADDRESS>Catherine Laporte 2005-01-27 </ADDRESS></BODY></HTML>

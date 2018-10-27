@@ -1,0 +1,36 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: VIMEK - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x41f /fo"Debug/VIMEK.res" /d "_DEBUG" "C:\Documents and Settings\ssirtkaya\Desktop\takehome\soft\VIMEK.rc"" 
+Creating temporary file "C:\DOCUME~1\SSIRTK~1\LOCALS~1\Temp\RSP7E.tmp" with contents
+[
+quartz.lib strmiids.lib /nologo /subsystem:windows /incremental:yes /pdb:"Debug/VIMEK.pdb" /debug /machine:I386 /out:"Debug/VIMEK.exe" /pdbtype:sept 
+".\Debug\Color.obj"
+".\Debug\DirectShowWrapper.obj"
+".\Debug\Feature.obj"
+".\Debug\GdiplusWrapper.obj"
+".\Debug\imge.obj"
+".\Debug\MpegFile.obj"
+".\Debug\StdAfx.obj"
+".\Debug\VIMEK.obj"
+".\Debug\VIMEKDlg.obj"
+".\Debug\VIMEKLayer.obj"
+".\Debug\VIMEK.res"
+]
+Creating command line "link.exe @C:\DOCUME~1\SSIRTK~1\LOCALS~1\Temp\RSP7E.tmp"
+<h3>Output Window</h3>
+Compiling resources...
+Linking...
+
+
+
+<h3>Results</h3>
+VIMEK.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

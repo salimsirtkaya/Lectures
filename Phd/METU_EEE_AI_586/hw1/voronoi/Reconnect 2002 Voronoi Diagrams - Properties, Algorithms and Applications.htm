@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0053)http://dimacs.rutgers.edu/reconnect/2002/voronoi.html -->
+<HTML><HEAD><TITLE>Reconnect 2002: Voronoi Diagrams - Properties, Algorithms and Applications</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=windows-1254">
+<META content="MSHTML 6.00.2900.2802" name=GENERATOR></HEAD>
+<BODY bgColor=#ffffff>
+<P>
+<CENTER><FONT color=red size=+3><B>DIMACS</B></FONT><BR><I>The Center for 
+Discrete Mathematics<BR>and Theoretical Computer Science</I> </CENTER><BR>
+<CENTER><FONT size=+3><B>Reconnect Conference 2002</B></FONT><BR><I>Reconnecting 
+Teaching Faculty to the Mathematical Sciences Enterprise</I><BR><BR><FONT 
+size=+2>August 11, 2002 - August 17, 2002</FONT><BR>(Sunday evening through 
+Saturday afternoon) </CENTER><BR><BR>
+<CENTER><FONT size=4>Voronoi Diagrams - Properties, Algorithms and Applications 
+</FONT><BR>Scot Drysdale, Dartmouth College, <A 
+href="mailto:scot@moosilauke.cs.dartmouth.edu">scot@moosilauke.cs.dartmouth.edu</A></CENTER><BR><BR>
+<P>The Voronoi Diagram of <I>n</I> sites is a subdivision of the plane into 
+<I>n</I> regions, one per site. Each site's region consists of all points in the 
+plane closer to that site than to any of the other <I>n</I>-1 sites. 
+<P>It is amazing how useful this simply described diagram is. The Voronoi 
+Diagram and its geometric dual, the Delaunay Triangulation, have proved to be 
+two of the most important data structures in Computational Geometry. The Voronoi 
+Diagram and its variants (different metrics, higher dimensions, sites which are 
+segments or polygons instead of points, etc.) have been rediscovered many times 
+in literally dozens of fields, including biology, crystallography, geology, 
+metallurgy, mesh generation, curve and surface reconstruction, meteorology, 
+mathematics, robotics, geography, and marketing. A book-length survey of the 
+types of Voronoi Diagrams and their applications in a variety of fields was 
+written by Okabe, Boots, and Sugihara [1]. 
+<P>Voronoi diagrams and their applications are an active field of research. In 
+recent years between 3 and 6 of the approximately 40 papers accepted to the 
+annual Symposium on Computational Geometry have been on Voronoi diagrams or 
+their applications. 
+<P>One of the applications that is the subject of a flurry of recent papers is a 
+group of algorithms for curve and surface reconstruction ([2] is the paper that 
+started the recent activity in this area and [3] is one of the most recent 
+papers on the subject). The algorithms take a sample of points from a curve in 
+2-D or a surface in 3-D (perhaps from a medical image or a machine that records 
+3-D points in space) and construct a representation of the curve or surface 
+sampled. 
+<P>Another important application of Voronoi diagrams that is still an active 
+area of research is mesh generation ([4],[5],[6]). However, not all recent work 
+is applied. Researchers are still exploring fundamental properties of these 
+diagrams ([7]) and new variations on the diagram ([8]). 
+<P>We will look at the properties of Voronoi diagrams that make them so widely 
+applicable, discuss the advantages and drawbacks to the various algorithms for 
+computing them, and will look at a number of specific applications, including 
+the surface reconstruction algorithm discussed above. 
+<P><I><B>Much of the material covered can be incorporated into undergraduate 
+algorithms courses</I></B>. The Voronoi diagram (or Delaunay Triangulation) can 
+be constructed via a number of approaches: iterative algorithms, 
+divide-and-conquer, and sweepline methods are among the approaches used. This 
+variety of approaches leads to interesting questions in both theoretical and 
+experimental analysis of algorithms. The topic can also be a large component of 
+a topics course devoted to Computational Geometry. The text by O'Rourke [9] is 
+designed for such an undergraduate course. 
+<P>The properties of the diagram provide an interesting test bed for showing the 
+usefulness of mathematical proofs and give students practice in constructing 
+proofs. The properties are non-trivial and sometimes surprising, but none 
+requires a level of mathematical understanding beyond that gained in high school 
+geometry. Thus they are both challenging and accessible to undergraduate 
+students. 
+<P>The wide variety of applications and concrete visual representation of the 
+diagram make it a good example for undergraduate courses. <BR><BR>
+<P><B>Prerequisites:</B> Participants should have a solid grounding in data 
+structures and algorithms. If in doubt, apply. 
+<BR><BR><B>References:</B><BR><BR>
+<UL>[1] A. Okabe, B. Boots, and K. Sugihara, <I>Spatial Tesselations: Concepts 
+  and Applications of Voronoi Diagrams</I>, Wiley, 1992. ISBN 0 471 93430 
+  5.<BR><BR>[2] N. Amenta and M. Bern, "Surface Reconstruction by Voronoi 
+  Filtering", <I>Discr. Comput. Geom.</I>, <B>22</B>, (1999) 481-504.<BR><BR>[3] 
+  T. Day and J. Giesen, "Detecting Undersampling in Surface Reconstruction", 
+  <I>Proc. 17th Annual ACM Symposium on Computational Geometry</I>, 257-263, 
+  2001.<BR><BR>[4] H. Edelsbrunner and D. Guoy, "Sink-insertion for Mesh 
+  Improvement", <I>Proc. 17th Annual ACM Symposium on Computational 
+  Geometry</I>, 115-123, 2001.<BR><BR>[5] J. Shewchuck, "Tethrahedral Mesh 
+  Generation by Deluanay Refinement", <I>Proc. 14th Annual ACM Symposium on 
+  Computational Geometry</I>, 86-95, 2001.<BR><BR>[6] J. Ruppert, "A Delaunay 
+  Refinement Algorithm for Quality 2-dimensional Mesh Generation", <I>J. 
+  Algorithms</I>, <B>18</B> (1995), 548-585.<BR><BR>[7] J. Erickson, "Nice Point 
+  Sets Can Have Nasty Delaunay Triangulations", <I>Proc. 17th Annual ACM 
+  Symposium on Computational Geometry</I>, 96-105, 2001.<BR><BR>[8] G. Barequet, 
+  M. T. Dickerson, R. L. S. Drysdale, and D. S. Guertin, "2-Point Site Voronoi 
+  Diagrams" (Video Presentation Abstract), <I>Proc. 17th Annual ACM Symposium on 
+  Computational Geometry</I>, 323-324, 2001.<BR><BR>[9] J. O'Rouke, 
+  <I>Computational Geometry in C</I>, Cambridge University Press, 1994. 
+</UL><BR><A href="http://dimacs.rutgers.edu/reconnect/2002/index.html">Back to 
+Main Page</A> </BODY></HTML>

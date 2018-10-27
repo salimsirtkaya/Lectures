@@ -1,0 +1,54 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: MovingCamSimulation - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\SALIMS~1\LOCALS~1\Temp\RSP43.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /FR"Debug/" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"D:\DERS\PHD\VIDEO\PROJE\MovingCamSimulation\MotionPathEntranceDlg.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\SALIMS~1\LOCALS~1\Temp\RSP43.tmp" 
+Creating temporary file "C:\DOCUME~1\SALIMS~1\LOCALS~1\Temp\RSP44.tmp" with contents
+[
+quartz.lib strmiids.lib /nologo /subsystem:windows /incremental:yes /pdb:"Debug/MovingCamSimulation.pdb" /debug /machine:I386 /out:"Debug/MovingCamSimulation.exe" /pdbtype:sept 
+.\Debug\AuxiliaryClasses.obj
+.\Debug\DirectShowWrapper.obj
+.\Debug\GdiplusWrapper.obj
+.\Debug\MotionPathEntranceDlg.obj
+.\Debug\MovingCamSimulation.obj
+.\Debug\MovingCamSimulationDlg.obj
+.\Debug\MpegFile.obj
+.\Debug\StdAfx.obj
+.\Debug\MovingCamSimulation.res
+]
+Creating command line "link.exe @C:\DOCUME~1\SALIMS~1\LOCALS~1\Temp\RSP44.tmp"
+<h3>Output Window</h3>
+Compiling...
+MotionPathEntranceDlg.cpp
+Linking...
+Creating temporary file "C:\DOCUME~1\SALIMS~1\LOCALS~1\Temp\RSP45.tmp" with contents
+[
+/nologo /o"Debug/MovingCamSimulation.bsc" 
+.\Debug\StdAfx.sbr
+.\Debug\AuxiliaryClasses.sbr
+.\Debug\DirectShowWrapper.sbr
+.\Debug\GdiplusWrapper.sbr
+.\Debug\MotionPathEntranceDlg.sbr
+.\Debug\MovingCamSimulation.sbr
+.\Debug\MovingCamSimulationDlg.sbr
+.\Debug\MpegFile.sbr]
+Creating command line "bscmake.exe @C:\DOCUME~1\SALIMS~1\LOCALS~1\Temp\RSP45.tmp"
+Creating browse info file...
+<h3>Output Window</h3>
+
+
+
+<h3>Results</h3>
+MovingCamSimulation.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

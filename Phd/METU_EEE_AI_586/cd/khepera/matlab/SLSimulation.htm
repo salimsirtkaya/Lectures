@@ -1,0 +1,789 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv="Content-Language" content="en-gb">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<link rel="File-List" href="SLSimulation_files/filelist.xml">
+<title>SL Simulation</title>
+<style>
+<!--
+ li.MsoNormal
+	{mso-style-parent:"";
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	margin-left:0cm; margin-right:0cm; margin-top:0cm}
+-->
+</style>
+<!--[if !mso]>
+<style>
+v\:*         { behavior: url(#default#VML) }
+o\:*         { behavior: url(#default#VML) }
+.shape       { behavior: url(#default#VML) }
+table.MsoTableGrid
+	{border:1.0pt solid windowtext;
+	font-size:10.0pt;
+	font-family:"Times New Roman"}
+</style>
+<![endif]--><!--[if gte mso 9]>
+<xml><o:shapedefaults v:ext="edit" spidmax="1027"/>
+</xml><![endif]-->
+</head>
+
+<body>
+
+<p align="center"><b><font face="Trebuchet MS" size="5"><i>SL</i> Simulation</font></b></p>
+<p class="MsoNormal" style="text-align:justify"><b><font face="Trebuchet MS">
+Introduction</font></b></p>
+<p class="MsoNormal" style="text-align:justify"><font face="Trebuchet MS"><i>SL</i> 
+is a dynamic simulator and the aim in using this simulation is to realize and 
+test biped locomotion algorithms and analyze the corresponding results. <i>SL</i> 
+is created by <a href="http://www-clmc.usc.edu/~sschaal/">Stefan Schaal</a>, 
+University of Southern California/USA.</font></p>
+<p class="MsoNormal" style="text-align:justify"><font face="Trebuchet MS"><i>
+<span style="color: black">SL</span></i> allows creating complex rigid-body 
+dynamic simulations easily and in a short time so that the biped robot 
+algorithms can be tested in simulation before trying them on the actual robot 
+and then the algorithms can be used in a real-time robotics setup. Both in 
+simulation and real-time robot setup, <i>SL </i>allows to collect related data 
+into a file after simulating the robot in simulation or after testing the 
+algorithms in real robot. <i><span style="color: black">SL</span></i><span style="color: black"> 
+can also be used just for creating graphics animations.</span></font></p>
+<p class="MsoNormal" style="text-align:justify"><font face="Trebuchet MS"><i>
+<span style="color: black">SL</span></i><span style="color: black"> is divided 
+into three software components such as the generic code that is shared by the 
+actual robot and the simulation; the robot specific code and the simulation 
+specific code. The simulation specific code has all the components for OpenGL 
+graphics simulations and mimics the robot multi-processor environment in simple 
+C code. </span></font></p>
+<p class="MsoNormal" style="text-align: justify; text-autospace: none">
+<font face="Trebuchet MS"><i><span style="color: black">SL</span></i><span style="color: black"> 
+Simulation offers plenty of different development features to the user such as:</span></font></p>
+<ul style="margin-top: 0cm; margin-bottom: 0cm" type="disc">
+  <li class="MsoNormal" style="color: black; text-align: justify; text-autospace: none">
+  <font face="Trebuchet MS">Automatic generation of C-code for rigid body 
+  dynamics and kinematics based on simple text files that specify the kinematics 
+  structure of the motor system.</font></li>
+  <li class="MsoNormal" style="color: black; text-align: justify; text-autospace: none">
+  <font face="Trebuchet MS">Automatic generation of C-code for OpenGL 3D 
+  graphics with the ability to add arbitrary beautification by the user 
+  afterwards.</font></li>
+  <li class="MsoNormal" style="color: black; text-align: justify; text-autospace: none">
+  <font face="Trebuchet MS">Inbuilt motor control loops for PD, PID, 
+  computed-torque, and inverse dynamics control.</font></li>
+  <li class="MsoNormal" style="color: black; text-align: justify; text-autospace: none">
+  <font face="Trebuchet MS">Inbuilt inverse kinematics computation and simple 
+  Cartesian control loops. </font></li>
+  <li class="MsoNormal" style="color: black; text-align: justify; text-autospace: none">
+  <font face="Trebuchet MS">Easy customization through a variety of preferences 
+  files. </font></li>
+  <li class="MsoNormal" style="color: black; text-align: justify; text-autospace: none">
+  <font face="Trebuchet MS">Easy data collection during control and Matlab-based 
+  visualization tools for trajectory data.</font></li>
+  <li class="MsoNormal" style="color: black; text-align: justify; text-autospace: none">
+  <font face="Trebuchet MS">Plain C-code implementation for maximal 
+  compute-speed and cross-platform compatibility.</font></li>
+  <li class="MsoNormal" style="color: black; text-align: justify; text-autospace: none">
+  <font face="Trebuchet MS">Very easy extension for user-specific motor control 
+  problems.</font></li>
+  <li class="MsoNormal" style="color: black; text-align: justify; text-autospace: none">
+  <font face="Trebuchet MS">Support for generating floating-base simulations 
+  (e.g., walking simulations). </font></li>
+  <li class="MsoNormal" style="color: black; text-align: justify; text-autospace: none">
+  <font face="Trebuchet MS">Point-based collision checking. </font></li>
+  <li class="MsoNormal" style="color: black; text-align: justify; text-autospace: none">
+  <font face="Trebuchet MS">Easy definition of objects in the environment with 
+  simple geometric shapes. </font></li>
+  <li class="MsoNormal" style="color: black; text-align: justify; text-autospace: none">
+  <font face="Trebuchet MS">Possible extensions to muscle-based simulations.</font></li>
+</ul>
+<p class="MsoNormal" style="text-align: justify; text-autospace: none">
+<font face="Trebuchet MS"><span style="color: black">By these properties, <i>SL</i> 
+can be used for applications in robot control research and education, almost 
+arbitrary rigid body dynamics simulations, in particular humanoid or animal 
+simulations, studies of motor control form the viewpoint of computational 
+neuroscience, computer graphics with physical animations, studies of motor 
+learning, and behavioural motor control studies from the viewpoint of 
+experimental psychology, kinesiology, and motor rehabilitation.</span></font></p>
+<p class="MsoNormal" style="text-align: justify; text-autospace: none">
+<font face="Trebuchet MS"><i><span style="color: black">SL</span></i><span style="color: black"> 
+has a modular software structure that helps keeping the programs more 
+transparent. <i>SL</i> was programmed with a multiprocessor environment in mind, 
+where inter-processor communication is accomplished through a shared memory 
+structure. </span>Fig. 1<span style="color: black"> shows the code structure of
+<i>SL</i>. </span></font></p>
+<p class="MsoNormal" style="text-align: justify; text-autospace: none">&nbsp;</p>
+<p class="MsoNormal" style="text-align: justify; text-autospace: none"><!--[if gte vml 1]><v:group id="_x0000_s1025"
+ style='position:absolute;margin-left:16.5pt;margin-top:-24.75pt;width:411pt;
+ height:89.25pt;z-index:1' coordorigin="1980,5580" coordsize="6300,1620">
+ <v:shapetype id="_x0000_t202" coordsize="21600,21600" o:spt="202" path="m,l,21600r21600,l21600,xe">
+  <v:stroke joinstyle="miter"/>
+  <v:path gradientshapeok="t" o:connecttype="rect"/>
+ </v:shapetype><v:shape id="_x0000_s1026" type="#_x0000_t202" style='position:absolute;
+  left:1980;top:5580;width:6300;height:482' strokeweight="1.25pt">
+  <v:textbox style='mso-next-textbox:#_x0000_s1026'>
+<![if !mso]>
+<table cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+    <td><![endif]>
+    <div>
+      <p class="MsoNormal" align="center" style="text-align:center">
+      <span style="font-size:14.0pt"><font face="Trebuchet MS">Shared Memory</font><o:p></o:p></span></div>
+    <![if !mso]></td>
+  </tr>
+</table>
+<![endif]></v:textbox>
+ </v:shape><v:shape id="_x0000_s1027" type="#_x0000_t202" style='position:absolute;
+  left:1980;top:6480;width:1080;height:720' strokeweight="1.25pt">
+  <v:textbox style='mso-next-textbox:#_x0000_s1027'>
+<![if !mso]>
+<table cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+    <td><![endif]>
+    <div>
+      <p class="MsoNormal" align="center" style="text-align:center">
+      <font face="Trebuchet MS">Motor Servo</font></div>
+    <![if !mso]></td>
+  </tr>
+</table>
+<![endif]></v:textbox>
+ </v:shape><v:shape id="_x0000_s1028" type="#_x0000_t202" style='position:absolute;
+  left:7200;top:6480;width:1080;height:720' strokeweight="1.25pt">
+  <v:textbox style='mso-next-textbox:#_x0000_s1028'>
+<![if !mso]>
+<table cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+    <td><![endif]>
+    <div>
+      <p class="MsoNormal" align="center" style="text-align:center">
+      <font face="Trebuchet MS">InvKin&nbsp; Servo</font></div>
+    <![if !mso]></td>
+  </tr>
+</table>
+<![endif]></v:textbox>
+ </v:shape><v:shape id="_x0000_s1029" type="#_x0000_t202" style='position:absolute;
+  left:3285;top:6480;width:1080;height:720' strokeweight="1.25pt">
+  <v:textbox style='mso-next-textbox:#_x0000_s1029'>
+<![if !mso]>
+<table cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+    <td><![endif]>
+    <div>
+      <p class="MsoNormal" align="center" style="text-align:center">
+      <font face="Trebuchet MS">Task Servo</font></div>
+    <![if !mso]></td>
+  </tr>
+</table>
+<![endif]></v:textbox>
+ </v:shape><v:shape id="_x0000_s1030" type="#_x0000_t202" style='position:absolute;
+  left:4604;top:6480;width:1080;height:720' strokeweight="1.25pt">
+  <v:textbox style='mso-next-textbox:#_x0000_s1030'>
+<![if !mso]>
+<table cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+    <td><![endif]>
+    <div>
+      <p class="MsoNormal" align="center" style="text-align:center">
+      <font face="Trebuchet MS">Vision Servo</font></div>
+    <![if !mso]></td>
+  </tr>
+</table>
+<![endif]></v:textbox>
+ </v:shape><v:shape id="_x0000_s1031" type="#_x0000_t202" style='position:absolute;
+  left:5917;top:6480;width:1080;height:720' strokeweight="1.25pt">
+  <v:textbox style='mso-next-textbox:#_x0000_s1031'>
+<![if !mso]>
+<table cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+    <td><![endif]>
+    <div>
+      <p class="MsoNormal" align="center" style="text-align:center">
+      <font face="Trebuchet MS">InvDyn Servo</font></div>
+    <![if !mso]></td>
+  </tr>
+</table>
+<![endif]></v:textbox>
+ </v:shape><v:line id="_x0000_s1032" style='position:absolute' from="2520,6075"
+  to="2520,6472" strokeweight="1.25pt">
+  <v:stroke startarrow="block" endarrow="block"/>
+ </v:line><v:line id="_x0000_s1033" style='position:absolute' from="3820,6064"
+  to="3820,6461" strokeweight="1.25pt">
+  <v:stroke startarrow="block" endarrow="block"/>
+ </v:line><v:line id="_x0000_s1034" style='position:absolute' from="7748,6072"
+  to="7748,6469" strokeweight="1.25pt">
+  <v:stroke startarrow="block" endarrow="block"/>
+ </v:line><v:line id="_x0000_s1035" style='position:absolute' from="6488,6068"
+  to="6488,6465" strokeweight="1.25pt">
+  <v:stroke startarrow="block" endarrow="block"/>
+ </v:line><v:line id="_x0000_s1036" style='position:absolute' from="5164,6056"
+  to="5164,6453" strokeweight="1.25pt">
+  <v:stroke startarrow="block" endarrow="block"/>
+ </v:line></v:group><![endif]--><![if !vml]><span style='mso-ignore:vglayout;
+position:absolute;z-index:1;left:32px;top:1045px;width:554px;height:125px'><img
+width=554 height=125 src="SLSimulation_files/image001.gif" v:shapes="_x0000_s1025 _x0000_s1026 _x0000_s1027 _x0000_s1028 _x0000_s1029 _x0000_s1030 _x0000_s1031 _x0000_s1032 _x0000_s1033 _x0000_s1034 _x0000_s1035 _x0000_s1036"></span><![endif]></p>
+<p><font face="Trebuchet MS"><span style="color: black">&nbsp;</span></font></p>
+<p>&nbsp;</p>
+<p class="MsoNormal" style="text-align: justify; text-autospace: none">
+<font face="Trebuchet MS"><span style="color: black">&nbsp;</span></font></p>
+<p class="MsoNormal" style="text-align: justify; text-autospace: none">
+<font face="Trebuchet MS"><span style="color: black">&nbsp;</span><b><span style="font-size: 11.0pt; ">Figure 
+1:</span></b><span style="font-size: 11.0pt; color: black"> The <i>SL</i> code 
+structure</span></font></p>
+<p class="MsoNormal" style="text-align: justify; text-autospace: none">
+<font face="Trebuchet MS"><span style="color: black">The elements in </span>
+Fig. 1<span style="color: black"> have the 
+following meaning:</span></font></p>
+<p class="MsoNormal" style="text-align: justify; text-autospace: none">
+<font face="Trebuchet MS"><span style="color: black">- <i>Shared Memory</i>: 
+Certain variable structures that reside in physically shared memory are defined 
+as shared memory structures. In simulation, the memory is simply allocated by 
+normal memory allocation functions. Each processor can read/write from/to shared 
+memory. &nbsp;</span></font></p>
+<p class="MsoNormal" style="text-align: justify; text-autospace: none">
+<font face="Trebuchet MS"><span style="color: black">- <i>Motor Servo</i>: This 
+processor or software module handles the low-level input/output with the robot 
+or simulation, and implements the basic feedback control loops. The processor 
+runs a servo at a user-specified frequency that does reading of desired 
+position, velocity, and feedforward commands, computing of PD, PID, PDFF, or 
+PIDFF1 motor commands from the desired quantities and the current state of the 
+robot and sending the motor commands to the robot or simulation.</span></font></p>
+<p class="MsoNormal" style="text-align: justify; text-autospace: none">
+<font face="Trebuchet MS">- <i>Task Servo</i>: This processor or software module 
+allows switching between different motor tasks. The general goal of a motor task 
+is to create appropriate desired position, velocity, and feedforward commands to 
+accomplish a user specified motor behavior, and to send these quantities to the 
+motor servo. From the view point of control theory, the task servo implements 
+the control law, although the PD or PID part of the control law is usually taken 
+over by the motor servo. Negative feedback control can be taken over by the Task 
+Servo, too, by sending the current state of the robot as desired state to the 
+motor servo, which effectively cancels the PD or PID contribution of the motor 
+servo and only leaves the feedforward command to control the robot (Fig. 2).&nbsp; &nbsp;</font></p>
+<p class="MsoNormal" style="text-align: justify; text-autospace: none">
+<font face="Trebuchet MS">- <i>Vision Servo</i>: The vision servo collects data 
+from camera systems and makes the data available in shared memory. It’s assumed 
+that all visual information comes in form of the centroids of color blobs. Thus, 
+the vision servo converts two-dimensional image based coordinates of the 
+centroids, to 3D information and provides these quantities at a rate of 60Hz to 
+the shared memory. In simulation, the centroid information can be generated by 
+user specific functions and sent to the Vision Servo as simulated camera. &nbsp;</font></p>
+<p class="MsoNormal" style="text-align: justify; text-autospace: none"><!--[if gte vml 1]><v:group
+ id="_x0000_s1037" style='position:absolute;margin-left:0;margin-top:0;width:516pt;
+ height:273.75pt;z-index:2' coordorigin="1980,8900" coordsize="9720,4960">
+ <v:shape id="_x0000_s1038" type="#_x0000_t202" style='position:absolute;
+  left:2880;top:8900;width:1440;height:540'>
+  <v:textbox style='mso-next-textbox:#_x0000_s1038'>
+<![if !mso]>
+<table cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+    <td><![endif]>
+    <div>
+      <p class="MsoNormal" align="center" style="text-align:center">
+      <font face="Trebuchet MS">Cameras</font></div>
+    <![if !mso]></td>
+  </tr>
+</table>
+<![endif]></v:textbox>
+ </v:shape><v:shape id="_x0000_s1039" type="#_x0000_t202" style='position:absolute;
+  left:1980;top:9720;width:3240;height:1620'>
+  <v:textbox style='mso-next-textbox:#_x0000_s1039'>
+<![if !mso]>
+<table cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+    <td><![endif]>
+    <div>
+      <p class="MsoNormal" align="center" style="text-align:center">
+      <b style="mso-bidi-font-weight:normal"><font face="Trebuchet MS">Vision 
+      Servo</font><o:p></o:p></b></div>
+    <![if !mso]></td>
+  </tr>
+</table>
+<![endif]></v:textbox>
+ </v:shape><v:shape id="_x0000_s1040" type="#_x0000_t202" style='position:absolute;
+  left:2160;top:10440;width:2880;height:720'>
+  <v:textbox style='mso-next-textbox:#_x0000_s1040'>
+<![if !mso]>
+<table cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+    <td><![endif]>
+    <div>
+      <p class="MsoNormal"><font face="Trebuchet MS">Camera =&gt; Body Map </font>
+      </p>
+      <p class="MsoNormal"><font face="Trebuchet MS">
+      <span style="mso-spacerun:yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>Filtering</font></div>
+    <![if !mso]></td>
+  </tr>
+</table>
+<![endif]></v:textbox>
+ </v:shape><v:shape id="_x0000_s1041" type="#_x0000_t202" style='position:absolute;
+  left:1980;top:11880;width:3240;height:1980'>
+  <v:textbox style='mso-next-textbox:#_x0000_s1041'>
+<![if !mso]>
+<table cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+    <td><![endif]>
+    <div>
+      <p class="MsoNormal" align="center" style="text-align:center">
+      <b style="mso-bidi-font-weight:normal"><font face="Trebuchet MS">Task 
+      Servo</font><o:p></o:p></b></div>
+    <![if !mso]></td>
+  </tr>
+</table>
+<![endif]></v:textbox>
+ </v:shape><v:shape id="_x0000_s1042" type="#_x0000_t202" style='position:absolute;
+  left:3420;top:12420;width:1440;height:720'>
+  <v:textbox style='mso-next-textbox:#_x0000_s1042'>
+<![if !mso]>
+<table cellpadding="0" cellspacing="0" width="76">
+  <tr>
+    <td width="76"><![endif]>
+    <div>
+      <p class="MsoNormal"><font face="Trebuchet MS">Trajectory Planning</font><o:p></o:p></div>
+    <![if !mso]></td>
+  </tr>
+</table>
+<![endif]></v:textbox>
+ </v:shape><v:line id="_x0000_s1043" style='position:absolute' from="4320,9180"
+  to="4680,9180"/>
+ <v:line id="_x0000_s1044" style='position:absolute' from="4680,9180" to="4680,10440">
+  <v:stroke endarrow="block"/>
+ </v:line><v:shape id="_x0000_s1045" type="#_x0000_t202" style='position:absolute;
+  left:5940;top:11880;width:3240;height:1980'>
+  <v:textbox style='mso-next-textbox:#_x0000_s1045'>
+<![if !mso]>
+<table cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+    <td><![endif]>
+    <div>
+      <p class="MsoNormal" align="center" style="text-align:center">
+      <b style="mso-bidi-font-weight:normal"><font face="Trebuchet MS">Motor 
+      Servo</font><o:p></o:p></b></div>
+    <![if !mso]></td>
+  </tr>
+</table>
+<![endif]></v:textbox>
+ </v:shape><v:shape id="_x0000_s1046" type="#_x0000_t202" style='position:absolute;
+  left:6840;top:12420;width:1440;height:720'>
+  <v:textbox style='mso-next-textbox:#_x0000_s1046'>
+<![if !mso]>
+<table cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+    <td><![endif]>
+    <div>
+      <p class="MsoNormal"><font face="Trebuchet MS">Feedback Controller</font><o:p></o:p></div>
+    <![if !mso]></td>
+  </tr>
+</table>
+<![endif]></v:textbox>
+ </v:shape><v:shape id="_x0000_s1047" type="#_x0000_t202" style='position:absolute;
+  left:9900;top:12420;width:1440;height:720'>
+  <v:textbox style='mso-next-textbox:#_x0000_s1047'>
+<![if !mso]>
+<table cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+    <td><![endif]>
+    <div>
+      <p class="MsoNormal"><font face="Trebuchet MS">
+      <b style="mso-bidi-font-weight:normal">Robot </b>or</font><b style="mso-bidi-font-weight:normal"><font face="Trebuchet MS"> 
+      Animation</font><o:p></o:p></b></div>
+    <![if !mso]></td>
+  </tr>
+</table>
+<![endif]></v:textbox>
+ </v:shape><v:oval id="_x0000_s1048" style='position:absolute;left:8640;top:12600;
+  width:360;height:360'/>
+ <v:line id="_x0000_s1049" style='position:absolute' from="3960,13500" to="11700,13500"/>
+ <v:line id="_x0000_s1050" style='position:absolute;flip:y' from="3960,13140"
+  to="3960,13500">
+  <v:stroke endarrow="block"/>
+ </v:line><v:line id="_x0000_s1051" style='position:absolute' from="4860,12600"
+  to="5580,12600"/>
+ <v:line id="_x0000_s1052" style='position:absolute;flip:y' from="5580,11520"
+  to="5580,12600"/>
+ <v:line id="_x0000_s1053" style='position:absolute' from="5580,11520" to="8820,11520"/>
+ <v:line id="_x0000_s1054" style='position:absolute' from="8820,11520" to="8820,12600">
+  <v:stroke endarrow="block"/>
+ </v:line><v:line id="_x0000_s1055" style='position:absolute' from="8280,12780"
+  to="8640,12780">
+  <v:stroke endarrow="block"/>
+ </v:line><v:line id="_x0000_s1056" style='position:absolute' from="9000,12780"
+  to="9900,12780">
+  <v:stroke endarrow="block"/>
+ </v:line><v:line id="_x0000_s1057" style='position:absolute' from="11340,12780"
+  to="11700,12780"/>
+ <v:line id="_x0000_s1058" style='position:absolute' from="11700,12780" to="11700,13500"/>
+ <v:line id="_x0000_s1059" style='position:absolute;flip:y' from="3600,11160"
+  to="3600,11880">
+  <v:stroke endarrow="block"/>
+ </v:line><v:line id="_x0000_s1060" style='position:absolute' from="4320,11160"
+  to="4320,12420">
+  <v:stroke endarrow="block"/>
+ </v:line><v:shape id="_x0000_s1061" type="#_x0000_t202" style='position:absolute;
+  left:2160;top:12740;width:1260;height:720' stroked="f">
+  <v:textbox style='mso-next-textbox:#_x0000_s1061'>
+<![if !mso]>
+<table cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+    <td><![endif]>
+    <div>
+      <p class="MsoNormal"><font face="Trebuchet MS">Desired Behavior</font></div>
+    <![if !mso]></td>
+  </tr>
+</table>
+<![endif]></v:textbox>
+ </v:shape><v:line id="_x0000_s1062" style='position:absolute' from="2340,12780"
+  to="3420,12780">
+  <v:stroke endarrow="block"/>
+ </v:line><v:line id="_x0000_s1063" style='position:absolute;flip:y' from="2700,11160"
+  to="2700,12780">
+  <v:stroke endarrow="block"/>
+ </v:line><v:line id="_x0000_s1064" style='position:absolute' from="4860,12780"
+  to="6120,12780">
+  <v:stroke endarrow="block"/>
+ </v:line><v:line id="_x0000_s1065" style='position:absolute;flip:y' from="6300,12960"
+  to="6300,13500">
+  <v:stroke endarrow="block"/>
+ </v:line><v:line id="_x0000_s1066" style='position:absolute' from="6480,12780"
+  to="6840,12780">
+  <v:stroke endarrow="block"/>
+ </v:line><v:shape id="_x0000_s1067" type="#_x0000_t202" style='position:absolute;
+  left:8620;top:12600;width:540;height:360' filled="f" stroked="f">
+  <v:textbox style='mso-next-textbox:#_x0000_s1067'>
+<![if !mso]>
+<table cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+    <td><![endif]>
+    <div>
+      <p class="MsoNormal"><font face="Trebuchet MS">&#931;</font></div>
+    <![if !mso]></td>
+  </tr>
+</table>
+<![endif]></v:textbox>
+ </v:shape><v:oval id="_x0000_s1068" style='position:absolute;left:6120;top:12600;
+  width:360;height:360'/>
+ <v:shape id="_x0000_s1069" type="#_x0000_t202" style='position:absolute;
+  left:6100;top:12600;width:540;height:360' filled="f" stroked="f">
+  <v:textbox style='mso-next-textbox:#_x0000_s1069'>
+<![if !mso]>
+<table cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+    <td><![endif]>
+    <div>
+      <p class="MsoNormal"><font face="Trebuchet MS">&#931;</font></div>
+    <![if !mso]></td>
+  </tr>
+</table>
+<![endif]></v:textbox>
+ </v:shape></v:group><![endif]--><![if !vml]><span style='mso-ignore:vglayout;
+position:absolute;z-index:2;left:10px;top:1884px;width:692px;height:371px'><img
+width=692 height=371 src="SLSimulation_files/image002.gif" v:shapes="_x0000_s1037 _x0000_s1038 _x0000_s1039 _x0000_s1040 _x0000_s1041 _x0000_s1042 _x0000_s1043 _x0000_s1044 _x0000_s1045 _x0000_s1046 _x0000_s1047 _x0000_s1048 _x0000_s1049 _x0000_s1050 _x0000_s1051 _x0000_s1052 _x0000_s1053 _x0000_s1054 _x0000_s1055 _x0000_s1056 _x0000_s1057 _x0000_s1058 _x0000_s1059 _x0000_s1060 _x0000_s1061 _x0000_s1062 _x0000_s1063 _x0000_s1064 _x0000_s1065 _x0000_s1066 _x0000_s1067 _x0000_s1068 _x0000_s1069"></span><![endif]><font face="Trebuchet MS">&nbsp;</font></p>
+<p class="MsoNormal" style="text-align: justify; text-autospace: none">
+<font face="Trebuchet MS">&nbsp;</font></p>
+<p class="MsoNormal" style="text-align: justify; text-autospace: none">
+<font face="Trebuchet MS">&nbsp;</font></p>
+<p class="MsoNormal" style="text-align: justify; text-autospace: none">
+<font face="Trebuchet MS">&nbsp;</font></p>
+<p class="MsoNormal" style="text-align: justify; text-autospace: none">
+<font face="Trebuchet MS">&nbsp;</font></p>
+<p class="MsoNormal" style="text-align: justify; text-autospace: none">
+<font face="Trebuchet MS">&nbsp;</font></p>
+<p class="MsoNormal" style="text-align: justify; text-autospace: none">
+<font face="Trebuchet MS">&nbsp;</font></p>
+<p class="MsoNormal" style="text-align: justify; text-autospace: none">
+<font face="Trebuchet MS">&nbsp;</font></p>
+<p class="MsoNormal" style="text-align: justify; text-autospace: none">
+<font face="Trebuchet MS">&nbsp;</font></p>
+<p class="MsoNormal" style="text-align: justify; text-autospace: none; margin-left: 36.0pt">
+<font face="Trebuchet MS"><b><span style="font-size: 11.0pt; ">
+Figure </span><span style="font-size: 11pt">2</span><span style="font-size: 11.0pt">:</span></b><span style="font-size: 11.0pt"> 
+Control solely using the Task Servo. </span></font></p>
+<p class="MsoNormal" style="text-align: justify; text-autospace: none">
+<font face="Trebuchet MS"><i><span style="color: black">SL </span></i>
+<span style="color: black">Simulation is used under Linux and Machintosh 
+Computers. The visual appearance of the simulation is like in </span>
+Fig. 3<span style="color: black">. The User 
+Interface (UI) of <i>SL</i> has commands that allow you to control the 
+simulation. There are some functions that can be used from UI command line. 
+Also, user can define some functions and there are some more functions that are 
+only available for the programmer.</span></font></p>
+<p class="MsoNormal" style="text-align: justify; text-autospace: none">
+<font face="Trebuchet MS"><span style="color: black">To sum up, <i>SL</i> 
+Simulation is a dynamic simulator that allows you to use a robot model that you 
+can change the robot specific parameters and simulation conditions, implement 
+gait trajectories and collect data from the simulation. After collecting the 
+data from the simulation, it can be analyzed and be plotted using MATLAB or any 
+other relevant programme.</span></font></p>
+<p class="MsoNormal" style="text-align: justify; text-autospace: none">
+<font face="Trebuchet MS"><span style="color: black">&nbsp;</span></font></p>
+<p class="MsoNormal" style="text-align: justify; text-autospace: none">
+<font face="Trebuchet MS"><!--[if gte vml 1]><v:shapetype
+ id="_x0000_t75" coordsize="21600,21600" o:spt="75" o:preferrelative="t"
+ path="m@4@5l@4@11@9@11@9@5xe" filled="f" stroked="f">
+ <v:stroke joinstyle="miter"/>
+ <v:formulas>
+  <v:f eqn="if lineDrawn pixelLineWidth 0"/>
+  <v:f eqn="sum @0 1 0"/>
+  <v:f eqn="sum 0 0 @1"/>
+  <v:f eqn="prod @2 1 2"/>
+  <v:f eqn="prod @3 21600 pixelWidth"/>
+  <v:f eqn="prod @3 21600 pixelHeight"/>
+  <v:f eqn="sum @0 0 1"/>
+  <v:f eqn="prod @6 1 2"/>
+  <v:f eqn="prod @7 21600 pixelWidth"/>
+  <v:f eqn="sum @8 21600 0"/>
+  <v:f eqn="prod @7 21600 pixelHeight"/>
+  <v:f eqn="sum @10 21600 0"/>
+ </v:formulas>
+ <v:path o:extrusionok="f" gradientshapeok="t" o:connecttype="rect"/>
+ <o:lock v:ext="edit" aspectratio="t"/>
+</v:shapetype><v:shape id="_x0000_s1070" type="#_x0000_t75" style='width:3in;
+ height:3in'>
+ <v:imagedata src="SLSimulation_files/image003.png" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=288 height=288
+src="SLSimulation_files/image004.jpg" v:shapes="_x0000_s1070"><![endif]><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="MSPhotoEd.3" ShapeID="_x0000_i1025" DrawAspect="Content" ObjectID="_1153815608">
+ </o:OLEObject>
+</xml><![endif]--></font></p>
+<p class="MsoNormal" style="text-align:justify"><font face="Trebuchet MS">
+&nbsp;<b><span style="font-size:11.0pt;">Figure 
+3:</span><span style="font-size:
+11.0pt"> </span></b><i><span style="font-size:11.0pt">SL</span></i><span style="font-size:11.0pt"> 
+Simulation</span></font></p>
+<p class="MsoNormal" style="text-align:justify"><font face="Trebuchet MS"><b>
+&nbsp;Simulation Results</b></font></p>
+<p class="MsoNormal" style="text-align: justify"><font face="Trebuchet MS">
+Frontal Plane Video</font></p>
+<p class="MsoNormal" style="text-align: justify">&nbsp;</p>
+<p class="MsoNormal" style="text-align: justify"><font face="Trebuchet MS">
+<img border="0" src="images/biped_frontal.gif" width="400" height="400"></font></p>
+<p class="MsoNormal" style="text-align: justify"><font face="Trebuchet MS">
+Sagittal Plane Video</font></p>
+<p class="MsoNormal" style="text-align: justify"><font face="Trebuchet MS">
+<img border="0" src="images/biped_sagittal.gif" width="400" height="400"></font></p>
+<p class="MsoNormal" style="text-align: justify">&nbsp;</p>
+<p class="MsoNormal" style="text-align:justify"><font face="Trebuchet MS"><b>
+Simulation &amp; Results</b></font></p>
+<p class="MsoNormal" style="text-align:justify"><font face="Trebuchet MS">The 
+aim of the simulation is to analyze the effects of low-level controller 
+parameters and frontal plane desired gait trajectory parameters on the resultant 
+GRF. Our aim is to tune the parameters so that we will analyze the landing 
+impact and observe the effects of parameters to reach a smooth transition 
+between two phases of bipedal locomotion, namely, single-support phase and 
+double-support phase. So under different parameter constraints, 
+the resultant GRF is analyzed and comparison is given.</font></p>
+<p class="MsoNormal" style="text-align:justify"><font face="Trebuchet MS"><i>SL</i> 
+is used to realize the dynamic simulation of biped locomotion. The robot model 
+used in this simulator is 7-link, 10 DOFs robot. The link structure of the robot 
+is given in Fig. 4. The simulation is done 
+under the assumption that the movement of the robot is independent in frontal 
+and sagittal planes. In frontal plane, the total DOFs is 4 and in sagittal 
+plane, the total DOFs is 6. Total height of the robot is 1.325m. The walking 
+cycle of the robot is 2 seconds and the reference input data frequency is 100 
+datas/second. </font></p>
+<p class="MsoNormal" style="text-align:justify"><font face="Trebuchet MS">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<!--[if gte vml 1]><v:shape
+ id="_x0000_s1071" type="#_x0000_t75" style='width:93.75pt;height:185.25pt'>
+ <v:imagedata src="SLSimulation_files/image005.png" o:title="&#46488;&#46496;à"/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=125 height=247
+src="SLSimulation_files/image006.jpg" v:shapes="_x0000_s1071"><![endif]></font></p>
+<p class="MsoNormal" style="text-align:justify;text-indent:36.0pt">
+<font face="Trebuchet MS"><b><span style="font-size:11.0pt;">Figure 4</span><span style="font-size:11.0pt">: </span></b>
+<span style="font-size:11.0pt">Link structure of the biped robot as used in the 
+SL simulation.</span></font></p>
+<p class="MsoNormal" style="text-align:justify"><font face="Trebuchet MS">After 
+collecting data from simulation results, the analysis of smooth transition and 
+landing impact is done and MATLAB is used as a graphical tool to plot the 
+results of simulation.</font></p>
+<p class="MsoNormal" style="text-align:justify"><font face="Trebuchet MS">The 
+snapshots of walking simulation both in frontal and sagittal planes are given in 
+Fig. 5.</font></p>
+<p class="MsoNormal" style="text-align:justify"><font face="Trebuchet MS">The analysis of parametric change is 
+done considering the effects of controller gain parameters on GRF and 
+ZMP and the simulation results corresponding to different gain 
+values (high gain-low gain) is analyzed. Also, the effects of 
+frontal gait Inverted Pendulum Model parameters such as change in the lean angle 
+and change in the double-support &amp; single-support time ratio on GRF and ZMP is 
+analyzed.</font></p>
+<p class="MsoNormal" style="text-align:justify"><font face="Trebuchet MS">The 
+simulation results showing GRF for default values used for controller 
+gain parameters (Table 1) and Inverted Pendulum Model is given in Figs. 6, respectively.</font></p>
+<p class="MsoNormal" style="text-align:justify">&nbsp;<!--[if gte vml 1]><v:shape
+ id="_x0000_s1072" type="#_x0000_t75" style='width:141.75pt;height:141.75pt'>
+ <v:imagedata src="SLSimulation_files/image007.jpg" o:title="biped_frontal10"/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=189 height=189
+src="SLSimulation_files/image008.jpg" v:shapes="_x0000_s1072"><![endif]>&nbsp;<!--[if gte vml 1]><v:shape
+ id="_x0000_s1073" type="#_x0000_t75" style='width:141.75pt;height:141.75pt'>
+ <v:imagedata src="SLSimulation_files/image009.jpg" o:title="biped_frontal11"/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=189 height=189
+src="SLSimulation_files/image010.jpg" v:shapes="_x0000_s1073"><![endif]>&nbsp;<!--[if gte vml 1]><v:shape
+ id="_x0000_s1074" type="#_x0000_t75" style='width:141.75pt;height:141.75pt'>
+ <v:imagedata src="SLSimulation_files/image011.jpg" o:title="biped_frontal12"/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=189 height=189
+src="SLSimulation_files/image012.jpg" v:shapes="_x0000_s1074"><![endif]></p>
+<p class="MsoNormal" style="text-align:justify">&nbsp;</p>
+<p class="MsoNormal" style="text-align:justify"><!--[if gte vml 1]><v:shape
+ id="_x0000_s1075" type="#_x0000_t75" style='width:141.75pt;height:141.75pt'>
+ <v:imagedata src="SLSimulation_files/image013.jpg" o:title="biped_frontal13"/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=189 height=189
+src="SLSimulation_files/image014.jpg" v:shapes="_x0000_s1075"><![endif]>&nbsp;<!--[if gte vml 1]><v:shape
+ id="_x0000_s1076" type="#_x0000_t75" style='width:141.75pt;height:141.75pt'>
+ <v:imagedata src="SLSimulation_files/image015.jpg" o:title="biped_frontal14"/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=189 height=189
+src="SLSimulation_files/image016.jpg" v:shapes="_x0000_s1076"><![endif]>&nbsp;<!--[if gte vml 1]><v:shape
+ id="_x0000_s1077" type="#_x0000_t75" style='width:141.75pt;height:141.75pt'>
+ <v:imagedata src="SLSimulation_files/image017.jpg" o:title="biped_frontal15"/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=189 height=189
+src="SLSimulation_files/image018.jpg" v:shapes="_x0000_s1077"><![endif]></p>
+<p class="MsoNormal" style="text-align: justify; text-indent: -18.0pt; margin-left: 36.0pt">
+<font face="Trebuchet MS">a)</font><span style="font-style: normal; font-variant: normal; font-weight: normal; font-size: 7.0pt; font-family: Trebuchet MS">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span><font face="Trebuchet MS">Frontal Plane</font></p>
+<p class="MsoNormal" style="text-align:justify"><span style="color:fuchsia"><!--[if gte vml 1]><v:shape
+ id="_x0000_s1078" type="#_x0000_t75" style='width:141.75pt;height:141.75pt'>
+ <v:imagedata src="SLSimulation_files/image019.jpg" o:title="biped_sagittal117"/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=189 height=189
+src="SLSimulation_files/image020.jpg" v:shapes="_x0000_s1078"><![endif]>&nbsp;<!--[if gte vml 1]><v:shape
+ id="_x0000_s1079" type="#_x0000_t75" style='width:141.75pt;height:141.75pt'>
+ <v:imagedata src="SLSimulation_files/image021.jpg" o:title="biped_sagittal118"/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=189 height=189
+src="SLSimulation_files/image022.jpg" v:shapes="_x0000_s1079"><![endif]>&nbsp;<!--[if gte vml 1]><v:shape
+ id="_x0000_s1080" type="#_x0000_t75" style='width:141.75pt;height:141.75pt'>
+ <v:imagedata src="SLSimulation_files/image023.jpg" o:title="biped_sagittal121"/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=189 height=189
+src="SLSimulation_files/image024.jpg" v:shapes="_x0000_s1080"><![endif]></span></p>
+<p class="MsoNormal" style="text-align:justify"><span style="color:fuchsia">&nbsp;</span></p>
+<p class="MsoNormal" style="text-align:justify"><span style="color:fuchsia"><!--[if gte vml 1]><v:shape
+ id="_x0000_s1081" type="#_x0000_t75" style='width:141.75pt;height:141.75pt'>
+ <v:imagedata src="SLSimulation_files/image025.jpg" o:title="biped_sagittal122"/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=189 height=189
+src="SLSimulation_files/image026.jpg" v:shapes="_x0000_s1081"><![endif]>&nbsp;<!--[if gte vml 1]><v:shape
+ id="_x0000_s1082" type="#_x0000_t75" style='width:141.75pt;height:141.75pt'>
+ <v:imagedata src="SLSimulation_files/image027.jpg" o:title="biped_sagittal123"/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=189 height=189
+src="SLSimulation_files/image028.jpg" v:shapes="_x0000_s1082"><![endif]>&nbsp;<!--[if gte vml 1]><v:shape
+ id="_x0000_s1083" type="#_x0000_t75" style='width:141.75pt;height:141.75pt'>
+ <v:imagedata src="SLSimulation_files/image029.jpg" o:title="biped_sagittal124"/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=189 height=189
+src="SLSimulation_files/image030.jpg" v:shapes="_x0000_s1083"><![endif]></span></p>
+<p class="MsoNormal" style="text-align: justify; text-indent: -18.0pt; margin-left: 36.0pt">
+<font face="Trebuchet MS">b)</font><span style="font-style: normal; font-variant: normal; font-weight: normal; font-size: 7.0pt; font-family: Trebuchet MS">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span><font face="Trebuchet MS">Sagittal Plane</font></p>
+<p class="MsoNormal" style="text-align:justify"><font face="Trebuchet MS"><b>
+Figure 5:</b> Experimental Results using <i>SL </i>Simulation</font></p>
+<p class="MsoNormal" style="text-align:justify"><span style="color:fuchsia"><!--[if gte vml 1]><v:shape
+ id="_x0000_s1084" type="#_x0000_t75" style='width:431.25pt;height:323.25pt'>
+ <v:imagedata src="SLSimulation_files/image031.jpg" o:title="d00157"/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=575 height=431
+src="SLSimulation_files/image032.jpg" v:shapes="_x0000_s1084"><![endif]></span></p>
+<p class="MsoNormal" style="text-align:justify"><font face="Trebuchet MS"><b>
+Figure 6:</b> GRF Simulation Results for the default values of controller gain 
+and Inverted Pendulum Model Parameters</font></p>
+<p class="MsoNormal" style="text-align:justify"><font face="Trebuchet MS"><b>
+Table 1:</b>&nbsp;</font></p>
+<table class="MsoTableGrid" border="1" cellspacing="0" cellpadding="0" style="border-collapse: collapse; border: medium none; margin-left: 74.25pt" height="309">
+  <tr style="height: 24.85pt">
+    <td width="283" valign="top" style="width: 212.4pt; height: 26; border: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm">
+    <p class="MsoNormal" align="center" style="text-align:center">
+    <font face="Trebuchet MS"><b>&nbsp;</b></font><font face="Trebuchet MS" size="3"><b>Joint 
+    Angles</b></font></p>
+    </td>
+    <td width="96" valign="top" style="width: 72.0pt; height: 26; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: 1.0pt solid windowtext; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm">
+    <p class="MsoNormal" align="center" style="text-align:center">
+    <font face="Trebuchet MS" size="3"><b>P</b></font></td>
+  </tr>
+  <tr style="height: 20.7pt">
+    <td width="283" valign="top" style="width: 212.4pt; height: 26; border-left: 1.0pt solid windowtext; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm">
+    <p class="MsoNormal" style="text-align:justify"><font face="Trebuchet MS">
+    <b><font size="3">&#952;</font><sub><font size="3">lhs</font></sub></b><font size="3"> 
+    (Left Hip Sagittal Joint Angle)</font></font></td>
+    <td width="96" valign="top" style="width: 72.0pt; height: 26; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm">
+    <p class="MsoNormal" align="center" style="text-align:center">
+    <font face="Trebuchet MS" size="3">500</font></td>
+  </tr>
+  <tr style="height: 20.7pt">
+    <td width="283" valign="top" style="width: 212.4pt; height: 26; border-left: 1.0pt solid windowtext; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm">
+    <p class="MsoNormal" style="text-align:justify"><font face="Trebuchet MS">
+    <b><font size="3">&#952;</font><sub><font size="3">lks</font><font size="3">
+    </font> </sub></b><font size="3">(Left Knee Sagittal Joint Angle)</font></font></td>
+    <td width="96" valign="top" style="width: 72.0pt; height: 26; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm">
+    <p class="MsoNormal" align="center" style="text-align:center">
+    <font face="Trebuchet MS" size="3">500</font></td>
+  </tr>
+  <tr style="height: 20.7pt">
+    <td width="283" valign="top" style="width: 212.4pt; height: 26; border-left: 1.0pt solid windowtext; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm">
+    <p class="MsoNormal" style="text-align:justify"><font face="Trebuchet MS">
+    <b><font size="3">&#952;</font></b><sub><b><font size="3">las</font></b><font size="3">
+    </font> </sub><font size="3">(Left Ankle Sagittal Joint Angle)</font></font></td>
+    <td width="96" valign="top" style="width: 72.0pt; height: 26; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm">
+    <p class="MsoNormal" align="center" style="text-align:center">
+    <font face="Trebuchet MS" size="3">200</font></td>
+  </tr>
+  <tr style="height: 20.7pt">
+    <td width="283" valign="top" style="width: 212.4pt; height: 26; border-left: 1.0pt solid windowtext; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm">
+    <p class="MsoNormal" style="text-align:justify"><font face="Trebuchet MS">
+    <b><font size="3">&#952;</font></b><sub><b><font size="3">rhs</font></b><font size="3">
+    </font> </sub><font size="3">(Right Hip Sagittal Joint Angle)</font></font></td>
+    <td width="96" valign="top" style="width: 72.0pt; height: 26; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm">
+    <p class="MsoNormal" align="center" style="text-align:center">
+    <font face="Trebuchet MS" size="3">500</font></td>
+  </tr>
+  <tr style="height: 20.7pt">
+    <td width="283" valign="top" style="width: 212.4pt; height: 26; border-left: 1.0pt solid windowtext; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm">
+    <p class="MsoNormal" style="text-align:justify"><font face="Trebuchet MS">
+    <b><font size="3">&#952;</font></b><sub><b><font size="3">rks</font></b><font size="3">
+    </font> </sub><font size="3">(Right Knee Sagittal Joint Angle)</font></font></td>
+    <td width="96" valign="top" style="width: 72.0pt; height: 26; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm">
+    <p class="MsoNormal" align="center" style="text-align:center">
+    <font face="Trebuchet MS" size="3">500</font></td>
+  </tr>
+  <tr style="height: 21.9pt">
+    <td width="283" valign="top" style="width: 212.4pt; height: 27; border-left: 1.0pt solid windowtext; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm">
+    <p class="MsoNormal" style="text-align:justify"><font face="Trebuchet MS">
+    <b><font size="3">&#952;</font></b><sub><b><font size="3">ras</font></b><font size="3">
+    </font> </sub><font size="3">(Right Ankle Sagittal Joint Angle)</font></font></td>
+    <td width="96" valign="top" style="width: 72.0pt; height: 27; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm">
+    <p class="MsoNormal" align="center" style="text-align:center">
+    <font face="Trebuchet MS" size="3">200</font></td>
+  </tr>
+  <tr style="height: 20.7pt">
+    <td width="283" valign="top" style="width: 212.4pt; height: 26; border-left: 1.0pt solid windowtext; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm">
+    <p class="MsoNormal" style="text-align:justify"><font face="Trebuchet MS">
+    <b><font size="3">&#952;</font></b><sub><b><font size="3">lhf</font></b><font size="3">
+    </font> </sub><font size="3">(Left Hip Frontal Joint Angle)</font></font></td>
+    <td width="96" valign="top" style="width: 72.0pt; height: 26; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm">
+    <p class="MsoNormal" align="center" style="text-align:center">
+    <font face="Trebuchet MS" size="3">500</font></td>
+  </tr>
+  <tr style="height: 20.7pt">
+    <td width="283" valign="top" style="width: 212.4pt; height: 26; border-left: 1.0pt solid windowtext; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm">
+    <p class="MsoNormal" style="text-align:justify"><font face="Trebuchet MS">
+    <b><font size="3">&#952;</font></b><sub><b><font size="3">laf</font></b><font size="3">
+    </font> </sub><font size="3">(Left Ankle Frontal Joint Angle)</font></font></td>
+    <td width="96" valign="top" style="width: 72.0pt; height: 26; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm">
+    <p class="MsoNormal" align="center" style="text-align:center">
+    <font face="Trebuchet MS" size="3">200</font></td>
+  </tr>
+  <tr style="height: 20.7pt">
+    <td width="283" valign="top" style="width: 212.4pt; height: 26; border-left: 1.0pt solid windowtext; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm">
+    <p class="MsoNormal" style="text-align:justify"><font face="Trebuchet MS">
+    <b><font size="3">&#952;</font></b><sub><b><font size="3">rhf</font></b><font size="3">
+    </font> </sub><font size="3">(Right Hip Frontal Joint Angle)</font></font></td>
+    <td width="96" valign="top" style="width: 72.0pt; height: 26; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm">
+    <p class="MsoNormal" align="center" style="text-align:center">
+    <font face="Trebuchet MS" size="3">500</font></td>
+  </tr>
+  <tr style="height: 20.7pt">
+    <td width="283" valign="top" style="width: 212.4pt; height: 26; border-left: 1.0pt solid windowtext; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm">
+    <p class="MsoNormal" style="text-align:justify"><font face="Trebuchet MS">
+    <b><font size="3">&#952;</font><sub><font size="3">raf</font><font size="3">
+    </font> </sub></b><font size="3">(Right Ankle Frontal Joint Angle)</font></font></td>
+    <td width="96" valign="top" style="width: 72.0pt; height: 26; border-left: medium none; border-right: 1.0pt solid windowtext; border-top: medium none; border-bottom: 1.0pt solid windowtext; padding-left: 5.4pt; padding-right: 5.4pt; padding-top: 0cm; padding-bottom: 0cm">
+    <p class="MsoNormal" align="center" style="text-align:center">
+    <font face="Trebuchet MS" size="3">200</font></td>
+  </tr>
+</table>
+<p class="MsoNormal" style="text-align:justify"><font face="Trebuchet MS">&nbsp;</font></p>
+
+</body>
+
+</html>

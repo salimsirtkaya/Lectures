@@ -1,0 +1,49 @@
+This note describes two sets of overhead transparencies that are available 
+as lecture notes to accompany "Introduction to Spectral Analysis" by 
+P. Stoica and R. Moses.
+
+
+SET 1: sm-slides.ps
+
+This set of slides covers the six chapters of the text.  The slides are 
+divided into nine lectures, one each for Chapters 1, 3, and 5, and two each 
+for Chapters 2, 4, and 6.  We highlight the main topics of the text, but do 
+not delve into detailed derivations; nor do we cover the Complements and 
+Appendices.  The slides provide a compact overview of the text that can be 
+covered in nine lectures.  There are a total of 125 pages.
+
+The available files are:
+sm-slides.ps:      postscript file of the slides, one to a page
+sm-slides-2up.ps   postscript file of the slides, two to a page.
+
+
+
+SET 2: li-slides.ps
+
+This set of slides gives a more extensive coverage of Chapters 1 to 4 of 
+the text.  It covers topics from the complements (such as Burg method, 
+maximum entropy, and linear prediction) and from the Appendices (solving 
+linear equations, and basic notions of estimation theory), which Set 1 does 
+not cover.  In addition, Set 2 contains brief discussions of DSP 
+fundamentals and Wiener filtering (viewed as an application of Spectral 
+Analysis), which were not included in the text.  However Set 2 does not 
+cover Chapters 5 and 6 of the text.  A course aiming at presenting the SA 
+area in a more extensive way than afforded by Set 1 could use Set 2 for 
+Chapters 1-4 and Set 1 for Chapters 5 and 6 (such a coverage of the subject 
+may need 30 lectures).
+
+Set 2 has been produced by Professor Jian Li (University of Florida) who
+taught a SA course using several preliminary versions of our text. We
+are grateful to her for making these slides available to us and our readers.
+
+
+
+TAR ARCHIVE: slides.tar
+
+The slides directory can also be downloaded as a single Unix archive 
+(.tar) file slides.tar.
+
+
+
+If you have problems with our ftp site, please send mail to
+ftpadmin@prenhall.com.

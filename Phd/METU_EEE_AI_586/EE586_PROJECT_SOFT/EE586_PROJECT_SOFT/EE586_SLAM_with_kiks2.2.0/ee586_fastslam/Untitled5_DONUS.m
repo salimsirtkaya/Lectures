@@ -1,0 +1,362 @@
+clear;
+close all
+time=1/8;
+baud=9600;
+port=-1;
+rot=41.65;
+vertical1=30;
+horizontal2=15;
+vertical3=30;
+horizontal4=15;
+
+
+ARENA=zeros(450,450);
+ARENA(40,300)=-270; %start position
+
+
+ARENA(155,365)=4;
+ARENA(205,60)=4;
+% ARENA(190:220,50:60)=1;
+% ARENA(270:310,50:60)=1;
+% ARENA(360:410,50:60)=1;
+
+kiks(ARENA);
+
+%kiks('alan.kad');
+
+ref=kiks_kopen([port,baud,1]);
+
+% time=1;
+% speed = [5 5];
+% i=1;
+%
+% for n=1:100
+%
+% value(:,i)=kProximity(ref);
+% while (kiks_ktime(port)<time)
+%    kSetSpeed(ref,speed(1),speed(2));
+%    end;
+% i=i+1;
+%
+% end
+
+for j=1:vertical1
+
+    % -----------------------------------------------------------------------------------------
+    % This time, we will simply tell the Khepera to move each wheel 80mm.
+    % set counters to 0 again
+    kSetEncoders(ref,0,0);
+    % Set the speed profile
+    kSetProfile(ref,40,96,40,96);
+    % Order the Khepera to move each wheel 10mm
+    kMoveTo(ref,kiks_mm2p(10),kiks_mm2p(10));
+    % wait for the Khepera to finish movement
+    status=kGetStatus(ref);
+
+    i=1;
+    sensor_data=[];
+    while(status(1)+status(2)<2)
+        status=kGetStatus(ref);
+        sensor_data(:,i)=kProximity(ref);
+        i=i+1;
+    end;
+
+    mean_sensor_data(:,j)=mean(sensor_data,2);
+
+    sensor=kProximity(ref)
+
+    % how far have we moved?
+    pulses=kGetEncoders(ref);
+    leftmm_position_mode(j)=kiks_p2mm(pulses(1));
+    rightmm_position_mode(j)=kiks_p2mm(pulses(2));
+    % -----------------------------------------------------------------------------------------
+
+end
+
+
+    % -----------------------------------------------------------------------------------------
+    % This time, we will simply tell the Khepera to move each wheel 80mm.
+    % set counters to 0 again
+    kSetEncoders(ref,0,0);
+    % Set the speed profile
+    kSetProfile(ref,40,96,40,96);
+    % Order the Khepera to move each wheel 10mm
+    kMoveTo(ref,kiks_mm2p(rot),kiks_mm2p(-rot));
+    % wait for the Khepera to finish movement
+    status=kGetStatus(ref);
+
+    i=1;
+    sensor_data=[];
+    while(status(1)+status(2)<2)
+        status=kGetStatus(ref);
+        sensor_data(:,i)=kProximity(ref);
+        i=i+1;
+    end;
+
+    mean_sensor_data(:,vertical1+1)=mean(sensor_data,2);
+sensor=kProximity(ref)
+
+% 
+%     % how far have we moved?
+    pulses=kGetEncoders(ref);
+    leftmm_position_mode(vertical1+1)=kiks_p2mm(pulses(1));
+    rightmm_position_mode(vertical1+1)=kiks_p2mm(pulses(2));
+%     % -----------------------------------------------------------------------------------------
+
+    
+
+
+    
+  for j=vertical1+2:vertical1+horizontal2+1
+
+    % -----------------------------------------------------------------------------------------
+    % This time, we will simply tell the Khepera to move each wheel 80mm.
+    % set counters to 0 again
+    kSetEncoders(ref,0,0);
+    % Set the speed profile
+    kSetProfile(ref,40,96,40,96);
+    % Order the Khepera to move each wheel 10mm
+    kMoveTo(ref,kiks_mm2p(10),kiks_mm2p(10));
+    % wait for the Khepera to finish movement
+    status=kGetStatus(ref);
+
+    i=1;
+    sensor_data=[];
+    while(status(1)+status(2)<2)
+        status=kGetStatus(ref);
+        sensor_data(:,i)=kProximity(ref);
+        i=i+1;
+    end;
+
+    mean_sensor_data(:,j)=mean(sensor_data,2);
+
+    sensor=kProximity(ref)
+
+    % how far have we moved?
+    pulses=kGetEncoders(ref);
+    leftmm_position_mode(j)=kiks_p2mm(pulses(1));
+    rightmm_position_mode(j)=kiks_p2mm(pulses(2));
+    % -----------------------------------------------------------------------------------------
+
+  end  
+    
+    
+    
+    
+        % -----------------------------------------------------------------------------------------
+    % This time, we will simply tell the Khepera to move each wheel 80mm.
+    % set counters to 0 again
+    kSetEncoders(ref,0,0);
+    % Set the speed profile
+    kSetProfile(ref,40,96,40,96);
+    % Order the Khepera to move each wheel 10mm
+    kMoveTo(ref,kiks_mm2p(rot),kiks_mm2p(-rot));
+    % wait for the Khepera to finish movement
+    status=kGetStatus(ref);
+
+    i=1;
+    sensor_data=[];
+    while(status(1)+status(2)<2)
+        status=kGetStatus(ref);
+        sensor_data(:,i)=kProximity(ref);
+        i=i+1;
+    end;
+
+       mean_sensor_data(:,vertical1+horizontal2+2)=mean(sensor_data,2);
+sensor=kProximity(ref)
+
+    % how far have we moved?
+    pulses=kGetEncoders(ref);
+    leftmm_position_mode(vertical1+horizontal2+2)=kiks_p2mm(pulses(1));
+    rightmm_position_mode(vertical1+horizontal2+2)=kiks_p2mm(pulses(2));
+    % -----------------------------------------------------------------------------------------
+
+    
+
+
+
+    
+  for j=vertical1+horizontal2+2:vertical1+horizontal2+vertical3+1
+
+    % -----------------------------------------------------------------------------------------
+    % This time, we will simply tell the Khepera to move each wheel 80mm.
+    % set counters to 0 again
+    kSetEncoders(ref,0,0);
+    % Set the speed profile
+    kSetProfile(ref,40,96,40,96);
+    % Order the Khepera to move each wheel 10mm
+    kMoveTo(ref,kiks_mm2p(10),kiks_mm2p(10));
+    % wait for the Khepera to finish movement
+    status=kGetStatus(ref);
+
+    i=1;
+    sensor_data=[];
+    while(status(1)+status(2)<2)
+        status=kGetStatus(ref);
+        sensor_data(:,i)=kProximity(ref);
+        i=i+1;
+    end;
+
+    mean_sensor_data(:,j)=mean(sensor_data,2);
+sensor=kProximity(ref)
+
+    % how far have we moved?
+    pulses=kGetEncoders(ref);
+    leftmm_position_mode(j)=kiks_p2mm(pulses(1));
+    rightmm_position_mode(j)=kiks_p2mm(pulses(2));
+    % -----------------------------------------------------------------------------------------
+
+  end  
+
+  
+       % -----------------------------------------------------------------------------------------
+    % This time, we will simply tell the Khepera to move each wheel 80mm.
+    % set counters to 0 again
+    kSetEncoders(ref,0,0);
+    % Set the speed profile
+    kSetProfile(ref,40,96,40,96);
+    % Order the Khepera to move each wheel 10mm
+    kMoveTo(ref,kiks_mm2p(rot),kiks_mm2p(-rot));
+    % wait for the Khepera to finish movement
+    status=kGetStatus(ref);
+
+    i=1;
+    sensor_data=[];
+    while(status(1)+status(2)<2)
+        status=kGetStatus(ref);
+        sensor_data(:,i)=kProximity(ref);
+        i=i+1;
+    end;
+
+       mean_sensor_data(:,vertical1+horizontal2+vertical3+2)=mean(sensor_data,2);
+sensor=kProximity(ref)
+
+    % how far have we moved?
+    pulses=kGetEncoders(ref);
+    leftmm_position_mode(vertical1+horizontal2+vertical3+2)=kiks_p2mm(pulses(1));
+    rightmm_position_mode(vertical1+horizontal2+vertical3+2)=kiks_p2mm(pulses(2));
+    % -----------------------------------------------------------------------------------------
+
+    
+
+
+
+    
+  for j=vertical1+horizontal2+vertical3+3:vertical1+horizontal2+vertical3+horizontal4+2
+
+    % -----------------------------------------------------------------------------------------
+    % This time, we will simply tell the Khepera to move each wheel 80mm.
+    % set counters to 0 again
+    kSetEncoders(ref,0,0);
+    % Set the speed profile
+    kSetProfile(ref,40,96,40,96);
+    % Order the Khepera to move each wheel 10mm
+    kMoveTo(ref,kiks_mm2p(10),kiks_mm2p(10));
+    % wait for the Khepera to finish movement
+    status=kGetStatus(ref);
+
+    i=1;
+    sensor_data=[];
+    while(status(1)+status(2)<2)
+        status=kGetStatus(ref);
+        sensor_data(:,i)=kProximity(ref);
+        i=i+1;
+    end;
+
+    mean_sensor_data(:,j)=mean(sensor_data,2);
+sensor=kProximity(ref)
+
+    % how far have we moved?
+    pulses=kGetEncoders(ref);
+    leftmm_position_mode(j)=kiks_p2mm(pulses(1));
+    rightmm_position_mode(j)=kiks_p2mm(pulses(2));
+    % -----------------------------------------------------------------------------------------
+
+end  
+    
+     
+    
+    
+    
+
+
+[m,n]=size(rightmm_position_mode);
+position(1:2,1)=0;
+position(3,1)=3*pi/2;
+
+for j=2:n+1
+    % position(3,j)=(leftmm_position_mode(1,j-1)-rightmm_position_mode(1,j-1))/55; %teta
+    % mid_d=(leftmm_position_mode(1,j-1)-rightmm_position_mode(1,j-1))/2;
+    % position(1,j)=position(1,j-1)+(abs(mid_d)*sin(position(3,j)))/(position(3,j)+0.0001);
+    % position(2,j)=position(1,j-1)+(abs(mid_d)*(1-cos(position(3,j))))/(position(3,j)+0.0001);
+    %
+
+    if leftmm_position_mode(1,j-1)==rightmm_position_mode(1,j-1)
+
+        position(1,j)=position(1,j-1)+cos(position(3,j-1))*leftmm_position_mode(1,j-1);
+        position(2,j)=position(2,j-1)+sin(position(3,j-1))*rightmm_position_mode(1,j-1);
+        position(3,j)=position(3,j-1);
+
+    elseif leftmm_position_mode(1,j-1)>rightmm_position_mode(1,j-1)
+
+        position(1,j)=position(1,j-1);
+        position(2,j)=position(2,j-1);
+        position(3,j)=position(3,j-1)-pi/2;
+
+    elseif leftmm_position_mode(1,j-1)<rightmm_position_mode(1,j-1)
+        position(1,j)=position(1,j-1);
+        position(2,j)=position(2,j-1);
+        position(3,j)=position(3,j-1)+pi/2;
+
+    end
+end
+
+kiks_kclose(ref);
+
+% [m,n]=size(mean_sensor_data);
+% 
+% for j=n:
+%     
+%    r4=(50-mean_sensor_data(4,j)*50/1023)
+%    r5=(50-mean_sensor_data(5,j)*50/1023)
+%    r6=(50-mean_sensor_data(6,j)*50/1023)
+%    
+% 
+% 
+%     if mean_sensor_data(5,j)>20
+% 
+%         if mean_sensor_data(6,j)<20
+% 
+%         else
+% 
+%         end
+% 
+%     else
+%         
+%          if mean_sensor_data(6,j)<20
+% 
+%         else
+% 
+%         end
+        
+        
+%         
+%    
+%  location=scxsc()
+%             
+% 
+%         end
+% 
+% 
+%     end
+
+
+
+    %    scxsc(0,0,1,1,0,1)
+    %
+    % ans =
+    %
+    %     0.4999    0.4999   -0.8661    0.8661
+
+
+

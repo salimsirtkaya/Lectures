@@ -1,0 +1,33 @@
+--------------------------
+INS+Camera
+Run Date                 : 
+Station ID               : 285702-0001 (Quad Sensor/Cal)
+Test Equipment Software  : 831814-1202
+User File Software       : 831814-1202
+Project Type             : Ln270
+Amux Table Channel 1     : n/a
+Amux Table Channel 2     : n/a
+Test Site                : ASELSAN/MGEO
+Operator Name / ID       : S SIRTKAYA
+Local Latitude           : 40.08
+Local Longitude          : 33.022
+Local Gravity            : 9.795884467
+Local Altitude           : 1025
+Rate Table Inner Offset  : 0.0
+Rate Table Outer Offset  : 0.0
+Rate Table North Offset  : -90.0
+Rate Table Type          : SIMULATION
+Temperature Chamber Type : SIMULATION
+Power Supply Type        : SIMULATION
+Serial Card Type         : FASTCOM_W2K
+Data Directory           : C:\Cats\Data
+ADR Directory            : C:\Cats\Adr
+Maximum Power Supplies   : 1
+NVM Type                 : Intel
+UUT1: Chassis/Pallet #500227
+  Assembly Number        : 831230-0001 (A4/GPS Sys 3 inch)
+  OFP Symbols File       : C:\Cats\Builds\Ln25x054\ESR\LN25X054.sym
+  CAL Database Image     : C:\Cats\Calibration\CalibrationDB\CalDbImageSpline4in.db
+  AutoLoad File          : C:\Cats\AutoLoad\LN25X515_esr.ald
+  Testport ICD File      : C:\Cats\Icd\AS_LN25X054.icd
+  Data Collection Dir    : C:\Cats\Data\Ln270\500227\2005-04-26_113033

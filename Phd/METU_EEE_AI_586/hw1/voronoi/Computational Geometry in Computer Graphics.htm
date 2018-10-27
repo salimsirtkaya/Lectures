@@ -1,0 +1,144 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0059)http://www.gris.uni-tuebingen.de/gris/proj/algo/algo_e.html -->
+<HTML><HEAD><TITLE>Computational Geometry in Computer Graphics</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=iso-8859-1">
+<META content="MSHTML 6.00.2900.2802" name=GENERATOR></HEAD>
+<BODY>
+<H3>WSI-GRIS</H3>
+<P>
+<H3>Projects</H3>
+<HR>
+
+<H2>Computational Geometry in Computer Graphics</H2>
+<HR>
+Für dieselbe Information in Deutsch <A 
+href="http://www.gris.uni-tuebingen.de/gris/proj/algo/algo.html">klicken Sie 
+hier! </A>
+<HR>
+
+<H3>Performance analysis of Delaunay triangulation algorithms </H3>
+<P>
+<H3>Twodimensional algorithms </H3>
+<P>
+<CENTER><IMG 
+src="Computational Geometry in Computer Graphics_files/vergl2D.gif"> </CENTER>
+<P>
+<UL><EM>
+  <LI>Insert = randomized insertion algorithm 
+  <LI>DeWall = Delaunay-Wall algorithm without searching data structure 
+  <LI>Matrix = Incremental Construction algorithm with sparse matrix 
+  <LI>Grid = Incremental Construction algorithm with regular grid 
+  <LI>Flipping = Flipping algorithm 
+  <LI>PlaneSweep = Plane-Sweep algorithm 
+  <LI>Quadtree = randomized insertion algorithm with quadtree data structure for 
+  location </LI></UL></EM>
+<P>
+<H3>Threedimensional algorithms </H3>
+<P>
+<CENTER><IMG 
+src="Computational Geometry in Computer Graphics_files/vergl3D.gif"> </CENTER>
+<P>
+<UL><EM>
+  <LI>Octree= randomized insertion algorithm with octree data structure for 
+  location 
+  <LI>DeWall = Delaunay-Wall algorithm without searching data structure 
+  <LI>Matrix = Incremental Construction algorithm with sparse matrix 
+  <LI>Gitter = Incremental Construction algorithm with regular grid 
+  <LI>Insert = randomized insertion algorithm </EM></LI></UL>
+<P>The runtimes of the algorithms were measured for equally distributed point 
+sets on a SGI with R4000 processor. 
+<P>
+<H4>Literature:</H4>
+<UL>
+  <LI>Flipping algorithm: <EM>R.Sibson. Locally equiangular triangulations. The 
+  Computer Journal Vol.2 (3): 243-245, 1973.</EM> 
+  <LI>Randomized incremental insertion algorithm: <EM>L.J.Guibas, D.E.Knuth and 
+  M.Sharir. Randomized Incremental Construction of Delaunay and Voronoi 
+  diagrams. Algorithmica 7: 381-413, 1992. </EM>
+  <LI>Incremental construction algorithm: <EM>T.Fang and L.Piegl. Delaunay 
+  triangulation using a uniform grid. IEEE Computer Graphics and Applications: 
+  36-47, 1993. </EM>
+  <LI>Delaunay-Wall algorithm: <EM>P.Cignoni, C.Montani, R.Perego and 
+  R.Scopigno. Parallel 3D Delaunay Triangulation. Eurographics 93: 129-142, 
+  1993.</EM> 
+  <LI>Plane-Sweep algorithm: <EM>S.Fortune. Sweepline Algorithms for Voronoi 
+  diagrams. Algorithmica 2: 153-174, 1987.</EM> </LI></UL>
+<P>For further information see 
+<P><A href="http://www.gris.uni-tuebingen.de/gris/proj/dt/dteng.html">J. Krämer, 
+Delaunay triangulations in two and three dimensions </A>
+<P>
+<HR>
+
+<H3>Constrained Delaunay triangulations and triangulations of polygons</H3>
+<LI>Constrained Delaunay triangulations and triangulations of polygons are 
+necessary for mesh generation of plane parameter domains of trimmed <A 
+href="http://www.gris.uni-tuebingen.de/gris/proj/geomod/meshing.html">surfaces 
+</A>. 
+<P>
+<CENTER><IMG src="Computational Geometry in Computer Graphics_files/cdt.gif"> 
+<IMG src="Computational Geometry in Computer Graphics_files/pdt.gif"> </CENTER>
+<UL>
+  <LI>Right: Constrained Delaunay triangulation. 
+  <LI>Left: Delaunay triangulation of polygons </LI></UL>
+<P>
+<HR>
+
+<H3>Steiner triangulations of parameter domains </H3>Steiner triangulations in 
+two dimensions are necessary for the visualization of trimmed surfaces as well 
+as for Finite Element meshing. 
+<HR>
+
+<CENTER><IMG 
+src="Computational Geometry in Computer Graphics_files/triangul.gif"> <IMG 
+src="Computational Geometry in Computer Graphics_files/refined.gif"> </CENTER>
+<UL>
+  <LI>Right: Delaunay triangulation of a polygonal domain 
+  <LI>links: Steiner triangulation of the domain with given maximal edge length 
+  </LI></UL>
+<HR>
+
+<P>
+<H3>Voronoi diagrams </H3>
+<P>
+<H4>Voronoi diagrams in 2D </H4>
+<CENTER><IMG 
+src="Computational Geometry in Computer Graphics_files/delaunay1.gif"> <IMG 
+src="Computational Geometry in Computer Graphics_files/voronoi1.gif"> </CENTER>
+<CENTER>Delaunay triangulation and Voronoi diagram of a point set of 100 points 
+</CENTER>
+<P>
+<CENTER><IMG 
+src="Computational Geometry in Computer Graphics_files/voronoi2.gif"> </CENTER>
+<CENTER>Voronoi diagram of a point set of 1000 points </CENTER>
+<P>
+<HR>
+
+<P>
+<H3>Visualization of crystal structures using Voronoi diagrams </H3>(SFB 382) 
+<CENTER><IMG 
+src="Computational Geometry in Computer Graphics_files/3DVoronoi1.gif"> 
+<P><IMG src="Computational Geometry in Computer Graphics_files/3DVoronoi2.gif"> 
+</CENTER>
+<P>
+<HR>
+
+<P>
+<H3>Visualization of three dimensional meshes </H3>Visualizations of three 
+dimensional meshes are difficult to interpret. Therefore, a variety of 
+techniques were developped to support their interpretation. One possibility is 
+shown in the left picture. Only the polyhedra intersected by a user defined ray 
+are visualized. On the right picture the polyhedra are exploded. 
+<P>
+<CENTER><IMG src="Computational Geometry in Computer Graphics_files/ray1.gif"> 
+<IMG src="Computational Geometry in Computer Graphics_files/explode1.gif"> 
+</CENTER>
+<P>
+<HR>
+
+<P><A 
+href="http://www.gris.informatik.uni-tuebingen.de/people/staff/reinhard/reinhard.html">
+<ADDRESS>Reinhard Klein: 
+reinhard@gris.informatik.uni-tuebingen.de</ADDRESS></A><A 
+href="http://www.gris.informatik.uni-tuebingen.de/people/students/kraemerj/kraemerj.html">
+<ADDRESS>Jörg Krämer: 
+kraemerj@gris.informatik.uni-tuebingen.de</ADDRESS></A></LI></BODY></HTML>
